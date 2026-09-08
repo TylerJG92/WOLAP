@@ -14464,7 +14464,7 @@
         ],
         [
           "goto",
-          "heleaves"
+          "heleaves2"
         ]
       ],
       "hatgun": [
@@ -14486,7 +14486,7 @@
         ],
         [
           "goto",
-          "heleaves"
+          "heleaves2"
         ]
       ],
       "gun": [
@@ -14508,7 +14508,45 @@
         ],
         [
           "goto",
-          "heleaves"
+          "heleaves2"
+        ]
+      ],
+      "heleaves": [
+        [
+          "say",
+          "General Gob strides out the door, jaw clenched, eyes resolute with pie-hatred."
+        ],
+        [
+          "addflag",
+          "fort1_generalgob,2"
+        ],
+        [
+          "customcommand",
+          "misspoint,Fort Cowardice Back Office - General Gob's Hat"
+        ],
+        [
+          "customcommand",
+          "misspoint,Fort Cowardice Back Office - General Gob's Pistol"
+        ],
+        [
+          "sayoption",
+          "done",
+          "Well, that was weird. I guess I'm the General now!"
+        ]
+      ],
+      "heleaves2": [
+        [
+          "say",
+          "General Gob strides out the door, jaw clenched, eyes resolute with pie-hatred."
+        ],
+        [
+          "addflag",
+          "fort1_generalgob,2"
+        ],
+        [
+          "sayoption",
+          "done",
+          "Well, that was weird. I guess I'm the General now!"
         ]
       ]
     },
