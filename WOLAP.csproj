@@ -11,6 +11,8 @@
   <ItemGroup>
   <Compile Remove="patcher\**\*.cs" />
   <Compile Remove="ModManager_Packager\**\*.cs" />
+  <Compile Remove="ref\NoCompile\**\*.cs" />
+  <Compile Remove="ref\NoCompile\**\*.json" />
   </ItemGroup>
 
   <ItemGroup>
