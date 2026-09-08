@@ -122,7 +122,7 @@ namespace WOLAP
                 {
                     foreach (ItemInfo itemInfo in locationInfoPacket.Result.Values)
                     {
-                        WolapPlugin.Log.LogInfo("Grabbing the info and sending it to AP server to process");
+                        WolapPlugin.Log.LogInfo("Grabbing the info and sending it to AP server to process"); //This is temporary and needs to be removed.
                         OptionsIconAndSay itemRow = UnityEngine.Object.Instantiate<OptionsIconAndSay>(addItemPrefab);
                         itemRow.textFormat = "You found an item: <b>{0}</b>";
                         itemRow.textInsert = itemInfo.ItemDisplayName;
@@ -131,11 +131,11 @@ namespace WOLAP
 
                         WolapPlugin.Log.LogInfo($"Sent item {itemInfo.ItemDisplayName} to player {itemInfo.Player.Name}");
 
-                        WolapPlugin.Log.LogInfo("Adding content to the dialog");
+                        WolapPlugin.Log.LogInfo("Adding content to the dialog"); //This is temporary and needs to be removed.
                         traverse.Method("AddContent", [typeof(Component), typeof(OptionsContentBlock.Side)]).GetValue([itemRow, OptionsContentBlock.Side.None]);
                         traverse.Method("CompAddStuff", [typeof(Component)]).GetValue<Component>([itemRow]);
 
-                        WolapPlugin.Log.LogInfo("Scout Location complete, now waiting for 3 seconds timespan");
+                        WolapPlugin.Log.LogInfo("Scout Location complete, now waiting for 3 seconds timespan"); //This is temporary and needs to be removed.
                     }
                 }).Wait(TimeSpan.FromSeconds(3));
             }
