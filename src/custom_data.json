@@ -7356,12 +7356,12 @@
           "1000"
         ],
         [
-          "goto",
-          "options"
-        ],
-        [
           "customcommand",
           "misspoint,Lazy-A Dude Ranch - Cowsbane Harvest"
+        ],
+        [
+          "goto",
+          "options"
         ]
       ]
     },
