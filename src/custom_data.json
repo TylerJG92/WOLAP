@@ -7495,20 +7495,11 @@
         ],
         [
           "if",
-          "hasflag(clowns_capserch)==2 && hasflag(clowns_tookhanky)==1 && hasflag(clowns_tooksalts)==1 && hasflag(clowns_tookknife)==1 && !hasflag(clowns_whistlebox)"
+          "hasflag(clowns_capsearch)==2 && hasflag(clowns_tookhanky)==1 && hasflag(clowns_tooksalts)==1 && hasflag(clowns_tookknife)==1 && !hasflag(clowns_whistlebox)"
         ],
         [
           "customcommand",
           "misspoint, Circus - Slide Whistle Reward"
-        ],
-        [
-          "option",
-          "leave",
-          "Leave"
-        ],
-        [
-          "else",
-          ""
         ],
         [
           "option",
@@ -7535,20 +7526,11 @@
         ],
         [
           "if",
-          "hasflag(clowns_capserch)==2 && hasflag(clowns_tookhanky)==1 && hasflag(clowns_tooksalts)==1 && hasflag(clowns_tookknife)==1 && !hasflag(clowns_whistlebox)"
+          "hasflag(clowns_capsearch)==2 && hasflag(clowns_tookhanky)==1 && hasflag(clowns_tooksalts)==1 && hasflag(clowns_tookknife)==1 && !hasflag(clowns_whistlebox)"
         ],
         [
           "customcommand",
           "misspoint, Circus - Slide Whistle Reward"
-        ],
-        [
-          "option",
-          "leave",
-          "Leave"
-        ],
-        [
-          "else",
-          ""
         ],
         [
           "option",
@@ -7575,20 +7557,11 @@
         ],
         [
           "if",
-          "hasflag(clowns_capserch)==2 && hasflag(clowns_tookhanky)==1 && hasflag(clowns_tooksalts)==1 && hasflag(clowns_tookknife)==1 && !hasflag(clowns_whistlebox)"
+          "hasflag(clowns_capsearch)==2 && hasflag(clowns_tookhanky)==1 && hasflag(clowns_tooksalts)==1 && hasflag(clowns_tookknife)==1 && !hasflag(clowns_whistlebox)"
         ],
         [
           "customcommand",
           "misspoint, Circus - Slide Whistle Reward"
-        ],
-        [
-          "option",
-          "leave",
-          "Leave"
-        ],
-        [
-          "else",
-          ""
         ],
         [
           "option",
@@ -7615,20 +7588,11 @@
         ],
         [
           "if",
-          "hasflag(clowns_capserch)==2 && hasflag(clowns_tookhanky)==1 && hasflag(clowns_tooksalts)==1 && hasflag(clowns_tookknife)==1 && !hasflag(clowns_whistlebox)"
+          "hasflag(clowns_capsearch)==2 && hasflag(clowns_tookhanky)==1 && hasflag(clowns_tooksalts)==1 && hasflag(clowns_tookknife)==1 && !hasflag(clowns_whistlebox)"
         ],
         [
           "customcommand",
           "misspoint, Circus - Slide Whistle Reward"
-        ],
-        [
-          "option",
-          "leave",
-          "Leave"
-        ],
-        [
-          "else",
-          ""
         ],
         [
           "option",
