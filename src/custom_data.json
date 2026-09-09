@@ -7495,7 +7495,7 @@
         ],
         [
           "if",
-          "hasflag(clowns_capserch)==2 && hasflag(clowns_tookhanky)==1 && hasflag(clowns_tooksalts)==1 && hasflag(clowns_tookknife)==1"
+          "hasflag(clowns_capserch)==2 && hasflag(clowns_tookhanky)==1 && hasflag(clowns_tooksalts)==1 && hasflag(clowns_tookknife)==1 && !hasflag(clowns_whistlebox)"
         ],
         [
           "customcommand",
@@ -7535,7 +7535,7 @@
         ],
         [
           "if",
-          "hasflag(clowns_capserch)==2 && hasflag(clowns_tookhanky)==1 && hasflag(clowns_tooksalts)==1 && hasflag(clowns_tookknife)==1"
+          "hasflag(clowns_capserch)==2 && hasflag(clowns_tookhanky)==1 && hasflag(clowns_tooksalts)==1 && hasflag(clowns_tookknife)==1 && !hasflag(clowns_whistlebox)"
         ],
         [
           "customcommand",
@@ -7575,7 +7575,7 @@
         ],
         [
           "if",
-          "hasflag(clowns_capserch)==2 && hasflag(clowns_tookhanky)==1 && hasflag(clowns_tooksalts)==1 && hasflag(clowns_tookknife)==1"
+          "hasflag(clowns_capserch)==2 && hasflag(clowns_tookhanky)==1 && hasflag(clowns_tooksalts)==1 && hasflag(clowns_tookknife)==1 && !hasflag(clowns_whistlebox)"
         ],
         [
           "customcommand",
@@ -7615,7 +7615,7 @@
         ],
         [
           "if",
-          "hasflag(clowns_capserch)==2 && hasflag(clowns_tookhanky)==1 && hasflag(clowns_tooksalts)==1 && hasflag(clowns_tookknife)==1"
+          "hasflag(clowns_capserch)==2 && hasflag(clowns_tookhanky)==1 && hasflag(clowns_tooksalts)==1 && hasflag(clowns_tookknife)==1 && !hasflag(clowns_whistlebox)"
         ],
         [
           "customcommand",
