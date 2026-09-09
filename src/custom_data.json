@@ -7494,6 +7494,23 @@
           "No problem, @maam@."
         ],
         [
+          "if",
+          "hasflag(clowns_capserch)==2 && hasflag(clowns_tookhanky)==1 && hasflag(clowns_tooksalts)==1 && hasflag(clowns_tookknife)==1"
+        ],
+        [
+          "customcommand",
+          "misspoint, Circus - Slide Whistle Reward"
+        ],
+        [
+          "option",
+          "leave",
+          "Leave"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
           "option",
           "leave",
           "Leave"
@@ -7515,6 +7532,23 @@
         [
           "rightsay",
           "Sure, no problem."
+        ],
+        [
+          "if",
+          "hasflag(clowns_capserch)==2 && hasflag(clowns_tookhanky)==1 && hasflag(clowns_tooksalts)==1 && hasflag(clowns_tookknife)==1"
+        ],
+        [
+          "customcommand",
+          "misspoint, Circus - Slide Whistle Reward"
+        ],
+        [
+          "option",
+          "leave",
+          "Leave"
+        ],
+        [
+          "else",
+          ""
         ],
         [
           "option",
@@ -7540,6 +7574,23 @@
           "Sure, no problem."
         ],
         [
+          "if",
+          "hasflag(clowns_capserch)==2 && hasflag(clowns_tookhanky)==1 && hasflag(clowns_tooksalts)==1 && hasflag(clowns_tookknife)==1"
+        ],
+        [
+          "customcommand",
+          "misspoint, Circus - Slide Whistle Reward"
+        ],
+        [
+          "option",
+          "leave",
+          "Leave"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
           "option",
           "leave",
           "Leave"
@@ -7561,6 +7612,23 @@
         [
           "rightsay",
           "Sure, no problem."
+        ],
+        [
+          "if",
+          "hasflag(clowns_capserch)==2 && hasflag(clowns_tookhanky)==1 && hasflag(clowns_tooksalts)==1 && hasflag(clowns_tookknife)==1"
+        ],
+        [
+          "customcommand",
+          "misspoint, Circus - Slide Whistle Reward"
+        ],
+        [
+          "option",
+          "leave",
+          "Leave"
+        ],
+        [
+          "else",
+          ""
         ],
         [
           "option",
@@ -25916,6 +25984,35 @@
           "option",
           "done",
           "Yikes"
+        ]
+      ]
+    },
+    "mine4_throwpit": {
+      "gobletthrow": [
+        [
+          "say",
+          "You pitch the gross thing into the hole. Good riddance."
+        ],
+        [
+          "removeitem",
+          "quest_gracegoblet"
+        ],
+        [
+          "addflag",
+          "ranch1_altar,2"
+        ],
+        [
+          "customcommand",
+          "misspoint, Stearns Ranch Cellar - Blood Altar"
+        ],
+        [
+          "addxp",
+          "@xpreward_e@"
+        ],
+        [
+          "option",
+          "done",
+          "Yuck."
         ]
       ]
     },
