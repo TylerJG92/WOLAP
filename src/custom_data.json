@@ -4429,6 +4429,10 @@
           "player"
         ],
         [
+          "customcommand",
+          "PLACEHOLDERHINTING" 
+        ], 
+        [
           "npcstore",
           "breadwood,900,-10"
         ],
@@ -4442,6 +4446,10 @@
         [
           "addflag",
           "store_buttonwillow,1"
+        ],
+        [
+          "addflag",
+          "buttonwillowstorestatichinting"
         ],
         [
           "addnpcstoreitem",
@@ -4492,6 +4500,43 @@
           "option",
           "done",
           "Take a step backwards"
+        ]
+      ],
+      "launch": [
+        [
+          "teleportplayer",
+          "45,200"
+        ],
+        [
+          "resetanimation",
+          "player"
+        ],
+        [
+          "resetanimation",
+          "shopman"
+        ],
+        [
+          "if",
+          "hasflag(buttonwillowstorestatichinting)"
+        ],
+        [
+          "customcommand",
+          "PLACEHOLDERHINTING"
+        ],
+        [
+          "if",
+          "hasflag(buttonwillowstorestatichinting)"
+        ],
+        [
+          "delflag",
+          "buttonwillowstorestatichinting"
+        ],
+        [
+          "npcstore",
+          "buttonwillow,70,0"
+        ],
+        [
+          "exit"
         ]
       ]
     },
@@ -12646,6 +12691,10 @@
           "dirtwater_intro_boots"
         ],
         [
+          "addflag",
+          "tonyshophinting"
+        ],
+        [
           "rightsay",
           "Oh, hey. Hi. Nice to see you again."
         ],
@@ -12678,6 +12727,10 @@
         [
           "addflag",
           "dirtwater_updated_boots"
+        ],
+        [
+          "addflag",
+          "tonyshophintupdate"
         ],
         [
           "addstate",
@@ -12735,6 +12788,51 @@
           "option",
           "opts",
           "Interesting!"
+        ]
+      ],
+      "store": [
+        [
+          "teleportplayer",
+          "200,170"
+        ],
+        [
+          "resetanimation",
+          "player"
+        ],
+        [
+          "resetanimation",
+          "bootsman"
+        ],
+        [
+          "if",
+          "hasflag(tonyshophinting) | hasflag(tonyshophintupdate) | hasflag(tonyshophinting) && hasflag(tonyshophintupdate)"
+        ],
+        [
+          "customcommand",
+          "PLACEHOLDERHINTING"
+        ],
+        [
+          "if",
+          "hasflag(tonyshophinting)"
+        ],
+        [
+          "delflag",
+          "tonyshophinting"
+        ],
+        [
+          "if",
+          "hasflag(tonyshophintupdate)"
+        ],
+        [
+          "delflag",
+          "tonyshophintupdate"
+        ],
+        [
+          "npcstore",
+          "tonysboots,235,-10"
+        ],
+        [
+          "exit"
         ]
       ]
     },
@@ -12918,6 +13016,10 @@
           "dirtwatergeneral,shroomgro,1,400"
         ],
         [
+          "addflag",
+          "dirtwatergeneralstatichinting"
+        ],
+        [
           "goto",
           "openstore"
         ],
@@ -12957,6 +13059,43 @@
         [
           "goto",
           "openstore"
+        ],
+        [
+          "exit"
+        ]
+      ],
+      "openstore": [
+        [
+          "teleportplayer",
+          "175,215"
+        ],
+        [
+          "resetanimation",
+          "player"
+        ],
+        [
+          "resetanimation",
+          "shopkeeper"
+        ],
+        [
+          "if",
+          "hasflag(dirtwatergeneralstatichinting)"
+        ],
+        [
+          "customcommand",
+          "PLACEHOLDERHINTING"
+        ],
+        [
+          "if",
+          "hasflag(dirtwatergeneralstatichinting)"
+        ],
+        [
+          "delflag",
+          "dirtwatergeneralstatichinting"
+        ],
+        [
+          "npcstore",
+          "dirtwatergeneral,225,20"
         ],
         [
           "exit"
@@ -13359,12 +13498,50 @@
           "store_dynamitedan,1"
         ],
         [
+          "addflag",
+          "danstatichinting"
+        ],
+        [
           "addnpcstoreitem",
           "dynamitedan,combat_dynamite,rand(15,20)"
         ],
         [
           "goto",
           "launch"
+        ]
+      ],
+      "launch": [
+        [
+          "teleportplayer",
+          "340,180"
+        ],
+        [
+          "resetanimation",
+          "player"
+        ],
+        [
+          "resetanimation",
+          "dan"
+        ],
+        [
+          "if",
+          "hasflag(danstatichinting)"
+        ],
+        [
+          "customcommand",
+          "PLACEHOLDERHINTING"
+        ],
+        [
+          "if",
+          "hasflag(danstatichinting)"
+        ],
+        [
+          "delflag",
+          "danstatichinting"
+        ],
+        [
+          "npcstore",
+          "dynamitedan,360,0"
         ]
       ]
     },
@@ -20074,6 +20251,10 @@
           "store_halloway,1"
         ],
         [
+          "addflag",
+          "hallowaystatichinting"
+        ],
+        [
           "addnpcstoreitem",
           "halloway,pinecone,-1"
         ],
@@ -20132,6 +20313,43 @@
           "sayoption",
           "done",
           "Well, see you later."
+        ]
+      ],
+      "launch": [
+        [
+          "teleportplayer",
+          "170,180"
+        ],
+        [
+          "resetanimation",
+          "player"
+        ],
+        [
+          "resetanimation",
+          "halloway"
+        ],
+        [
+          "if",
+          "hasflag(hallowaystatichinting)"
+        ],
+        [
+          "customcommand",
+          "PLACEHOLDERHINTING"
+        ],
+        [
+          "if",
+          "hasflag(hallowaystatichinting)"
+        ],
+        [
+          "delflag",
+          "hallowaystatichinting"
+        ],
+        [
+          "npcstore",
+          "halloway,200,0"
+        ],
+        [
+          "exit"
         ]
       ]
     },
@@ -27901,6 +28119,10 @@
           "resetanimation",
           "nun1"
         ],
+        [
+          "customcommand",
+          "PLACEHOLDERHINTING" 
+        ], 
         [
           "npcstore",
           "mission1,410,-10"
