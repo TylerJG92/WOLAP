@@ -12592,6 +12592,10 @@
           "dirtwater_intro_books"
         ],
         [
+          "addflag",
+          "alexandriashophint"
+        ],
+        [
           "rightsay",
           "Oh, hello again. Thank you for telling me about this place. The locals have been very welcoming."
         ],
@@ -12620,6 +12624,10 @@
         [
           "addflag",
           "dirtwater_updated_books"
+        ],
+        [
+          "addflag",
+          "alexandriashophintupdate"
         ],
         [
           "addstate",
@@ -12682,6 +12690,51 @@
           "opts",
           "I may well be!"
         ]
+      ],
+      "store": [
+        [
+          "teleportplayer",
+          "205,170"
+        ],
+        [
+          "resetanimation",
+          "player"
+        ],
+        [
+          "resetanimation",
+          "alex"
+        ],
+        [
+          "if",
+          "hasflag(alexandriashophint) | hasflag(alexandriashophintupdate) | hasflag(alexandriashophint) && hasflag(alexandriashophintupdate)"
+        ],
+        [
+          "customcommand",
+          "PLACEHOLDERHINTING"
+        ],
+        [
+          "if",
+          "hasflag(alexandriashophint)"
+        ],
+        [
+          "delflag",
+          "alexandriashophint"
+        ],
+        [
+          "if",
+          "hasflag(alexandriashophintupdate)"
+        ],
+        [
+          "delflag",
+          "alexandriashophintupdate"
+        ],
+        [
+          "npcstore",
+          "bookstore,235,-10"
+        ],
+        [
+          "exit"
+        ]
       ]
     },
     "dirtwater_bootsman": {
@@ -12692,7 +12745,7 @@
         ],
         [
           "addflag",
-          "tonyshophinting"
+          "tonyshophint"
         ],
         [
           "rightsay",
@@ -13113,10 +13166,53 @@
           "opts"
         ]
       ],
+      "intro": [
+        [
+          "addflag",
+          "dirtwater_intro_tanner"
+        ],
+        [
+          "addflag",
+          "gradyshophint"
+        ],
+        [
+          "rightportrait",
+          "leatherman"
+        ],
+        [
+          "rightsay",
+          "Well hey there, @firstname@! Welcome to my shop!"
+        ],
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftsay",
+          "Looks like you've gotten yourself set up pretty nicely."
+        ],
+        [
+          "rightsay",
+          "Sure have! Here, let me give you a little something as thanks for helping me out. Have a sharpening strop, on the house."
+        ],
+        [
+          "additem",
+          "aug_strop"
+        ],
+        [
+          "sayoption",
+          "intro2",
+          "Aw, thanks!"
+        ]
+      ],
       "neighbor": [
         [
           "addflag",
           "dirtwater_updated_tanner"
+        ],
+        [
+          "addflag",
+          "gradyshophintupdate"
         ],
         [
           "leftportrait",
@@ -13187,6 +13283,51 @@
           "opttemp",
           "Interesting!"
         ]
+      ],
+      "store": [
+        [
+          "teleportplayer",
+          "260,170"
+        ],
+        [
+          "resetanimation",
+          "player"
+        ],
+        [
+          "resetanimation",
+          "leatherman"
+        ],
+        [
+          "if",
+          "hasflag(gradyshophint) | hasflag(gradyshophintupdate) | hasflag(gradyshophint) && hasflag(gradyshophintupdate)"
+        ],
+        [
+          "customcommand",
+          "PLACEHOLDERHINTING"
+        ],
+        [
+          "if",
+          "hasflag(gradyshophint)"
+        ],
+        [
+          "delflag",
+          "gradyshophint"
+        ],
+        [
+          "if",
+          "hasflag(gradyshophintupdate)"
+        ],
+        [
+          "delflag",
+          "gradyshophintupdate"
+        ],
+        [
+          "npcstore",
+          "tanner,280,-10"
+        ],
+        [
+          "exit"
+        ]
       ]
     },
     "dirtwater_murray": {
@@ -13194,6 +13335,10 @@
         [
           "addflag",
           "dirtwater_intro_curiosity"
+        ],
+        [
+          "addflag",
+          "murrayshophint"
         ],
         [
           "rightsay",
@@ -13228,6 +13373,10 @@
         [
           "addflag",
           "dirtwater_updated_curiosity"
+        ],
+        [
+          "addflag",
+          "murrayshophintupdate"
         ],
         [
           "addstate",
@@ -13293,6 +13442,51 @@
           "option",
           "opts",
           "Interesting!"
+        ]
+      ],
+      "store": [
+        [
+          "teleportplayer",
+          "210,170"
+        ],
+        [
+          "resetanimation",
+          "player"
+        ],
+        [
+          "resetanimation",
+          "shopkeep"
+        ],
+        [
+          "if",
+          "hasflag(murrayshophint) | hasflag(murrayshophintupdate) | hasflag(murrayshophint) && hasflag(murrayshophintupdate)"
+        ],
+        [
+          "customcommand",
+          "PLACEHOLDERHINTING"
+        ],
+        [
+          "if",
+          "hasflag(murrayshophint)"
+        ],
+        [
+          "delflag",
+          "murrayshophint"
+        ],
+        [
+          "if",
+          "hasflag(murrayshophintupdate)"
+        ],
+        [
+          "delflag",
+          "murrayshophintupdate"
+        ],
+        [
+          "npcstore",
+          "curiosity,235,-10"
+        ],
+        [
+          "exit"
         ]
       ]
     },
@@ -60333,6 +60527,32 @@
       ]
     },
     "re_wanderinsally": {
+      "start": [
+        [
+          "incflag",
+          "sallytimes,1"
+        ],
+        [
+          "if",
+          "hasflag(sallytimes)==4 | hasflag(sallytimes)==5"
+        ],
+        [
+          "addflag",
+          "nosallyhint"
+        ],
+        [
+          "if",
+          "sallytimes<7"
+        ],
+        [
+          "goto",
+          "init_sally_@sallytimes@"
+        ],
+        [
+          "goto",
+          "launch"
+        ]
+      ],
       "init_sally_1": [
         [
           "addnpcstoreitem",
@@ -60441,6 +60661,45 @@
         [
           "goto",
           "launch"
+        ]
+      ]
+    },
+    "npc_sally": {
+      "start": [
+        [
+          "teleportplayer",
+          "390,115"
+        ],
+        [
+          "resetanimation",
+          "player"
+        ],
+        [
+          "resetanimation",
+          "sally"
+        ],
+        [
+          "if",
+          "hasflag(sallytimes)<7 && !hasflag(nosallyhint)"
+        ],
+        [
+          "customcommand",
+          "PLACEHOLDERHINTING"
+        ],
+        [
+          "if",
+          "hasflag(nosallyhint)"
+        ],
+        [
+          "delflag",
+          "nosallyhint"
+        ],
+        [
+          "npcstore",
+          "sally,420,-65"
+        ],
+        [
+          "exit"
         ]
       ]
     },
