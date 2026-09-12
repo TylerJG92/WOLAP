@@ -12557,10 +12557,243 @@
       ]
     },
     "dirtwater_bartender": {
+      "shmart": [
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftsay",
+          "$lastoption$"
+        ],
+        [
+          "if",
+          "!hasflag(room)"
+        ],
+        [
+          "sayoption",
+          "rentroom",
+          "I saw the sign out front, advertising a room?"
+        ],
+        [
+          "if",
+          "hasflag(dirtwater_shaggydogstory)==1 && !hasflag(anymissedcheck)"
+        ],
+        [
+          "sayoption",
+          "piano",
+          "I heard you had something interesting back there?"
+        ],
+        [
+          "if",
+          "hasflag(dirtwater_shaggydogstory)==1 && hasflag(anymissedcheck) && hasflag(missedcheckafterinit)"
+        ],
+        [
+          "sayoption",
+          "pianomissedcheck",
+          "I heard you had something interesting back there?"
+        ],
+        [
+          "if",
+          "hasflag(dirtwater_pianoquest)==2"
+        ],
+        [
+          "sayoption",
+          "finishpianoquest",
+          "I fixed the piano player for you."
+        ],
+        [
+          "sayoption",
+          "quests",
+          "Need any help with anything?"
+        ],
+        [
+          "if",
+          "meat>=5 && !hasflag(anymissedcheck)"
+        ],
+        [
+          "sayoption",
+          "drink",
+          "I'll have a shot of bourbon. [5 Meat]"
+        ],
+        [
+          "if",
+          "meat<=5 && !hasflag(anymissedcheck)"
+        ],
+        [
+          "grayoption",
+          "drilp",
+          "I'll have a shot of bourbon. [Requires 5 Meat]"
+        ],
+        [
+          "if",
+          "hasflag(anymissedcheck) && !hasflag(missedcheckafterinit)"
+        ],
+        [
+          "sayoption",
+          "initstore",
+          "Hey Lloyd... Whats that box there behind you?"
+        ],
+        [
+          "if",
+          "hasflag(dirtwater_ellsbury)==1"
+        ],
+        [
+          "sayoption",
+          "ellsb",
+          "Who's that old man by the piano?"
+        ],
+        [
+          "if",
+          "hasflag(dirtwater_dartboard)==1"
+        ],
+        [
+          "sayoption",
+          "darts",
+          "Can I get some darts?"
+        ],
+        [
+          "if",
+          "hasflag(house_ghost_lawyer_search) && !hasflag(house_ghost_lawyer_foundit)"
+        ],
+        [
+          "sayoption",
+          "macready",
+          "Ever hear of a fella named Macready?"
+        ],
+        [
+          "if",
+          "hasflag(missedcheckafterinit)"
+        ],
+        [
+          "sayoption",
+          "launch",
+          "Got anything weird back there for me [Open Shop]?"
+        ],
+        [
+          "sayoption",
+          "done",
+          "See ya llater, Lloyd."
+        ]
+      ],
+      "initstore": [
+        [
+          "addflag",
+          "missedcheckafterinit"
+        ],
+        [
+          "addnpcstoreitem",
+          "dirtwaterbartender,booze_dirtwaterbourbon,-1,5"
+        ],
+        [
+          "leftspeak",
+          "$lastoption$"
+        ],
+        [
+          "rightspeak",
+          "Funny you should ask. Stuff's been turnin' up behind the bar with yer name on it."
+        ],
+        [
+          "leftspeak",
+          "My name? You'd think packages that come for me would go to the post office..."
+        ],
+        [
+          "rightspeak",
+          "Well, not literally. Mostly it's just stuff nobody seems to remember leavin' here, but fer some reason I keep gettin' the impression it belongs to you."
+        ],
+        [
+          "leftspeak",
+          "That's... Concerning..."
+        ],
+        [
+          "rightspeak",
+          "Tell me about it. I'm runnin' a saloon here, not a lost-n-found for the entire frontier!"
+        ],
+        [
+          "leftspeak",
+          "Well I can take it off your hands for you if you want"
+        ],
+        [
+          "rightspeak",
+          "Yer more than welcome to it, though seein' as I'll be keeping it all safe fer ya till you drop in, I figure a storage fee is in order, seein' as it's takin' up half the space under my bar."
+        ],
+        [
+          "sayoption",
+          "launch",
+          "Fair Enough."
+        ]
+      ],
+      "launch": [
+        [
+          "teleportplayer",
+          "500,205"
+        ],
+        [
+          "resetanimation",
+          "player"
+        ],
+        [
+          "resetanimation",
+          "bartender"
+        ],
+        [
+          "npcstore",
+          "dirtwaterbartender,463,25"
+        ],
+        [
+          "exit"
+        ]
+      ],
+      "pianomissedcheck": [
+        [
+          "addflag",
+          "dirtwater_shaggydogstory,2"
+        ],
+        [
+          "leftsay",
+          "$lastoption$"
+        ],
+        [
+          "rightspeak",
+          "You mean the ever growing pile of random junk that you said you'd take off my hands?"
+        ],
+        [
+          "sayoption",
+          "piano3",
+          "No, not that..."
+        ]
+      ],
       "piano2": [
         [
           "leftsay",
           "Hmm... Maybe my info's too old. I found a note from some travelers that passed through here about eight years ago."
+        ],
+        [
+          "rightsay",
+          "Ohhh. Yeah, that was the <i>previous</i> bartender. He had a, uh, a little trick he used to offer to show people. It's what got him fired, eventually. That senator's wife wasn't amused."
+        ],
+        [
+          "say",
+          "He rummages around under the bar for a minute, then blows the dust off a tiny piano, about nine inches tall."
+        ],
+        [
+          "rightsay",
+          "Here, you can keep the piano, so long as you don't ask me about the trick."
+        ],
+        [
+          "customcommand",
+          "checklocation,Dirtwater Saloon - Bartender's Mini Piano"
+        ],
+        [
+          "sayoption",
+          "done",
+          "Thanks!"
+        ]
+      ],
+      "piano3": [
+        [
+          "leftsay",
+          "No,not that... I found a note from some travelers that passed through here about eight years ago."
         ],
         [
           "rightsay",
