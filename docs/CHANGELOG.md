@@ -1,0 +1,7 @@
+* Added hinting behavior to all shops to hint `Progressive` items to the ap server
+* Changed the missed check shop to the Dirtwater Bartender instead of Dirtwater Mercantile
+    * Forwarded all items sold to Lloyd the bartender to Dirtwater mercantile instead to keep the missed item shop de-cluttered
+* Fixed location check forwarding for both `General Gob's hat` and `General Gob's Pistole` check locations if General Gob is convinced to leave without using a persuadin' feature to have him leave these items with you
+* Fixed location check forwarding for `Blood Alter` at sterns ranch if you throw the goblet of blood in the jumbleneck mine's void before talking to the doll
+* Fixed location check forwarding for `circus slide whistle - reward` if you happen to take all items out of the Lost and Found before placing the slide whistle in, thus locking you out of getting the reward
+* Fixed location check forwarding for `cowsbane harvest` when you give the cowsbane seeds to barnaby bob instead of the guy at Lazy-A-dude Ranch
