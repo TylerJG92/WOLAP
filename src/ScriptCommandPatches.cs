@@ -98,6 +98,9 @@ namespace WOLAP
                     case "misspoint":
                         HandleMissedCheckCommand(cmdCopy);
                         break;
+                    case "progressiveshophinting":
+                        HandleShopHintingCommand(cmdCopy);
+                        break;
                 }
 
                 __result = true; //Usually true by default, gets set to false by some dialog-closing commands or errors, but most Ops skip an assignment to false at the end of the method that will get caught before this patch
@@ -175,18 +178,31 @@ namespace WOLAP
             long checkID = WolapPlugin.Archipelago.Session.Locations.GetLocationIdFromName(Constants.GameName, check.Name);
 
             bool foundItemInfo = false;
-            WolapPlugin.Archipelago.Session.Locations.ScoutLocationsAsync([checkID]).ContinueWith(locationInfoPacket =>
+            for(int attempt = 0; attempt < 2; attempt++)
             {
+                WolapPlugin.Archipelago.Session.Locations.ScoutLocationsAsync([checkID]).ContinueWith(locationInfoPacket =>
+                {
                 if (locationInfoPacket.Result == null || locationInfoPacket.Result.Values.Count == 0) return;
 
                 ItemInfo itemInfo = locationInfoPacket.Result.Values.First();
                 check.ApItemInfo = itemInfo;
                 foundItemInfo = true;
-            }).Wait(TimeSpan.FromSeconds(10));
+                }).Wait(TimeSpan.FromSeconds(10));
+                
+                if (foundItemInfo | attempt ==1)
+                {
+                    break;
+                }
+
+                if (!foundItemInfo)
+                {
+                    WolapPlugin.Log.LogInfo($"Tried to generate shop item for missed check [{locationName}], but could not retireve the item info. Retrying once");
+                }
+            }
 
             if (!foundItemInfo)
             {
-                WolapPlugin.Log.LogInfo($"Tried to generate shop item for missed check [{locationName}], but could not retrieve the item info. This location may be disabled by an AP option.");
+                WolapPlugin.Log.LogWarning($"Tried to generate shop item for missed check [{locationName}], but could not retrieve the item info. This location may be disabled by an AP option.");
                 return;
             }
 
@@ -209,6 +225,18 @@ namespace WOLAP
                 flags.Add("lloydshophinting", "1");
             }
 
+        }
+
+        public static void HandleShopHintingCommand(MCommand cmd)
+        {
+            if (cmd.argCount != 1)
+            {
+                cmd.LogError("only expects a check location name, but got " + cmd.argChunk);
+                return;
+            }
+
+
+            
         }
 
         [HarmonyPatch(typeof(MPlayer), "NSkillLevel")]
