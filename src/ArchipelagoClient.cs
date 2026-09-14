@@ -487,5 +487,11 @@ namespace WOLAP
             new ShopCheckLocation("Wanderin' Sally's Camp - Item 13", "sally", 100, false),
             new ShopCheckLocation("Wanderin' Sally's Camp - Item 14", "sally", 1000, false)
         };
+
+        //this is a list that has been created just for the missedchecks to be placed to make the hint handler be able to use it better.
+        public static readonly List<ShopCheckLocation> MissedCheckLocations = new List<ShopCheckLocation> 
+        {
+            
+        };
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using System.Text;
 using Archipelago.MultiClient.Net.Models;
 using HarmonyLib;
@@ -188,8 +189,8 @@ namespace WOLAP
                 check.ApItemInfo = itemInfo;
                 foundItemInfo = true;
                 }).Wait(TimeSpan.FromSeconds(10));
-                
-                if (foundItemInfo | attempt ==1)
+
+                if (foundItemInfo || attempt ==1)
                 {
                     break;
                 }
@@ -208,6 +209,7 @@ namespace WOLAP
 
             WolapPlugin.Log.LogInfo($"Retrieved item info for missed check [{check.Name}].");
             MItem newItem = WolapPlugin.Archipelago.AddCheckToShop(check);
+            ArchipelagoClient.MissedCheckLocations.Add(check);
             MItem shopItem = MPlayer.instance.stores[check.ShopID].items.Values.Where(item => item.data["description"] == newItem.data["description"]).First(); //There HAS to be a better way to do this
             shopItem.data["description"] += $"\n\nMissed check originally located at <b>{check.Name}</b>";
 
@@ -227,13 +229,18 @@ namespace WOLAP
 
         }
 
-        public static void HandleShopHintingCommand(MCommand cmd)
+        private static void HandleShopHintingCommand(MCommand cmd)
         {
             if (cmd.argCount != 1)
             {
                 cmd.LogError("only expects a check location name, but got " + cmd.argChunk);
                 return;
             }
+
+            var flags = MPlayer.instance.data;
+            var shopName = cmd.StrArg(0);
+
+            
 
 
             
