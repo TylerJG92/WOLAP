@@ -171,7 +171,7 @@ namespace WOLAP
             var locationName = cmd.StrArg(0);
             if (flags.ContainsKey(Constants.GotCheckFlagPrefix + locationName.Replace(" ", "")) || flags.ContainsKey(Constants.AddedShopCheckFlagPrefix + locationName.Replace(" ", ""))) return;
 
-            ShopCheckLocation check = new ShopCheckLocation(locationName, "dirtwaterbartender", 1000);
+            ShopCheckLocation check = new ShopCheckLocation(locationName, "dirtwaterbartender", 500);
             long checkID = WolapPlugin.Archipelago.Session.Locations.GetLocationIdFromName(Constants.GameName, check.Name);
 
             bool foundItemInfo = false;
@@ -188,6 +188,11 @@ namespace WOLAP
             {
                 WolapPlugin.Log.LogInfo($"Tried to generate shop item for missed check [{locationName}], but could not retrieve the item info. This location may be disabled by an AP option.");
                 return;
+            }
+
+            if (!flags.ContainsKey("anymissedcheck")) //theoretically should be how i can add the flag to the player when they miss a check.
+            {
+                
             }
 
             WolapPlugin.Log.LogInfo($"Retrieved item info for missed check [{check.Name}].");
