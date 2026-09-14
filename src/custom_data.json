@@ -12981,7 +12981,7 @@
         ],
         [
           "if",
-          "hasflag(alexandriashophint) | hasflag(alexandriashophintupdate) | hasflag(alexandriashophint) && hasflag(alexandriashophintupdate)"
+          "hasflag(alexandriashophint) | hasflag(alexandriashophintupdate)"
         ],
         [
           "customcommand",
@@ -13133,7 +13133,7 @@
         ],
         [
           "if",
-          "hasflag(tonyshophinting) | hasflag(tonyshophintupdate) | hasflag(tonyshophinting) && hasflag(tonyshophintupdate)"
+          "hasflag(tonyshophinting) | hasflag(tonyshophintupdate)"
         ],
         [
           "customcommand",
@@ -13574,7 +13574,7 @@
         ],
         [
           "if",
-          "hasflag(gradyshophint) | hasflag(gradyshophintupdate) | hasflag(gradyshophint) && hasflag(gradyshophintupdate)"
+          "hasflag(gradyshophint) | hasflag(gradyshophintupdate)"
         ],
         [
           "customcommand",
@@ -13734,7 +13734,7 @@
         ],
         [
           "if",
-          "hasflag(murrayshophint) | hasflag(murrayshophintupdate) | hasflag(murrayshophint) && hasflag(murrayshophintupdate)"
+          "hasflag(murrayshophint) | hasflag(murrayshophintupdate)"
         ],
         [
           "customcommand",
