@@ -190,15 +190,25 @@ namespace WOLAP
                 return;
             }
 
-            if (!flags.ContainsKey("anymissedcheck")) //theoretically should be how i can add the flag to the player when they miss a check.
-            {
-                
-            }
-
             WolapPlugin.Log.LogInfo($"Retrieved item info for missed check [{check.Name}].");
             MItem newItem = WolapPlugin.Archipelago.AddCheckToShop(check);
             MItem shopItem = MPlayer.instance.stores[check.ShopID].items.Values.Where(item => item.data["description"] == newItem.data["description"]).First(); //There HAS to be a better way to do this
             shopItem.data["description"] += $"\n\nMissed check originally located at <b>{check.Name}</b>";
+
+            // As soon as the player gets 1 missed check, this flag gets applied. This indicates to the missed check
+            // to change from vanilla dirtwater bartender to the different shop ui.
+            if (!flags.ContainsKey("anymissedcheck")) 
+            {
+                flags.Add("anymissedcheck", "1");
+            }
+
+            // This gives the player a flag specifically for the missed shop to indicate when it
+            // needs to hint the items out
+            if (!flags.ContainsKey("lloydshophinting"))
+            {
+                flags.Add("lloydshophinting", "1");
+            }
+
         }
 
         [HarmonyPatch(typeof(MPlayer), "NSkillLevel")]

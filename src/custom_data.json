@@ -4429,9 +4429,21 @@
           "player"
         ],
         [
+          "if",
+          "!hasflag(breadwoodshophinting)"
+        ],
+        [
           "customcommand",
-          "PLACEHOLDERHINTING" 
-        ], 
+          "progressiveshophinting" 
+        ],
+        [
+          "if",
+          "!hasflag(breadwoodshophinting)"
+        ],
+        [
+          "addflag",
+          "breadwoodshophinting"
+        ] ,
         [
           "npcstore",
           "breadwood,900,-10"
@@ -4521,7 +4533,7 @@
         ],
         [
           "customcommand",
-          "PLACEHOLDERHINTING"
+          "progressiveshophinting"
         ],
         [
           "if",
@@ -12751,6 +12763,22 @@
           "bartender"
         ],
         [
+          "if",
+          "hasflag(lloydshophinting)"
+        ],
+        [
+          "customcommand",
+          "progressiveshophinting"
+        ],
+        [
+          "if",
+          "hasflag(lloydshophinting)"
+        ],
+        [
+          "delflag",
+          "lloydshophinting"
+        ],
+        [
           "npcstore",
           "dirtwaterbartender,463,25"
         ],
@@ -12957,7 +12985,7 @@
         ],
         [
           "customcommand",
-          "PLACEHOLDERHINTING"
+          "progressiveshophinting"
         ],
         [
           "if",
@@ -13109,7 +13137,7 @@
         ],
         [
           "customcommand",
-          "PLACEHOLDERHINTING"
+          "progressiveshophinting"
         ],
         [
           "if",
@@ -13383,7 +13411,7 @@
         ],
         [
           "customcommand",
-          "PLACEHOLDERHINTING"
+          "progressiveshophinting"
         ],
         [
           "if",
@@ -13550,7 +13578,7 @@
         ],
         [
           "customcommand",
-          "PLACEHOLDERHINTING"
+          "progressiveshophinting"
         ],
         [
           "if",
@@ -13710,7 +13738,7 @@
         ],
         [
           "customcommand",
-          "PLACEHOLDERHINTING"
+          "progressiveshophinting"
         ],
         [
           "if",
@@ -13970,7 +13998,7 @@
         ],
         [
           "customcommand",
-          "PLACEHOLDERHINTING"
+          "progressiveshophinting"
         ],
         [
           "if",
@@ -20775,7 +20803,7 @@
         ],
         [
           "customcommand",
-          "PLACEHOLDERHINTING"
+          "progressiveshophinting"
         ],
         [
           "if",
@@ -28561,9 +28589,21 @@
           "nun1"
         ],
         [
+          "if",
+          "!hasflag(nunshophinting)"
+        ],
+        [
           "customcommand",
-          "PLACEHOLDERHINTING" 
-        ], 
+          "progressiveshophinting" 
+        ],
+        [
+          "if",
+          "!hasflag(nunshophinting)"
+        ],
+        [
+          "addflag",
+          "nunshophinting"
+        ],
         [
           "npcstore",
           "mission1,410,-10"
@@ -60931,7 +60971,7 @@
         ],
         [
           "customcommand",
-          "PLACEHOLDERHINTING"
+          "progressiveshophinting"
         ],
         [
           "if",
