@@ -61002,7 +61002,7 @@
         ],
         [
           "say",
-          "You dont see a need to eat such a beautiful (and expencive) bean. Maybe hold onto it incase you need it for something else later."
+          "You'd rather not eat such a beautiful (and expencive) jelly bean. Maybe hold onto it incase you need it for something else later."
         ],
         [
           "if",
@@ -61080,6 +61080,10 @@
       ],
       "buy0": [
         [
+          "if",
+          "!hasflag(mainquest)>34"
+        ],
+        [
           "addflag",
           "mainquest,34"
         ],
@@ -61106,6 +61110,10 @@
         ]
       ],
       "buy1": [
+        [
+          "if",
+          "!hasflag(mainquest)>34"
+        ],
         [
           "addflag",
           "mainquest,34"
@@ -61134,6 +61142,10 @@
       ],
       "buy2": [
         [
+          "if",
+          "!hasflag(mainquest)>34"
+        ],
+        [
           "addflag",
           "mainquest,34"
         ],
@@ -61160,6 +61172,10 @@
         ]
       ],
       "buy3": [
+        [
+          "if",
+          "!hasflag(mainquest)>34"
+        ],
         [
           "addflag",
           "mainquest,34"
