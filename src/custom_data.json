@@ -60994,11 +60994,98 @@
         ]
       ]
     },
+    "quest_honeybean": {
+      "invpopup": [
+        [
+          "if",
+          "!hasflag(anteyevirus)"
+        ],
+        [
+          "say",
+          "You dont see a need to eat such a beautiful (and expencive) bean. Maybe hold onto it incase you need it for something else later."
+        ],
+        [
+          "if",
+          "!hasflag(anteyevirus)"
+        ],
+        [
+          "exit"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "consume"
+        ],
+        [
+          "addflag",
+          "mainquest,35"
+        ],
+        [
+          "delflag",
+          "anteyevirus"
+        ],
+        [
+          "say",
+          "You eat the jelly bean, and your vision immediately clears.  Modern medicine is really amazing!"
+        ]
+      ]
+    },
     "roybean_honeybean": {
+      "start": [
+        [
+          "if",
+          "hasflag(honeybeanpurchased)"
+        ],
+        [
+          "exit"
+        ],
+        [
+          "say",
+          "There's a single yellow jellybean in this case, with a sign that says:"
+        ],
+        [
+          "say",
+          "PARAGUAYAN MURDERBEE HONEY JELLYBEAN"
+        ],
+        [
+          "say",
+          "VERY RARE"
+        ],
+        [
+          "say",
+          "6,000 MEAT"
+        ],
+        [
+          "if",
+          "hasflag(mainquest)>31 && !hasflag(honeybeanpurchased)"
+        ],
+        [
+          "goto",
+          "buyit"
+        ],
+        [
+          "say"
+        ],
+        [
+          "say",
+          "What kind of lunatic would pay 6,000 Meat for a single jellybean?"
+        ],
+        [
+          "option",
+          "done",
+          "Not this kind, that's for sure"
+        ]
+      ],
       "buy0": [
         [
           "addflag",
           "mainquest,34"
+        ],
+        [
+          "addflag",
+          "honeybeanpurchased"
         ],
         [
           "addmeat",
@@ -61024,6 +61111,10 @@
           "mainquest,34"
         ],
         [
+          "addflag",
+          "honeybeanpurchased"
+        ],
+        [
           "addmeat",
           "-4000"
         ],
@@ -61047,6 +61138,10 @@
           "mainquest,34"
         ],
         [
+          "addflag",
+          "honeybeanpurchased"
+        ],
+        [
           "addmeat",
           "-2000"
         ],
@@ -61068,6 +61163,10 @@
         [
           "addflag",
           "mainquest,34"
+        ],
+        [
+          "addflag",
+          "honeybeanpurchased"
         ],
         [
           "addmeat",
@@ -69011,6 +69110,273 @@
         }
       },
       "parentwaa": "ranch6"
+    },
+"roybean_interior": {
+      "name": "Roy Bean's (Inside)",
+      "width": "0.750",
+      "ground": null,
+      "sky": "",
+      "startxy": "560,85",
+      "horizon": "wallwood3tile1, wallwood3tile2, wallwood3tile3",
+      "camera": "interior",
+      "groundtexture": "floortest1",
+      "foregroundparallax": "woodceiling1_fixed",
+      "foregroundparallaxoffset": -20.0,
+      "leftwall": "wallwood2_side",
+      "rightwall": "wallwood2_side",
+      "music": "music_moseyin",
+      "ambientsound1": "ambience_room_tone",
+      "basewaa": "roybean",
+      "elements": {
+        "beans1_gone": {
+          "asset": "beanpedestal_empty",
+          "usedasset": null,
+          "x": 36.0,
+          "z": 252.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "hasflag(roybean_quest)<2",
+          "script": "autoscript__roybean_interior__beans1_gone__popup",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "beans1_there": {
+          "asset": "beanpedestal_beans",
+          "usedasset": null,
+          "x": 36.0,
+          "z": 252.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "hasflag(roybean_quest)>=2",
+          "script": "autoscript__roybean_interior__beans1_there__popup",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "beans2_gone": {
+          "asset": "beanpedestal_empty",
+          "usedasset": null,
+          "x": 139.0,
+          "z": 248.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "hasflag(roybean_quest)<4",
+          "script": "autoscript__roybean_interior__beans2_gone__popup",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "beans2_there": {
+          "asset": "beanpedestal_beans",
+          "usedasset": null,
+          "x": 139.0,
+          "z": 248.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "hasflag(roybean_quest)>=4",
+          "script": "autoscript__roybean_interior__beans2_there__popup",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "beans3_gone": {
+          "asset": "beanpedestal_empty",
+          "usedasset": null,
+          "x": 237.0,
+          "z": 249.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "hasflag(roybean_quest)<6",
+          "script": "autoscript__roybean_interior__beans3_gone__popup",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "beans3_there": {
+          "asset": "beanpedestal_beans",
+          "usedasset": null,
+          "x": 237.0,
+          "z": 249.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "hasflag(roybean_quest)>=6",
+          "script": "autoscript__roybean_interior__beans3_there__popup",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "bed": {
+          "asset": "bed2",
+          "usedasset": null,
+          "x": 6.0,
+          "z": 66.0,
+          "height": 218.0,
+          "width": 366.0,
+          "condition": "",
+          "script": "",
+          "proximity": 0.0
+        },
+        "exit": {
+          "asset": "alicedoor_interior",
+          "usedasset": null,
+          "x": 547.0,
+          "z": 0.0,
+          "height": 410.0,
+          "width": 248.0,
+          "condition": "",
+          "script": "autoscript__roybean_interior__exit__exec",
+          "proximity": 0.0,
+          "alpha": ".5",
+          "crop": 50.0
+        },
+        "fs": {
+          "asset": "forsale",
+          "usedasset": null,
+          "x": 633.0,
+          "z": 334.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "",
+          "script": "",
+          "proximity": 0.0,
+          "notilt": 1.0
+        },
+        "hearth": {
+          "asset": "hearth_unlit",
+          "usedasset": null,
+          "x": 306.0,
+          "z": 237.0,
+          "height": 794.0,
+          "width": 365.0,
+          "condition": "",
+          "script": "",
+          "proximity": 0.0,
+          "prefab": "hearth",
+          "extendback": 1.0,
+          "ambientsound": "Player_Home_Fireplace, 200",
+          "ambientvolume": ".5"
+        },
+        "honeybean": {
+          "asset": "honebean",
+          "usedasset": null,
+          "x": 638.0,
+          "z": 246.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "!hasflag(honeybeanpurchased)",
+          "script": "roybean_honeybean",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "honeybean_sold": {
+          "asset": "honeybean_sold",
+          "usedasset": null,
+          "x": 638.0,
+          "z": 246.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "hasflag(honeybeanpurchased)",
+          "script": "autoscript__roybean_interior__honeybean_sold__popup",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "nfs1": {
+          "asset": "notforsale1",
+          "usedasset": null,
+          "x": 29.0,
+          "z": 350.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "",
+          "script": "",
+          "proximity": 0.0,
+          "notilt": 1.0
+        },
+        "nfs2": {
+          "asset": "notforsale1",
+          "usedasset": null,
+          "x": 231.0,
+          "z": 350.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "",
+          "script": "",
+          "proximity": 0.0,
+          "notilt": 1.0
+        },
+        "nfs3": {
+          "asset": "notforsale2",
+          "usedasset": null,
+          "x": 132.0,
+          "z": 349.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "",
+          "script": "",
+          "proximity": 0.0,
+          "notilt": 1.0
+        },
+        "nightstand": {
+          "asset": "nightstand",
+          "usedasset": null,
+          "x": 28.0,
+          "z": 22.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "",
+          "script": "",
+          "proximity": 0.0
+        },
+        "pardner": {
+          "asset": "person",
+          "usedasset": null,
+          "x": 693.0,
+          "z": 58.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "",
+          "script": "pardner",
+          "proximity": 0.0,
+          "flip": 1.0
+        },
+        "pistolhook": {
+          "asset": "pistolhook",
+          "usedasset": null,
+          "x": 501.0,
+          "z": 350.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "",
+          "script": "",
+          "proximity": 0.0,
+          "notilt": 1.0
+        },
+        "roy": {
+          "asset": "person",
+          "usedasset": null,
+          "x": 423.0,
+          "z": 177.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "",
+          "script": "roybean_talk",
+          "proximity": 0.0,
+          "extendback": 1.0,
+          "prefab": "human_template",
+          "head": "head_roybean",
+          "hat": "hat_bigwhite,75,62",
+          "idle": "human_pipe_rest",
+          "fronthand": "held_pipe"
+        },
+        "spittoon": {
+          "asset": "spittoon",
+          "usedasset": "spittoon",
+          "x": 500.0,
+          "z": 243.0,
+          "height": 100.0,
+          "width": 118.0,
+          "condition": "",
+          "script": "roybean_spittoon",
+          "proximity": 0.0,
+          "extendback": 1.0
+        }
+      },
+      "parentwaa": "roybean"
     },
     "shaggydogcave_interior": {
       "name": "Shaggy Dog Cave (Inside)",
