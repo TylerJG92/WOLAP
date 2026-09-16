@@ -66,6 +66,10 @@ namespace WOLAP
                     WolapPlugin.Log.LogInfo("Enabling Gun Manor coach in Dirtwater.");
                     //Don't actually need to do anything here, can just use the generic received_item_{} flag as a condition for the coach to appear
                     return true;
+                //case "Ghostwood Visitor's ID":
+                    //insert code for true selection of name or inserting item back into place
+                //case "Ghostwood Visitor's Permit":
+                    //insert code for true selecetion of name or inserting item back into place
                 case "Pickaxe":
                 case "Shovel":
                 case "El Vibrato Headband":

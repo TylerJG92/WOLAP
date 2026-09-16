@@ -16819,11 +16819,94 @@
           "checklocation,Ghostwood - Ghost Cactus"
         ],
         [
+          "if",
+          "!hasflag(ghostwoodooscheck)"
+        ],
+        [
+          "addflag",
+          "ghostwoodooscheck"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "incflag",
+          "ghostwoodooscheck,1"
+        ],
+        [
           "markused"
         ]
       ]
     },
     "ghosttown1_knock1": {
+      "start": [
+        [
+          "if",
+          "hasflag(ghosttown1_whiskey)"
+        ],
+        [
+          "goto",
+          "whiskeycheck"
+        ],
+        [
+          "if",
+          "hasitem(quest_g1visitorid) && hasflag(ghostwoodapprogression)>0"
+        ],
+        [
+          "goto",
+          "welcome"
+        ],
+        [
+          "if",
+          "hasitem(quest_g1tempvisit) && !hasflag(ghosttown1_tempexpired) && hasflag(ghostwoodapprogression)==3"
+        ],
+        [
+          "goto",
+          "tempvisit"
+        ],
+        [
+          "if",
+          "hasitem(quest_g1tempvisit) && hasflag(ghosttown1_tempexpired) && hasflag(ghostwoodapprogression)==3"
+        ],
+        [
+          "goto",
+          "second"
+        ],
+        [
+          "if",
+          "!hasflag(ghosttown1_metbar)"
+        ],
+        [
+          "goto",
+          "first"
+        ],
+        [
+          "if",
+          "!hasflag(ghostwoodapprogression)"
+        ],
+        [
+          "goto",
+          "second"
+        ],
+        [
+          "if",
+          "!hasitem(quest_g1visitorid) && !hasitem(quest_g1tempvisit)"
+        ],
+        [
+          "goto",
+          "second"
+        ],
+        [
+          "say",
+          "ghosttown1_knock1 start: You shouldnt be seeing this. Please send a screenshot to the mod developer."
+        ],
+        [
+          "option",
+          "done",
+          "oops"
+        ]
+      ],
       "welcome": [
         [
           "leftportrait",
@@ -17282,6 +17365,57 @@
       ]
     },
     "ghosttown1_knock2": {
+      "start": [
+        [
+          "if",
+          "hasitem(quest_g1visitorid) && hasflag(ghostwoodapprogression)>0"
+        ],
+        [
+          "goto",
+          "welcome"
+        ],
+        [
+          "if",
+          "hasitem(quest_g1tempvisit) && !hasflag(ghosttown1_tempexpired) && hasflag(ghostwoodapprogression)==3"
+        ],
+        [
+          "goto",
+          "tempvisit"
+        ],
+        [
+          "if",
+          "hasitem(quest_g1tempvisit) && hasflag(ghosttown1_tempexpired) && hasflag(ghostwoodapprogression)==3"
+        ],
+        [
+          "goto",
+          "first"
+        ],
+        [
+          "if",
+          "!hasflag(ghostwoodapprogression)"
+        ],
+        [
+          "goto",
+          "first"
+        ],
+        [
+          "if",
+          "!hasitem(quest_g1visitorid) && !hasitem(quest_g1tempvisit)"
+        ],
+        [
+          "goto",
+          "first"
+        ],
+        [
+          "say",
+          "ghosttown1_knock2 start: You shouldnt be seeing this, please send a screenshot of this error to the mod developer."
+        ],
+        [
+          "option",
+          "done",
+          "oops"
+        ]
+      ],
       "welcome": [
         [
           "leftportrait",
@@ -17423,6 +17557,57 @@
       ]
     },
     "ghosttown1_knock3": {
+      "start": [
+        [
+          "if",
+          "hasitem(quest_g1visitorid) && hasflag(ghostwoodapprogression)>0"
+        ],
+        [
+          "goto",
+          "welcome"
+        ],
+        [
+          "if",
+          "hasitem(quest_g1tempvisit) && !hasflag(ghosttown1_tempexpired) && hasflag(ghostwoodapprogression)==3"
+        ],
+        [
+          "goto",
+          "tempvisit"
+        ],
+        [
+          "if",
+          "hasitem(quest_g1tempvisit) && hasflag(ghosttown1_tempexpired) && hasflag(ghostwoodapprogression)==3"
+        ],
+        [
+          "goto",
+          "first"
+        ],
+        [
+          "if",
+          "!hasflag(ghostwoodapprogression)"
+        ],
+        [
+          "goto",
+          "first"
+        ],
+        [
+          "if",
+          "!hasitem(quest_g1visitorid) && !hasitem(quest_g1tempvisit)"
+        ],
+        [
+          "goto",
+          "first"
+        ],
+        [
+          "say",
+          "ghosttown1_knock3 start: You shouldnt be seeing this, please send a screenshot of this to the mod developer."
+        ],
+        [
+          "option",
+          "done",
+          "oops"
+        ]
+      ],
       "welcome": [
         [
           "leftportrait",
@@ -17531,7 +17716,7 @@
       "start": [
         [
           "if",
-          "hasitem(quest_g1visitorid) && hasflag(ghosttown1_metthall) && !hasitem(quest_3pencil) && !hasflag(ghosttown1_nopencilwithid)"
+          "hasflag(ghostwoodapprogression)==1 && hasflag(quest_g1visitorid) && hasflag(ghosttown1_metthall) && !hasitem(quest_3pencil) && !hasflag(ghosttown1_nopencilwithid)"
         ],
         [
           "goto",
@@ -17539,7 +17724,7 @@
         ],
         [
           "if",
-          "hasitem(quest_g1visitorid)"
+          "hasitem(quest_g1visitorid) && hasflag(ghostwoodapprogression)>0"
         ],
         [
           "goto",
@@ -17547,7 +17732,7 @@
         ],
         [
           "if",
-          "hasitem(quest_g1tempvisit) && !hasflag(ghosttown1_tempexpired)"
+          "hasitem(quest_g1tempvisit) && !hasflag(ghosttown1_tempexpired) && hasflag(ghostwoodapprogression)==3"
         ],
         [
           "goto",
@@ -17555,7 +17740,7 @@
         ],
         [
           "if",
-          "hasflag(ghosttown1_metthall) && !hasitem(quest_3pencil)"
+          "hasflag(ghostwoodapprogression)==1 && hasflag(ghosttown1_metthall) && !hasitem(quest_3pencil)"
         ],
         [
           "goto",
@@ -17571,6 +17756,14 @@
         ],
         [
           "if",
+          "!hasflag(ghostwoodapprogression)"
+        ],
+        [
+          "goto",
+          "first"
+        ],
+        [
+          "if",
           "!hasitem(quest_g1visitorid) && !hasitem(quest_g1tempvisit)"
         ],
         [
@@ -17579,7 +17772,7 @@
         ],
         [
           "say",
-          "no result"
+          "ghosttown1_knock4 @ start: You shouldnt be seeing this, send a screenshot to the mod developer"
         ],
         [
           "option",
@@ -17633,9 +17826,52 @@
           "ghosttown1_nopencilwithid,1"
         ],
         [
+          "addflag",
+          "ghostwoodapprogression,2"
+        ],
+        [
           "option",
           "done",
           "Argh."
+        ]
+      ],
+      "pencil": [
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftsay",
+          "Hello? Excuse me, I need a..."
+        ],
+        [
+          "rightportrait",
+          "ghost4"
+        ],
+        [
+          "rightsay",
+          "Sorry, can't help you unless you have a visitor ID!"
+        ],
+        [
+          "leftsay",
+          "But I need a pencil for..."
+        ],
+        [
+          "rightsay",
+          "No visitor ID, no supplies!"
+        ],
+        [
+          "addflag",
+          "ghosttown1_nopencil,1"
+        ],
+        [
+          "addflag",
+          "ghostwoodapprogression,2"
+        ],
+        [
+          "sayoption",
+          "done",
+          "Sigh."
         ]
       ],
       "tempvisit2": [
@@ -17933,15 +18169,7 @@
       "start": [
         [
           "if",
-          "!hasflag(ghosttown1_metthall)"
-        ],
-        [
-          "goto",
-          "first"
-        ],
-        [
-          "if",
-          "hasflag(ghostwood_gotidcheck) && hasitem(quest_g1visitorid)"
+          "hasflag(ghostwood_gotidcheck) && hasitem(quest_g1visitorid) && hasflag(ghostwoodapprogression)>0"
         ],
         [
           "goto",
@@ -17949,7 +18177,7 @@
         ],
         [
           "if",
-          "hasflag(ghosttown1_retrypermit) && !hasflag(ghostwood_gotidcheck)"
+          "hasflag(ghosttown1_retrypermit) && !hasflag(ghostwood_gotidcheck) && hasflag(ghostwoodapprogression)==3"
         ],
         [
           "goto",
@@ -17957,7 +18185,7 @@
         ],
         [
           "if",
-          "hasitem(quest_3pencil) && hasitem(quest_g1tempvisit) && hasflag(ghostwood_gottemppermitcheck) && !hasflag(ghostwood_gotidcheck)"
+          "hasitem(quest_3pencil) && hasitem(quest_g1tempvisit) && hasflag(ghostwood_gottemppermitcheck) && !hasflag(ghostwood_gotidcheck) && hasflag(ghostwoodapprogression)==3 && hasflag(ghostwoodooscheck)==2"
         ],
         [
           "goto",
@@ -17965,7 +18193,7 @@
         ],
         [
           "if",
-          "hasitem(quest_4pencil) && !hasitem(quest_3pencil)"
+          "hasitem(quest_4pencil) && !hasitem(quest_3pencil) && hasflag(ghostwoodapprogression)>0"
         ],
         [
           "goto",
@@ -17973,7 +18201,7 @@
         ],
         [
           "if",
-          "hasitem(quest_g1tempvisit) && !hasflag(ghostwood_askedaboutexpiredpass)"
+          "hasitem(quest_g1tempvisit) && !hasflag(ghostwood_askedaboutexpiredpass) && hasflag(ghostwoodapprogression)>0"
         ],
         [
           "goto",
@@ -17981,7 +18209,7 @@
         ],
         [
           "if",
-          "hasflag(ghosttown1_tempretry) && !hasflag(ghostwood_gottemppermitcheck)"
+          "hasflag(ghostwoodapprogression)==2 && hasflag(ghosttown1_tempretry) && !hasflag(ghostwood_gottemppermitcheck)"
         ],
         [
           "goto",
@@ -17989,7 +18217,7 @@
         ],
         [
           "if",
-          "hasflag(ghosttown1_nopencil) && !hasflag(ghostwood_gottemppermitcheck)"
+          "hasflag(ghostwoodapprogression)==2 && hasflag(ghosttown1_nopencil) && !hasflag(ghostwood_gottemppermitcheck)"
         ],
         [
           "goto",
@@ -17997,11 +18225,23 @@
         ],
         [
           "if",
-          "hasflag(ghosttown1_nopencilwithid) && !hasflag(ghostwood_gottemppermitcheck)"
+          "hasflag(ghostwoodapprogression)==2 && hasflag(ghosttown1_nopencilwithid) && !hasflag(ghostwood_gottemppermitcheck)"
         ],
         [
           "goto",
           "nopencilwithid"
+        ],
+        [
+          "if",
+          "!hasflag(ghosttown1_metthall) || !hasflag(ghostwoodapprogression)"
+        ],
+        [
+          "goto",
+          "first"
+        ],
+        [
+          "if",
+          "hasflag(ghostwoodapprogression)>0"
         ],
         [
           "goto",
@@ -18009,7 +18249,7 @@
         ],
         [
           "say",
-          "Something has gone wrong, you should never see this.  Please let the mod developer know."
+          "ghosttown1_knock5 start: Something has gone wrong, you should never see this.  Please send a screenshot of this error to the mod developer."
         ],
         [
           "option",
@@ -18020,6 +18260,33 @@
           "option",
           "done",
           "oops (derogatory) [Ruthless]"
+        ]
+      ],
+      "firstb": [
+        [
+          "leftsay",
+          "...Well, okay. Where can I get one?"
+        ],
+        [
+          "rightsay",
+          "Try the Department of Requisitions. It's just next door."
+        ],
+        [
+          "leftsay",
+          "You mean the General Store?"
+        ],
+        [
+          "rightsay",
+          "It's a little more specific these days, but yes."
+        ],
+        [
+          "addflag",
+          "ghostwoodapprogression,1"
+        ],
+        [
+          "sayoption",
+          "done",
+          "Okay, I'll be right back."
         ]
       ],
       "second": [
@@ -18344,6 +18611,10 @@
           "ghosttown1_tempexpired,0"
         ],
         [
+          "addflag",
+          "ghostwoodapprogression,3"
+        ],
+        [
           "leftsay",
           "Thanks, but don't I need that pass to be able to do just about anything in this town?"
         ],
@@ -18553,6 +18824,10 @@
         [
           "addflag",
           "ghostwood_gotidcheck"
+        ],
+        [
+          "addflag",
+          "ghostwoodapprogression,4"
         ],
         [
           "leftsay",
@@ -18911,6 +19186,49 @@
       ]
     },
     "ghosttown1_sharpen": {
+      "pencil": [
+        [
+          "cls"
+        ],
+        [
+          "if",
+          "!hasitem(quest_3pencil) && !hasitem(quest_4pencil)"
+        ],
+        [
+          "say",
+          "You haven't got any pencils to sharpen."
+        ],
+        [
+          "if",
+          "hasitem(quest_4pencil)"
+        ],
+        [
+          "goto",
+          "4pencil"
+        ],
+        [
+          "if",
+          "hasitem(quest_3pencil)"
+        ],
+        [
+          "say",
+          "Your #3 pencil is already sharp enough, and if you grind it all the way down to a #2 it might cause a problem."
+        ],
+        [
+          "sayoption",
+          "exit",
+          "Fair point."
+        ],
+        [
+          "say",
+          "ghosttown1_sharpen pencil: You shouldnt be seeing this. If you are, please send a screenshot to the mod developer."
+        ],
+        [
+          "sayoption",
+          "exit",
+          "oops"
+        ]
+      ],
       "4pencil": [
         [
           "cls"
@@ -18922,6 +19240,22 @@
         [
           "removeitem",
           "quest_4pencil"
+        ],
+        [
+          "if",
+          "!hasflag(ghostwoodooscheck)"
+        ],
+        [
+          "addflag",
+          "ghostwoodooscheck"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "incflag",
+          "ghostwoodooscheck,1"
         ],
         [
           "customcommand",
