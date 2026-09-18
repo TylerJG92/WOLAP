@@ -9853,7 +9853,7 @@
         ],
         [
           "if",
-          "hasflag(containers_elvibrato)==5 || hasflag(containers_elvibrato)==7 || hasflag(containers_elvibrato)==11 || hasflag(containers_elvibrato)==13 || hasflag(containers_elvibrato)==15"
+          "hasflag(containers_elvibrato)==5 || hasflag(containers_elvibrato)==7 || hasflag(containers_elvibrato)==9 || hasflag(containers_elvibrato)==11 || hasflag(containers_elvibrato)==13 || hasflag(containers_elvibrato)==15"
         ],
         [
           "goto",
