@@ -1236,7 +1236,7 @@
       "slot": "quest",
       "enchantments": [],
       "category": "miscellaneous",
-      "description": "This is your identification card for the town of Ghostwood. It says \"@idfirstname2@ @idmiddlename2@ @idlastname2@\" on it, and has a blurry photograph that could maybe be you if you squint.",
+      "description": "This is your identification card for the town of Ghostwood. It says \"@idfirstname@ @idmiddlename@ @idlastname@\" on it, and has a blurry photograph that could maybe be you if you squint.",
       "icon": "icon_ghostid",
       "uselink": "",
       "usescript": "",
@@ -11896,8 +11896,216 @@
         ],
         [
           "option",
-          "finish",
+          "idnameslast",
           "Now that's what I call immersion!"
+        ]
+      ],
+      "idnameslast": [
+        [
+          "say",
+          "A chill runs down your spine as an eager bureaucratic ghost asks you a few more questions before you can start the game."
+        ],
+        [
+          "say",
+          "This is being done to prevent the Ghostwood ID's from being a pain once recieved by the Archipelago Server."
+        ],
+        [
+          "say",
+          "Last name?"
+        ],
+        [
+          "sayoption",
+          "idnamesfirst",
+          "@lastname@"
+        ],
+        [
+          "sayoption",
+          "idnamesfirst",
+          "Tame"
+        ],
+        [
+          "sayoption",
+          "idnamesfirst",
+          "Alvarado"
+        ],
+        [
+          "sayoption",
+          "idnamesfirst",
+          "Goldthwait"
+        ],
+        [
+          "sayoption",
+          "idnamesfirst",
+          "Shartwright"
+        ],
+        [
+          "sayoption",
+          "idnamesfirst",
+          "Slapshank"
+        ]
+      ],
+      "idnamesfirst":[
+        [
+          "addproperty",
+          "idlastname,$lastoption$"
+        ],
+        [
+          "say",
+          "First Name"
+        ],
+        [
+          "sayoption",
+          "idnamesmiddle",
+          "Puddin'"
+        ],
+        [
+          "sayoption",
+          "idnamesmiddle",
+          "Bobcat"
+        ],
+        [
+          "sayoption",
+          "idnamesmiddle",
+          "@firstname@"
+        ],
+        [
+          "sayoption",
+          "idnamesmiddle",
+          "Pico"
+        ],
+        [
+          "sayoption",
+          "idnamesmiddle",
+          "Slim"
+        ],
+        [
+          "sayoption",
+          "idnamesmiddle",
+          "Taint"
+        ]
+      ],
+      "idnamesmiddle": [
+        [
+          "addproperty",
+          "idfirstname,$lastoption$"
+        ],
+        [
+          "say",
+          "Middle Name?"
+        ],
+        [
+          "sayoption",
+          "idnamesdone",
+          "Danger"
+        ],
+        [
+          "sayoption",
+          "idnamesdone",
+          "Sneaky"
+        ],
+        [
+          "sayoption",
+          "idnamesdone",
+          "Nice"
+        ],
+        [
+          "sayoption",
+          "idnamesdone2",
+          "Justice"
+        ],
+        [
+          "sayoption",
+          "idnamesdone",
+          "Trouble"
+        ],
+        [
+          "sayoption",
+          "idnamesdone3",
+          "Murder"
+        ],
+        [
+          "sayoption",
+          "idnamesdone",
+          "Nondescript"
+        ]
+      ],
+      "idnamesdone2": [
+        [
+          "addproperty",
+          "idmiddlename,Justine"
+        ],
+        [
+          "addflag",
+          "middlenamejoke"
+        ],
+        [
+          "goto",
+          "idnamesdone"
+        ]
+      ],
+      "idnamesdone3":[
+        [
+          "addproperty",
+          "idmiddlename,Edgelord"
+        ],
+        [
+          "addflag",
+          "middlenamejoke"
+        ],
+        [
+          "goto",
+          "idnamesdone"
+        ]
+      ],
+      "idnamesdone": [
+        [
+          "if",
+          "!hasflag(middlenamejoke)"
+        ],
+        [
+          "addproperty",
+          "idmiddlename,$lastoption$"
+        ],
+        [
+          "say",
+          "See! That wasnt so hard was it."
+        ],
+        [
+          "if",
+          "hasflag(gottempidearly)"
+        ],
+        [
+          "customcommand",
+          "getearlytempid"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "addflag",
+          "idnamessettemp"
+        ],
+        [
+          "if",
+          "hasflag(gotidearly)"
+        ],
+        [
+          "customcommand",
+          "getearlyid"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "addflag",
+          "idnamesset"
+        ],
+        [
+          "sayoption",
+          "done",
+          "I guess your right. I hope I wont have to do that again though."
         ]
       ],
       "done": [
@@ -16964,7 +17172,7 @@
         ],
         [
           "rightsay",
-          "Well, howdy! What can I do for you, @mr@ @idlastname2@?"
+          "Well, howdy! What can I do for you, @mr@ @idlastname@?"
         ],
         [
           "if",
@@ -17323,7 +17531,7 @@
         ],
         [
           "if",
-          "matchstring($tempidfirstname$,@idfirstname2@) && matchstring($tempidmiddlename$,@idmiddlename2@) && matchstring($tempidlastname$,@idlastname2@)"
+          "matchstring($tempidfirstname$,@idfirstname@) && matchstring($tempidmiddlename$,@idmiddlename@) && matchstring($tempidlastname$,@idlastname@)"
         ],
         [
           "goto",
@@ -17687,7 +17895,7 @@
         ],
         [
           "if",
-          "matchstring($tempidfirstname$,@idfirstname2@) && matchstring($tempidmiddlename$,@idmiddlename2@) && matchstring($tempidlastname$,@idlastname2@) && !hasflag(whiskeypencilforms)"
+          "matchstring($tempidfirstname$,@idfirstname@) && matchstring($tempidmiddlename$,@idmiddlename@) && matchstring($tempidlastname$,@idlastname@) && !hasflag(whiskeypencilforms)"
         ],
         [
           "goto",
@@ -17695,7 +17903,7 @@
         ],
         [
           "if",
-          "matchstring($tempidfirstname$,@idfirstname2@) && matchstring($tempidmiddlename$,@idmiddlename2@) && matchstring($tempidlastname$,@idlastname2@) && hasflag(whiskeypencilforms)"
+          "matchstring($tempidfirstname$,@idfirstname@) && matchstring($tempidmiddlename$,@idmiddlename@) && matchstring($tempidlastname$,@idlastname@) && hasflag(whiskeypencilforms)"
         ],
         [
           "goto",
@@ -17955,7 +18163,7 @@
         ],
         [
           "if",
-          "matchstring($tempidfirstname$,@idfirstname2@) && matchstring($tempidmiddlename$,@idmiddlename2@) && matchstring($tempidlastname$,@idlastname2@)"
+          "matchstring($tempidfirstname$,@idfirstname@) && matchstring($tempidmiddlename$,@idmiddlename@) && matchstring($tempidlastname$,@idlastname@)"
         ],
         [
           "goto",
@@ -18066,7 +18274,7 @@
         ],
         [
           "rightsay",
-          "Department of Records. How can I help you, @mr@ @idlastname2@?"
+          "Department of Records. How can I help you, @mr@ @idlastname@?"
         ],
         [
           "if",
@@ -18258,7 +18466,7 @@
         ],
         [
           "rightsay",
-          "@mr@ ...@idlastname2@, was it? What can I do for you?"
+          "@mr@ ...@idlastname@, was it? What can I do for you?"
         ],
         [
           "if",
@@ -18564,7 +18772,7 @@
         ],
         [
           "rightsay",
-          "Hello. Something I can get for you, @mr@ @idlastname2@?"
+          "Hello. Something I can get for you, @mr@ @idlastname@?"
         ],
         [
           "if",
@@ -18752,7 +18960,7 @@
         ],
         [
           "if",
-          "matchstring($tempidfirstname$,@idfirstname2@) && matchstring($tempidmiddlename$,@idmiddlename2@) && matchstring($tempidlastname$,@idlastname2@)"
+          "matchstring($tempidfirstname$,@idfirstname@) && matchstring($tempidmiddlename$,@idmiddlename@) && matchstring($tempidlastname$,@idlastname@)"
         ],
         [
           "goto",
@@ -19493,7 +19701,7 @@
         ],
         [
           "rightsay",
-          "Hello, @mr@ @idlastname2@. How can I be of service?"
+          "Hello, @mr@ @idlastname@. How can I be of service?"
         ],
         [
           "if",
@@ -19748,7 +19956,7 @@
         ],
         [
           "if",
-          "matchstring($tempidfirstname$,@idfirstname2@) && matchstring($tempidmiddlename$,@idmiddlename2@) && matchstring($tempidlastname$,@idlastname2@)"
+          "matchstring($tempidfirstname$,@idfirstname@) && matchstring($tempidmiddlename$,@idmiddlename@) && matchstring($tempidlastname$,@idlastname@)"
         ],
         [
           "goto",
@@ -62206,30 +62414,6 @@
         [
           "addproperty",
           "statcheck_h,40"
-        ],
-        [
-          "addproperty",
-          "idfirstname,pickone(Puddin',Pico,Bobcat,Taint,Slim)"
-        ],
-        [
-          "addproperty",
-          "idmiddlename,pickone(Danger,Trouble,Sneaky,Edgelord,Justine,Nice,Nondescript)"
-        ],
-        [
-          "addproperty",
-          "idlastname,pickone(Tame,Alvarado,Goldthwait,Shartwright,Slapshank)"
-        ],
-        [
-          "addproperty",
-          "idfirstname2,pickone(Puddin',Pico,Bobcat,Taint,Slim)"
-        ],
-        [
-          "addproperty",
-          "idmiddlename2,pickone(Danger,Trouble,Sneaky,Edgelord,Justine,Nice,Nondescript)"
-        ],
-        [
-          "addproperty",
-          "idlastname2,pickone(Tame,Alvarado,Goldthwait,Shartwright,Slapshank)"
         ],
         [
           "addflag",
