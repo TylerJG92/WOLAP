@@ -19471,6 +19471,57 @@
           "..."
         ]
       ],
+      "realpermit": [
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftsay",
+          "Right. A #3 pencil, here it is."
+        ],
+        [
+          "rightportrait",
+          "ghost5"
+        ],
+        [
+          "rightsay",
+          "That's a #4 pencil."
+        ],
+        [
+          "leftsay",
+          "No, it's <i>seventy-five percent</i> of a #4 pencil."
+        ],
+        [
+          "rightsay",
+          "...I see. Hmm. I don't see anything about this in the by-laws. Very well, I suppose it will do. Let's get you started on that visitor identification permit."
+        ],
+        [
+          "addflag",
+          "ghosttown1_retrypermit,1"
+        ],
+        [
+          "sayoption",
+          "dejajoke",
+          "Thank god."
+        ]
+      ],
+      "dejajoke": [
+        [
+          "say",
+          "You are struck with a sudden feeling of déjà vu as you ready your pencil for this test."
+        ],
+        [
+          "sayoption",
+          "realpermitgo",
+          "Oh... Oh God please... Release me!"
+        ],
+        [
+          "greyoption",
+          "bif",
+          "YES! Let me into that beurocratic ID check!"
+        ]
+      ],
       "realpermitgo": [
         [
           "leftsay",
