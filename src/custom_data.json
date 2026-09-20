@@ -12075,8 +12075,8 @@
           "hasflag(gottempidearly)"
         ],
         [
-          "customcommand",
-          "getearlytempid"
+          "additem",
+          "quest_g1tempvisit"
         ],
         [
           "else",
@@ -12091,8 +12091,8 @@
           "hasflag(gotidearly)"
         ],
         [
-          "customcommand",
-          "getearlyid"
+          "additem",
+          "quest_g1visitorid"
         ],
         [
           "else",

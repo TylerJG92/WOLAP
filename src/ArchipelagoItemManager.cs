@@ -66,10 +66,26 @@ namespace WOLAP
                     WolapPlugin.Log.LogInfo("Enabling Gun Manor coach in Dirtwater.");
                     //Don't actually need to do anything here, can just use the generic received_item_{} flag as a condition for the coach to appear
                     return true;
-                //case "Ghostwood Visitor's ID":
-                    //insert code for true selection of name or inserting item back into place
-                //case "Ghostwood Visitor's Permit":
-                    //insert code for true selecetion of name or inserting item back into place
+                case "Ghostwood Visitor's ID": //These 2 cases for the Visitor ID and Permit are checking if the player has essentially chosent their name for the ID's when
+                                               //leaving the family farm. If they havent done so yet the game still marks the items as recieved from the AP server, but dosent
+                                               //send the item to the player. Instead it sets a custom flag for each that the custom_data.json script will be looking for after
+                                               //the player sets their name, and if the player has the flag, it will instead run a seperate script AT THAT POINT after they have
+                                               //selected their name to give the item to the player. Delaying the item being recieved until they have the name set.
+                    var flagforid = MPlayer.instance.data;
+                    if (!flagforid.ContainsKey("idnamesset")) {
+                        WolapPlugin.Log.LogWarning("Item Ghostwood Visitor's ID will be granted after leaving your family's Farm");
+                        flagforid.Add("gotidearly","1");
+                        return true;
+                    }
+                    goto default;
+                case "Ghostwood Visitor's Permit":
+                    var flagforpermit = MPlayer.instance.data;
+                    if (!flagforpermit.ContainsKey("idnamessettemp")) {
+                        WolapPlugin.Log.LogWarning("Item Ghostwood Visitor's Permit will be granted after leaving your family's Farm");
+                        flagforpermit.Add("gottempidearly","1");
+                        return true;
+                    }
+                    goto default;
                 case "Pickaxe":
                 case "Shovel":
                 case "El Vibrato Headband":
