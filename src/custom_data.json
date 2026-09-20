@@ -21712,6 +21712,40 @@
       ]
     },
     "house_ghost_glutton": {
+      "stomp": [
+        [
+          "removeitem",
+          "quest_gunlesschili"
+        ],
+        [
+          "customcommand",
+          "misspoint,Gun Manor Parlor - Sofa Cushions (Murdered Chili)"
+        ],
+        [
+          "say",
+          "You put the bowl of chili on the floor, and stomp it remorselessly."
+        ],
+        [
+          "leftsay",
+          "Eat <i>this,</i> chili!"
+        ],
+        [
+          "say",
+          "After a few stomps, the chili dies and a hazy outline of the bowl coalesces in the shattered fragments and glop. You pick it up and give it to the ghost."
+        ],
+        [
+          "leftsay",
+          "Eat this chili."
+        ],
+        [
+          "say",
+          "The ghost gobbles up the ghostly chili, and dissipates with a long, finally-satisfied sigh."
+        ],
+        [
+          "goto",
+          "resolution"
+        ]
+      ],
       "deadchili": [
         [
           "removeitem",
