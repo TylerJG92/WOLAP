@@ -12072,6 +12072,26 @@
         ],
         [
           "if",
+          "hasflag(gottempidearly) && hasflag(gotidearly)"
+        ],
+        [
+          "say",
+          "Oh! Look at that, It would seem both the Temporary Visitor Permit and Visitor ID were sent to you already, here you go!"
+        ],
+        [
+          "say",
+          "Oh! It would look like you have already recieved the Temporary Permit from someone. Here you go!"
+        ],
+        [
+          "if",
+          "hasflag(gottempidearly) && !hasflag(gotidearly)"
+        ],
+        [
+          "say",
+          "Oh! It would look like you have already recieved the Visitor Temporary Permit from someone. Here you go!"
+        ],
+        [
+          "if",
           "hasflag(gottempidearly)"
         ],
         [
@@ -12085,6 +12105,14 @@
         [
           "addflag",
           "idnamessettemp"
+        ],
+        [
+          "if",
+          "!hasflag(gottempidearly) && hasflag(gotidearly)"
+        ],
+        [
+          "say",
+          "Oh! It would look like you have already recieved the Visitor ID from someone. Here you go!"
         ],
         [
           "if",
@@ -18559,7 +18587,7 @@
       "start": [
         [
           "if",
-          "hasflag(gwloggingquestprogression)==1 && hasitem(quest_g1visitorid) && hasflag(ghosttown1_metthall) && !hasitem(quest_3pencil) && !hasflag(ghosttown1_nopencilwithid)"
+          "hasflag(gwloggingquestprogression)==1 && hasitem(quest_g1visitorid) && hasflag(ghosttown1_metthall)  && !hasflag(ghosttown1_nopencilwithid)"
         ],
         [
           "goto",
@@ -18583,7 +18611,7 @@
         ],
         [
           "if",
-          "hasflag(gwloggingquestprogression)==1 && hasflag(ghosttown1_metthall) && !hasitem(quest_3pencil)"
+          "hasflag(gwloggingquestprogression)==1 && hasflag(ghosttown1_metthall)"
         ],
         [
           "goto",
@@ -19519,7 +19547,7 @@
         [
           "greyoption",
           "bif",
-          "YES! Let me into that beurocratic ID check!"
+          "YES! Let me into that bureaucratic ID check!"
         ]
       ],
       "realpermitgo": [
