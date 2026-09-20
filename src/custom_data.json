@@ -17137,7 +17137,7 @@
         ],
         [
           "if",
-          "hasitem(quest_g1tempvisit) && !hasflag(ghosttown1_tempexpired) && hasflag(gwloggingquestprogression)==3"
+          "hasitem(quest_g1tempvisit) && !hasflag(ghosttown1_tempexpired) && hasflag(gwloggingquestprogression)>0 && hasflag(gwloggingquestprogression<4)"
         ],
         [
           "goto",
@@ -18247,7 +18247,7 @@
         ],
         [
           "if",
-          "hasitem(quest_g1tempvisit) && !hasflag(ghosttown1_tempexpired) && hasflag(gwloggingquestprogression)==3"
+          "hasitem(quest_g1tempvisit) && !hasflag(ghosttown1_tempexpired) && hasflag(gwloggingquestprogression)>0 && hasflag(gwloggingquestprogression<4)"
         ],
         [
           "goto",
@@ -18439,7 +18439,7 @@
         ],
         [
           "if",
-          "hasitem(quest_g1tempvisit) && !hasflag(ghosttown1_tempexpired) && hasflag(gwloggingquestprogression)==3"
+          "hasitem(quest_g1tempvisit) && !hasflag(ghosttown1_tempexpired) && hasflag(gwloggingquestprogression)>0 && hasflag(gwloggingquestprogression<4)"
         ],
         [
           "goto",
@@ -18587,19 +18587,67 @@
       "start": [
         [
           "if",
-          "hasflag(gwloggingquestprogression)==1 && hasitem(quest_g1visitorid) && hasflag(ghosttown1_metthall)  && !hasflag(ghosttown1_nopencilwithid)"
+          "hasflag(gwloggingquestprogression)==1 && hasitem(quest_g1visitorid) && hasflag(ghosttown1_metthall)  && !hasflag(ghosttown1_nopencilwithid) && !hasitem(quest_3pencil) && !hasitem(quest_4pencil)"
         ],
         [
           "goto",
-          "pencilwithid"
+          "nopencilwithid"
         ],
         [
           "if",
-          "hasitem(quest_g1visitorid) && hasflag(gwloggingquestprogression)>0"
+          "hasflag(gwloggingquestprogression)==1 && hasflag(ghosttown1_metthall) && hasitem(quest_3pencil) && !hasitem(quest_4pencil) && !hasitem(quest_g1visitorid) && !hasflag(pencilwithpencil)"
         ],
         [
           "goto",
-          "welcome"
+          "hasapencila"
+        ],
+        [
+          "if",
+          "hasflag(gwloggingquestprogression)==1 && hasflag(ghosttown1_metthall) && !hasitem(quest_3pencil) && hasitem(quest_4pencil) && !hasitem(quest_g1visitorid) && !hasflag(pencilwithpencil)"
+        ],
+        [
+          "goto",
+          "hasapencilb"
+        ],
+        [
+          "if",
+          "hasflag(gwloggingquestprogression)==1 && hasflag(ghosttown1_metthall) && hasitem(quest_3pencil) && hasitem(quest_4pencil) && !hasitem(quest_g1visitorid) && !hasflag(pencilwithpencil)"
+        ],
+        [
+          "goto",
+          "hasapencilc"
+        ],
+        [
+          "if",
+          "hasflag(gwloggingquestprogression)==1 && hasflag(ghosttown1_metthall) && hasitem(quest_3pencil) && !hasitem(quest_4pencil) && hasitem(quest_g1visitorid) && !hasflag(pencilwithpencilwithid)"
+        ],
+        [
+          "goto",
+          "hasapencilawithid"
+        ],
+        [
+          "if",
+          "hasflag(gwloggingquestprogression)==1 && hasflag(ghosttown1_metthall) && !hasitem(quest_3pencil) && hasitem(quest_4pencil) && hasitem(quest_g1visitorid) && !hasflag(pencilwithpencilwithid)"
+        ],
+        [
+          "goto",
+          "hasapencilbwithid"
+        ],
+        [
+          "if",
+          "hasflag(gwloggingquestprogression)==1 && hasflag(ghosttown1_metthall) && hasitem(quest_3pencil) && hasitem(quest_4pencil) && hasitem(quest_g1visitorid) && !hasflag(pencilwithpencilwithid)"
+        ],
+        [
+          "goto",
+          "hasapencilcwithid"
+        ],
+        [
+          "if",
+          "hasflag(gwloggingquestprogression)==1 && hasflag(ghosttown1_metthall)"
+        ],
+        [
+          "goto",
+          "pencil"
         ],
         [
           "if",
@@ -18611,11 +18659,11 @@
         ],
         [
           "if",
-          "hasflag(gwloggingquestprogression)==1 && hasflag(ghosttown1_metthall)"
+          "hasitem(quest_g1tempvisit) && !hasflag(ghosttown1_tempexpired) && hasflag(gwloggingquestprogression)>0 && hasflag(gwloggingquestprogression<4)"
         ],
         [
           "goto",
-          "pencil"
+          "welcome"
         ],
         [
           "if",
@@ -18651,7 +18699,317 @@
           "oops"
         ]
       ],
-      "pencilwithid": [
+      "hasapencila": [
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftsay",
+          "Hello? Excuse me, I need a..."
+        ],
+        [
+          "rightportrait",
+          "ghost4"
+        ],
+        [
+          "rightsay",
+          "Sorry, can't help you unless you have a visitor ID!"
+        ],
+        [
+          "leftsay",
+          "But I need a pencil for..."
+        ],
+        [
+          "rightsay",
+          "No visitor ID, no... You have a #3 ghost pencil right there!"
+        ],
+        [
+          "addflag",
+          "pencilwithpencil,1"
+        ],
+        [
+          "addflag",
+          "gwloggingquestprogression,2"
+        ],
+        [
+          "sayoption",
+          "done",
+          "Oh. Right."
+        ]
+      ],
+      "hasapencilb": [
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftsay",
+          "Hello? Excuse me, I need a..."
+        ],
+        [
+          "rightportrait",
+          "ghost4"
+        ],
+        [
+          "rightsay",
+          "Sorry, can't help you unless you have a visitor ID!"
+        ],
+        [
+          "leftsay",
+          "But I need a pencil for..."
+        ],
+        [
+          "rightsay",
+          "No visitor ID, no... You have a #4 ghost pencil right there."
+        ],
+        [
+          "leftsay",
+          "But I need a #3 Ghost..."
+        ],
+        [
+          "rightsay",
+          "No visitor ID, no supplies!"
+        ],
+        [
+          "addflag",
+          "pencilwithpencil,1"
+        ],
+        [
+          "addflag",
+          "gwloggingquestprogression,2"
+        ],
+        [
+          "sayoption",
+          "done",
+          "Sigh."
+        ]
+      ],
+      "hasapencilc": [
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftsay",
+          "Hello? Excuse me, I need a..."
+        ],
+        [
+          "rightportrait",
+          "ghost4"
+        ],
+        [
+          "rightsay",
+          "Sorry, can't help you unless you have a visitor ID!"
+        ],
+        [
+          "leftsay",
+          "But I need a pencil for..."
+        ],
+        [
+          "rightsay",
+          "No visitor ID, no... You have 2 pencils right there, a #3 and #4."
+        ],
+        [
+          "addflag",
+          "pencilwithpencil"
+        ],
+        [
+          "addflag",
+          "gwloggingquestprogression,2"
+        ],
+        [
+          "sayoption",
+          "done",
+          "Oh. Right."
+        ]
+      ],
+      "hasapencilawithid": [
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftsay",
+          "Hello? Excuse me, I need a #3 pencil?"
+        ],
+        [
+          "rightportrait",
+          "ghost4"
+        ],
+        [
+          "rightsay",
+          "Fresh out."
+        ],
+        [
+          "leftsay",
+          "Out of <i>pencils</i>?  The sign on the building says \"Office Supply\"!  There's literally a picture of a pencil on it!"
+        ],
+        [
+          "rightsay",
+          "We're out of <i>ghost</i> pencils.  You wouldn't believe how hard it is to come by ethically sourced pencil ghosts.  And the last fella who got one just went and stuck it in the cactus outside!  The nerve of some people."
+        ],
+        [
+          "leftsay",
+          "Couldn't you just go get it?"
+        ],
+        [
+          "rightsay",
+          "Couldn't <i>you</i>?"
+        ],
+        [
+          "leftsay",
+          "I'm not a ghost."
+        ],
+        [
+          "rightsay",
+          "Not <i>yet</i> maybe, but it's not going anywhere.  Sorry, can't help you, it's out of my purview."
+        ],
+        [
+          "rightsay",
+          "Besides, you already have a #3 ghost pencil right there."
+        ],
+        [
+          "addflag",
+          "pencilwithpencilwithid,1"
+        ],
+        [
+          "addflag",
+          "gwloggingquestprogression,2"
+        ],
+        [
+          "option",
+          "done",
+          "Oh. Right."
+        ]
+      ],
+      "hasapencilbwithid": [
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftsay",
+          "Hello? Excuse me, I need a #3 pencil?"
+        ],
+        [
+          "rightportrait",
+          "ghost4"
+        ],
+        [
+          "rightsay",
+          "Fresh out."
+        ],
+        [
+          "leftsay",
+          "Out of <i>pencils</i>?  The sign on the building says \"Office Supply\"!  There's literally a picture of a pencil on it!"
+        ],
+        [
+          "rightsay",
+          "We're out of <i>ghost</i> pencils.  You wouldn't believe how hard it is to come by ethically sourced pencil ghosts.  And the last fella who got one just went and stuck it in the cactus outside!  The nerve of some people."
+        ],
+        [
+          "leftsay",
+          "Couldn't you just go get it?"
+        ],
+        [
+          "rightsay",
+          "Couldn't <i>you</i>?"
+        ],
+        [
+          "leftsay",
+          "I'm not a ghost."
+        ],
+        [
+          "rightsay",
+          "Not <i>yet</i> maybe, but it's not going anywhere.  Sorry, can't help you, it's out of my purview."
+        ],
+        [
+          "rightsay",
+          "Besides, you already have a #4 ghost pencil right there."
+        ],
+        [
+          "leftsay",
+          "Yeah but its not a #3..."
+        ],
+        [
+          "rightsay",
+          "Well, I dont have any either."
+        ],
+        [
+          "addflag",
+          "pencilwithpencilwithid,1"
+        ],
+        [
+          "addflag",
+          "gwloggingquestprogression,2"
+        ],
+        [
+          "option",
+          "done",
+          "Argh."
+        ]
+      ],
+      "hasapencilcwithid": [
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftsay",
+          "Hello? Excuse me, I need a #3 pencil?"
+        ],
+        [
+          "rightportrait",
+          "ghost4"
+        ],
+        [
+          "rightsay",
+          "Fresh out."
+        ],
+        [
+          "leftsay",
+          "Out of <i>pencils</i>?  The sign on the building says \"Office Supply\"!  There's literally a picture of a pencil on it!"
+        ],
+        [
+          "rightsay",
+          "We're out of <i>ghost</i> pencils.  You wouldn't believe how hard it is to come by ethically sourced pencil ghosts.  And the last fella who got one just went and stuck it in the cactus outside!  The nerve of some people."
+        ],
+        [
+          "leftsay",
+          "Couldn't you just go get it?"
+        ],
+        [
+          "rightsay",
+          "Couldn't <i>you</i>?"
+        ],
+        [
+          "leftsay",
+          "I'm not a ghost."
+        ],
+        [
+          "rightsay",
+          "Not <i>yet</i> maybe, but it's not going anywhere.  Sorry, can't help you, it's out of my purview."
+        ],
+        [
+          "rightsay",
+          "Besides, you have both a #3 and #4 pencil right there!"
+        ],
+        [
+          "addflag",
+          "pencilwithpencilwithid,1"
+        ],
+        [
+          "addflag",
+          "gwloggingquestprogression,2"
+        ],
+        [
+          "option",
+          "done",
+          "Oh. Right."
+        ]
+      ],
+      "nopencilwithid": [
         [
           "leftportrait",
           "player"
@@ -20157,7 +20515,7 @@
         ],
         [
           "if",
-          "hasitem(quest_4pencil)"
+          "hasitem(quest_4pencil) && !hasitem(quest_3pencil)"
         ],
         [
           "goto",
@@ -20165,25 +20523,44 @@
         ],
         [
           "if",
-          "hasitem(quest_3pencil)"
+          "hasitem(quest_3pencil) && !hasitem(quest_4pencil)"
         ],
         [
           "say",
           "Your #3 pencil is already sharp enough, and if you grind it all the way down to a #2 it might cause a problem."
         ],
         [
-          "sayoption",
-          "exit",
-          "Fair point."
+          "if",
+          "hasitem(quest_3pencil) && hasitem(quest_4pencil)"
+        ],
+        [
+          "goto",
+          "bothpencil"
+        ]
+      ],
+      "bothpencil": [
+        [
+          "say",
+          "You have 2 pencils with you, which do you want to sharpen?"
+        ],
+        [
+          "option",
+          "4pencil",
+          "The #4 pencil"
+        ],
+        [
+          "option",
+          "3pencil",
+          "The #3 pencil."
+        ]
+      ],
+      "3pencil": [
+        [
+          "cls"
         ],
         [
           "say",
-          "ghosttown1_sharpen pencil: You shouldnt be seeing this. If you are, please send a screenshot to the mod developer."
-        ],
-        [
-          "sayoption",
-          "exit",
-          "oops"
+          "Your #3 pencil is already sharp enough, and if you grind it all the way down to a #2 it might cause a problem."
         ]
       ],
       "4pencil": [
