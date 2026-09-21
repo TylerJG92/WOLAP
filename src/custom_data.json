@@ -12079,10 +12079,6 @@
           "Oh! Look at that, It would seem both the Temporary Visitor Permit and Visitor ID were sent to you already, here you go!"
         ],
         [
-          "say",
-          "Oh! It would look like you have already recieved the Temporary Permit from someone. Here you go!"
-        ],
-        [
           "if",
           "hasflag(gottempidearly) && !hasflag(gotidearly)"
         ],
@@ -17080,6 +17076,30 @@
       ]
     },
     "ghosttown1_cactusa": {
+      "popup": [
+        [
+          "say",
+          "This is a regular cactus. Well, the ghost of a regular cactus. Well, the ghost of a regular cactus with the ghost of a pencil stabbed into it."
+        ],
+        [
+          "if",
+          "!hasitem(quest_g1tempvisit) || hasflag(gwloggingquestprogression)<2"
+        ],
+        [
+          "option",
+          "nogood",
+          "Take the pencil"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "option",
+          "good",
+          "Take the pencil"
+        ]
+      ],
       "good": [
         [
           "cls"
@@ -17145,7 +17165,7 @@
         ],
         [
           "if",
-          "hasitem(quest_g1tempvisit) && hasflag(ghosttown1_tempexpired) && hasflag(gwloggingquestprogression)==3"
+          "hasitem(quest_g1tempvisit) && hasflag(ghosttown1_tempexpired) && hasflag(gwloggingquestprogression)>0 && hasflag(gwloggingquestprogression<4)"
         ],
         [
           "goto",
@@ -17251,7 +17271,7 @@
       "penciljoke": [
         [
           "leftsay",
-          "$lastoption"
+          "$lastoption$"
         ],
         [
           "rightsay",
@@ -17332,7 +17352,7 @@
         ],
         [
           "rightsay",
-          "These pencils are incredibly rare. If you walked out with it and lost it, no ammount of paperwork could replace it."
+          "These pencils are incredibly rare. If you walked out with it and lost it, no amount of paperwork could replace it."
         ],
         [
           "leftsay",
@@ -17755,7 +17775,7 @@
       "whiskey5nopencil2b": [
         [
           "leftsay",
-          "$lastoption"
+          "$lastoption$"
         ],
         [
           "rightsay",
@@ -17989,7 +18009,7 @@
         ],
         [
           "leftsay",
-          "Now an I use the pencil now for the whiskey requisition form?"
+          "Now can I use the pencil for the whiskey requisition form?"
         ],
         [
           "rightsay",
@@ -18255,7 +18275,7 @@
         ],
         [
           "if",
-          "hasitem(quest_g1tempvisit) && hasflag(ghosttown1_tempexpired) && hasflag(gwloggingquestprogression)==3"
+          "hasitem(quest_g1tempvisit) && hasflag(ghosttown1_tempexpired) && hasflag(gwloggingquestprogression)>0 && hasflag(gwloggingquestprogression<4)"
         ],
         [
           "goto",
@@ -18447,7 +18467,7 @@
         ],
         [
           "if",
-          "hasitem(quest_g1tempvisit) && hasflag(ghosttown1_tempexpired) && hasflag(gwloggingquestprogression)==3"
+          "hasitem(quest_g1tempvisit) && hasflag(ghosttown1_tempexpired) && hasflag(gwloggingquestprogression)>0 && hasflag(gwloggingquestprogression<4)"
         ],
         [
           "goto",
@@ -18659,7 +18679,15 @@
         ],
         [
           "if",
-          "hasitem(quest_g1tempvisit) && !hasflag(ghosttown1_tempexpired) && hasflag(gwloggingquestprogression)>0 && hasflag(gwloggingquestprogression<4)"
+          "hasitem(quest_g1tempvisit) && !hasflag(ghosttown1_tempexpired) && hasflag(gwloggingquestprogression)>0 && hasflag(gwloggingquestprogression)<4"
+        ],
+        [
+          "goto",
+          "welcome"
+        ],
+        [
+          "if",
+          "hasitem(quest_g1visitorid) && hasflag(gwloggingquestprogression)>3"
         ],
         [
           "goto",
@@ -19462,6 +19490,22 @@
         ],
         [
           "if",
+          "hasflag(gwloggingquestprogression)==2 && hasflag(pencilwithpencil) && !hasflag(ghostwood_gottemppermitcheck)"
+        ],
+        [
+          "goto",
+          "pencilwithpencilflow"
+        ],
+        [
+          "if",
+          "hasflag(gwloggingquestprogression)==2 && hasflag(pencilwithpencilwithid) && !hasflag(ghostwood_gottemppermitcheck)"
+        ],
+        [
+          "goto",
+          "pencilwithpencilflow"
+        ],
+        [
+          "if",
           "!hasflag(ghosttown1_metthall) || !hasflag(gwloggingquestprogression)"
         ],
         [
@@ -19621,6 +19665,92 @@
           "sayoption",
           "temppermit",
           "Okay, great."
+        ]
+      ],
+      "pencilwithpencilflow": [
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftsay",
+          "Hello? The Office supply..."
+        ],
+        [
+          "rightportrait",
+          "ghost5"
+        ],
+        [
+          "rightsay",
+          "Who? Oh you mean the Office of Requisition?"
+        ],
+        [
+          "leftsay",
+          "Yeah... Anyway the clerk wouldn't give me a pencil."
+        ],
+        [
+          "rightsay",
+          "Why not?"
+        ],
+        [
+          "leftsay",
+          "Apparently I already have one."
+        ],
+        [
+          "if",
+          "hasflag(pencilwithpencil)"
+        ],
+        [
+          "sayoption",
+          "pencilwithpencil",
+          "Problem is I still dont have a visitor ID."
+        ],
+        [
+          "if",
+          "hasflag(pencilwithpencilwithid)"
+        ],
+        [
+          "sayoption",
+          "pencilwithpencilwithid",
+          "I also already have a visitor ID..."
+        ]
+      ],
+      "pencilwithpencil": [
+        [
+          "leftsay",
+          "$lastoption$"
+        ],
+        [
+          "rightsay",
+          "Well fortunately I can issue you a temporary visitor permit for now then instead. Apparently there is a bylaw that exists that states a newcomer must still have a premporary visitor permit before they can be issued a full visitor ID."
+        ],
+        [
+          "sayoption",
+          "temppermit",
+          "Why didn't we start with this option then..."
+        ]
+      ],
+      "pencilwithpencilwithid": [
+        [
+          "leftsay",
+          "$lastoption$"
+        ],
+        [
+          "rightsay",
+          "I'm afraid that <i>having</i> a visitor ID and <i>being issued</i> an ID are completely different things."
+        ],
+        [
+          "leftsay",
+          "That sentence should be illegal."
+        ],
+        [
+          "rightsay",
+          "Perfectly legal I assure you. You will need to fill out the proper paperwork for it later."
+        ],
+        [
+          "sayoption",
+          "pencilwithpencil",
+          "What do you mean, can't we just do the paperwork for the ID now?"
         ]
       ],
       "temppermit2": [
@@ -19855,57 +19985,6 @@
           "sayoption",
           "done",
           "..."
-        ]
-      ],
-      "realpermit": [
-        [
-          "leftportrait",
-          "player"
-        ],
-        [
-          "leftsay",
-          "Right. A #3 pencil, here it is."
-        ],
-        [
-          "rightportrait",
-          "ghost5"
-        ],
-        [
-          "rightsay",
-          "That's a #4 pencil."
-        ],
-        [
-          "leftsay",
-          "No, it's <i>seventy-five percent</i> of a #4 pencil."
-        ],
-        [
-          "rightsay",
-          "...I see. Hmm. I don't see anything about this in the by-laws. Very well, I suppose it will do. Let's get you started on that visitor identification permit."
-        ],
-        [
-          "addflag",
-          "ghosttown1_retrypermit,1"
-        ],
-        [
-          "sayoption",
-          "dejajoke",
-          "Thank god."
-        ]
-      ],
-      "dejajoke": [
-        [
-          "say",
-          "You are struck with a sudden feeling of déjà vu as you ready your pencil for this test."
-        ],
-        [
-          "sayoption",
-          "realpermitgo",
-          "Oh... Oh God please... Release me!"
-        ],
-        [
-          "greyoption",
-          "bif",
-          "YES! Let me into that bureaucratic ID check!"
         ]
       ],
       "realpermitgo": [
