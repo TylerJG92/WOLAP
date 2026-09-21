@@ -1,3 +1,6 @@
+# Changelog for v0.2.5
+
+## Ghostwood Changes
 * Fixed the flow of the quests within Ghostwood
     * Added a flag `gwloggingquestprogression` as another flag gate to make sure that each step of the ghostwood logging permit is done in the right order instead of items accidentally forcing flag progression elsewhere when it shouldnt.
     * player can be locked out of parts of the ghost whiskey quest, While this is intended in vanilla, I want to remove the problem incase the right conditions exist
