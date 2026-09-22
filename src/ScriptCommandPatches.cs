@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
 using Archipelago.MultiClient.Net.Models;
+using Archipelago.MultiClient.Net.Enums;
 using HarmonyLib;
 using UnityEngine;
 using static System.Collections.Specialized.BitVector32;
@@ -101,6 +102,9 @@ namespace WOLAP
                         break;
                     case "progressiveshophinting":
                         HandleShopHintingCommand(cmdCopy);
+                        break;
+                    case "progressiveshophintingmissed":
+                        HandleMissedShopHintingCommand(cmdCopy);
                         break;
                 }
 
@@ -238,12 +242,59 @@ namespace WOLAP
             }
 
             var flags = MPlayer.instance.data;
-            var shopName = cmd.StrArg(0);
+            var shopID = cmd.StrArg(0);
+            List<ShopCheckLocation> shopItems = ArchipelagoClient.ShopCheckLocations.FindAll(check => check.ShopID == shopID);
+            foreach(ShopCheckLocation item in shopItems)
+            {
+                var apFlags = item.ApItemInfo.Flags;
+                bool progressive = apFlags.HasFlag(ItemFlags.Advancement);
+                if(!flags.ContainsKey(Constants.GotHintFlagPrefix + item.Name.Replace(" ", "")))
+                {
+                    WolapPlugin.Log.LogInfo($"Checking if item [{item.Name}] found at [{item.ShopID}] that is AP flag: [{apFlags}] should be hinted.");
+                    flags.Add(Constants.GotHintFlagPrefix + item.Name.Replace(" ", ""), "1");
+                }
+                if(progressive == false)
+                {
+                    WolapPlugin.Log.LogInfo($"Item [{item.Name}] is not Progressive, skipping hint.");
+                    continue;
+                }
+                else
+                {
+                    
+                }
+            }
+        }
 
-            
+        private static void HandleMissedShopHintingCommand(MCommand cmd)
+        {
+            if (cmd.argCount != 1)
+            {
+                cmd.LogError("only expects a check location name, but got " + cmd.argChunk);
+                return;
+            }
 
-
-            
+            var flags = MPlayer.instance.data;
+            var shopID = cmd.StrArg(0);
+            List<ShopCheckLocation> shopItems = ArchipelagoClient.MissedCheckLocations.FindAll(check => check.ShopID == shopID);
+            foreach(ShopCheckLocation item in shopItems)
+            {
+                var apFlags = item.ApItemInfo.Flags;
+                bool progressive = apFlags.HasFlag(ItemFlags.Advancement);
+                if(!flags.ContainsKey(Constants.GotHintFlagPrefix + item.Name.Replace(" ", "")))
+                {
+                    WolapPlugin.Log.LogInfo($"Checking if item [{item.Name}] found at [{item.ShopID}] that is AP flag: [{apFlags}] should be hinted.");
+                    flags.Add(Constants.GotHintFlagPrefix + item.Name.Replace(" ", ""), "1");
+                }
+                if(progressive == false)
+                {
+                    WolapPlugin.Log.LogInfo($"Item [{item.Name}] is not Progressive, skipping hint.");
+                    continue;
+                }
+                else
+                {
+                    
+                }
+            }
         }
 
         [HarmonyPatch(typeof(MPlayer), "NSkillLevel")]

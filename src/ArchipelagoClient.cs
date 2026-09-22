@@ -370,6 +370,11 @@ namespace WOLAP
             WolapPlugin.Log.LogInfo("Retrieved item info for addable shop check locations.");
         }
 
+        public void DoShopHinting(string name, string shopID)
+        {
+            //grab name of item and shopid of where item is and translate to ap safe info to then do the hinting with.
+        }
+
         public void AddMissingInitialChecksToShops()
         {
             Dictionary<string, string> flags = MPlayer.instance.data;
