@@ -233,6 +233,23 @@ namespace WOLAP
             itemManager.ResetItemCounts();
         }
 
+        public void RebuildMissedCheckLocations()
+        {
+            Dictionary<string, string> flags = MPlayer.instance.data;
+
+            MissedCheckLocations.Clear();
+            foreach (var fullName in flags.Keys)
+            {
+                if (fullName.StartsWith(Constants.MissedForwardedFlagPrefix))
+                {
+                    var needReconstruct = fullName.Replace(Constants.MissedForwardedFlagPrefix, "");
+                    var name = needReconstruct.Replace("*", " ");
+                    ShopCheckLocation final = new ShopCheckLocation(name, "dirtwaterbartender", 500);
+                    MissedCheckLocations.Add(final);
+                }
+            }
+        }
+
         private bool IsInItemGrantableState()
         {
             string name = WestOfLoathing.instance.state_machine.state.name;
@@ -368,11 +385,6 @@ namespace WOLAP
             }).Wait(TimeSpan.FromSeconds(10));
 
             WolapPlugin.Log.LogInfo("Retrieved item info for addable shop check locations.");
-        }
-
-        public void DoShopHinting(string name, string shopID)
-        {
-            //grab name of item and shopid of where item is and translate to ap safe info to then do the hinting with.
         }
 
         public void AddMissingInitialChecksToShops()

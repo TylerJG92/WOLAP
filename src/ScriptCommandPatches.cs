@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using Archipelago.MultiClient.Net.Models;
 using Archipelago.MultiClient.Net.Enums;
+using Archipelago.MultiClient.Net.Helpers;
 using HarmonyLib;
 using UnityEngine;
 using static System.Collections.Specialized.BitVector32;
@@ -179,7 +180,7 @@ namespace WOLAP
             var locationName = cmd.StrArg(0);
             if (flags.ContainsKey(Constants.GotCheckFlagPrefix + locationName.Replace(" ", "")) || flags.ContainsKey(Constants.AddedShopCheckFlagPrefix + locationName.Replace(" ", ""))) return;
 
-            ShopCheckLocation check = new ShopCheckLocation(locationName, "dirtwaterbartender", 500);
+            ShopCheckLocation check = new ShopCheckLocation(locationName, "dirtwaterbartender", 500); //TODO Implament random price and fix List regeneration to include that random number in it too.
             long checkID = WolapPlugin.Archipelago.Session.Locations.GetLocationIdFromName(Constants.GameName, check.Name);
 
             bool foundItemInfo = false;
@@ -198,7 +199,6 @@ namespace WOLAP
                 {
                     break;
                 }
-
                 if (!foundItemInfo)
                 {
                     WolapPlugin.Log.LogInfo($"Tried to generate shop item for missed check [{locationName}], but could not retireve the item info. Retrying once");
@@ -213,24 +213,15 @@ namespace WOLAP
 
             WolapPlugin.Log.LogInfo($"Retrieved item info for missed check [{check.Name}].");
             MItem newItem = WolapPlugin.Archipelago.AddCheckToShop(check);
+            flags.Add(Constants.MissedForwardedFlagPrefix + check.Name.Replace(" ", "*"), "1");
             ArchipelagoClient.MissedCheckLocations.Add(check);
             MItem shopItem = MPlayer.instance.stores[check.ShopID].items.Values.Where(item => item.data["description"] == newItem.data["description"]).First(); //There HAS to be a better way to do this
             shopItem.data["description"] += $"\n\nMissed check originally located at <b>{check.Name}</b>";
 
-            // As soon as the player gets 1 missed check, this flag gets applied. This indicates to the missed check
-            // to change from vanilla dirtwater bartender to the different shop ui.
-            if (!flags.ContainsKey("anymissedcheck")) 
-            {
-                flags.Add("anymissedcheck", "1");
-            }
-
-            // This gives the player a flag specifically for the missed shop to indicate when it
-            // needs to hint the items out
-            if (!flags.ContainsKey("lloydshophinting"))
-            {
-                flags.Add("lloydshophinting", "1");
-            }
-
+            // As soon as the player gets 1 missed check, this flag gets applied. This indicates to the missed check to change from vanilla dirtwater bartender to the different shop ui.
+            if (!flags.ContainsKey("anymissedcheck")) {flags.Add("anymissedcheck", "1");}
+            // This gives the player a flag specifically for the missed shop to indicate when it needs to hint the items out
+            if (!flags.ContainsKey("lloydshophinting")) {flags.Add("lloydshophinting", "1");}
         }
 
         private static void HandleShopHintingCommand(MCommand cmd)
@@ -260,7 +251,9 @@ namespace WOLAP
                 }
                 else
                 {
-                    
+                    long checkID = WolapPlugin.Archipelago.Session.Locations.GetLocationIdFromName(Constants.GameName, item.Name);
+                    HintStatus hintStatus = HintStatus.Priority;
+                    WolapPlugin.Archipelago.Session.Hints.CreateHints(hintStatus,checkID);
                 }
             }
         }
@@ -292,7 +285,9 @@ namespace WOLAP
                 }
                 else
                 {
-                    
+                    long checkID = WolapPlugin.Archipelago.Session.Locations.GetLocationIdFromName(Constants.GameName, item.Name);
+                    HintStatus hintStatus = HintStatus.Priority;
+                    WolapPlugin.Archipelago.Session.Hints.CreateHints(hintStatus,checkID);
                 }
             }
         }
