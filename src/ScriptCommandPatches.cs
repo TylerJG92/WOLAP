@@ -252,7 +252,7 @@ namespace WOLAP
                 else
                 {
                     long checkID = WolapPlugin.Archipelago.Session.Locations.GetLocationIdFromName(Constants.GameName, item.Name);
-                    HintStatus hintStatus = HintStatus.Priority;
+                    HintStatus hintStatus = HintStatus.Unspecified; //Needs to be Unspecified per documentation on APServer implamentation multiworld.py to be allowed to work.
                     WolapPlugin.Archipelago.Session.Hints.CreateHints(hintStatus,checkID);
                 }
             }
@@ -286,7 +286,7 @@ namespace WOLAP
                 else
                 {
                     long checkID = WolapPlugin.Archipelago.Session.Locations.GetLocationIdFromName(Constants.GameName, item.Name);
-                    HintStatus hintStatus = HintStatus.Priority;
+                    HintStatus hintStatus = HintStatus.Unspecified; //needs to be unspecified to work
                     WolapPlugin.Archipelago.Session.Hints.CreateHints(hintStatus,checkID);
                 }
             }
