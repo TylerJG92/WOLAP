@@ -12646,6 +12646,15 @@
         ],
         [
           "if",
+          "hasflag(anymissedcheck) && hasflag(apmissedcheckstoreissetup)"
+        ],
+        [
+          "sayoption",
+          "whyprice",
+          "What's with the random prices?"
+        ],
+        [
+          "if",
           "hasflag(anymissedcheck) && !hasflag(missedcheckafterinit)"
         ],
         [
@@ -12744,9 +12753,28 @@
           "Yer more than welcome to it, though seein' as I'll be keeping it all safe fer ya till you drop in, I figure a storage fee is in order, seein' as it's takin' up half the space under my bar."
         ],
         [
+          "addflag",
+          "apmissedcheckstoreissetup,1"
+        ],
+        [
           "sayoption",
           "launch",
           "Fair Enough."
+        ]
+      ],
+      "whyprice": [
+        [
+          "leftsay",
+          "$lastoption$"
+        ],
+        [
+          "rightsay",
+          "Oh, I dont really know what half this junk is, so im basing the storage fee based on how big it is or how cool it looks."
+        ],
+        [
+          "sayoption",
+          "done",
+          "I guess that makes sense."
         ]
       ],
       "launch": [
