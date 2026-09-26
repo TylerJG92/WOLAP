@@ -244,7 +244,7 @@ namespace WOLAP
                 {
                     var needReconstruct = fullName.Replace(Constants.MissedForwardedFlagPrefix, "");
                     var name = needReconstruct.Replace("*", " ");
-                    ShopCheckLocation final = new ShopCheckLocation(name, "dirtwaterbartender", 500);
+                    ShopCheckLocation final = new ShopCheckLocation(name, "dirtwaterbartender", 1);
                     MissedCheckLocations.Add(final);
                 }
             }
