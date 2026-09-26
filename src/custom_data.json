@@ -4471,6 +4471,22 @@
           "player"
         ],
         [
+          "if",
+          "!hasflag(breadwoodshophinting)"
+        ],
+        [
+          "customcommand",
+          "progressiveshophinting, breadwood" 
+        ],
+        [
+          "if",
+          "!hasflag(breadwoodshophinting)"
+        ],
+        [
+          "addflag",
+          "breadwoodshophinting"
+        ] ,
+        [
           "npcstore",
           "breadwood,900,-10"
         ],
@@ -4484,6 +4500,10 @@
         [
           "addflag",
           "store_buttonwillow,1"
+        ],
+        [
+          "addflag",
+          "buttonwillowstorestatichinting"
         ],
         [
           "addnpcstoreitem",
@@ -4534,6 +4554,43 @@
           "option",
           "done",
           "Take a step backwards"
+        ]
+      ],
+      "launch": [
+        [
+          "teleportplayer",
+          "45,200"
+        ],
+        [
+          "resetanimation",
+          "player"
+        ],
+        [
+          "resetanimation",
+          "shopman"
+        ],
+        [
+          "if",
+          "hasflag(buttonwillowstorestatichinting)"
+        ],
+        [
+          "customcommand",
+          "progressiveshophinting, buttonwillow"
+        ],
+        [
+          "if",
+          "hasflag(buttonwillowstorestatichinting)"
+        ],
+        [
+          "delflag",
+          "buttonwillowstorestatichinting"
+        ],
+        [
+          "npcstore",
+          "buttonwillow,70,0"
+        ],
+        [
+          "exit"
         ]
       ]
     },
@@ -4791,6 +4848,13 @@
     },
     "cemetery2_saint3": {
       "start": [
+        [
+          "if",
+          "hasflag(cemetery2_saint3fightdone)"
+        ],
+        [
+          "exit"
+        ],
         [
           "say",
           "Saint Pope stands beatifically behind the dais."
@@ -7398,12 +7462,12 @@
           "1000"
         ],
         [
-          "goto",
-          "options"
-        ],
-        [
           "customcommand",
           "misspoint,Lazy-A Dude Ranch - Cowsbane Harvest"
+        ],
+        [
+          "goto",
+          "options"
         ]
       ]
     },
@@ -7536,6 +7600,14 @@
           "No problem, @maam@."
         ],
         [
+          "if",
+          "hasflag(clowns_capsearch)==2 && hasflag(clowns_tookhanky)==1 && hasflag(clowns_tooksalts)==1 && hasflag(clowns_tookknife)==1 && !hasflag(clowns_whistlebox)"
+        ],
+        [
+          "customcommand",
+          "misspoint, Circus - Slide Whistle Reward"
+        ],
+        [
           "option",
           "leave",
           "Leave"
@@ -7557,6 +7629,14 @@
         [
           "rightsay",
           "Sure, no problem."
+        ],
+        [
+          "if",
+          "hasflag(clowns_capsearch)==2 && hasflag(clowns_tookhanky)==1 && hasflag(clowns_tooksalts)==1 && hasflag(clowns_tookknife)==1 && !hasflag(clowns_whistlebox)"
+        ],
+        [
+          "customcommand",
+          "misspoint, Circus - Slide Whistle Reward"
         ],
         [
           "option",
@@ -7582,6 +7662,14 @@
           "Sure, no problem."
         ],
         [
+          "if",
+          "hasflag(clowns_capsearch)==2 && hasflag(clowns_tookhanky)==1 && hasflag(clowns_tooksalts)==1 && hasflag(clowns_tookknife)==1 && !hasflag(clowns_whistlebox)"
+        ],
+        [
+          "customcommand",
+          "misspoint, Circus - Slide Whistle Reward"
+        ],
+        [
           "option",
           "leave",
           "Leave"
@@ -7603,6 +7691,14 @@
         [
           "rightsay",
           "Sure, no problem."
+        ],
+        [
+          "if",
+          "hasflag(clowns_capsearch)==2 && hasflag(clowns_tookhanky)==1 && hasflag(clowns_tooksalts)==1 && hasflag(clowns_tookknife)==1 && !hasflag(clowns_whistlebox)"
+        ],
+        [
+          "customcommand",
+          "misspoint, Circus - Slide Whistle Reward"
         ],
         [
           "option",
@@ -12754,10 +12850,298 @@
       ]
     },
     "dirtwater_bartender": {
+      "shmart": [
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftsay",
+          "$lastoption$"
+        ],
+        [
+          "if",
+          "!hasflag(room)"
+        ],
+        [
+          "sayoption",
+          "rentroom",
+          "I saw the sign out front, advertising a room?"
+        ],
+        [
+          "if",
+          "hasflag(dirtwater_shaggydogstory)==1 && !hasflag(anymissedcheck)"
+        ],
+        [
+          "sayoption",
+          "piano",
+          "I heard you had something interesting back there?"
+        ],
+        [
+          "if",
+          "hasflag(dirtwater_shaggydogstory)==1 && hasflag(missedcheckafterinit)"
+        ],
+        [
+          "sayoption",
+          "pianomissedcheck",
+          "I heard you had something interesting back there?"
+        ],
+        [
+          "if",
+          "hasflag(dirtwater_pianoquest)==2"
+        ],
+        [
+          "sayoption",
+          "finishpianoquest",
+          "I fixed the piano player for you."
+        ],
+        [
+          "sayoption",
+          "quests",
+          "Need any help with anything?"
+        ],
+        [
+          "if",
+          "meat>=5 && !hasflag(anymissedcheck)"
+        ],
+        [
+          "sayoption",
+          "drink",
+          "I'll have a shot of bourbon. [5 Meat]"
+        ],
+        [
+          "if",
+          "meat<=5 && !hasflag(anymissedcheck)"
+        ],
+        [
+          "grayoption",
+          "drilp",
+          "I'll have a shot of bourbon. [Requires 5 Meat]"
+        ],
+        [
+          "if",
+          "hasflag(anymissedcheck) && hasflag(apmissedcheckstoreissetup)==1"
+        ],
+        [
+          "sayoption",
+          "whyprice",
+          "What's with the random prices?"
+        ],
+        [
+          "if",
+          "hasflag(anymissedcheck) && !hasflag(missedcheckafterinit)"
+        ],
+        [
+          "sayoption",
+          "initstore",
+          "Whats that box there behind you? It looks... Strange..."
+        ],
+        [
+          "if",
+          "hasflag(dirtwater_ellsbury)==1"
+        ],
+        [
+          "sayoption",
+          "ellsb",
+          "Who's that old man by the piano?"
+        ],
+        [
+          "if",
+          "hasflag(dirtwater_dartboard)==1"
+        ],
+        [
+          "sayoption",
+          "darts",
+          "Can I get some darts?"
+        ],
+        [
+          "if",
+          "hasflag(house_ghost_lawyer_search) && !hasflag(house_ghost_lawyer_foundit)"
+        ],
+        [
+          "sayoption",
+          "macready",
+          "Ever hear of a fella named Macready?"
+        ],
+        [
+          "if",
+          "hasflag(missedcheckafterinit)"
+        ],
+        [
+          "sayoption",
+          "launch",
+          "Got anything weird back there for me? [Open Shop]"
+        ],
+        [
+          "sayoption",
+          "done",
+          "See ya llater, Lloyd."
+        ]
+      ],
+      "initstore": [
+        [
+          "addflag",
+          "missedcheckafterinit"
+        ],
+        [
+          "addnpcstoreitem",
+          "dirtwaterbartender,booze_dirtwaterbourbon,-1,5"
+        ],
+        [
+          "leftspeak",
+          "$lastoption$"
+        ],
+        [
+          "rightspeak",
+          "Funny you should ask. Stuff's been turnin' up behind the bar with yer name on it."
+        ],
+        [
+          "leftspeak",
+          "My name? You'd think packages that come for me would go to the post office..."
+        ],
+        [
+          "rightspeak",
+          "Well, not literally. Mostly it's just stuff nobody seems to remember leavin' here, but fer some reason I keep gettin' the impression it belongs to you."
+        ],
+        [
+          "sayoption",
+          "apmissedcheckstoresetup",
+          "That's... Concerning..."
+        ]
+      ],
+      "apmissedcheckstoresetup":[
+        [
+          "leftspeak",
+          "$lastoption$"
+        ],
+        [
+          "rightspeak",
+          "Tell me about it. I'm runnin' a saloon here, not a lost-n-found for the entire frontier!"
+        ],
+        [
+          "leftspeak",
+          "Well I can take it off your hands for you if you want"
+        ],
+        [
+          "rightspeak",
+          "Yer more than welcome to it, though seein' as I'll be keeping it all safe fer ya till you drop in, I figure a storage fee is in order, seein' as it's takin' up half the space under my bar."
+        ],
+        [
+          "addflag",
+          "apmissedcheckstoreissetup,1"
+        ],
+        [
+          "sayoption",
+          "launch",
+          "Fair Enough."
+        ]
+      ],
+      "whyprice": [
+        [
+          "leftsay",
+          "$lastoption$"
+        ],
+        [
+          "rightsay",
+          "Oh, I dont really know what half this junk is, so I'm basing the storage fee on how big it is or how cool it looks."
+        ],
+        [
+          "addflag",
+          "apmissedcheckstoreissetup,2"
+        ],
+        [
+          "sayoption",
+          "done",
+          "I guess that makes sense."
+        ]
+      ],
+      "launch": [
+        [
+          "teleportplayer",
+          "500,205"
+        ],
+        [
+          "resetanimation",
+          "player"
+        ],
+        [
+          "resetanimation",
+          "bartender"
+        ],
+        [
+          "if",
+          "hasflag(lloydshophinting)"
+        ],
+        [
+          "customcommand",
+          "progressiveshophintingmissed, dirtwaterbartender"
+        ],
+        [
+          "if",
+          "hasflag(lloydshophinting)"
+        ],
+        [
+          "delflag",
+          "lloydshophinting"
+        ],
+        [
+          "npcstore",
+          "dirtwaterbartender,463,25"
+        ],
+        [
+          "exit"
+        ]
+      ],
+      "pianomissedcheck": [
+        [
+          "addflag",
+          "dirtwater_shaggydogstory,2"
+        ],
+        [
+          "leftsay",
+          "$lastoption$"
+        ],
+        [
+          "rightspeak",
+          "You mean the ever growing pile of random junk that you said you'd take off my hands?"
+        ],
+        [
+          "sayoption",
+          "piano3",
+          "No, not that..."
+        ]
+      ],
       "piano2": [
         [
           "leftsay",
           "Hmm... Maybe my info's too old. I found a note from some travelers that passed through here about eight years ago."
+        ],
+        [
+          "rightsay",
+          "Ohhh. Yeah, that was the <i>previous</i> bartender. He had a, uh, a little trick he used to offer to show people. It's what got him fired, eventually. That senator's wife wasn't amused."
+        ],
+        [
+          "say",
+          "He rummages around under the bar for a minute, then blows the dust off a tiny piano, about nine inches tall."
+        ],
+        [
+          "rightsay",
+          "Here, you can keep the piano, so long as you don't ask me about the trick."
+        ],
+        [
+          "customcommand",
+          "checklocation,Dirtwater Saloon - Bartender's Mini Piano"
+        ],
+        [
+          "sayoption",
+          "done",
+          "Thanks!"
+        ]
+      ],
+      "piano3": [
+        [
+          "leftsay",
+          "No, not that... I found a note from some travelers that passed through here about eight years ago."
         ],
         [
           "rightsay",
@@ -12789,6 +13173,10 @@
           "dirtwater_intro_books"
         ],
         [
+          "addflag",
+          "alexandriashophint"
+        ],
+        [
           "rightsay",
           "Oh, hello again. Thank you for telling me about this place. The locals have been very welcoming."
         ],
@@ -12817,6 +13205,10 @@
         [
           "addflag",
           "dirtwater_updated_books"
+        ],
+        [
+          "addflag",
+          "alexandriashophintupdate"
         ],
         [
           "addstate",
@@ -12879,6 +13271,51 @@
           "opts",
           "I may well be!"
         ]
+      ],
+      "store": [
+        [
+          "teleportplayer",
+          "205,170"
+        ],
+        [
+          "resetanimation",
+          "player"
+        ],
+        [
+          "resetanimation",
+          "alex"
+        ],
+        [
+          "if",
+          "hasflag(alexandriashophint) | hasflag(alexandriashophintupdate)"
+        ],
+        [
+          "customcommand",
+          "progressiveshophinting, bookstore"
+        ],
+        [
+          "if",
+          "hasflag(alexandriashophint)"
+        ],
+        [
+          "delflag",
+          "alexandriashophint"
+        ],
+        [
+          "if",
+          "hasflag(alexandriashophintupdate)"
+        ],
+        [
+          "delflag",
+          "alexandriashophintupdate"
+        ],
+        [
+          "npcstore",
+          "bookstore,235,-10"
+        ],
+        [
+          "exit"
+        ]
       ]
     },
     "dirtwater_bootsman": {
@@ -12886,6 +13323,10 @@
         [
           "addflag",
           "dirtwater_intro_boots"
+        ],
+        [
+          "addflag",
+          "tonyshophint"
         ],
         [
           "rightsay",
@@ -12920,6 +13361,10 @@
         [
           "addflag",
           "dirtwater_updated_boots"
+        ],
+        [
+          "addflag",
+          "tonyshophintupdate"
         ],
         [
           "addstate",
@@ -12977,6 +13422,51 @@
           "option",
           "opts",
           "Interesting!"
+        ]
+      ],
+      "store": [
+        [
+          "teleportplayer",
+          "200,170"
+        ],
+        [
+          "resetanimation",
+          "player"
+        ],
+        [
+          "resetanimation",
+          "bootsman"
+        ],
+        [
+          "if",
+          "hasflag(tonyshophinting) | hasflag(tonyshophintupdate)"
+        ],
+        [
+          "customcommand",
+          "progressiveshophinting, tonysboots"
+        ],
+        [
+          "if",
+          "hasflag(tonyshophinting)"
+        ],
+        [
+          "delflag",
+          "tonyshophinting"
+        ],
+        [
+          "if",
+          "hasflag(tonyshophintupdate)"
+        ],
+        [
+          "delflag",
+          "tonyshophintupdate"
+        ],
+        [
+          "npcstore",
+          "tonysboots,235,-10"
+        ],
+        [
+          "exit"
         ]
       ]
     },
@@ -13160,6 +13650,10 @@
           "dirtwatergeneral,shroomgro,1,400"
         ],
         [
+          "addflag",
+          "dirtwatergeneralstatichinting"
+        ],
+        [
           "goto",
           "openstore"
         ],
@@ -13203,6 +13697,43 @@
         [
           "exit"
         ]
+      ],
+      "openstore": [
+        [
+          "teleportplayer",
+          "175,215"
+        ],
+        [
+          "resetanimation",
+          "player"
+        ],
+        [
+          "resetanimation",
+          "shopkeeper"
+        ],
+        [
+          "if",
+          "hasflag(dirtwatergeneralstatichinting)"
+        ],
+        [
+          "customcommand",
+          "progressiveshophinting, dirtwatergeneral"
+        ],
+        [
+          "if",
+          "hasflag(dirtwatergeneralstatichinting)"
+        ],
+        [
+          "delflag",
+          "dirtwatergeneralstatichinting"
+        ],
+        [
+          "npcstore",
+          "dirtwatergeneral,225,20"
+        ],
+        [
+          "exit"
+        ]
       ]
     },
     "dirtwater_leatherman": {
@@ -13216,10 +13747,53 @@
           "opts"
         ]
       ],
+      "intro": [
+        [
+          "addflag",
+          "dirtwater_intro_tanner"
+        ],
+        [
+          "addflag",
+          "gradyshophint"
+        ],
+        [
+          "rightportrait",
+          "leatherman"
+        ],
+        [
+          "rightsay",
+          "Well hey there, @firstname@! Welcome to my shop!"
+        ],
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftsay",
+          "Looks like you've gotten yourself set up pretty nicely."
+        ],
+        [
+          "rightsay",
+          "Sure have! Here, let me give you a little something as thanks for helping me out. Have a sharpening strop, on the house."
+        ],
+        [
+          "additem",
+          "aug_strop"
+        ],
+        [
+          "sayoption",
+          "intro2",
+          "Aw, thanks!"
+        ]
+      ],
       "neighbor": [
         [
           "addflag",
           "dirtwater_updated_tanner"
+        ],
+        [
+          "addflag",
+          "gradyshophintupdate"
         ],
         [
           "leftportrait",
@@ -13290,6 +13864,51 @@
           "opttemp",
           "Interesting!"
         ]
+      ],
+      "store": [
+        [
+          "teleportplayer",
+          "260,170"
+        ],
+        [
+          "resetanimation",
+          "player"
+        ],
+        [
+          "resetanimation",
+          "leatherman"
+        ],
+        [
+          "if",
+          "hasflag(gradyshophint) | hasflag(gradyshophintupdate)"
+        ],
+        [
+          "customcommand",
+          "progressiveshophinting, tanner"
+        ],
+        [
+          "if",
+          "hasflag(gradyshophint)"
+        ],
+        [
+          "delflag",
+          "gradyshophint"
+        ],
+        [
+          "if",
+          "hasflag(gradyshophintupdate)"
+        ],
+        [
+          "delflag",
+          "gradyshophintupdate"
+        ],
+        [
+          "npcstore",
+          "tanner,280,-10"
+        ],
+        [
+          "exit"
+        ]
       ]
     },
     "dirtwater_murray": {
@@ -13297,6 +13916,10 @@
         [
           "addflag",
           "dirtwater_intro_curiosity"
+        ],
+        [
+          "addflag",
+          "murrayshophint"
         ],
         [
           "rightsay",
@@ -13331,6 +13954,10 @@
         [
           "addflag",
           "dirtwater_updated_curiosity"
+        ],
+        [
+          "addflag",
+          "murrayshophintupdate"
         ],
         [
           "addstate",
@@ -13396,6 +14023,51 @@
           "option",
           "opts",
           "Interesting!"
+        ]
+      ],
+      "store": [
+        [
+          "teleportplayer",
+          "210,170"
+        ],
+        [
+          "resetanimation",
+          "player"
+        ],
+        [
+          "resetanimation",
+          "shopkeep"
+        ],
+        [
+          "if",
+          "hasflag(murrayshophint) | hasflag(murrayshophintupdate)"
+        ],
+        [
+          "customcommand",
+          "progressiveshophinting, curiosity"
+        ],
+        [
+          "if",
+          "hasflag(murrayshophint)"
+        ],
+        [
+          "delflag",
+          "murrayshophint"
+        ],
+        [
+          "if",
+          "hasflag(murrayshophintupdate)"
+        ],
+        [
+          "delflag",
+          "murrayshophintupdate"
+        ],
+        [
+          "npcstore",
+          "curiosity,235,-10"
+        ],
+        [
+          "exit"
         ]
       ]
     },
@@ -13601,12 +14273,50 @@
           "store_dynamitedan,1"
         ],
         [
+          "addflag",
+          "danstatichinting"
+        ],
+        [
           "addnpcstoreitem",
           "dynamitedan,combat_dynamite,rand(15,20)"
         ],
         [
           "goto",
           "launch"
+        ]
+      ],
+      "launch": [
+        [
+          "teleportplayer",
+          "340,180"
+        ],
+        [
+          "resetanimation",
+          "player"
+        ],
+        [
+          "resetanimation",
+          "dan"
+        ],
+        [
+          "if",
+          "hasflag(danstatichinting)"
+        ],
+        [
+          "customcommand",
+          "progressiveshophinting, dynamitedan"
+        ],
+        [
+          "if",
+          "hasflag(danstatichinting)"
+        ],
+        [
+          "delflag",
+          "danstatichinting"
+        ],
+        [
+          "npcstore",
+          "dynamitedan,360,0"
         ]
       ]
     },
@@ -14783,6 +15493,29 @@
         [
           "goto",
           "heleaves"
+        ]
+      ],
+      "heleaves": [
+        [
+          "say",
+          "General Gob strides out the door, jaw clenched, eyes resolute with pie-hatred."
+        ],
+        [
+          "addflag",
+          "fort1_generalgob,2"
+        ],
+        [
+          "customcommand",
+          "misspoint,Fort Cowardice Back Office - General Gob's Hat"
+        ],
+        [
+          "customcommand",
+          "misspoint,Fort Cowardice Back Office - General Gob's Pistol"
+        ],
+        [
+          "sayoption",
+          "done",
+          "Well, that was weird. I guess I'm the General now!"
         ]
       ]
     },
@@ -21692,6 +22425,10 @@
           "curly_treasuregot"
         ],
         [
+          "customcommand",
+          "misspoint, Halloway's Hideaway - Half of Curly's Map"
+        ],
+        [
           "removeitem",
           "quest_curlymap"
         ]
@@ -21749,6 +22486,10 @@
         [
           "addflag",
           "store_halloway,1"
+        ],
+        [
+          "addflag",
+          "hallowaystatichinting"
         ],
         [
           "addnpcstoreitem",
@@ -21809,6 +22550,43 @@
           "sayoption",
           "done",
           "Well, see you later."
+        ]
+      ],
+      "launch": [
+        [
+          "teleportplayer",
+          "170,180"
+        ],
+        [
+          "resetanimation",
+          "player"
+        ],
+        [
+          "resetanimation",
+          "halloway"
+        ],
+        [
+          "if",
+          "hasflag(hallowaystatichinting)"
+        ],
+        [
+          "customcommand",
+          "progressiveshophinting, halloway"
+        ],
+        [
+          "if",
+          "hasflag(hallowaystatichinting)"
+        ],
+        [
+          "delflag",
+          "hallowaystatichinting"
+        ],
+        [
+          "npcstore",
+          "halloway,200,0"
+        ],
+        [
+          "exit"
         ]
       ]
     },
@@ -22698,6 +23476,40 @@
       ]
     },
     "house_ghost_glutton": {
+      "stomp": [
+        [
+          "removeitem",
+          "quest_gunlesschili"
+        ],
+        [
+          "customcommand",
+          "misspoint,Gun Manor Parlor - Sofa Cushions (Murdered Chili)"
+        ],
+        [
+          "say",
+          "You put the bowl of chili on the floor, and stomp it remorselessly."
+        ],
+        [
+          "leftsay",
+          "Eat <i>this,</i> chili!"
+        ],
+        [
+          "say",
+          "After a few stomps, the chili dies and a hazy outline of the bowl coalesces in the shattered fragments and glop. You pick it up and give it to the ghost."
+        ],
+        [
+          "leftsay",
+          "Eat this chili."
+        ],
+        [
+          "say",
+          "The ghost gobbles up the ghostly chili, and dissipates with a long, finally-satisfied sigh."
+        ],
+        [
+          "goto",
+          "resolution"
+        ]
+      ],
       "deadchili": [
         [
           "removeitem",
@@ -27628,6 +28440,35 @@
         ]
       ]
     },
+    "mine4_throwpit": {
+      "gobletthrow": [
+        [
+          "say",
+          "You pitch the gross thing into the hole. Good riddance."
+        ],
+        [
+          "removeitem",
+          "quest_gracegoblet"
+        ],
+        [
+          "addflag",
+          "ranch1_altar,2"
+        ],
+        [
+          "customcommand",
+          "misspoint, Stearns Ranch Cellar - Blood Altar"
+        ],
+        [
+          "addxp",
+          "@xpreward_e@"
+        ],
+        [
+          "option",
+          "done",
+          "Yuck."
+        ]
+      ]
+    },
     "mine5_beaniron2": {
       "popup": [
         [
@@ -29548,6 +30389,22 @@
         [
           "resetanimation",
           "nun1"
+        ],
+        [
+          "if",
+          "!hasflag(nunshophinting)"
+        ],
+        [
+          "customcommand",
+          "progressiveshophinting, mission1" 
+        ],
+        [
+          "if",
+          "!hasflag(nunshophinting)"
+        ],
+        [
+          "addflag",
+          "nunshophinting"
         ],
         [
           "npcstore",
@@ -61759,6 +62616,32 @@
       ]
     },
     "re_wanderinsally": {
+      "start": [
+        [
+          "incflag",
+          "sallytimes,1"
+        ],
+        [
+          "if",
+          "hasflag(sallytimes)==4 | hasflag(sallytimes)==5"
+        ],
+        [
+          "addflag",
+          "nosallyhint"
+        ],
+        [
+          "if",
+          "sallytimes<7"
+        ],
+        [
+          "goto",
+          "init_sally_@sallytimes@"
+        ],
+        [
+          "goto",
+          "launch"
+        ]
+      ],
       "init_sally_1": [
         [
           "addnpcstoreitem",
@@ -61870,11 +62753,136 @@
         ]
       ]
     },
+    "npc_sally": {
+      "start": [
+        [
+          "teleportplayer",
+          "390,115"
+        ],
+        [
+          "resetanimation",
+          "player"
+        ],
+        [
+          "resetanimation",
+          "sally"
+        ],
+        [
+          "if",
+          "hasflag(sallytimes)<7 && !hasflag(nosallyhint)"
+        ],
+        [
+          "customcommand",
+          "progressiveshophinting, sally"
+        ],
+        [
+          "if",
+          "hasflag(nosallyhint)"
+        ],
+        [
+          "delflag",
+          "nosallyhint"
+        ],
+        [
+          "npcstore",
+          "sally,420,-65"
+        ],
+        [
+          "exit"
+        ]
+      ]
+    },
+    "quest_honeybean": {
+      "invpopup": [
+        [
+          "if",
+          "!hasflag(anteyevirus)"
+        ],
+        [
+          "goto",
+          "anteyenopopup"
+        ],
+        [
+          "consume"
+        ],
+        [
+          "addflag",
+          "mainquest,35"
+        ],
+        [
+          "delflag",
+          "anteyevirus"
+        ],
+        [
+          "say",
+          "You eat the jelly bean, and your vision immediately clears.  Modern medicine is really amazing!"
+        ]
+      ],
+      "anteyenopopup": [
+        [
+          "say",
+          "You'd rather not eat such a beautiful (and expencive) jelly bean. Maybe hold onto it incase you need it for something else later."
+        ]
+      ]
+    },
     "roybean_honeybean": {
+      "start": [
+        [
+          "if",
+          "hasflag(honeybeanpurchased)"
+        ],
+        [
+          "exit"
+        ],
+        [
+          "say",
+          "There's a single yellow jellybean in this case, with a sign that says:"
+        ],
+        [
+          "say",
+          "PARAGUAYAN MURDERBEE HONEY JELLYBEAN"
+        ],
+        [
+          "say",
+          "VERY RARE"
+        ],
+        [
+          "say",
+          "6,000 MEAT"
+        ],
+        [
+          "if",
+          "hasflag(mainquest)>31 && !hasflag(honeybeanpurchased)"
+        ],
+        [
+          "goto",
+          "buyit"
+        ],
+        [
+          "say"
+        ],
+        [
+          "say",
+          "What kind of lunatic would pay 6,000 Meat for a single jellybean?"
+        ],
+        [
+          "option",
+          "done",
+          "Not this kind, that's for sure"
+        ]
+      ],
       "buy0": [
+        [
+          "if",
+          "!hasflag(mainquest)>34"
+        ],
         [
           "addflag",
           "mainquest,34"
+        ],
+        [
+          "addflag",
+          "honeybeanpurchased"
         ],
         [
           "addmeat",
@@ -61896,8 +62904,16 @@
       ],
       "buy1": [
         [
+          "if",
+          "!hasflag(mainquest)>34"
+        ],
+        [
           "addflag",
           "mainquest,34"
+        ],
+        [
+          "addflag",
+          "honeybeanpurchased"
         ],
         [
           "addmeat",
@@ -61919,8 +62935,16 @@
       ],
       "buy2": [
         [
+          "if",
+          "!hasflag(mainquest)>34"
+        ],
+        [
           "addflag",
           "mainquest,34"
+        ],
+        [
+          "addflag",
+          "honeybeanpurchased"
         ],
         [
           "addmeat",
@@ -61942,8 +62966,16 @@
       ],
       "buy3": [
         [
+          "if",
+          "!hasflag(mainquest)>34"
+        ],
+        [
           "addflag",
           "mainquest,34"
+        ],
+        [
+          "addflag",
+          "honeybeanpurchased"
         ],
         [
           "addmeat",
@@ -69863,6 +70895,273 @@
         }
       },
       "parentwaa": "ranch6"
+    },
+"roybean_interior": {
+      "name": "Roy Bean's (Inside)",
+      "width": "0.750",
+      "ground": null,
+      "sky": "",
+      "startxy": "560,85",
+      "horizon": "wallwood3tile1, wallwood3tile2, wallwood3tile3",
+      "camera": "interior",
+      "groundtexture": "floortest1",
+      "foregroundparallax": "woodceiling1_fixed",
+      "foregroundparallaxoffset": -20.0,
+      "leftwall": "wallwood2_side",
+      "rightwall": "wallwood2_side",
+      "music": "music_moseyin",
+      "ambientsound1": "ambience_room_tone",
+      "basewaa": "roybean",
+      "elements": {
+        "beans1_gone": {
+          "asset": "beanpedestal_empty",
+          "usedasset": null,
+          "x": 36.0,
+          "z": 252.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "hasflag(roybean_quest)<2",
+          "script": "autoscript__roybean_interior__beans1_gone__popup",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "beans1_there": {
+          "asset": "beanpedestal_beans",
+          "usedasset": null,
+          "x": 36.0,
+          "z": 252.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "hasflag(roybean_quest)>=2",
+          "script": "autoscript__roybean_interior__beans1_there__popup",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "beans2_gone": {
+          "asset": "beanpedestal_empty",
+          "usedasset": null,
+          "x": 139.0,
+          "z": 248.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "hasflag(roybean_quest)<4",
+          "script": "autoscript__roybean_interior__beans2_gone__popup",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "beans2_there": {
+          "asset": "beanpedestal_beans",
+          "usedasset": null,
+          "x": 139.0,
+          "z": 248.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "hasflag(roybean_quest)>=4",
+          "script": "autoscript__roybean_interior__beans2_there__popup",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "beans3_gone": {
+          "asset": "beanpedestal_empty",
+          "usedasset": null,
+          "x": 237.0,
+          "z": 249.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "hasflag(roybean_quest)<6",
+          "script": "autoscript__roybean_interior__beans3_gone__popup",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "beans3_there": {
+          "asset": "beanpedestal_beans",
+          "usedasset": null,
+          "x": 237.0,
+          "z": 249.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "hasflag(roybean_quest)>=6",
+          "script": "autoscript__roybean_interior__beans3_there__popup",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "bed": {
+          "asset": "bed2",
+          "usedasset": null,
+          "x": 6.0,
+          "z": 66.0,
+          "height": 218.0,
+          "width": 366.0,
+          "condition": "",
+          "script": "",
+          "proximity": 0.0
+        },
+        "exit": {
+          "asset": "alicedoor_interior",
+          "usedasset": null,
+          "x": 547.0,
+          "z": 0.0,
+          "height": 410.0,
+          "width": 248.0,
+          "condition": "",
+          "script": "autoscript__roybean_interior__exit__exec",
+          "proximity": 0.0,
+          "alpha": ".5",
+          "crop": 50.0
+        },
+        "fs": {
+          "asset": "forsale",
+          "usedasset": null,
+          "x": 633.0,
+          "z": 334.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "",
+          "script": "",
+          "proximity": 0.0,
+          "notilt": 1.0
+        },
+        "hearth": {
+          "asset": "hearth_unlit",
+          "usedasset": null,
+          "x": 306.0,
+          "z": 237.0,
+          "height": 794.0,
+          "width": 365.0,
+          "condition": "",
+          "script": "",
+          "proximity": 0.0,
+          "prefab": "hearth",
+          "extendback": 1.0,
+          "ambientsound": "Player_Home_Fireplace, 200",
+          "ambientvolume": ".5"
+        },
+        "honeybean": {
+          "asset": "honebean",
+          "usedasset": null,
+          "x": 638.0,
+          "z": 246.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "!hasflag(honeybeanpurchased)",
+          "script": "roybean_honeybean",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "honeybean_sold": {
+          "asset": "honeybean_sold",
+          "usedasset": null,
+          "x": 638.0,
+          "z": 246.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "hasflag(honeybeanpurchased)",
+          "script": "autoscript__roybean_interior__honeybean_sold__popup",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "nfs1": {
+          "asset": "notforsale1",
+          "usedasset": null,
+          "x": 29.0,
+          "z": 350.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "",
+          "script": "",
+          "proximity": 0.0,
+          "notilt": 1.0
+        },
+        "nfs2": {
+          "asset": "notforsale1",
+          "usedasset": null,
+          "x": 231.0,
+          "z": 350.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "",
+          "script": "",
+          "proximity": 0.0,
+          "notilt": 1.0
+        },
+        "nfs3": {
+          "asset": "notforsale2",
+          "usedasset": null,
+          "x": 132.0,
+          "z": 349.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "",
+          "script": "",
+          "proximity": 0.0,
+          "notilt": 1.0
+        },
+        "nightstand": {
+          "asset": "nightstand",
+          "usedasset": null,
+          "x": 28.0,
+          "z": 22.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "",
+          "script": "",
+          "proximity": 0.0
+        },
+        "pardner": {
+          "asset": "person",
+          "usedasset": null,
+          "x": 693.0,
+          "z": 58.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "",
+          "script": "pardner",
+          "proximity": 0.0,
+          "flip": 1.0
+        },
+        "pistolhook": {
+          "asset": "pistolhook",
+          "usedasset": null,
+          "x": 501.0,
+          "z": 350.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "",
+          "script": "",
+          "proximity": 0.0,
+          "notilt": 1.0
+        },
+        "roy": {
+          "asset": "person",
+          "usedasset": null,
+          "x": 423.0,
+          "z": 177.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "",
+          "script": "roybean_talk",
+          "proximity": 0.0,
+          "extendback": 1.0,
+          "prefab": "human_template",
+          "head": "head_roybean",
+          "hat": "hat_bigwhite,75,62",
+          "idle": "human_pipe_rest",
+          "fronthand": "held_pipe"
+        },
+        "spittoon": {
+          "asset": "spittoon",
+          "usedasset": "spittoon",
+          "x": 500.0,
+          "z": 243.0,
+          "height": 100.0,
+          "width": 118.0,
+          "condition": "",
+          "script": "roybean_spittoon",
+          "proximity": 0.0,
+          "extendback": 1.0
+        }
+      },
+      "parentwaa": "roybean"
     },
     "shaggydogcave_interior": {
       "name": "Shaggy Dog Cave (Inside)",
