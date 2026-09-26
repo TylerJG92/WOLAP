@@ -1236,7 +1236,7 @@
       "slot": "quest",
       "enchantments": [],
       "category": "miscellaneous",
-      "description": "This is your identification card for the town of Ghostwood. It says \"@idfirstname2@ @idmiddlename2@ @idlastname2@\" on it, and has a blurry photograph that could maybe be you if you squint.",
+      "description": "This is your identification card for the town of Ghostwood. It says \"@idfirstname@ @idmiddlename@ @idlastname@\" on it, and has a blurry photograph that could maybe be you if you squint.",
       "icon": "icon_ghostid",
       "uselink": "",
       "usescript": "",
@@ -4212,6 +4212,48 @@
       ]
     },
     "breadwood_mayor": {
+      "start": [
+        [
+          "teleportplayer",
+          "225,70"
+        ],
+        [
+          "if",
+          "!hasflag(breadwood_mayorintro)"
+        ],
+        [
+          "goto",
+          "intro"
+        ],
+        [
+          "if",
+          "hasflag(ghosttown1_permit)==13 && hasitem(quest_mayorform) && hasflag(gwloggingquestprogression)==5"
+        ],
+        [
+          "goto",
+          "signform1"
+        ],
+        [
+          "if",
+          "hasflag(ghosttown1_mayorpencil)"
+        ],
+        [
+          "goto",
+          "pencilback"
+        ],
+        [
+          "if",
+          "hasflag(breadwood_quest1)==1"
+        ],
+        [
+          "goto",
+          "checkquest1"
+        ],
+        [
+          "goto",
+          "afterquest1check"
+        ]
+      ],
       "prob5": [
         [
           "addflag",
@@ -9907,7 +9949,7 @@
         ],
         [
           "if",
-          "hasflag(containers_elvibrato)==5 || hasflag(containers_elvibrato)==7 || hasflag(containers_elvibrato)==11 || hasflag(containers_elvibrato)==13 || hasflag(containers_elvibrato)==15"
+          "hasflag(containers_elvibrato)==5 || hasflag(containers_elvibrato)==7 || hasflag(containers_elvibrato)==9 || hasflag(containers_elvibrato)==11 || hasflag(containers_elvibrato)==13 || hasflag(containers_elvibrato)==15"
         ],
         [
           "goto",
@@ -11950,8 +11992,240 @@
         ],
         [
           "option",
-          "finish",
+          "idnameslast",
           "Now that's what I call immersion!"
+        ]
+      ],
+      "idnameslast": [
+        [
+          "say",
+          "A chill runs down your spine as an eager bureaucratic ghost asks you a few more questions before you can start the game."
+        ],
+        [
+          "say",
+          "This is being done to prevent the Ghostwood ID's from being a pain once recieved by the Archipelago Server."
+        ],
+        [
+          "say",
+          "Last name?"
+        ],
+        [
+          "sayoption",
+          "idnamesfirst",
+          "@lastname@"
+        ],
+        [
+          "sayoption",
+          "idnamesfirst",
+          "Tame"
+        ],
+        [
+          "sayoption",
+          "idnamesfirst",
+          "Alvarado"
+        ],
+        [
+          "sayoption",
+          "idnamesfirst",
+          "Goldthwait"
+        ],
+        [
+          "sayoption",
+          "idnamesfirst",
+          "Shartwright"
+        ],
+        [
+          "sayoption",
+          "idnamesfirst",
+          "Slapshank"
+        ]
+      ],
+      "idnamesfirst":[
+        [
+          "addproperty",
+          "idlastname,$lastoption$"
+        ],
+        [
+          "say",
+          "First Name"
+        ],
+        [
+          "sayoption",
+          "idnamesmiddle",
+          "Puddin'"
+        ],
+        [
+          "sayoption",
+          "idnamesmiddle",
+          "Bobcat"
+        ],
+        [
+          "sayoption",
+          "idnamesmiddle",
+          "@firstname@"
+        ],
+        [
+          "sayoption",
+          "idnamesmiddle",
+          "Pico"
+        ],
+        [
+          "sayoption",
+          "idnamesmiddle",
+          "Slim"
+        ],
+        [
+          "sayoption",
+          "idnamesmiddle",
+          "Taint"
+        ]
+      ],
+      "idnamesmiddle": [
+        [
+          "addproperty",
+          "idfirstname,$lastoption$"
+        ],
+        [
+          "say",
+          "Middle Name?"
+        ],
+        [
+          "sayoption",
+          "idnamesdone",
+          "Danger"
+        ],
+        [
+          "sayoption",
+          "idnamesdone",
+          "Sneaky"
+        ],
+        [
+          "sayoption",
+          "idnamesdone",
+          "Nice"
+        ],
+        [
+          "sayoption",
+          "idnamesdone2",
+          "Justice"
+        ],
+        [
+          "sayoption",
+          "idnamesdone",
+          "Trouble"
+        ],
+        [
+          "sayoption",
+          "idnamesdone3",
+          "Murder"
+        ],
+        [
+          "sayoption",
+          "idnamesdone",
+          "Nondescript"
+        ]
+      ],
+      "idnamesdone2": [
+        [
+          "addproperty",
+          "idmiddlename,Justine"
+        ],
+        [
+          "addflag",
+          "middlenamejoke"
+        ],
+        [
+          "goto",
+          "idnamesdone"
+        ]
+      ],
+      "idnamesdone3":[
+        [
+          "addproperty",
+          "idmiddlename,Edgelord"
+        ],
+        [
+          "addflag",
+          "middlenamejoke"
+        ],
+        [
+          "goto",
+          "idnamesdone"
+        ]
+      ],
+      "idnamesdone": [
+        [
+          "if",
+          "!hasflag(middlenamejoke)"
+        ],
+        [
+          "addproperty",
+          "idmiddlename,$lastoption$"
+        ],
+        [
+          "say",
+          "See! That wasnt so hard was it."
+        ],
+        [
+          "if",
+          "hasflag(gottempidearly) && hasflag(gotidearly)"
+        ],
+        [
+          "say",
+          "Oh! Look at that, It would seem both the Temporary Visitor Permit and Visitor ID were sent to you already, here you go!"
+        ],
+        [
+          "if",
+          "hasflag(gottempidearly) && !hasflag(gotidearly)"
+        ],
+        [
+          "say",
+          "Oh! It would look like you have already recieved the Visitor Temporary Permit from someone. Here you go!"
+        ],
+        [
+          "if",
+          "hasflag(gottempidearly)"
+        ],
+        [
+          "additem",
+          "quest_g1tempvisit"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "addflag",
+          "idnamessettemp"
+        ],
+        [
+          "if",
+          "!hasflag(gottempidearly) && hasflag(gotidearly)"
+        ],
+        [
+          "say",
+          "Oh! It would look like you have already recieved the Visitor ID from someone. Here you go!"
+        ],
+        [
+          "if",
+          "hasflag(gotidearly)"
+        ],
+        [
+          "additem",
+          "quest_g1visitorid"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "addflag",
+          "idnamesset"
+        ],
+        [
+          "sayoption",
+          "done",
+          "I guess your right. I hope I wont have to do that again though."
         ]
       ],
       "done": [
@@ -17550,6 +17824,30 @@
       ]
     },
     "ghosttown1_cactusa": {
+      "popup": [
+        [
+          "say",
+          "This is a regular cactus. Well, the ghost of a regular cactus. Well, the ghost of a regular cactus with the ghost of a pencil stabbed into it."
+        ],
+        [
+          "if",
+          "!hasitem(quest_g1tempvisit) || hasflag(gwloggingquestprogression)<2"
+        ],
+        [
+          "option",
+          "nogood",
+          "Take the pencil"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "option",
+          "good",
+          "Take the pencil"
+        ]
+      ],
       "good": [
         [
           "cls"
@@ -17567,11 +17865,94 @@
           "checklocation,Ghostwood - Ghost Cactus"
         ],
         [
+          "if",
+          "!hasflag(ghostwoodooscheck)"
+        ],
+        [
+          "addflag",
+          "ghostwoodooscheck"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "incflag",
+          "ghostwoodooscheck,1"
+        ],
+        [
           "markused"
         ]
       ]
     },
     "ghosttown1_knock1": {
+      "start": [
+        [
+          "if",
+          "hasflag(ghosttown1_whiskey)"
+        ],
+        [
+          "goto",
+          "whiskeycheck"
+        ],
+        [
+          "if",
+          "hasitem(quest_g1visitorid) && hasflag(gwloggingquestprogression)>0"
+        ],
+        [
+          "goto",
+          "welcome"
+        ],
+        [
+          "if",
+          "hasitem(quest_g1tempvisit) && !hasflag(ghosttown1_tempexpired) && hasflag(gwloggingquestprogression)>0 && hasflag(gwloggingquestprogression<4)"
+        ],
+        [
+          "goto",
+          "tempvisit"
+        ],
+        [
+          "if",
+          "hasitem(quest_g1tempvisit) && hasflag(ghosttown1_tempexpired) && hasflag(gwloggingquestprogression)>0 && hasflag(gwloggingquestprogression<4)"
+        ],
+        [
+          "goto",
+          "second"
+        ],
+        [
+          "if",
+          "!hasflag(ghosttown1_metbar)"
+        ],
+        [
+          "goto",
+          "first"
+        ],
+        [
+          "if",
+          "!hasflag(gwloggingquestprogression)"
+        ],
+        [
+          "goto",
+          "second"
+        ],
+        [
+          "if",
+          "!hasitem(quest_g1visitorid) && !hasitem(quest_g1tempvisit)"
+        ],
+        [
+          "goto",
+          "second"
+        ],
+        [
+          "say",
+          "ghosttown1_knock1 start: You shouldnt be seeing this. Please send a screenshot to the mod developer."
+        ],
+        [
+          "option",
+          "done",
+          "oops"
+        ]
+      ],
       "welcome": [
         [
           "leftportrait",
@@ -17587,7 +17968,7 @@
         ],
         [
           "rightsay",
-          "Well, howdy! What can I do for you, @mr@ @idlastname2@?"
+          "Well, howdy! What can I do for you, @mr@ @idlastname@?"
         ],
         [
           "if",
@@ -17599,7 +17980,16 @@
         ],
         [
           "if",
-          "!hasflag(ghosttown1_permit)"
+          "hasflag(gwwhiskypencil) && hasflag(ghosttown1_mayorpencil) && hasflag(gwloggingquestprogression)==5 && !hasflag(whiskeypencilafterjoke)"
+        ],
+        [
+          "sayoption",
+          "penciljoke",
+          "Hey, can I borrow that pencil again?"
+        ],
+        [
+          "if",
+          "!hasflag(ghosttown1_permit) && hasflag(gwloggingquestprogression)==4"
         ],
         [
           "sayoption",
@@ -17608,7 +17998,7 @@
         ],
         [
           "if",
-          "hasflag(ghosttown1_permit)==9"
+          "hasflag(ghosttown1_permit)==9 && hasflag(gwloggingquestprogression)==5"
         ],
         [
           "sayoption",
@@ -17624,6 +18014,118 @@
           "sayoption",
           "done",
           "Umm... I can't think of anything."
+        ]
+      ],
+      "penciljoke": [
+        [
+          "leftsay",
+          "$lastoption$"
+        ],
+        [
+          "rightsay",
+          "Sure! What form do you need to fill out here?"
+        ],
+        [
+          "leftsay",
+          "Actually I need to borrow it to fill out some forms at Town Hall."
+        ],
+        [
+          "rightsay",
+          "Oh. No."
+        ],
+        [
+          "sayoption",
+          "penciljoke2",
+          "...No?"
+        ]
+      ],
+      "penciljoke2": [
+        [
+          "leftsay",
+          "$lastoption$"
+        ],
+        [
+          "rightsay",
+          "Yeah. No."
+        ],
+        [
+          "leftsay",
+          "Why, no?"
+        ],
+        [
+          "rightsay",
+          "I can authorize temporary use of this pencil for use on the premises, but I absolutely cannot allow it to leave the Department of Liberations."
+        ],
+        [
+          "leftsay",
+          "... Is there a form I can fill out?"
+        ],
+        [
+          "rightsay",
+          "Oh yeah! Several."
+        ],
+        [
+          "sayoption",
+          "penciljoke3",
+          "Great. Let's get this over with."
+        ]
+      ],
+      "penciljoke3": [
+        [
+          "leftsay",
+          "$lastoption$"
+        ],
+        [
+          "rightsay",
+          "None that will let you take the pencil from the Department of Libations."
+        ],
+        [
+          "leftsay",
+          "Then what are they for?"
+        ],
+        [
+          "rightsay",
+          "Mostly documenting that I told you no."
+        ],
+        [
+          "sayoption",
+          "penciljoke4",
+          "Can't you just make an exception?"
+        ]
+      ],
+      "penciljoke4": [
+        [
+          "leftsay",
+          "$lastoption$"
+        ],
+        [
+          "rightsay",
+          "These pencils are incredibly rare. If you walked out with it and lost it, no amount of paperwork could replace it."
+        ],
+        [
+          "leftsay",
+          "So there <i>is</i> something paperwork can't fix?"
+        ],
+        [
+          "rightsay",
+          "Sure. A missing pencil."
+        ],
+        [
+          "leftsay",
+          "Breadwood's Mayor still has mine..."
+        ],
+        [
+          "rightsay",
+          "I guess you know where a pencil is then! Best of luck."
+        ],
+        [
+          "addflag",
+          "whiskeypencilafterjoke"
+        ],
+        [
+          "sayoption",
+          "done",
+          "I hate it when bureaucracy makes sense..."
         ]
       ],
       "permit9": [
@@ -17825,7 +18327,7 @@
         ],
         [
           "if",
-          "matchstring($tempidfirstname$,@idfirstname2@) && matchstring($tempidmiddlename$,@idmiddlename2@) && matchstring($tempidlastname$,@idlastname2@)"
+          "matchstring($tempidfirstname$,@idfirstname@) && matchstring($tempidmiddlename$,@idmiddlename@) && matchstring($tempidlastname$,@idlastname@)"
         ],
         [
           "goto",
@@ -17843,6 +18345,478 @@
           "sayoption",
           "done",
           "Sigh."
+        ]
+      ],
+      "whiskey5": [
+        [
+          "if",
+          "hasflag(ghosttown1_whiskeyretry)"
+        ],
+        [
+          "goto",
+          "whiskey5a"
+        ],
+        [
+          "if",
+          "hasflag(whiskeypencilretry)"
+        ],
+        [
+          "goto",
+          "whiskeypencilretry"
+        ],
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftsay",
+          "Here's that whiskey requisition form."
+        ],
+        [
+          "removeitem",
+          "quest_redenvfull"
+        ],
+        [
+          "rightportrait",
+          "ghost1"
+        ],
+        [
+          "rightsay",
+          "Ooh, a red transfer envelope. You must really be thirsty. Okay, let's get this filled out..."
+        ],
+        [
+          "if",
+          "!hasitem(quest_3pencil) && !hasflag(ghosttown1_mayorpencil)"
+        ],
+        [
+          "goto",
+          "whiskey5nopencil1"
+        ],
+        [
+          "if",
+          "hasflag(ghosttown1_mayorpencil)==1"
+        ],
+        [
+          "goto",
+          "whiskey5nopencil2"
+        ],
+        [
+          "if",
+          "hasitem(quest_3pencil) && !hasflag(ghosttown1_mayorpencil)"
+        ],
+        [
+          "goto",
+          "whiskey5b"
+        ]
+      ],
+      "whiskey5nopencil1": [
+        [
+          "addflag",
+          "ghosttown1_whiskeyretry,1"
+        ],
+        [
+          "leftsay",
+          "There's a problem. I don't have a pencil"
+        ],
+        [
+          "rightsay",
+          "Any pencil?"
+        ],
+        [
+          "leftsay",
+          "None."
+        ],
+        [
+          "rightsay",
+          "Hmm. Well that will be an issue. This form requires a #3 ghost pencil to be completed."
+        ],
+        [
+          "sayoption",
+          "whiskey5nopencil1b",
+          "Do you have one I can borrow?"
+        ]
+      ],
+      "whiskey5nopencil1b": [
+        [
+          "leftsay",
+          "$lastoption$"
+        ],
+        [
+          "rightsay",
+          "Technically, yes."
+        ],
+        [
+          "leftsay",
+          "Great!"
+        ],
+        [
+          "rightsay",
+          "But I'm not authorized to loan office supplies to anyone who hasn't been previously issued that type of office supply before."
+        ],
+        [
+          "rightsay",
+          "If we loaned pencils to people who didn't have pencils, we'd run out of pencils."
+        ],
+        [
+          "leftsay",
+          "So how am I supposed to get issued one?"
+        ],
+        [
+          "rightsay",
+          "If you haven't yet, you should ask the Department of Requisitions."
+        ],
+        [
+          "sayoption",
+          "done",
+          "<i>Sighhhhh</i>, this is the reason why I wanted a drink."
+        ]
+      ],
+      "whiskeypencilretry": [
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftsay",
+          "I'm here to get that temporary pencil for the use on the whiskey requisition form."
+        ],
+        [
+          "rightportrait",
+          "ghost1"
+        ],
+        [
+          "rightspeak",
+          "Alright, let me grab the first form."
+        ],
+        [
+          "goto",
+          "whiskey5nopencil2c"
+        ]
+      ],
+      "whiskey5nopencil2": [
+        [
+          "rightsay",
+          "Oh. You're gonna need a #3 pencil."
+        ],
+        [
+          "leftsay",
+          "I have a... oh god, I loaned it to the mayor."
+        ],
+        [
+          "rightsay",
+          "Ah, so you were issued a #3 pencil by the Department of Requisitions?"
+        ],
+        [
+          "leftsay",
+          "Kin... YES, yes I was."
+        ],
+        [
+          "rightsay",
+          "In that case, I have one you may borrow."
+        ],
+        [
+          "sayoption",
+          "whiskey5nopencil2b",
+          "Wonderful!"
+        ]
+      ],
+      "whiskey5nopencil2b": [
+        [
+          "leftsay",
+          "$lastoption$"
+        ],
+        [
+          "rightsay",
+          "First thing I will need you to do is fill out this form acknowleding temporary custody of the pencil."
+        ],
+        [
+          "leftsay",
+          "Can I borrow the pencil to fill this form out?"
+        ],
+        [
+          "rightsay",
+          "..."
+        ],
+        [
+          "leftsay",
+          "..."
+        ],
+        [
+          "rightsay",
+          "I guess I'll have to fill it out for you"
+        ],
+        [
+          "sayoption",
+          "whiskey5nopencil2c",
+          "At least its something I guess"
+        ]
+      ],
+      "whiskey5nopencil2c": [
+        [
+          "rightsay",
+          "Last name?"
+        ],
+        [
+          "sayoption",
+          "whiskey5nopencil2d",
+          "Tame"
+        ],
+        [
+          "sayoption",
+          "whiskey5nopencil2d",
+          "Alvarado"
+        ],
+        [
+          "sayoption",
+          "whiskey5nopencil2d",
+          "Goldthwait"
+        ],
+        [
+          "sayoption",
+          "whiskey5nopencil2d",
+          "@lastname@"
+        ],
+        [
+          "sayoption",
+          "whiskey5nopencil2d",
+          "Shartwright"
+        ],
+        [
+          "sayoption",
+          "whiskey5nopencil2d",
+          "Slapshank"
+        ]
+      ],
+      "whiskey5nopencil2d": [
+        [
+          "leftsay",
+          "$lastoption$"
+        ],
+        [
+          "addstate",
+          "tempidlastname,$lastoption$"
+        ],
+        [
+          "rightsay",
+          "First name?"
+        ],
+        [
+          "sayoption",
+          "whiskey5nopencil2e",
+          "Puddin'"
+        ],
+        [
+          "sayoption",
+          "whiskey5nopencil2e",
+          "Pico"
+        ],
+        [
+          "sayoption",
+          "whiskey5nopencil2e",
+          "Bobcat"
+        ],
+        [
+          "sayoption",
+          "whiskey5nopencil2e",
+          "@firstname@"
+        ],
+        [
+          "sayoption",
+          "whiskey5nopencil2e",
+          "Taint"
+        ],
+        [
+          "sayoption",
+          "whiskey5nopencil2e",
+          "Slim"
+        ]
+      ],
+      "whiskey5nopencil2e": [
+        [
+          "leftsay",
+          "$lastoption$"
+        ],
+        [
+          "addstate",
+          "tempidfirstname,$lastoption$"
+        ],
+        [
+          "rightsay",
+          "Middle name?"
+        ],
+        [
+          "sayoption",
+          "whiskey5nopencil2f",
+          "Danger"
+        ],
+        [
+          "sayoption",
+          "whiskey5nopencil2f",
+          "Trouble"
+        ],
+        [
+          "sayoption",
+          "whiskey5nopencil2f",
+          "Sneaky"
+        ],
+        [
+          "sayoption",
+          "whiskey5nopencil2f",
+          "Edgelord"
+        ],
+        [
+          "sayoption",
+          "whiskey5nopencil2f",
+          "Justine"
+        ],
+        [
+          "sayoption",
+          "whiskey5nopencil2f",
+          "Nice"
+        ],
+        [
+          "sayoption",
+          "whiskey5nopencil2f",
+          "Nondescript"
+        ]
+      ],
+      "whiskey5nopencil2f": [
+        [
+          "leftsay",
+          "$lastoption$."
+        ],
+        [
+          "addstate",
+          "tempidmiddlename,$lastoption$"
+        ],
+        [
+          "if",
+          "matchstring($tempidfirstname$,@idfirstname@) && matchstring($tempidmiddlename$,@idmiddlename@) && matchstring($tempidlastname$,@idlastname@) && !hasflag(whiskeypencilforms)"
+        ],
+        [
+          "goto",
+          "whiskey5nopencil2g"
+        ],
+        [
+          "if",
+          "matchstring($tempidfirstname$,@idfirstname@) && matchstring($tempidmiddlename$,@idmiddlename@) && matchstring($tempidlastname$,@idlastname@) && hasflag(whiskeypencilforms)"
+        ],
+        [
+          "goto",
+          "whiskey5nopencil2h"
+        ],
+        [
+          "rightsay",
+          "\"$tempidfirstname$ $tempidmiddlename$ $tempidlastname$\"? Hmm, sorry @miss@, that doesn't match your visitor ID."
+        ],
+        [
+          "addflag",
+          "whiskeypencilretry,1"
+        ],
+        [
+          "sayoption",
+          "done",
+          "Sigh."
+        ]
+      ],
+      "whiskey5nopencil2g": [
+        [
+          "addflag",
+          "whiskeypencilforms"
+        ],
+        [
+          "rightsay",
+          "Lemme match that against your visitor ID... \"$tempidfirstname$ $tempidmiddlename$ $tempidlastname$\" -- Yup, that all looks good."
+        ],
+        [
+          "leftsay",
+          "Can I use the pencil now for the whiskey requisition form?"
+        ],
+        [
+          "rightsay",
+          "Not yet, There is another form you need to fill out. This one authorizes the use of the loaned pencil on the whiskey requisition form."
+        ],
+        [
+          "leftsay",
+          "Can I use the pencil to fill that form out?"
+        ],
+        [
+          "rightsay",
+          "... I'll fill this one out too..."
+        ],
+        [
+          "sayoption",
+          "whiskey5nopencil2c",
+          "Oh boy... I can't wait."
+        ]
+      ],
+      "whiskey5nopencil2h": [
+        [
+          "rightsay",
+          "Lemme match that against your visitor ID... \"$tempidfirstname$ $tempidmiddlename$ $tempidlastname$\" -- Yup, that all looks good."
+        ],
+        [
+          "leftsay",
+          "Now can I use the pencil for the whiskey requisition form?"
+        ],
+        [
+          "rightsay",
+          "Yep. Make sure I get that pencil back with the whiskey requisition form."
+        ],
+        [
+          "addflag",
+          "gwwhiskypencil"
+        ],
+        [
+          "sayoption",
+          "whiskey5b",
+          "If only there were a faster way to have done all this..."
+        ]
+      ],
+      "whiskey5a": [
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftsay",
+          "All right, let me try that whiskey requisition form again."
+        ],
+        [
+          "addflag",
+          "ghosttown1_whiskeyretry,0"
+        ],
+        [
+          "rightportrait",
+          "ghost1"
+        ],
+        [
+          "rightsay",
+          "Sure thing..."
+        ],
+        [
+          "if",
+          "!hasitem(quest_3pencil) && !hasflag(ghosttown1_mayorpencil)"
+        ],
+        [
+          "goto",
+          "whiskey5nopencil1"
+        ],
+        [
+          "if",
+          "hasflag(ghosttown1_mayorpencil)==1"
+        ],
+        [
+          "goto",
+          "whiskey5nopencil2"
+        ],
+        [
+          "if",
+          "hasitem(quest_3pencil) && !hasflag(ghosttown1_mayorpencil)"
+        ],
+        [
+          "goto",
+          "whiskey5b"
         ]
       ],
       "whiskey5b": [
@@ -17985,7 +18959,7 @@
         ],
         [
           "if",
-          "matchstring($tempidfirstname$,@idfirstname2@) && matchstring($tempidmiddlename$,@idmiddlename2@) && matchstring($tempidlastname$,@idlastname2@)"
+          "matchstring($tempidfirstname$,@idfirstname@) && matchstring($tempidmiddlename$,@idmiddlename@) && matchstring($tempidlastname$,@idlastname@)"
         ],
         [
           "goto",
@@ -18030,6 +19004,57 @@
       ]
     },
     "ghosttown1_knock2": {
+      "start": [
+        [
+          "if",
+          "hasitem(quest_g1visitorid) && hasflag(gwloggingquestprogression)>0"
+        ],
+        [
+          "goto",
+          "welcome"
+        ],
+        [
+          "if",
+          "hasitem(quest_g1tempvisit) && !hasflag(ghosttown1_tempexpired) && hasflag(gwloggingquestprogression)>0 && hasflag(gwloggingquestprogression<4)"
+        ],
+        [
+          "goto",
+          "tempvisit"
+        ],
+        [
+          "if",
+          "hasitem(quest_g1tempvisit) && hasflag(ghosttown1_tempexpired) && hasflag(gwloggingquestprogression)>0 && hasflag(gwloggingquestprogression<4)"
+        ],
+        [
+          "goto",
+          "first"
+        ],
+        [
+          "if",
+          "!hasflag(gwloggingquestprogression)"
+        ],
+        [
+          "goto",
+          "first"
+        ],
+        [
+          "if",
+          "!hasitem(quest_g1visitorid) && !hasitem(quest_g1tempvisit)"
+        ],
+        [
+          "goto",
+          "first"
+        ],
+        [
+          "say",
+          "ghosttown1_knock2 start: You shouldnt be seeing this, please send a screenshot of this error to the mod developer."
+        ],
+        [
+          "option",
+          "done",
+          "oops"
+        ]
+      ],
       "welcome": [
         [
           "leftportrait",
@@ -18045,11 +19070,11 @@
         ],
         [
           "rightsay",
-          "Department of Records. How can I help you, @mr@ @idlastname2@?"
+          "Department of Records. How can I help you, @mr@ @idlastname@?"
         ],
         [
           "if",
-          "!hasflag(ghosttown1_permit)"
+          "!hasflag(ghosttown1_permit) && hasflag(gwloggingquestprogression)==4"
         ],
         [
           "sayoption",
@@ -18058,7 +19083,7 @@
         ],
         [
           "if",
-          "hasflag(ghosttown1_permit)==1"
+          "hasflag(ghosttown1_permit)==1 && hasflag(gwloggingquestprogression)==5"
         ],
         [
           "sayoption",
@@ -18067,7 +19092,7 @@
         ],
         [
           "if",
-          "hasflag(ghosttown1_permit)==5 && hasitem(quest_loggingrep)"
+          "hasflag(ghosttown1_permit)==5 && hasitem(quest_loggingrep) && hasflag(gwloggingquestprogression)==5"
         ],
         [
           "sayoption",
@@ -18076,7 +19101,7 @@
         ],
         [
           "if",
-          "hasflag(ghosttown1_permit)==8"
+          "hasflag(ghosttown1_permit)==8 && hasflag(gwloggingquestprogression)==5"
         ],
         [
           "sayoption",
@@ -18085,7 +19110,7 @@
         ],
         [
           "if",
-          "hasflag(ghosttown1_permit)==10 && hasitem(quest_unstapler)"
+          "hasflag(ghosttown1_permit)==10 && hasitem(quest_unstapler) && hasflag(gwloggingquestprogression)==5"
         ],
         [
           "sayoption",
@@ -18171,6 +19196,57 @@
       ]
     },
     "ghosttown1_knock3": {
+      "start": [
+        [
+          "if",
+          "hasitem(quest_g1visitorid) && hasflag(gwloggingquestprogression)>0"
+        ],
+        [
+          "goto",
+          "welcome"
+        ],
+        [
+          "if",
+          "hasitem(quest_g1tempvisit) && !hasflag(ghosttown1_tempexpired) && hasflag(gwloggingquestprogression)>0 && hasflag(gwloggingquestprogression<4)"
+        ],
+        [
+          "goto",
+          "tempvisit"
+        ],
+        [
+          "if",
+          "hasitem(quest_g1tempvisit) && hasflag(ghosttown1_tempexpired) && hasflag(gwloggingquestprogression)>0 && hasflag(gwloggingquestprogression<4)"
+        ],
+        [
+          "goto",
+          "first"
+        ],
+        [
+          "if",
+          "!hasflag(gwloggingquestprogression)"
+        ],
+        [
+          "goto",
+          "first"
+        ],
+        [
+          "if",
+          "!hasitem(quest_g1visitorid) && !hasitem(quest_g1tempvisit)"
+        ],
+        [
+          "goto",
+          "first"
+        ],
+        [
+          "say",
+          "ghosttown1_knock3 start: You shouldnt be seeing this, please send a screenshot of this to the mod developer."
+        ],
+        [
+          "option",
+          "done",
+          "oops"
+        ]
+      ],
       "welcome": [
         [
           "leftportrait",
@@ -18186,11 +19262,11 @@
         ],
         [
           "rightsay",
-          "@mr@ ...@idlastname2@, was it? What can I do for you?"
+          "@mr@ ...@idlastname@, was it? What can I do for you?"
         ],
         [
           "if",
-          "!hasflag(ghosttown1_permit)"
+          "!hasflag(ghosttown1_permit) && hasflag(gwloggingquestprogression)==4"
         ],
         [
           "sayoption",
@@ -18199,7 +19275,7 @@
         ],
         [
           "if",
-          "hasflag(ghosttown1_permit)==1"
+          "hasflag(ghosttown1_permit)==1 && hasflag(gwloggingquestprogression)==5"
         ],
         [
           "sayoption",
@@ -18208,7 +19284,7 @@
         ],
         [
           "if",
-          "hasflag(ghosttown1_permit)==2"
+          "hasflag(ghosttown1_permit)==2 && hasflag(gwloggingquestprogression)==5"
         ],
         [
           "sayoption",
@@ -18217,7 +19293,7 @@
         ],
         [
           "if",
-          "hasflag(ghosttown1_permit)==4 && hasitem(quest_stapler)"
+          "hasflag(ghosttown1_permit)==4 && hasitem(quest_stapler) && hasflag(gwloggingquestprogression)==5"
         ],
         [
           "sayoption",
@@ -18226,7 +19302,7 @@
         ],
         [
           "if",
-          "hasflag(ghosttown1_permit)==7"
+          "hasflag(ghosttown1_permit)==7 && hasflag(gwloggingquestprogression)==5"
         ],
         [
           "sayoption",
@@ -18279,31 +19355,63 @@
       "start": [
         [
           "if",
-          "hasitem(quest_g1visitorid) && hasflag(ghosttown1_metthall) && !hasitem(quest_3pencil) && !hasflag(ghosttown1_nopencilwithid)"
+          "hasflag(gwloggingquestprogression)==1 && hasitem(quest_g1visitorid) && hasflag(ghosttown1_metthall)  && !hasflag(ghosttown1_nopencilwithid) && !hasitem(quest_3pencil) && !hasitem(quest_4pencil)"
         ],
         [
           "goto",
-          "pencilwithid"
+          "nopencilwithid"
         ],
         [
           "if",
-          "hasitem(quest_g1visitorid)"
+          "hasflag(gwloggingquestprogression)==1 && hasflag(ghosttown1_metthall) && hasitem(quest_3pencil) && !hasitem(quest_4pencil) && !hasitem(quest_g1visitorid) && !hasflag(pencilwithpencil)"
         ],
         [
           "goto",
-          "welcome"
+          "hasapencila"
         ],
         [
           "if",
-          "hasitem(quest_g1tempvisit) && !hasflag(ghosttown1_tempexpired)"
+          "hasflag(gwloggingquestprogression)==1 && hasflag(ghosttown1_metthall) && !hasitem(quest_3pencil) && hasitem(quest_4pencil) && !hasitem(quest_g1visitorid) && !hasflag(pencilwithpencil)"
         ],
         [
           "goto",
-          "tempvisit"
+          "hasapencilb"
         ],
         [
           "if",
-          "hasflag(ghosttown1_metthall) && !hasitem(quest_3pencil)"
+          "hasflag(gwloggingquestprogression)==1 && hasflag(ghosttown1_metthall) && hasitem(quest_3pencil) && hasitem(quest_4pencil) && !hasitem(quest_g1visitorid) && !hasflag(pencilwithpencil)"
+        ],
+        [
+          "goto",
+          "hasapencilc"
+        ],
+        [
+          "if",
+          "hasflag(gwloggingquestprogression)==1 && hasflag(ghosttown1_metthall) && hasitem(quest_3pencil) && !hasitem(quest_4pencil) && hasitem(quest_g1visitorid) && !hasflag(pencilwithpencilwithid)"
+        ],
+        [
+          "goto",
+          "hasapencilawithid"
+        ],
+        [
+          "if",
+          "hasflag(gwloggingquestprogression)==1 && hasflag(ghosttown1_metthall) && !hasitem(quest_3pencil) && hasitem(quest_4pencil) && hasitem(quest_g1visitorid) && !hasflag(pencilwithpencilwithid)"
+        ],
+        [
+          "goto",
+          "hasapencilbwithid"
+        ],
+        [
+          "if",
+          "hasflag(gwloggingquestprogression)==1 && hasflag(ghosttown1_metthall) && hasitem(quest_3pencil) && hasitem(quest_4pencil) && hasitem(quest_g1visitorid) && !hasflag(pencilwithpencilwithid)"
+        ],
+        [
+          "goto",
+          "hasapencilcwithid"
+        ],
+        [
+          "if",
+          "hasflag(gwloggingquestprogression)==1 && hasflag(ghosttown1_metthall)"
         ],
         [
           "goto",
@@ -18311,7 +19419,39 @@
         ],
         [
           "if",
+          "hasitem(quest_g1tempvisit) && !hasflag(ghosttown1_tempexpired) && hasflag(gwloggingquestprogression)==3"
+        ],
+        [
+          "goto",
+          "tempvisit"
+        ],
+        [
+          "if",
+          "hasitem(quest_g1tempvisit) && !hasflag(ghosttown1_tempexpired) && hasflag(gwloggingquestprogression)>0 && hasflag(gwloggingquestprogression)<4"
+        ],
+        [
+          "goto",
+          "welcome"
+        ],
+        [
+          "if",
+          "hasitem(quest_g1visitorid) && hasflag(gwloggingquestprogression)>3"
+        ],
+        [
+          "goto",
+          "welcome"
+        ],
+        [
+          "if",
           "hasitem(quest_g1tempvisit) && hasflag(ghosttown1_tempexpired)"
+        ],
+        [
+          "goto",
+          "first"
+        ],
+        [
+          "if",
+          "!hasflag(gwloggingquestprogression)"
         ],
         [
           "goto",
@@ -18327,7 +19467,7 @@
         ],
         [
           "say",
-          "no result"
+          "ghosttown1_knock4 @ start: You shouldnt be seeing this, send a screenshot to the mod developer"
         ],
         [
           "option",
@@ -18335,7 +19475,317 @@
           "oops"
         ]
       ],
-      "pencilwithid": [
+      "hasapencila": [
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftsay",
+          "Hello? Excuse me, I need a..."
+        ],
+        [
+          "rightportrait",
+          "ghost4"
+        ],
+        [
+          "rightsay",
+          "Sorry, can't help you unless you have a visitor ID!"
+        ],
+        [
+          "leftsay",
+          "But I need a pencil for..."
+        ],
+        [
+          "rightsay",
+          "No visitor ID, no... You have a #3 ghost pencil right there!"
+        ],
+        [
+          "addflag",
+          "pencilwithpencil,1"
+        ],
+        [
+          "addflag",
+          "gwloggingquestprogression,2"
+        ],
+        [
+          "sayoption",
+          "done",
+          "Oh. Right."
+        ]
+      ],
+      "hasapencilb": [
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftsay",
+          "Hello? Excuse me, I need a..."
+        ],
+        [
+          "rightportrait",
+          "ghost4"
+        ],
+        [
+          "rightsay",
+          "Sorry, can't help you unless you have a visitor ID!"
+        ],
+        [
+          "leftsay",
+          "But I need a pencil for..."
+        ],
+        [
+          "rightsay",
+          "No visitor ID, no... You have a #4 ghost pencil right there."
+        ],
+        [
+          "leftsay",
+          "But I need a #3 Ghost..."
+        ],
+        [
+          "rightsay",
+          "No visitor ID, no supplies!"
+        ],
+        [
+          "addflag",
+          "pencilwithpencil,1"
+        ],
+        [
+          "addflag",
+          "gwloggingquestprogression,2"
+        ],
+        [
+          "sayoption",
+          "done",
+          "Sigh."
+        ]
+      ],
+      "hasapencilc": [
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftsay",
+          "Hello? Excuse me, I need a..."
+        ],
+        [
+          "rightportrait",
+          "ghost4"
+        ],
+        [
+          "rightsay",
+          "Sorry, can't help you unless you have a visitor ID!"
+        ],
+        [
+          "leftsay",
+          "But I need a pencil for..."
+        ],
+        [
+          "rightsay",
+          "No visitor ID, no... You have 2 pencils right there, a #3 and #4."
+        ],
+        [
+          "addflag",
+          "pencilwithpencil"
+        ],
+        [
+          "addflag",
+          "gwloggingquestprogression,2"
+        ],
+        [
+          "sayoption",
+          "done",
+          "Oh. Right."
+        ]
+      ],
+      "hasapencilawithid": [
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftsay",
+          "Hello? Excuse me, I need a #3 pencil?"
+        ],
+        [
+          "rightportrait",
+          "ghost4"
+        ],
+        [
+          "rightsay",
+          "Fresh out."
+        ],
+        [
+          "leftsay",
+          "Out of <i>pencils</i>?  The sign on the building says \"Office Supply\"!  There's literally a picture of a pencil on it!"
+        ],
+        [
+          "rightsay",
+          "We're out of <i>ghost</i> pencils.  You wouldn't believe how hard it is to come by ethically sourced pencil ghosts.  And the last fella who got one just went and stuck it in the cactus outside!  The nerve of some people."
+        ],
+        [
+          "leftsay",
+          "Couldn't you just go get it?"
+        ],
+        [
+          "rightsay",
+          "Couldn't <i>you</i>?"
+        ],
+        [
+          "leftsay",
+          "I'm not a ghost."
+        ],
+        [
+          "rightsay",
+          "Not <i>yet</i> maybe, but it's not going anywhere.  Sorry, can't help you, it's out of my purview."
+        ],
+        [
+          "rightsay",
+          "Besides, you already have a #3 ghost pencil right there."
+        ],
+        [
+          "addflag",
+          "pencilwithpencilwithid,1"
+        ],
+        [
+          "addflag",
+          "gwloggingquestprogression,2"
+        ],
+        [
+          "option",
+          "done",
+          "Oh. Right."
+        ]
+      ],
+      "hasapencilbwithid": [
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftsay",
+          "Hello? Excuse me, I need a #3 pencil?"
+        ],
+        [
+          "rightportrait",
+          "ghost4"
+        ],
+        [
+          "rightsay",
+          "Fresh out."
+        ],
+        [
+          "leftsay",
+          "Out of <i>pencils</i>?  The sign on the building says \"Office Supply\"!  There's literally a picture of a pencil on it!"
+        ],
+        [
+          "rightsay",
+          "We're out of <i>ghost</i> pencils.  You wouldn't believe how hard it is to come by ethically sourced pencil ghosts.  And the last fella who got one just went and stuck it in the cactus outside!  The nerve of some people."
+        ],
+        [
+          "leftsay",
+          "Couldn't you just go get it?"
+        ],
+        [
+          "rightsay",
+          "Couldn't <i>you</i>?"
+        ],
+        [
+          "leftsay",
+          "I'm not a ghost."
+        ],
+        [
+          "rightsay",
+          "Not <i>yet</i> maybe, but it's not going anywhere.  Sorry, can't help you, it's out of my purview."
+        ],
+        [
+          "rightsay",
+          "Besides, you already have a #4 ghost pencil right there."
+        ],
+        [
+          "leftsay",
+          "Yeah but its not a #3..."
+        ],
+        [
+          "rightsay",
+          "Well, I dont have any either."
+        ],
+        [
+          "addflag",
+          "pencilwithpencilwithid,1"
+        ],
+        [
+          "addflag",
+          "gwloggingquestprogression,2"
+        ],
+        [
+          "option",
+          "done",
+          "Argh."
+        ]
+      ],
+      "hasapencilcwithid": [
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftsay",
+          "Hello? Excuse me, I need a #3 pencil?"
+        ],
+        [
+          "rightportrait",
+          "ghost4"
+        ],
+        [
+          "rightsay",
+          "Fresh out."
+        ],
+        [
+          "leftsay",
+          "Out of <i>pencils</i>?  The sign on the building says \"Office Supply\"!  There's literally a picture of a pencil on it!"
+        ],
+        [
+          "rightsay",
+          "We're out of <i>ghost</i> pencils.  You wouldn't believe how hard it is to come by ethically sourced pencil ghosts.  And the last fella who got one just went and stuck it in the cactus outside!  The nerve of some people."
+        ],
+        [
+          "leftsay",
+          "Couldn't you just go get it?"
+        ],
+        [
+          "rightsay",
+          "Couldn't <i>you</i>?"
+        ],
+        [
+          "leftsay",
+          "I'm not a ghost."
+        ],
+        [
+          "rightsay",
+          "Not <i>yet</i> maybe, but it's not going anywhere.  Sorry, can't help you, it's out of my purview."
+        ],
+        [
+          "rightsay",
+          "Besides, you have both a #3 and #4 pencil right there!"
+        ],
+        [
+          "addflag",
+          "pencilwithpencilwithid,1"
+        ],
+        [
+          "addflag",
+          "gwloggingquestprogression,2"
+        ],
+        [
+          "option",
+          "done",
+          "Oh. Right."
+        ]
+      ],
+      "nopencilwithid": [
         [
           "leftportrait",
           "player"
@@ -18381,9 +19831,52 @@
           "ghosttown1_nopencilwithid,1"
         ],
         [
+          "addflag",
+          "gwloggingquestprogression,2"
+        ],
+        [
           "option",
           "done",
           "Argh."
+        ]
+      ],
+      "pencil": [
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftsay",
+          "Hello? Excuse me, I need a..."
+        ],
+        [
+          "rightportrait",
+          "ghost4"
+        ],
+        [
+          "rightsay",
+          "Sorry, can't help you unless you have a visitor ID!"
+        ],
+        [
+          "leftsay",
+          "But I need a pencil for..."
+        ],
+        [
+          "rightsay",
+          "No visitor ID, no supplies!"
+        ],
+        [
+          "addflag",
+          "ghosttown1_nopencil,1"
+        ],
+        [
+          "addflag",
+          "gwloggingquestprogression,2"
+        ],
+        [
+          "sayoption",
+          "done",
+          "Sigh."
         ]
       ],
       "tempvisit2": [
@@ -18441,11 +19934,11 @@
         ],
         [
           "rightsay",
-          "Hello. Something I can get for you, @mr@ @idlastname2@?"
+          "Hello. Something I can get for you, @mr@ @idlastname@?"
         ],
         [
           "if",
-          "!hasflag(ghosttown1_permit)"
+          "!hasflag(ghosttown1_permit) && hasflag(gwloggingquestprogression)==4"
         ],
         [
           "sayoption",
@@ -18454,7 +19947,7 @@
         ],
         [
           "if",
-          "hasflag(ghosttown1_permit)==3"
+          "hasflag(ghosttown1_permit)==3 && hasflag(gwloggingquestprogression)==5"
         ],
         [
           "sayoption",
@@ -18629,7 +20122,7 @@
         ],
         [
           "if",
-          "matchstring($tempidfirstname$,@idfirstname2@) && matchstring($tempidmiddlename$,@idmiddlename2@) && matchstring($tempidlastname$,@idlastname2@)"
+          "matchstring($tempidfirstname$,@idfirstname@) && matchstring($tempidmiddlename$,@idmiddlename@) && matchstring($tempidlastname$,@idlastname@)"
         ],
         [
           "goto",
@@ -18681,15 +20174,7 @@
       "start": [
         [
           "if",
-          "!hasflag(ghosttown1_metthall)"
-        ],
-        [
-          "goto",
-          "first"
-        ],
-        [
-          "if",
-          "hasflag(ghostwood_gotidcheck) && hasitem(quest_g1visitorid)"
+          "hasflag(ghostwood_gotidcheck) && hasitem(quest_g1visitorid) && hasflag(gwloggingquestprogression)>0"
         ],
         [
           "goto",
@@ -18697,7 +20182,7 @@
         ],
         [
           "if",
-          "hasflag(ghosttown1_retrypermit) && !hasflag(ghostwood_gotidcheck)"
+          "hasflag(ghosttown1_retrypermit) && !hasflag(ghostwood_gotidcheck) && hasflag(gwloggingquestprogression)==3"
         ],
         [
           "goto",
@@ -18705,7 +20190,7 @@
         ],
         [
           "if",
-          "hasitem(quest_3pencil) && hasitem(quest_g1tempvisit) && hasflag(ghostwood_gottemppermitcheck) && !hasflag(ghostwood_gotidcheck)"
+          "hasitem(quest_3pencil) && hasitem(quest_g1tempvisit) && hasflag(ghostwood_gottemppermitcheck) && !hasflag(ghostwood_gotidcheck) && hasflag(gwloggingquestprogression)==3 && hasflag(ghostwoodooscheck)==2"
         ],
         [
           "goto",
@@ -18713,7 +20198,7 @@
         ],
         [
           "if",
-          "hasitem(quest_4pencil) && !hasitem(quest_3pencil)"
+          "hasitem(quest_4pencil) && !hasitem(quest_3pencil) && hasflag(gwloggingquestprogression)>0"
         ],
         [
           "goto",
@@ -18721,7 +20206,7 @@
         ],
         [
           "if",
-          "hasitem(quest_g1tempvisit) && !hasflag(ghostwood_askedaboutexpiredpass)"
+          "hasitem(quest_g1tempvisit) && !hasflag(ghostwood_askedaboutexpiredpass) && hasflag(gwloggingquestprogression)>0"
         ],
         [
           "goto",
@@ -18729,7 +20214,7 @@
         ],
         [
           "if",
-          "hasflag(ghosttown1_tempretry) && !hasflag(ghostwood_gottemppermitcheck)"
+          "hasflag(gwloggingquestprogression)==2 && hasflag(ghosttown1_tempretry) && !hasflag(ghostwood_gottemppermitcheck)"
         ],
         [
           "goto",
@@ -18737,7 +20222,7 @@
         ],
         [
           "if",
-          "hasflag(ghosttown1_nopencil) && !hasflag(ghostwood_gottemppermitcheck)"
+          "hasflag(gwloggingquestprogression)==2 && hasflag(ghosttown1_nopencil) && !hasflag(ghostwood_gottemppermitcheck)"
         ],
         [
           "goto",
@@ -18745,11 +20230,39 @@
         ],
         [
           "if",
-          "hasflag(ghosttown1_nopencilwithid) && !hasflag(ghostwood_gottemppermitcheck)"
+          "hasflag(gwloggingquestprogression)==2 && hasflag(ghosttown1_nopencilwithid) && !hasflag(ghostwood_gottemppermitcheck)"
         ],
         [
           "goto",
           "nopencilwithid"
+        ],
+        [
+          "if",
+          "hasflag(gwloggingquestprogression)==2 && hasflag(pencilwithpencil) && !hasflag(ghostwood_gottemppermitcheck)"
+        ],
+        [
+          "goto",
+          "pencilwithpencilflow"
+        ],
+        [
+          "if",
+          "hasflag(gwloggingquestprogression)==2 && hasflag(pencilwithpencilwithid) && !hasflag(ghostwood_gottemppermitcheck)"
+        ],
+        [
+          "goto",
+          "pencilwithpencilflow"
+        ],
+        [
+          "if",
+          "!hasflag(ghosttown1_metthall) || !hasflag(gwloggingquestprogression)"
+        ],
+        [
+          "goto",
+          "first"
+        ],
+        [
+          "if",
+          "hasflag(gwloggingquestprogression)>0"
         ],
         [
           "goto",
@@ -18757,7 +20270,7 @@
         ],
         [
           "say",
-          "Something has gone wrong, you should never see this.  Please let the mod developer know."
+          "ghosttown1_knock5 start: Something has gone wrong, you should never see this.  Please send a screenshot of this error to the mod developer."
         ],
         [
           "option",
@@ -18768,6 +20281,33 @@
           "option",
           "done",
           "oops (derogatory) [Ruthless]"
+        ]
+      ],
+      "firstb": [
+        [
+          "leftsay",
+          "...Well, okay. Where can I get one?"
+        ],
+        [
+          "rightsay",
+          "Try the Department of Requisitions. It's just next door."
+        ],
+        [
+          "leftsay",
+          "You mean the General Store?"
+        ],
+        [
+          "rightsay",
+          "It's a little more specific these days, but yes."
+        ],
+        [
+          "addflag",
+          "gwloggingquestprogression,1"
+        ],
+        [
+          "sayoption",
+          "done",
+          "Okay, I'll be right back."
         ]
       ],
       "second": [
@@ -18873,6 +20413,92 @@
           "sayoption",
           "temppermit",
           "Okay, great."
+        ]
+      ],
+      "pencilwithpencilflow": [
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftsay",
+          "Hello? The Office supply..."
+        ],
+        [
+          "rightportrait",
+          "ghost5"
+        ],
+        [
+          "rightsay",
+          "Who? Oh you mean the Office of Requisition?"
+        ],
+        [
+          "leftsay",
+          "Yeah... Anyway the clerk wouldn't give me a pencil."
+        ],
+        [
+          "rightsay",
+          "Why not?"
+        ],
+        [
+          "leftsay",
+          "Apparently I already have one."
+        ],
+        [
+          "if",
+          "hasflag(pencilwithpencil)"
+        ],
+        [
+          "sayoption",
+          "pencilwithpencil",
+          "Problem is I still dont have a visitor ID."
+        ],
+        [
+          "if",
+          "hasflag(pencilwithpencilwithid)"
+        ],
+        [
+          "sayoption",
+          "pencilwithpencilwithid",
+          "I also already have a visitor ID..."
+        ]
+      ],
+      "pencilwithpencil": [
+        [
+          "leftsay",
+          "$lastoption$"
+        ],
+        [
+          "rightsay",
+          "Well fortunately I can issue you a temporary visitor permit for now then instead. Apparently there is a bylaw that exists that states a newcomer must still have a premporary visitor permit before they can be issued a full visitor ID."
+        ],
+        [
+          "sayoption",
+          "temppermit",
+          "Why didn't we start with this option then..."
+        ]
+      ],
+      "pencilwithpencilwithid": [
+        [
+          "leftsay",
+          "$lastoption$"
+        ],
+        [
+          "rightsay",
+          "I'm afraid that <i>having</i> a visitor ID and <i>being issued</i> an ID are completely different things."
+        ],
+        [
+          "leftsay",
+          "That sentence should be illegal."
+        ],
+        [
+          "rightsay",
+          "Perfectly legal I assure you. You will need to fill out the proper paperwork for it later."
+        ],
+        [
+          "sayoption",
+          "pencilwithpencil",
+          "What do you mean, can't we just do the paperwork for the ID now?"
         ]
       ],
       "temppermit2": [
@@ -19092,6 +20718,10 @@
           "ghosttown1_tempexpired,0"
         ],
         [
+          "addflag",
+          "gwloggingquestprogression,3"
+        ],
+        [
           "leftsay",
           "Thanks, but don't I need that pass to be able to do just about anything in this town?"
         ],
@@ -19303,6 +20933,10 @@
           "ghostwood_gotidcheck"
         ],
         [
+          "addflag",
+          "gwloggingquestprogression,4"
+        ],
+        [
           "leftsay",
           "Thanks. Say, was it always called Ghostwood, or..."
         ],
@@ -19331,11 +20965,11 @@
         ],
         [
           "rightsay",
-          "Hello, @mr@ @idlastname2@. How can I be of service?"
+          "Hello, @mr@ @idlastname@. How can I be of service?"
         ],
         [
           "if",
-          "!hasflag(ghosttown1_permit)"
+          "!hasflag(ghosttown1_permit) && hasflag(gwloggingquestprogression)==4"
         ],
         [
           "sayoption",
@@ -19344,7 +20978,7 @@
         ],
         [
           "if",
-          "hasflag(ghosttown1_permit)==6"
+          "hasflag(ghosttown1_permit)==6 && hasitem(quest_logrepfolder) && hasflag(gwloggingquestprogression)==5"
         ],
         [
           "sayoption",
@@ -19353,7 +20987,7 @@
         ],
         [
           "if",
-          "hasflag(ghosttown1_permit)==11"
+          "hasflag(ghosttown1_permit)==11 && hasflag(gwloggingquestprogression)==5"
         ],
         [
           "sayoption",
@@ -19362,7 +20996,7 @@
         ],
         [
           "if",
-          "hasflag(ghosttown1_permit)==12"
+          "hasflag(ghosttown1_permit)==12 && hasflag(gwloggingquestprogression)==5"
         ],
         [
           "sayoption",
@@ -19371,7 +21005,7 @@
         ],
         [
           "if",
-          "hasflag(ghosttown1_permit)==14"
+          "hasflag(ghosttown1_permit)==14 && hasflag(gwloggingquestprogression)==5"
         ],
         [
           "sayoption",
@@ -19380,7 +21014,7 @@
         ],
         [
           "if",
-          "hasflag(ghosttown1_permit)==15"
+          "hasflag(ghosttown1_permit)==15 && hasflag(gwloggingquestprogression)==5"
         ],
         [
           "sayoption",
@@ -19409,6 +21043,37 @@
           "sayoption",
           "done",
           "Umm... never mind."
+        ]
+      ],
+      "permit1": [
+        [
+          "leftsay",
+          "Jeez, finally. I'm here on behalf of the mayor of Breadwood. He needs a permit to do some logging in this area."
+        ],
+        [
+          "rightsay",
+          "I see. Well, that shouldn't be a problem. I'll just need to review the logging records to make sure there are no disqualifying incidents. Go to the Department of Records -- it's two doors down -- and tell them I need the Breadwood file pertaining to logging."
+        ],
+        [
+          "addflag",
+          "ghosttown1_permit,1"
+        ],
+        [
+          "addflag",
+          "gwloggingquestprogression,5"
+        ],
+        [
+          "leftsay",
+          "..."
+        ],
+        [
+          "rightsay",
+          "...Is something wrong?"
+        ],
+        [
+          "sayoption",
+          "done",
+          "Not yet, I'm just steeling myself in anticipation."
         ]
       ],
       "permit11b": [
@@ -19555,7 +21220,7 @@
         ],
         [
           "if",
-          "matchstring($tempidfirstname$,@idfirstname2@) && matchstring($tempidmiddlename$,@idmiddlename2@) && matchstring($tempidlastname$,@idlastname2@)"
+          "matchstring($tempidfirstname$,@idfirstname@) && matchstring($tempidmiddlename$,@idmiddlename@) && matchstring($tempidlastname$,@idlastname@)"
         ],
         [
           "goto",
@@ -19636,6 +21301,10 @@
           "ghosttown1_permit,16"
         ],
         [
+          "addflag",
+          "gwloggingquestprogression,6"
+        ],
+        [
           "leftsay",
           "I don't have to sign anything to collect it?"
         ],
@@ -19659,6 +21328,68 @@
       ]
     },
     "ghosttown1_sharpen": {
+      "pencil": [
+        [
+          "cls"
+        ],
+        [
+          "if",
+          "!hasitem(quest_3pencil) && !hasitem(quest_4pencil)"
+        ],
+        [
+          "say",
+          "You haven't got any pencils to sharpen."
+        ],
+        [
+          "if",
+          "hasitem(quest_4pencil) && !hasitem(quest_3pencil)"
+        ],
+        [
+          "goto",
+          "4pencil"
+        ],
+        [
+          "if",
+          "hasitem(quest_3pencil) && !hasitem(quest_4pencil)"
+        ],
+        [
+          "say",
+          "Your #3 pencil is already sharp enough, and if you grind it all the way down to a #2 it might cause a problem."
+        ],
+        [
+          "if",
+          "hasitem(quest_3pencil) && hasitem(quest_4pencil)"
+        ],
+        [
+          "goto",
+          "bothpencil"
+        ]
+      ],
+      "bothpencil": [
+        [
+          "say",
+          "You have 2 pencils with you, which do you want to sharpen?"
+        ],
+        [
+          "option",
+          "4pencil",
+          "The #4 pencil"
+        ],
+        [
+          "option",
+          "3pencil",
+          "The #3 pencil."
+        ]
+      ],
+      "3pencil": [
+        [
+          "cls"
+        ],
+        [
+          "say",
+          "Your #3 pencil is already sharp enough, and if you grind it all the way down to a #2 it might cause a problem."
+        ]
+      ],
       "4pencil": [
         [
           "cls"
@@ -19670,6 +21401,22 @@
         [
           "removeitem",
           "quest_4pencil"
+        ],
+        [
+          "if",
+          "!hasflag(ghostwoodooscheck)"
+        ],
+        [
+          "addflag",
+          "ghostwoodooscheck"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "incflag",
+          "ghostwoodooscheck,1"
         ],
         [
           "customcommand",
@@ -62254,30 +64001,6 @@
         [
           "addproperty",
           "statcheck_h,40"
-        ],
-        [
-          "addproperty",
-          "idfirstname,pickone(Puddin',Pico,Bobcat,Taint,Slim)"
-        ],
-        [
-          "addproperty",
-          "idmiddlename,pickone(Danger,Trouble,Sneaky,Edgelord,Justine,Nice,Nondescript)"
-        ],
-        [
-          "addproperty",
-          "idlastname,pickone(Tame,Alvarado,Goldthwait,Shartwright,Slapshank)"
-        ],
-        [
-          "addproperty",
-          "idfirstname2,pickone(Puddin',Pico,Bobcat,Taint,Slim)"
-        ],
-        [
-          "addproperty",
-          "idmiddlename2,pickone(Danger,Trouble,Sneaky,Edgelord,Justine,Nice,Nondescript)"
-        ],
-        [
-          "addproperty",
-          "idlastname2,pickone(Tame,Alvarado,Goldthwait,Shartwright,Slapshank)"
         ],
         [
           "addflag",
