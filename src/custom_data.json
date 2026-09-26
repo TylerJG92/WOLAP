@@ -62799,19 +62799,8 @@
           "!hasflag(anteyevirus)"
         ],
         [
-          "say",
-          "You'd rather not eat such a beautiful (and expencive) jelly bean. Maybe hold onto it incase you need it for something else later."
-        ],
-        [
-          "if",
-          "!hasflag(anteyevirus)"
-        ],
-        [
-          "exit"
-        ],
-        [
-          "else",
-          ""
+          "goto",
+          "anteyenopopup"
         ],
         [
           "consume"
@@ -62827,6 +62816,12 @@
         [
           "say",
           "You eat the jelly bean, and your vision immediately clears.  Modern medicine is really amazing!"
+        ]
+      ],
+      "anteyenopopup": [
+        [
+          "say",
+          "You'd rather not eat such a beautiful (and expencive) jelly bean. Maybe hold onto it incase you need it for something else later."
         ]
       ]
     },
