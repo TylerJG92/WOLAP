@@ -12646,7 +12646,7 @@
         ],
         [
           "if",
-          "hasflag(anymissedcheck) && hasflag(apmissedcheckstoreissetup)"
+          "hasflag(anymissedcheck) && hasflag(apmissedcheckstoreissetup)==1"
         ],
         [
           "sayoption",
@@ -12769,7 +12769,11 @@
         ],
         [
           "rightsay",
-          "Oh, I dont really know what half this junk is, so im basing the storage fee based on how big it is or how cool it looks."
+          "Oh, I dont really know what half this junk is, so I'm basing the storage fee on how big it is or how cool it looks."
+        ],
+        [
+          "addflag",
+          "apmissedcheckstoreissetup,2"
         ],
         [
           "sayoption",
