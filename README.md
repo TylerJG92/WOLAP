@@ -40,7 +40,95 @@ The modded version of West of Loathing can be launched at any time using the `(p
 
 Installing WOLAP through r2modman should not interfere with the vanilla game files. You can continue launching the vanilla game normally through Steam or by selecting the dropdown next to `(play) Start modded` and then selecting the option `(play) Start vanilla` within r2modman.
 
-### Manual Installation (Windows/Linux/macOS)
+### Manual Installation (Linux)
+
+These instructions are for the native Linux version of West of Loathing running through Steam.
+
+1. Locate your West of Loathing directory.
+   - In Steam, right-click `West of Loathing` > `Properties` > `Installed Files` > `Browse`.
+
+2. Download the latest stable Linux/macOS build of [BepInEx](https://github.com/BepInEx/BepInEx/releases).
+   - Download the archive marked `nix`.
+   - Unlike the Windows releases, the `nix` archive supports both 32-bit and 64-bit executables.
+
+3. Extract the contents of the BepInEx archive directly into the West of Loathing directory.
+
+4. Open a terminal in the West of Loathing directory and give the BepInEx launch script permission to run:
+
+   ```bash
+   chmod u+x run_bepinex.sh
+   ```
+
+5. In Steam, right-click `West of Loathing` > `Properties` and enter the following under `Launch Options`:
+
+   ```text
+   ./run_bepinex.sh %command%
+   ```
+
+6. Launch West of Loathing normally through Steam once. Close the game after reaching the title screen.
+   - This allows BepInEx to finish its initial setup and create its required folders and files.
+
+7. Download the latest [WOLAP release](https://github.com/TylerJG92/WOLAP/releases) and extract its contents.
+
+8. From the `MonoMod` folder included with WOLAP, copy:
+   - `MonoMod.Backports.dll`
+   - `MonoMod.ILHelpers.dll`
+
+   into:
+
+   ```text
+   BepInEx/core
+   ```
+
+9. From the `Patcher` folder included with WOLAP, copy:
+   - `WOLAP.DependencyPatcher.dll`
+   - `Newtonsoft.Json.dll`
+
+   into:
+
+   ```text
+   BepInEx/patchers
+   ```
+
+10. Copy the `WOLAP` folder containing `WOLAP.dll` and `Archipelago.MultiClient.Net.dll` into:
+
+    ```text
+    BepInEx/plugins
+    ```
+
+11. Launch West of Loathing normally through Steam. Steam should now launch the game through BepInEx and load WOLAP.
+
+#### Uninstalling the Linux Manual Installation
+
+To uninstall WOLAP while keeping BepInEx installed:
+
+- Delete the `WOLAP` folder from:
+
+  ```text
+  BepInEx/plugins
+  ```
+
+- Delete the following files from:
+
+  ```text
+  BepInEx/patchers
+  ```
+
+  - `WOLAP.DependencyPatcher.dll`
+  - `Newtonsoft.Json.dll`
+
+To completely remove the manual BepInEx installation:
+
+- Delete the BepInEx files and folders that were added to the West of Loathing directory.
+- Remove the following from the game's Steam `Launch Options`:
+
+  ```text
+  ./run_bepinex.sh %command%
+  ```
+
+- Verify the game's files through Steam if necessary.
+
+### Manual Installation (Windows/macOS)
 
 **NOTE** The new BepInEx\patchers option on step 7 has **NOT** been tested on Linux or macOS, If you would like to test those yourself, feel free to ping @TylerJG92 in the West of Loathing Archipelago thread [Here](https://discord.com/channels/731205301247803413/1273856413327822950), post a copy of your BepInEx log file if it fails to work or any unexpected errors show up and I will look at it when I can. This should work in theory but if it dosent I would like to see why.
 
@@ -48,7 +136,7 @@ Installing WOLAP through r2modman should not interfere with the vanilla game fil
 2. Download the latest stable release of [BepInEx](https://github.com/BepInEx/BepInEx/releases) (the x64 version)
 3. Extract the contents of the downloaded .zip into the West of Loathing directory
 4. Launch West of Loathing once.  Close it once it reaches the title screen, this is just to finish installing BepInEx.
-5. Download the latest [WOLAP release](https://github.com/Lucasvdm/WOLAP/releases) and extract its contents
+5. Download the latest [WOLAP release](https://github.com/TylerJG92/WOLAP/releases) and extract its contents
 6. From the MonoMod folder, copy the MonoMod.Backports and MonoMod.ILHelpers .dll files into BepInEx\core
 7. There are now 2 methods for this instruction, choose **1** of the following options:
   * From the Patcher folder, copy WOLAP.DependencyPatcher.dll and Newtonsoft.Json.dll into BepInEx\patchers
@@ -102,10 +190,6 @@ This mod uses AI very minimally, Useage is as follows:
 - Xylen:
   - In response to being asked on 8/4/26 if they used AI for the ap world: "Nope. In the interest of full, 100% honest disclosure, I used chatgpt exactly twice through development to try asking it about a couple of weird bugs that had me stuck. It basically just confirmed for me both times that the code I was looking at was fine so I went and manually found the bug elsewhere. None of the code (in the main games mod) is AI-generated" (https://discord.com/channels/731205301247803413/1273856413327822950/1534239231168479242)
 - TylerJG92:
-  - I am very new to coding and used ChatGPT as a tutor and guide **ONLY** and will continue with that in the main games code until I am comfortable enough to no longer need it as a tutor.
-    - Utilizing ChatGPT as a tutor and guide means I did not allow it to generate any code for me, All it ever did was explain steps I might take in troubleshooting, explain coding concepts and spesifics of how C# works together so I could grow to understand how this coding language works
-  - I did use ChatGPT to generate some code **outside** of the games mod for an internal folder only.
-    - Most of the code writen under `.\ModManager_Packager` is written by me, but I was under a self imposed time crunch and needed to complete the project. Within `build-package.ps1` there is generated code and looking back at it now there is a large chunk of it that is ai generated. I will be removing and re-writing it over the coming weeks in my own way instead of utilizing the generated code. Mainly as a means to learn about the concepts it used that I had not learned. As for architectural design, folder layout, ect. Those were all my ideas and I was very slowly working toward the same type of code myself.
-      - This folder `.\ModManager_Packager` is used only to gather all the necessary files needed to package the .Zip folder for upload to Thunderstore. This Folder has nothing to do with the code that is run while playing the games mod.
-    - Within the `.\patcher\WOLAP.DependencyPatcher` Almost all of the code within is hand written by me. There is a part where I allowed ChatGPT to remove all my testing loggers in `DependencyPatcher.cs` and instructed it to not remove or change any of the other code I put in. I reviewed it thoroughly for any possible changes it made to the code as well, and it kept it as I wished, only removing the loggers.
-      - This folder `.\patcher\WOLAP.DependencyPatcher` is to create a BepInEx preloader patcher file that then gets used by BepInEx to replace the vanilla games `Newtonsoft.Json.dll` file in runtime with the Archipelago.MultiClient.Net.dll's dependent `Newtonsoft.Json.dll` to allow the mod to run properly. This patcher file does not affect the the gameplay of the mod, except to steamline installation.
+  - I do use ChatGPT as a development assistant to help me keep track of tasks, issues, long questlines/flags, and to explain code or help troubleshoot when I get stuck. I use strict working rules so it acts as a tutor and debugging assistant rather than writing the mod for me.
+    - ChatGPT is in no way used for generating Gameplay and/or Mod code.
+  - A small amount of AI-generated code has been used in internal packaging tools only. Those tools are not part of the code that runs in-game.
