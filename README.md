@@ -4,7 +4,7 @@ A client mod for [West of Loathing](https://store.steampowered.com/app/597220/We
 
 ## Current Release
 
-**WOLAP Client:** v0.3.1  
+**WOLAP Client:** v0.3.2  
 **West of Loathing AP World:** v0.3.0
 
 WOLAP is currently considered stable and playable, though development is ongoing and additional features and randomization options are planned.

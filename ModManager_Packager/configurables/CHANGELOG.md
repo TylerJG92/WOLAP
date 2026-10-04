@@ -1,5 +1,13 @@
 # Changelog
 
+# v0.3.2
+All save files and AP Worlds Generated with v0.3.0 will be fine to upgrade to v0.3.1 without causing the game to break. No regeneration needed.
+
+## Client Mod Changes
+* Fixed checklocation code looking for `Bizarre Ruin - Half-Buried Pedestal` when it should have been looking for `Bizarre Ruin (Humming Cave) - Half-Buried Pedestal`
+* Fixed checklocation code looking for `Deepest Delve Mine (Level 2) - Bracelet` when it should have been looking for `Deepest Delve Mine (Level 3) - Bracelet`
+
+---
 # v0.3.1
 
 All save files and AP Worlds Generated with v0.3.0 will be fine to upgrade to v0.3.1 without causing the game to break. No regeneration needed.
