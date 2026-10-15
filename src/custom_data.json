@@ -23094,14 +23094,6 @@
         ],
         [
           "if",
-          "hasitem(quest_g1visitorid) && hasflag(gwloggingquestprogression)>3"
-        ],
-        [
-          "goto",
-          "welcome"
-        ],
-        [
-          "if",
           "hasitem(quest_g1tempvisit) && hasflag(ghosttown1_tempexpired)"
         ],
         [
@@ -23123,6 +23115,14 @@
         [
           "goto",
           "first"
+        ],
+        [
+          "if",
+          "hasitem(quest_g1visitorid) && hasflag(gwloggingquestprogression)>2"
+        ],
+        [
+          "goto",
+          "welcome"
         ],
         [
           "say",
