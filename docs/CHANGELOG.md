@@ -1,3 +1,23 @@
+# Changelog for v0.3.3
+All save files and AP Worlds Generated with v0.3.0 will be fine to upgrade to v0.3.3 without causing the game to break. No regeneration needed.
+
+## Client Mod Changes
+* Fixed missing flag that allowed the player to enter the circus at all
+* Added Misspoint for `Clown Campsite - Circus Information` when entering the circus as it locks the player out of this check once they have entered the circus.
+
+
+---
+
+# Changelog for v0.3.2
+All save files and AP Worlds Generated with v0.3.0 will be fine to upgrade to v0.3.1 without causing the game to break. No regeneration needed.
+
+## Client Mod Changes
+* Fixed checklocation code looking for `Bizarre Ruin - Half-Buried Pedestal` when it should have been looking for `Bizarre Ruin (Humming Cave) - Half-Buried Pedestal`
+* Fixed checklocation code looking for `Deepest Delve Mine (Level 2) - Bracelet` when it should have been looking for `Deepest Delve Mine (Level 3) - Bracelet`
+
+
+---
+
 # Changelog for v0.3.1
 
 All save files and AP Worlds Generated with v0.3.0 will be fine to upgrade to v0.3.1 without causing the game to break. No regeneration needed.

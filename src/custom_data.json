@@ -12185,6 +12185,14 @@
           "Pardners get in free."
         ],
         [
+          "addflag",
+          "clowns_handstamp,1"
+        ],
+        [
+          "customcommand",
+          "misspoint,Clown Campsite - Circus Information"
+        ],
+        [
           "removeitem",
           "quest_circusticket"
         ],
