@@ -1,3 +1,35 @@
+# Changelog for WOLAP v0.3.4 & APWorld v0.3.1
+All existing save files and AP Worlds generated with v0.3.0 remain compatible with WOLAP v0.3.4 and APWorld v0.3.1. No regeneration is required to continue playing, but the corrected generation logic will only apply to newly generated AP Worlds under APWorld v0.3.1...
+
+## Client Mod Changes
+* Fixed a bug that shows a harmless dialogue failure within early Ghostwood quest progression.
+
+## APWorld Changes
+* Added `CanReachRegion` for `Map Region D` for logic generation when considering Medical containers as they do not require crowbar or lockpicking to open them while wandering there.
+* Updated Ghostwood Logic for `Ghostwood Town Hall - Issued Permit` to no longer require the sharpened pencil, cactus check and the sharpen the pencil check, instead this is now applied to `Ghostwood Town Hall - Issued ID`
+
+---
+
+# Changelog for v0.3.3
+All save files and AP Worlds Generated with v0.3.0 will be fine to upgrade to v0.3.3 without causing the game to break. No regeneration needed.
+
+## Client Mod Changes
+* Fixed missing flag that allowed the player to enter the circus at all
+* Added Misspoint for `Clown Campsite - Circus Information` when entering the circus as it locks the player out of this check once they have entered the circus.
+
+
+---
+
+# Changelog for v0.3.2
+All save files and AP Worlds Generated with v0.3.0 will be fine to upgrade to v0.3.1 without causing the game to break. No regeneration needed.
+
+## Client Mod Changes
+* Fixed checklocation code looking for `Bizarre Ruin - Half-Buried Pedestal` when it should have been looking for `Bizarre Ruin (Humming Cave) - Half-Buried Pedestal`
+* Fixed checklocation code looking for `Deepest Delve Mine (Level 2) - Bracelet` when it should have been looking for `Deepest Delve Mine (Level 3) - Bracelet`
+
+
+---
+
 # Changelog for v0.3.1
 
 All save files and AP Worlds Generated with v0.3.0 will be fine to upgrade to v0.3.1 without causing the game to break. No regeneration needed.

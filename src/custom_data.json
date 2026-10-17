@@ -12185,6 +12185,14 @@
           "Pardners get in free."
         ],
         [
+          "addflag",
+          "clowns_handstamp,1"
+        ],
+        [
+          "customcommand",
+          "misspoint,Clown Campsite - Circus Information"
+        ],
+        [
           "removeitem",
           "quest_circusticket"
         ],
@@ -17709,7 +17717,7 @@
         ],
         [
           "customcommand",
-          "checklocation,Bizarre Ruin - Half-Buried Pedestal"
+          "checklocation,Bizarre Ruin (Humming Cave) - Half-Buried Pedestal"
         ],
         [
           "markused"
@@ -23086,14 +23094,6 @@
         ],
         [
           "if",
-          "hasitem(quest_g1visitorid) && hasflag(gwloggingquestprogression)>3"
-        ],
-        [
-          "goto",
-          "welcome"
-        ],
-        [
-          "if",
           "hasitem(quest_g1tempvisit) && hasflag(ghosttown1_tempexpired)"
         ],
         [
@@ -23115,6 +23115,14 @@
         [
           "goto",
           "first"
+        ],
+        [
+          "if",
+          "hasitem(quest_g1visitorid) && hasflag(gwloggingquestprogression)>2"
+        ],
+        [
+          "goto",
+          "welcome"
         ],
         [
           "say",
@@ -34475,7 +34483,7 @@
         ],
         [
           "customcommand",
-          "checklocation,Deepest Delve Mine (Level 2) - Bracelet"
+          "checklocation,Deepest Delve Mine (Level 3) - Bracelet"
         ]
       ]
     },
