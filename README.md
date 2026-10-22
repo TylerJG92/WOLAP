@@ -139,13 +139,12 @@ In response to being asked on 8/4/26 if they used AI for the ap world: "Nope. In
 
 ### TylerJG92 (Current Active Mod Dev)
 
-I use ChatGPT as a development assistant to help keep track of tasks, issues, long questlines and flags, explain code, and troubleshoot problems when I get stuck.
+I do use ChatGPT as a development assistant to help me keep track of tasks, issues, long questlines/flags, and to explain code or help troubleshoot when I get stuck. I use strict working rules so it acts as a tutor and debugging assistant rather than writing the mod for me. I also use ChatGPT to help me with README files that needed reorganization [here](https://github.com/TylerJG92/WOLAP/blob/main/README.md) (including all linked documentation), this README was read beforehand and reviewed before posting as were all other documentation that is linked by it.
 
-I use strict working rules so it acts as a tutor and debugging assistant rather than writing the mod for me.
-
-ChatGPT is not used to generate WOLAP gameplay or mod code.
+ChatGPT is not used to generate WOLAP gameplay or mod code. All code that is written for the game is either written by me, @TylerJG92, or @Lucasvdm (aka @Xylen).
 
 A small amount of AI-generated code has been used in internal packaging tools only. These tools are not part of the code that runs in-game.
+This packager's code is used to grab all the items needed for a manual release on github and Thunderstore release, including the mods .dll plugin by running the .csproj to compile the mod and then formatting the files in the correct locations for both releases as well as my own personal local storage of each version. You can find this code [here](https://github.com/TylerJG92/WOLAP/tree/main/ModManager_Packager) and are the files titled `build-package.ps1` and `run-first.ps1` (`run-first.py` is to help others if they start helping in this project to set up the structure of the packager.)
 
 ## Documentation
 
