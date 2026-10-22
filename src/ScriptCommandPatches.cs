@@ -270,6 +270,14 @@ namespace WOLAP
                 return;
             }
 
+            List<string> dirtwaterShopIDs = new List<string>
+            {
+                "bookstore",
+                "leatherman",
+                "tonysboots",
+                "curiosity",
+            };
+
             var flags = MPlayer.instance.data;
             var shopID = cmd.StrArg(0);
             List<ShopCheckLocation> shopItems = ArchipelagoClient.ShopCheckLocations.FindAll(check => check.ShopID == shopID);
@@ -288,6 +296,11 @@ namespace WOLAP
                     WolapPlugin.Log.LogInfo($"Checking if item [{item.Name}] found at [{item.ShopID}] that is AP flag: [{apFlags}] should be hinted.");
                     flags.Add(Constants.GotHintFlagPrefix + item.Name.Replace(" ", ""), "1");
                 }
+                if (dirtwaterShopIDs.Contains(item.ShopID))
+                {
+                    FinishDirtwaterShopHints(item.ShopID, item.Name, flags, progressive);
+                    continue;
+                }
                 if(progressive == false)
                 {
                     WolapPlugin.Log.LogInfo($"Item [{item.Name}] is not Progressive, skipping hint.");
@@ -302,8 +315,60 @@ namespace WOLAP
             }
         }
 
-        private static void HandleMissedShopHintingCommand(MCommand cmd)
+        private static void FinishDirtwaterShopHints(string shopID, string itemName, Dictionary<string, string> playerFlags, bool progressive)
         {
+            Dictionary<string, string> flagPrefixCheck = new Dictionary<string, string>
+            {
+                {"bookstore","alexandria"},
+                {"tonysboots","tony"},
+                {"leatherman","grady"},
+                {"curiosity", "murray"},
+            };
+            flagPrefixCheck.TryGetValue(shopID, out var flagPrefix);
+            bool updateFlag = playerFlags.ContainsKey(flagPrefix + "shophintupdate");
+            if(!updateFlag)
+            {
+                var alexandriaBonus = "Dirtwater (Alexandria's Bookstore) - Bonus";
+                var tonyBonus = "Dirtwater (Tony's Boots) - Bonus";
+                var murrayBonus = "Dirtwater (Murray's Curiosity & Bean) - Bonus";
+                var gradyBonus = "Dirtwater (Grady's Fine Leather Goods) - Bonus";
+                switch (shopID)
+                {
+                    case "bookstore":
+                        if(!itemName.Contains(alexandriaBonus)){goto default;}
+                        return;
+                    case "tonysboots":
+                        if(!itemName.Contains(tonyBonus)){goto default;}
+                        return;
+                    case "leatherman":
+                        if(!itemName.Contains(gradyBonus)){goto default;}
+                        return;
+                    case "curiosity":
+                        if(!itemName.Contains(murrayBonus)){goto default;}
+                        return;
+                    default:
+                        if(progressive == false)
+                        {
+                            WolapPlugin.Log.LogInfo($"Item [{itemName}] is not Progressive, skipping hint.");
+                            return;
+                        }
+                        else
+                        {
+                            long checkID = WolapPlugin.Archipelago.Session.Locations.GetLocationIdFromName(Constants.GameName, itemName);
+                            HintStatus hintStatus = HintStatus.Unspecified; //Needs to be Unspecified per documentation on APServer implamentation multiworld.py to be allowed to work.
+                            WolapPlugin.Archipelago.Session.Hints.CreateHints(hintStatus,checkID);
+                            return;
+                        }
+                }
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private static void HandleMissedShopHintingCommand(MCommand cmd)
+        {//difference with this one is it checks apiteminfo before .flags and then uses ArchipelagoClient.MissedCheckLocations instead of ArchipelagoClient.ShopCheckLocations
             if (cmd.argCount != 1)
             {
                 cmd.LogError("only expects a check location name, but got " + cmd.argChunk);
@@ -376,28 +441,19 @@ namespace WOLAP
                             {
                                 goto case -1;
                             }
-                            else
-                            {
-                                continue;
-                            }
+                            continue;
                         case 2:
                             if(itemNumber is >= 9 && itemNumber <= 10)
                             {
                                 goto case -1;
                             }
-                            else
-                            {
-                                continue;
-                            }
+                            continue;
                         case 3:
                             if(itemNumber is >= 11 && itemNumber <= 13)
                             {
                                 goto case -1;
                             }
-                            else
-                            {
-                                continue;
-                            }
+                            continue;
                         case 6:
                             if(itemNumber == 14)
                             {
