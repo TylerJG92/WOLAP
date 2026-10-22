@@ -296,11 +296,13 @@ namespace WOLAP
                     WolapPlugin.Log.LogInfo($"Checking if item [{item.Name}] found at [{item.ShopID}] that is AP flag: [{apFlags}] should be hinted.");
                     flags.Add(Constants.GotHintFlagPrefix + item.Name.Replace(" ", ""), "1");
                 }
+
                 if (dirtwaterShopIDs.Contains(item.ShopID))
                 {
                     FinishDirtwaterShopHints(item.ShopID, item.Name, flags, progressive);
                     continue;
                 }
+                
                 if(progressive == false)
                 {
                     WolapPlugin.Log.LogInfo($"Item [{item.Name}] is not Progressive, skipping hint.");
@@ -363,7 +365,18 @@ namespace WOLAP
             }
             else
             {
-                return;
+                if(progressive == false)
+                {
+                    WolapPlugin.Log.LogInfo($"Item [{itemName}] is not Progressive, skipping hint.");
+                    return;
+                }
+                else
+                {
+                    long checkID = WolapPlugin.Archipelago.Session.Locations.GetLocationIdFromName(Constants.GameName, itemName);
+                    HintStatus hintStatus = HintStatus.Unspecified; //Needs to be Unspecified per documentation on APServer implamentation multiworld.py to be allowed to work.
+                    WolapPlugin.Archipelago.Session.Hints.CreateHints(hintStatus,checkID);
+                    return;
+                }
             }
         }
 

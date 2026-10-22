@@ -1,5 +1,17 @@
 # Changelog
 
+# v0.3.5
+All save files and APWorlds generated with v0.3.0 remain compatible with WOLAP v0.3.5 and APWorld v0.3.2. No regeneration is required to continue playing, but the corrected generation logic will only apply to newly generated APWorld seeds under APWorld v0.3.2 (from v0.3.0)
+
+## Client Mod Changes
+* Fixed a bug that caused the check location `Random Encounter (Region D) - 3rd Encounter` to be skipped
+* Fixed a bug where Dirtwater's extra shops were hinting the `Bonus Item` in their shop that was not quite in the shop yet.
+
+## APWorld Changes (From between v0.3.4 and v0.3.5 of WOLAP)
+* Added forgotten player arg to `state.can_reach_region("Map Region D", player)` for medical container checks logic
+* Added Redundant `state.can_reach_location("Ghostwood Town Hall - Issued Permit", player)` to `get_location("Ghostwood Town Hall - Issued ID")`
+
+---
 # v0.3.4
 All existing save files and AP Worlds generated with v0.3.0 remain compatible with WOLAP v0.3.4 and APWorld v0.3.1. No regeneration is required to continue playing, but the corrected generation logic will only apply to newly generated AP Worlds under APWorld v0.3.1...
 
