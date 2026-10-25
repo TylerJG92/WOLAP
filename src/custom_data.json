@@ -1222,7 +1222,7 @@
       "source": "Archipelago item pool"
     },
     "elv_fuse": {
-      "name": "El Vibrato cylinder (Lost Dutch Oven Mine)",
+      "name": "El Vibrato cylinder (LDOM)",
       "slot": "quest",
       "enchantments": [],
       "category": "miscellaneous",
@@ -1236,7 +1236,7 @@
       "stackable": 1.0
     },
     "elv_fuse2": {
-      "name": "El Vibrato cylinder (Curious Flat Plain)",
+      "name": "El Vibrato cylinder (CFP)",
       "slot": "quest",
       "enchantments": [],
       "category": "miscellaneous",
@@ -1250,7 +1250,7 @@
       "stackable": 1.0
     },
     "elv_fuse3": {
-      "name": "El Vibrato cylinder (Curious False Mountain)",
+      "name": "El Vibrato cylinder (CFM)",
       "slot": "quest",
       "enchantments": [],
       "category": "miscellaneous",
