@@ -19066,11 +19066,37 @@
           "There's a single pie inside, shot to pieces."
         ],
         [
+          "sayoption",
+          "getcheck",
+          "Give it to me!"
+        ],
+        [
+          "sayoption",
+          "done",
+          "I'll come back for it later."
+        ]
+      ],
+      "getcheck": [
+        [
+          "say",
+          "You grab the bullet riddled pie"
+        ],
+        [
+          "markused"
+        ],
+        [
           "customcommand",
           "checklocation,Fort Cowardice Back Office - Pie Safe"
         ],
         [
-          "markused"
+          "sayoption",
+          "done",
+          "Nice!"
+        ]
+      ],
+      "done": [
+        [
+          "exit"
         ]
       ]
     },
