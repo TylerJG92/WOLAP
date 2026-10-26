@@ -231,7 +231,8 @@ namespace WOLAP
             var locationName = cmd.StrArg(0);
             if (flags.ContainsKey(Constants.GotCheckFlagPrefix + locationName.Replace(" ", "")) || flags.ContainsKey(Constants.AddedShopCheckFlagPrefix + locationName.Replace(" ", ""))) return;
 
-            ShopCheckLocation check = new ShopCheckLocation(locationName, "dirtwaterbartender", 0);
+            var placeholderPrice = 0;
+            ShopCheckLocation check = new ShopCheckLocation(locationName, "dirtwaterbartender", placeholderPrice);
             long checkID = WolapPlugin.Archipelago.Session.Locations.GetLocationIdFromName(Constants.GameName, check.Name);
 
             bool foundItemInfo = false;
