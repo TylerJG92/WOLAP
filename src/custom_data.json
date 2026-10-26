@@ -8372,7 +8372,7 @@
         ],
         [
           "customcommand",
-          "checklocation,Reboot Hill (Plot 3) - Outhouse"
+          "checklocation,Reboot Hill (Plot 3) [Stench Resistance] - Outhouse"
         ],
         [
           "goto",
@@ -17941,7 +17941,7 @@
         ],
         [
           "customcommand",
-          "checklocation,El Vibrato Chamber (Lost Dutch Oven Mine) - Leftmost Box"
+          "checklocation,El Vibrato Chamber (Lost Dutch Oven Mine) [Stench Resistance] - Leftmost Box"
         ],
         [
           "markused"
@@ -17964,7 +17964,7 @@
         ],
         [
           "customcommand",
-          "checklocation,El Vibrato Ruin (Lost Dutch Oven Mine) - Cylinder"
+          "checklocation,El Vibrato Ruin (Lost Dutch Oven Mine) [Stench Resistance] - Cylinder"
         ]
       ]
     },
@@ -17990,7 +17990,7 @@
         ],
         [
           "customcommand",
-          "checklocation,El Vibrato Chamber (Lost Dutch Oven Mine) - Locked Box"
+          "checklocation,El Vibrato Chamber (Lost Dutch Oven Mine) [Stench Resistance] - Locked Box"
         ]
       ]
     },
@@ -20074,7 +20074,7 @@
         ],
         [
           "customcommand",
-          "checklocation,Fort Alldead - Trash Can"
+          "checklocation,Fort Alldead [Stench Resistance] - Trash Can"
         ]
       ]
     },
@@ -20216,7 +20216,7 @@
         ],
         [
           "customcommand",
-          "checklocation,Fort Memoriam Barracks - Trash Pile"
+          "checklocation,Fort Memoriam Barracks [Stench Resistance] - Trash Pile"
         ]
       ]
     },
@@ -29620,7 +29620,7 @@
         ],
         [
           "customcommand",
-          "checklocation,Back of Gun Manor - Compost Heap"
+          "checklocation,Back of Gun Manor [Stench Resistance] - Compost Heap"
         ]
       ]
     },
@@ -31828,7 +31828,7 @@
         ],
         [
           "customcommand",
-          "checklocation,Lost Dutch Oven Mine (Pit) - Emerald Rock"
+          "checklocation,Lost Dutch Oven Mine (Pit) [Stench Resistance] - Emerald Rock"
         ],
         [
           "addflag",
@@ -31846,11 +31846,11 @@
         ],
         [
           "customcommand",
-          "checklocation,Lost Dutch Oven Mine (Level 1) - Lockers (Item 1)"
+          "checklocation,Lost Dutch Oven Mine (Level 1) [Stench Resistance] - Lockers (Item 1)"
         ],
         [
           "customcommand",
-          "checklocation,Lost Dutch Oven Mine (Level 1) - Lockers (Item 2)"
+          "checklocation,Lost Dutch Oven Mine (Level 1) [Stench Resistance] - Lockers (Item 2)"
         ],
         [
           "say",
@@ -31957,7 +31957,7 @@
         ],
         [
           "customcommand",
-          "checklocation,Lost Dutch Oven Mine (Level 1) - Spittoon"
+          "checklocation,Lost Dutch Oven Mine (Level 1) [Stench Resistance] - Spittoon"
         ],
         [
           "incflag",
