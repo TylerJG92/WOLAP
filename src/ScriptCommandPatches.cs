@@ -11,6 +11,7 @@ using HarmonyLib;
 using UnityEngine;
 using static System.Collections.Specialized.BitVector32;
 using static ClockState;
+using UnityEngine.Analytics;
 
 namespace WOLAP
 {
@@ -230,8 +231,7 @@ namespace WOLAP
             var locationName = cmd.StrArg(0);
             if (flags.ContainsKey(Constants.GotCheckFlagPrefix + locationName.Replace(" ", "")) || flags.ContainsKey(Constants.AddedShopCheckFlagPrefix + locationName.Replace(" ", ""))) return;
 
-            int price = UnityEngine.Random.Range(100, 1251);
-            ShopCheckLocation check = new ShopCheckLocation(locationName, "dirtwaterbartender", price);
+            ShopCheckLocation check = new ShopCheckLocation(locationName, "dirtwaterbartender", 0);
             long checkID = WolapPlugin.Archipelago.Session.Locations.GetLocationIdFromName(Constants.GameName, check.Name);
 
             bool foundItemInfo = false;
@@ -248,6 +248,26 @@ namespace WOLAP
             {
                 WolapPlugin.Log.LogWarning($"Tried to generate shop item for missed check [{locationName}], but could not retrieve the item info. This location may be disabled by an AP option.");
                 return;
+            }
+
+            int progressionPrice = UnityEngine.Random.Range(200, 1201);
+            int usefulPrice = UnityEngine.Random.Range(100, 901);
+            int defaultPrice = UnityEngine.Random.Range(50, 601);
+            var apFlags = check.ApItemInfo.Flags;
+            switch (apFlags)
+            {
+                case ItemFlags.Advancement:
+                    check.Price = progressionPrice;
+                    WolapPlugin.Log.LogInfo("Assigned Progressive Price to item"); //TODO remove test logs.
+                    break;
+                case ItemFlags.NeverExclude:
+                    check.Price = usefulPrice;
+                    WolapPlugin.Log.LogInfo("Assigned Useful Price to item");//TODO remove test logs.
+                    break;
+                default:
+                    check.Price = defaultPrice;
+                    WolapPlugin.Log.LogInfo("Assigned Filler/Trap Price to item");//TODO remove test logs.
+                    break;
             }
 
             WolapPlugin.Log.LogInfo($"Retrieved item info for missed check [{check.Name}].");
