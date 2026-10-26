@@ -38617,7 +38617,7 @@
       "start": [
         [
           "if",
-          "hasflag(randomencounters_d)==3"
+          "hasflag(randomencounters_d)>2 && !hasflag(gotponyringcheck)"
         ],
         [
           "goto",
@@ -57024,6 +57024,10 @@
         [
           "customcommand",
           "checklocation,Random Encounter (Region D) - 3rd Encounter"
+        ],
+        [
+          "addflag",
+          "gotponyringcheck"
         ],
         [
           "option",

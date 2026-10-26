@@ -1,5 +1,58 @@
 # Tells PowerShell if anything Errors to stop running the code
 $ErrorActionPreference = "Stop"
+
+
+# Load .NET ZIP compression libraries
+Add-Type -AssemblyName System.IO.Compression
+Add-Type -AssemblyName System.IO.Compression.FileSystem
+
+# Creates ZIP archives with Linux-compatible forward-slash paths
+function New-PortableZip {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$SourceDirectory,
+
+        [Parameter(Mandatory = $true)]
+        [string]$DestinationZip
+    )
+
+    # Get the full path of the folder we want to package
+    $sourceRoot = (Resolve-Path -LiteralPath $SourceDirectory).ProviderPath
+
+    # Create the ZIP archive
+    $archive = [System.IO.Compression.ZipFile]::Open(
+        $DestinationZip,
+        [System.IO.Compression.ZipArchiveMode]::Create
+    )
+
+    try {
+        # Collect all files within the source directory
+        $files = Get-ChildItem -LiteralPath $sourceRoot -File -Recurse -Force
+
+        foreach ($file in $files) {
+            # Get the file path relative to the source directory
+            $relativePath = $file.FullName.Substring($sourceRoot.Length)
+            $relativePath = $relativePath.TrimStart([char]'\', [char]'/')
+
+            # ZIP entry names must use forward slashes
+            $entryName = $relativePath.Replace('\', '/')
+
+            # Add the file to the archive
+            [void][System.IO.Compression.ZipFileExtensions]::CreateEntryFromFile(
+                $archive,
+                $file.FullName,
+                $entryName,
+                [System.IO.Compression.CompressionLevel]::Optimal
+            )
+        }
+    }
+    finally {
+        # Close the ZIP, including when an error occurs
+        $archive.Dispose()
+    }
+}
+
+
 # Folder conatining this packaging script
 $packagerRoot = $PSScriptRoot
 # Root folder of the WOLAP Repository
@@ -327,11 +380,10 @@ if (Test-Path $finalZipPath) {
     Remove-Item -Path $finalZipPath -Force
 }
 
-# Compress the CONTENTS of staging, not the staging folder itself
-Compress-Archive `
-    -Path (Join-Path $stagingRoot "*") `
-    -DestinationPath $finalZipPath `
-    -CompressionLevel Optimal
+
+# Compress staging files with portable ZIP entry paths
+New-PortableZip -SourceDirectory $stagingRoot -DestinationZip $finalZipPath
+
 
 if (-not (Test-Path $finalZipPath)) {
     throw "Thunderstore package was not created at $finalZipPath"
@@ -403,10 +455,10 @@ if (Test-Path $manualZipPath) {
     Remove-Item -Path $manualZipPath -Force
 }
 
-Compress-Archive `
-    -Path (Join-Path $manualStageRoot "*") `
-    -DestinationPath $manualZipPath `
-    -CompressionLevel Optimal
+
+# Create manual-install package with portable ZIP entry paths
+New-PortableZip -SourceDirectory $manualStageRoot -DestinationZip $manualZipPath
+
 
 if (-not (Test-Path $manualZipPath)) {
     throw "Manual-install package was not created at $manualZipPath"
