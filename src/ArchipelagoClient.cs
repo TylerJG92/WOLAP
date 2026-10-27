@@ -128,6 +128,29 @@ namespace WOLAP
                 port = newPort;
                 WolapPlugin.Log.LogInfo("Archipelago session created.");
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////// this whole block needs to be removed later
+                Session.Socket.SocketOpened += () => {
+                    WolapPlugin.Log.LogInfo("Socket Opened");
+                };
+                Session.Socket.SocketClosed += (reason) => {
+                    WolapPlugin.Log.LogWarning($"Socket Closed, Reason: {reason}");
+                };
+                Session.Socket.ErrorReceived += (e, message) => {
+                    WolapPlugin.Log.LogError($"Socket Error: {e}, Socket Error Message: {message}");
+                };
+                Session.Socket.PacketReceived += (packet) => {
+                    WolapPlugin.Log.LogInfo($"Received Packet: {packet.GetType().Name}");
+                };
+                Session.Socket.PacketsSent += (packet) => {
+                    foreach(var entry in packet){
+                        if(entry.GetType().Name == "ConnectPacket"){
+                            WolapPlugin.Log.LogInfo($"ConnectPacket sent");
+                            break;
+                        }
+                    }
+                };
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
                 Session.Items.ItemReceived += (receivedItemsHelper) => {
                     incomingItems.Enqueue(receivedItemsHelper.DequeueItem());
                 };
