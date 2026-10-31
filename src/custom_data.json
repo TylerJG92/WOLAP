@@ -36249,6 +36249,31 @@
       ]
     },
     "postalstation_papers4": {
+      "e": [
+        [
+          "if",
+          "!hasflag(postalstation_royletter)"
+        ],
+        [
+          "goto",
+          "letter"
+        ],
+        [
+          "if",
+          "!hasflag(paperstack4checksent)"
+        ],
+        [
+          "goto",
+          "letter"
+        ],
+        [
+          "cls"
+        ],
+        [
+          "say",
+          "Nothing else interesting."
+        ]
+      ],
       "letter": [
         [
           "cls"
@@ -36264,6 +36289,10 @@
         [
           "addflag",
           "postalstation_royletter"
+        ],
+        [
+          "addflag",
+          "paperstack4checksent"
         ],
         [
           "customcommand",
