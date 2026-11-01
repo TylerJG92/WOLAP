@@ -273,7 +273,7 @@ namespace WOLAP
             List<string> dirtwaterShopIDs = new List<string>
             {
                 "bookstore",
-                "leatherman",
+                "tanner",
                 "tonysboots",
                 "curiosity",
             };
@@ -323,7 +323,7 @@ namespace WOLAP
             {
                 {"bookstore","alexandria"},
                 {"tonysboots","tony"},
-                {"leatherman","grady"},
+                {"tanner","grady"},
                 {"curiosity", "murray"},
             };
             flagPrefixCheck.TryGetValue(shopID, out var flagPrefix);
