@@ -1222,7 +1222,7 @@
       "source": "Archipelago item pool"
     },
     "elv_fuse": {
-      "name": "El Vibrato cylinder (Lost Dutch Oven Mine)",
+      "name": "El Vibrato cylinder (LDOM)",
       "slot": "quest",
       "enchantments": [],
       "category": "miscellaneous",
@@ -1236,7 +1236,7 @@
       "stackable": 1.0
     },
     "elv_fuse2": {
-      "name": "El Vibrato cylinder (Curious Flat Plain)",
+      "name": "El Vibrato cylinder (CFP)",
       "slot": "quest",
       "enchantments": [],
       "category": "miscellaneous",
@@ -1250,7 +1250,7 @@
       "stackable": 1.0
     },
     "elv_fuse3": {
-      "name": "El Vibrato cylinder (Curious False Mountain)",
+      "name": "El Vibrato cylinder (CFM)",
       "slot": "quest",
       "enchantments": [],
       "category": "miscellaneous",
@@ -19066,11 +19066,37 @@
           "There's a single pie inside, shot to pieces."
         ],
         [
+          "sayoption",
+          "getcheck",
+          "Give it to me!"
+        ],
+        [
+          "sayoption",
+          "done",
+          "I'll come back for it later."
+        ]
+      ],
+      "getcheck": [
+        [
+          "say",
+          "You grab the bullet riddled pie"
+        ],
+        [
+          "markused"
+        ],
+        [
           "customcommand",
           "checklocation,Fort Cowardice Back Office - Pie Safe"
         ],
         [
-          "markused"
+          "sayoption",
+          "done",
+          "Nice!"
+        ]
+      ],
+      "done": [
+        [
+          "exit"
         ]
       ]
     },
@@ -23123,6 +23149,14 @@
         [
           "goto",
           "welcome"
+        ],
+        [
+          "if",
+          "!hasitem(quest_g1tempvisit) && hasflag(gwloggingquestprogression)==2"
+        ],
+        [
+          "goto",
+          "first"
         ],
         [
           "say",
@@ -36223,6 +36257,31 @@
       ]
     },
     "postalstation_papers4": {
+      "e": [
+        [
+          "if",
+          "!hasflag(postalstation_royletter)"
+        ],
+        [
+          "goto",
+          "letter"
+        ],
+        [
+          "if",
+          "!hasflag(paperstack4checksent)"
+        ],
+        [
+          "goto",
+          "letter"
+        ],
+        [
+          "cls"
+        ],
+        [
+          "say",
+          "Nothing else interesting."
+        ]
+      ],
       "letter": [
         [
           "cls"
@@ -36238,6 +36297,10 @@
         [
           "addflag",
           "postalstation_royletter"
+        ],
+        [
+          "addflag",
+          "paperstack4checksent"
         ],
         [
           "customcommand",
