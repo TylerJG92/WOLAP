@@ -1,7 +1,7 @@
 # Changelog
 
 # v0.3.6
-All save files and APWorlds generated with v0.3.0 remain compatible with WOLAP v0.3.5 and APWorld v0.3.2. No regeneration is required to continue playing, but the corrected generation logic will only apply to newly generated APWorld seeds under APWorld v0.3.2 (from v0.3.0)
+All save files and APWorlds generated with v0.3.0 remain compatible with WOLAP v0.3.6 and APWorld v0.3.2. No regeneration is required to continue playing, but the corrected generation logic will only apply to newly generated APWorld seeds under APWorld v0.3.2 (from v0.3.0)
 
 ## Client Mod Changes
 * Fixed a bug with Dirtwater shop hinting where `Dirtwater (Grady's Fine Leather Goods) - Bonus Item` was still hinting early
