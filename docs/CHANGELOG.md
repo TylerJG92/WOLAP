@@ -6,6 +6,7 @@
 * Shortened the `El Vibrato Cylinder` location names to abbriviations to avoid truncation
 * Fixed a bug where if the `Letter to Roy` is given to Roy before going to the postal station, it locks the player out of the first paperstack's check
 * Added a fallback in one of the ghostwood quests for if the player is at logging quest progression 2 and dosent have the visitor permit.
+* Added missed shop price Variety that is based now on AP Item flags.
 
 ## AP World Changes:
 
