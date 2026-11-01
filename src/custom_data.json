@@ -23151,6 +23151,14 @@
           "welcome"
         ],
         [
+          "if",
+          "!hasitem(quest_g1tempvisit) && hasflag(gwloggingquestprogression)==2"
+        ],
+        [
+          "goto",
+          "first"
+        ],
+        [
           "say",
           "ghosttown1_knock4 @ start: You shouldnt be seeing this, send a screenshot to the mod developer"
         ],
