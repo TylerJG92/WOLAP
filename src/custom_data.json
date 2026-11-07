@@ -30993,6 +30993,49 @@
         ]
       ]
     },
+    "mapdiscovery_c": {
+      "discovermine3": [
+        [
+          "say",
+          "A new disgusting odor reaches your nose you have yet to smell. You look towards the scent and see a mine enterence."
+        ],
+        [
+          "mapunlock",
+          "mine3,Lost Dutch Oven Mine"
+        ],
+        [
+          "addstate",
+          "maplocs,=countflags(map_)"
+        ],
+        [
+          "if",
+          "$maplocs$>36 && $maplocs$<40"
+        ],
+        [
+          "giveachievement",
+          "ach_37maplocs"
+        ],
+        [
+          "option",
+          "gotomine3",
+          "Go there now"
+        ],
+        [
+          "option",
+          "done",
+          "Keep going where you're going"
+        ]
+      ],
+      "gotomine3": [
+        [
+          "waa",
+          "mine3"
+        ],
+        [
+          "exit"
+        ]
+      ]
+    },
     "medicineshow_bookshelf": {
       "e": [
         [

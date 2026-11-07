@@ -8,6 +8,7 @@
 * Added a fallback in one of the ghostwood quests for if the player is at logging quest progression 2 and dosent have the visitor permit.
 * Added missed shop price Variety that is based now on AP Item flags.
 * Added Can of Kerosene to Dirtwater Mercantile
+* Added ability to find `Lost Dutch Oven Mine` from Wandering Region C
 
 ## AP World Changes:
 
