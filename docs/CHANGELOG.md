@@ -9,6 +9,7 @@
 * Added missed shop price Variety that is based now on AP Item flags.
 * Added Can of Kerosene to Dirtwater Mercantile
 * Added ability to find `Lost Dutch Oven Mine` from Wandering Region C
+* Fixed a bug that still allowed pete (and also random map unlock's sometimes) to override the `Region D - 3rd encounter` check location
 
 ## AP World Changes:
 
