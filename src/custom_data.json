@@ -16987,6 +16987,10 @@
           "dirtwatergeneral,oilcan,2"
         ],
         [
+          "addnpcstoreitem",
+          "dirtwatergeneral,combat_kerosene,4"
+        ],
+        [
           "if",
           "gary"
         ],

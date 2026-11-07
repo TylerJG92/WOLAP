@@ -7,6 +7,7 @@
 * Fixed a bug where if the `Letter to Roy` is given to Roy before going to the postal station, it locks the player out of the first paperstack's check
 * Added a fallback in one of the ghostwood quests for if the player is at logging quest progression 2 and dosent have the visitor permit.
 * Added missed shop price Variety that is based now on AP Item flags.
+* Added Can of Kerosene to Dirtwater Mercantile
 
 ## AP World Changes:
 
@@ -16,3 +17,5 @@
 * Removed Item `PotempkinRemains Of The Potemkin Gang` from item pool as the reason it was there in the first place was proven wrong.
 * Updated `El Vibrato Fluid x5` to progressive and made the vending machine checks require them to be given to the player to become in logic.
 * Reverted access rule for `Tony's Boots` to no longer look at the mushroom map to see if it is in logic.
+* Removed Logic requirement for `Deepest Delve Mine` that requires `Can of Kerosene`
+* Changed `Can of Kerosene` from a progression item to filler
