@@ -20,4 +20,5 @@
 * Reverted access rule for `Tony's Boots` to no longer look at the mushroom map to see if it is in logic.
 * Removed Logic requirement for `Deepest Delve Mine` that requires `Can of Kerosene`
 * Changed `Can of Kerosene` from a progression item to filler
-* Added `Cheap Cigar X3` to loot pool for extra stench resistance/quest progressions
+* Updated `Cheap Cigar` to `Cheap Cigar X3` for extra stench resistance/quest progressions
+* Updated `Lost Dutch Oven Mine`'s Region access for better logic

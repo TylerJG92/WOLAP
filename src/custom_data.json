@@ -38161,6 +38161,14 @@
         ],
         [
           "if",
+          "matchstring(@regionto@,d) && hasflag(randomencounters_d)==3"
+        ],
+        [
+          "runscript",
+          "randomevent_d"
+        ],
+        [
+          "if",
           "pete && !matchstring(@regionto@,a) && hasflag(randomencounters_@regionto@)>rand(1,2) && !hasflag(re_petelevelup_@regionto@)"
         ],
         [
@@ -38735,7 +38743,7 @@
       "start": [
         [
           "if",
-          "hasflag(randomencounters_d)>2 && !hasflag(gotponyringcheck)"
+          "hasflag(randomencounters_d)==3"
         ],
         [
           "goto",
