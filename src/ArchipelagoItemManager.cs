@@ -435,6 +435,7 @@ namespace WOLAP
             new ArchipelagoItem("Wobbly Billiards Cue", ["weapon_wobblycue"], isDlc: true),
             new ArchipelagoItem("Kellogg Grain Flakes", ["food_kelloggflakes"]),
             new ArchipelagoItem("Cheap Cigar", ["potion_cheapcigar"], isDlc: true),
+            new ArchipelagoItem("Cheap Cigar X3", ["potion_cheapcigar"], [3], isDlc: true),
             new ArchipelagoItem("Can Of Kerosene", ["combat_kerosene"]),
             new ArchipelagoItem("1878 Nautical Almanac", ["book_almanac"], isDlc: true),
             new ArchipelagoItem("Advanced Beancraft", ["book_beanslinger"]),
