@@ -206,6 +206,16 @@ namespace WOLAP
                 case "El Vibrato Headband":
                     Store.AddStockItem("dirtwatergeneral", ModelManager.GetItem(item.IDs[0]), -1, 500);
                     goto default;
+                case "5000 Meat":
+                case "1000 Meat":
+                case "100 Meat":
+                    string [] val = itemName.Split([' ']);
+                    int.TryParse(val[0], out int value);
+                    WolapPlugin.UIManager.RcvItemQueue.Enqueue(new UIManager.ReceivedID(item.IDs[0], 1));
+                    MPlayer.instance.AddMeat(value);
+                    SoundPlayer.instance.PlayUISound(UISound.STORESELLITEM);
+                    WolapPlugin.Log.LogInfo($"Adding {value} Meat to player's account.");
+                    return true;
                 default:
                     return GiveItem(item);
             }
@@ -819,7 +829,10 @@ namespace WOLAP
             new ArchipelagoItem("Lactarius Dirtihippica mushroom x4", ["food_shroom1"], [4]),
             new ArchipelagoItem("Silver-Toothed Skull", ["quest_mine4skull"]),
             new ArchipelagoItem("El Vibrato Food Cube", ["food_elv"]),
-            new ArchipelagoItem("El Vibrato Rum x3",["booze_elv"], [3])
+            new ArchipelagoItem("El Vibrato Rum x3",["booze_elv"], [3]),
+            new ArchipelagoItem("5000 Meat",["ap_currency1"]),
+            new ArchipelagoItem("1000 Meat", ["ap_currency2"]),
+            new ArchipelagoItem("100 Meat", ["ap_currency3"])
         };
     }
 }

@@ -1184,6 +1184,36 @@
   "emitters": {},
   "projectiles": {},
   "items": {
+    "ap_currency1": {
+      "name": "5,000 Meat",
+      "slot": "nothing",
+      "category": "miscellaneous",
+      "description": "5,000 Meat given to the player to do whatever they want with it",
+      "icon": "icon_archipelagopow",
+      "sellvalue": 1.0,
+      "region": "Various",
+      "source": "Currency gained from Archipelago Randomizer"
+    },
+    "ap_currency2": {
+      "name": "1,000 Meat",
+      "slot": "nothing",
+      "category": "miscellaneous",
+      "description": "1,000 Meat given to the player to do whatever they want with it",
+      "icon": "icon_archipelagopow",
+      "sellvalue": 1.0,
+      "region": "Various",
+      "source": "Currency gained from Archipelago Randomizer"
+    },
+    "ap_currency3": {
+      "name": "100 Meat",
+      "slot": "nothing",
+      "category": "miscellaneous",
+      "description": "100 Meat given to the player to do whatever they want with it",
+      "icon": "icon_archipelagopow",
+      "sellvalue": 1.0,
+      "region": "Various",
+      "source": "Currency gained from Archipelago Randomizer"
+    },
     "archipelago_basebox": {
       "name": "Placeholder archipelago item (vague info about multiworld item type here?)",
       "slot": "nothing",
