@@ -14,6 +14,7 @@
 * Changed all 3 `El Vibrato Cylinder` items into a single `Progressive El Vibrato Cylinder` item
 * Changed all items for Curly's Meat Quest into a single `Progressive Curly's Meat` item so player gets them in order
 * Changed all Jellybean items (excluding the Honey Jellybean) into a single `Progressive Jellybean` Item so player gets them in order
+* Added the code nessecary for the player to be granted the 3 new currency items `5,000 Meat`, `1,000 Meat` and `100 Meat`
 
 ## AP World Changes:
 
@@ -32,3 +33,7 @@
 * Changed all 3 `El Vibrato Cylinder` items into a single `Progressive El Vibrato Cylinder` item for smoother logic.
 * Changed all items for Curly's Meat Quest into a single `Progressive Curly's Meat` item so player gets them in order
 * Changed all Jellybean items (excluding the Honey Jellybean) into a single `Progressive Jellybean` Item so player gets them in order
+* Added 3 new currency items to the pool:
+    * `5,000 Meat` is a Deprioritized Progression item, there will be 2 in the pool.
+    * `1,000 Meat` is a Useful item, there will always be 3 in the pool
+    * `100 Meat` is a filler item, there will always be 5 in the pool but can randomize extras if there is space to do so.
