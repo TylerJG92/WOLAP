@@ -29,9 +29,17 @@ namespace WOLAP
             new ArchipelagoItem("El Vibrato Device", ["elv_batterybox"]),
         ];
 
+        private int elVibCylFound;
+        private ArchipelagoItem[] elVibratoCylinders = [
+            new ArchipelagoItem("El Vibrato Cylinder (Lost Dutch Oven Mine)", ["elv_fuse"]),
+            new ArchipelagoItem("El Vibrato Cylinder (Curious Flat Plain)", ["elv_fuse2"]),
+            new ArchipelagoItem("El Vibrato Cylinder (Curious False Mountain)", ["elv_fuse3"]),
+        ];
+
         public ArchipelagoItemManager() {
             nexmexFound = GetSavedNexMexCount();
             elVibDevFound = GetSavedElVibDevCount();
+            elVibCylFound = GetSavedElVibCylCount();
         }
 
         private int GetSavedNexMexCount()
@@ -62,10 +70,25 @@ namespace WOLAP
             else return 0;
         }
 
+        private int GetSavedElVibCylCount()
+        {
+            if (MPlayer.instance.data.TryGetValue(Constants.elVibCylinderCountFlag, out string value))
+            {
+                if (Int32.TryParse(value, out int val)) return val;
+                else
+                {
+                    WolapPlugin.Log.LogError($"Could not parse the {Constants.elVibCylinderCountFlag} flag count to an int.");
+                    return 0;
+                }
+            }
+            else return 0;
+        }
+
         public void ResetItemCounts()
         {
             nexmexFound = GetSavedNexMexCount();
             elVibDevFound = GetSavedElVibDevCount();
+            elVibCylFound = GetSavedElVibCylCount();
         }
 
         public bool ProcessItem(string itemName)
@@ -89,6 +112,11 @@ namespace WOLAP
                     elVibDevFound++;
                     MPlayer.instance.data[Constants.elVibDevCountFlag] = elVibDevFound.ToString();
                     return devResult;
+                case "Progressive El Vibrato Cylinder":
+                    bool cylResult = GiveItem(elVibratoCylinders[elVibCylFound]);
+                    elVibCylFound++;
+                    MPlayer.instance.data[Constants.elVibCylinderCountFlag] = elVibCylFound.ToString();
+                    return cylResult;
                 case "Ghost Coach To Gun Manor":
                     WolapPlugin.UIManager.RcvItemQueue.Enqueue(new UIManager.ReceivedID(item.IDs[0], 1));
                     WolapPlugin.Log.LogInfo("Enabling Gun Manor coach in Dirtwater.");
@@ -541,9 +569,7 @@ namespace WOLAP
             new ArchipelagoItem("Dining Car Key", ["quest_trainkey3"]),
             new ArchipelagoItem("Discipline Slip", ["quest_necrotoken4"]),
             new ArchipelagoItem("El Vibrato Cross", ["quest_elvcross"]),
-            new ArchipelagoItem("El Vibrato Cylinder (Lost Dutch Oven Mine)", ["elv_fuse"]),
-            new ArchipelagoItem("El Vibrato Cylinder (Curious Flat Plain)", ["elv_fuse2"]),
-            new ArchipelagoItem("El Vibrato Cylinder (Curious False Mountain)", ["elv_fuse3"]),
+            new ArchipelagoItem("Progressive El Vibrato Cylinder", []),
             new ArchipelagoItem("Progressive El Vibrato Device",[]),
             new ArchipelagoItem("El Vibrato Model Bridge", ["elv_bridgebeacon"]),
             new ArchipelagoItem("El Vibrato Rod", ["elv_detector"]),
