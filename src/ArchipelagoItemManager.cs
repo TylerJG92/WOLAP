@@ -22,8 +22,16 @@ namespace WOLAP
             new ArchipelagoItem("Dark Forbidden Secrets Of Nex-Mex", ["book_nexmex7"])
         ];
 
+        private int elVibDevFound;
+        private ArchipelagoItem[] elVibratoDevices = [
+            new ArchipelagoItem("Strange Stone Arrow", ["elv_introitem"]),
+            new ArchipelagoItem("El Vibrato Transponder", ["elv_transponder"]),
+            new ArchipelagoItem("El Vibrato Device", ["elv_batterybox"]),
+        ];
+
         public ArchipelagoItemManager() {
             nexmexFound = GetSavedNexMexCount();
+            elVibDevFound = GetSavedElVibDevCount();
         }
 
         private int GetSavedNexMexCount()
@@ -40,9 +48,24 @@ namespace WOLAP
             else return 0;
         }
 
+        private int GetSavedElVibDevCount()
+        {
+            if (MPlayer.instance.data.TryGetValue(Constants.elVibDevCountFlag, out string value))
+            {
+                if (Int32.TryParse(value, out int val)) return val;
+                else
+                {
+                    WolapPlugin.Log.LogError($"Could not parse the {Constants.elVibDevCountFlag} flag count to an int.");
+                    return 0;
+                }
+            }
+            else return 0;
+        }
+
         public void ResetItemCounts()
         {
             nexmexFound = GetSavedNexMexCount();
+            elVibDevFound = GetSavedElVibDevCount();
         }
 
         public bool ProcessItem(string itemName)
@@ -57,10 +80,15 @@ namespace WOLAP
             {
                 case "Progressive Nex-Mex Skillbook":
                     //Might have an AP setting to randomize order later
-                    bool result = GiveItem(nexmexBooks[nexmexFound]);
+                    bool bookResult = GiveItem(nexmexBooks[nexmexFound]);
                     nexmexFound++;
                     MPlayer.instance.data[Constants.NexmexCountFlag] = nexmexFound.ToString();
-                    return result;
+                    return bookResult;
+                case "Progressive El Vibrato Device":
+                    bool devResult = GiveItem(elVibratoDevices[elVibDevFound]);
+                    elVibDevFound++;
+                    MPlayer.instance.data[Constants.elVibDevCountFlag] = elVibDevFound.ToString();
+                    return devResult;
                 case "Ghost Coach To Gun Manor":
                     WolapPlugin.UIManager.RcvItemQueue.Enqueue(new UIManager.ReceivedID(item.IDs[0], 1));
                     WolapPlugin.Log.LogInfo("Enabling Gun Manor coach in Dirtwater.");
@@ -516,10 +544,9 @@ namespace WOLAP
             new ArchipelagoItem("El Vibrato Cylinder (Lost Dutch Oven Mine)", ["elv_fuse"]),
             new ArchipelagoItem("El Vibrato Cylinder (Curious Flat Plain)", ["elv_fuse2"]),
             new ArchipelagoItem("El Vibrato Cylinder (Curious False Mountain)", ["elv_fuse3"]),
-            new ArchipelagoItem("El Vibrato Device", ["elv_batterybox"]),
+            new ArchipelagoItem("Progressive El Vibrato Device",[]),
             new ArchipelagoItem("El Vibrato Model Bridge", ["elv_bridgebeacon"]),
             new ArchipelagoItem("El Vibrato Rod", ["elv_detector"]),
-            new ArchipelagoItem("El Vibrato Transponder", ["elv_transponder"]),
             new ArchipelagoItem("Elevator Button", ["quest_housebutton"], isDlc: true),
             new ArchipelagoItem("Emergency Form Transfer Envelope", ["quest_redenvelope"]),
             new ArchipelagoItem("Fort Treason Ballistics Chart", ["quest_ballisticschart"]),
@@ -597,7 +624,6 @@ namespace WOLAP
             new ArchipelagoItem("Spooky Lullaby Sheet Music", ["quest_housemusic2"], isDlc: true),
             new ArchipelagoItem("St. Beefus' Finger", ["quest_saint1relic"]),
             new ArchipelagoItem("Sticky Note", ["quest_necrotoken5"]),
-            new ArchipelagoItem("Strange Stone Arrow", ["elv_introitem"]),
             new ArchipelagoItem("Syrup Tap", ["quest_goblin3tap"]),
             new ArchipelagoItem("Tannery Back Door Key", ["quest_tannerybackdoorkey"]),
             new ArchipelagoItem("Tannery St. Rage Key", ["quest_tanneryshedkey"]),
