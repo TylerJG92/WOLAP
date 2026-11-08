@@ -36,10 +36,29 @@ namespace WOLAP
             new ArchipelagoItem("El Vibrato Cylinder (Curious False Mountain)", ["elv_fuse3"]),
         ];
 
+        private int curlyFound;
+        private ArchipelagoItem[] curlyQuestItems = [
+            new ArchipelagoItem("Curly's Compass", ["quest_curlycompass"]),
+            new ArchipelagoItem("Curly's Auto-Gyrotheodolite", ["quest_curlymachine"]),
+            new ArchipelagoItem("Left Half Of Curly's Map", ["quest_curlymap1"]),
+            new ArchipelagoItem("Halloway's Pin", ["quest_hallowaykeepsake"]),
+            new ArchipelagoItem("Right Half Of Curly's Map", ["quest_curlymap2"]),
+            new ArchipelagoItem("Curly's Strongbox", ["quest_curlysbox"]),
+        ];
+
+        private int jellyFound;
+        private ArchipelagoItem[] jellybeanItems = [
+            new ArchipelagoItem("Mint Mint Jellybeans", ["quest_jellybeans1"]),
+            new ArchipelagoItem("Green Green Apple Jellybeans", ["quest_jellybeans2"]),
+            new ArchipelagoItem("Lime Lime Jellybeans", ["quest_jellybeans3"]),
+        ];
+
         public ArchipelagoItemManager() {
             nexmexFound = GetSavedNexMexCount();
             elVibDevFound = GetSavedElVibDevCount();
             elVibCylFound = GetSavedElVibCylCount();
+            curlyFound = GetSavedCurlyCount();
+            jellyFound = GetJellybeanCount();
         }
 
         private int GetSavedNexMexCount()
@@ -84,11 +103,41 @@ namespace WOLAP
             else return 0;
         }
 
+        private int GetSavedCurlyCount()
+        {
+            if (MPlayer.instance.data.TryGetValue(Constants.CurlyQuestCountFlag, out string value))
+            {
+                if (Int32.TryParse(value, out int val)) return val;
+                else
+                {
+                    WolapPlugin.Log.LogError($"Could not parse the {Constants.CurlyQuestCountFlag} flag count to an int.");
+                    return 0;
+                }
+            }
+            else return 0;
+        }
+
+        private int GetJellybeanCount()
+        {
+            if (MPlayer.instance.data.TryGetValue(Constants.JellybeanCountFlag, out string value))
+            {
+                if (Int32.TryParse(value, out int val)) return val;
+                else
+                {
+                    WolapPlugin.Log.LogError($"Could not parse the {Constants.JellybeanCountFlag} flag count to an int.");
+                    return 0;
+                }
+            }
+            else return 0;
+        }
+
         public void ResetItemCounts()
         {
             nexmexFound = GetSavedNexMexCount();
             elVibDevFound = GetSavedElVibDevCount();
             elVibCylFound = GetSavedElVibCylCount();
+            curlyFound = GetSavedCurlyCount();
+            jellyFound = GetJellybeanCount();
         }
 
         public bool ProcessItem(string itemName)
@@ -117,6 +166,16 @@ namespace WOLAP
                     elVibCylFound++;
                     MPlayer.instance.data[Constants.elVibCylinderCountFlag] = elVibCylFound.ToString();
                     return cylResult;
+                case "Progressive Curly's Meat":
+                    bool curResult = GiveItem(curlyQuestItems[curlyFound]);
+                    curlyFound++;
+                    MPlayer.instance.data[Constants.CurlyQuestCountFlag] = curlyFound.ToString();
+                    return curResult;
+                case "Progressive Jellybean":
+                    bool jelResult = GiveItem(jellybeanItems[jellyFound]);
+                    jellyFound++;
+                    MPlayer.instance.data[Constants.JellybeanCountFlag] = jellyFound.ToString();
+                    return jelResult;
                 case "Ghost Coach To Gun Manor":
                     WolapPlugin.UIManager.RcvItemQueue.Enqueue(new UIManager.ReceivedID(item.IDs[0], 1));
                     WolapPlugin.Log.LogInfo("Enabling Gun Manor coach in Dirtwater.");
@@ -193,7 +252,6 @@ namespace WOLAP
             new ArchipelagoItem("Golden Scarab Pin", ["lapel_scarab"]),
             new ArchipelagoItem("Gothic Cameo", ["lapel_blackcameo"]),
             new ArchipelagoItem("Greased Bandolier", ["lapel_tanner_cook"]),
-            new ArchipelagoItem("Halloway's Pin", ["quest_hallowaykeepsake"]),
             new ArchipelagoItem("Lucky Marigold", ["lapel_luckyflower"]),
             new ArchipelagoItem("Medal Of Adequacy", ["lapel_adequacy"]),
             new ArchipelagoItem("Necromancers, I Hate 'Em Button", ["lapel_ihatenecro"]),
@@ -559,9 +617,7 @@ namespace WOLAP
             new ArchipelagoItem("Comedy Flier", ["quest_wascoflier"]),
             new ArchipelagoItem("Creepy Whispering Stone", ["quest_whisperstone"]),
             new ArchipelagoItem("Cryptic Note About Ley Lines", ["quest_necrotoken2"]),
-            new ArchipelagoItem("Curly's Auto-Gyrotheodolite", ["quest_curlymachine"]),
-            new ArchipelagoItem("Curly's Compass", ["quest_curlycompass"]),
-            new ArchipelagoItem("Curly's Strongbox", ["quest_curlysbox"]),
+            new ArchipelagoItem("Progressive Curly's Meat",[]),
             new ArchipelagoItem("Dave's Secret Sauce Recipe", ["quest_secretsauce"]),
             new ArchipelagoItem("Demi-Culverin Cannonball", ["cannonball"]),
             new ArchipelagoItem("Desert Ape Skeleton", ["quest_animalskeleton3"]),
@@ -587,7 +643,7 @@ namespace WOLAP
             new ArchipelagoItem("Glass Eye", ["quest_houseglasseye"]),
             new ArchipelagoItem("Goblet Of Blood", ["quest_gracegoblet"]),
             new ArchipelagoItem("Gore-Splattered Scroll", ["quest_daveyardrecipe"]),
-            new ArchipelagoItem("Green Green Apple Jellybeans", ["quest_jellybeans2"]),
+            new ArchipelagoItem("Progressive Jellybean",[]),
             new ArchipelagoItem("Gun Manor Carriage House Key", ["quest_carriagehousekey"], isDlc: true),
             new ArchipelagoItem("Gun Manor Guest Room Key", ["quest_houseairbnbkey"], isDlc: true),
             new ArchipelagoItem("Gun Manor Photo", ["quest_housephoto"], isDlc: true),
@@ -607,14 +663,11 @@ namespace WOLAP
             new ArchipelagoItem("Key To P.O. Box 114", ["quest_fort3key"]),
             new ArchipelagoItem("Key To P.O. Box 441", ["quest_chefkey"]),
             new ArchipelagoItem("Key-Shaped El Vibrato Device", ["elv_timekey"]),
-            new ArchipelagoItem("Left Half Of Curly's Map", ["quest_curlymap1"]),
             new ArchipelagoItem("Letter To Roy Bean", ["quest_royletter"]),
-            new ArchipelagoItem("Lime Lime Jellybeans", ["quest_jellybeans3"]),
             new ArchipelagoItem("List Of Buffalo Bones", ["quest_cemetery6buffalolist"]),
             new ArchipelagoItem("Lucky Cap", ["quest_luckycap"]),
             new ArchipelagoItem("Marching Orders", ["breadcrumb_fort2"]),
             new ArchipelagoItem("Mary Stearns' Diary", ["quest_marydiary"]),
-            new ArchipelagoItem("Mint Mint Jellybeans", ["quest_jellybeans1"]),
             new ArchipelagoItem("Mrs. Gun's Blueprint", ["quest_bestgunplan"], isDlc: true),
             new ArchipelagoItem("Mule Rental Contract", ["quest_mulecontract"]),
             new ArchipelagoItem("Mushroom Map", ["quest_shroommap"]),
@@ -634,7 +687,6 @@ namespace WOLAP
             new ArchipelagoItem("Pvt. Lemmon's Diary", ["quest_fort3diary1"]),
             new ArchipelagoItem("Pvt. Matthau's Diary", ["quest_fort3diary2"]),
             new ArchipelagoItem("Remains Of The Potemkin Gang", ["quest_bandit3remains"]),
-            new ArchipelagoItem("Right Half Of Curly's Map", ["quest_curlymap2"]),
             new ArchipelagoItem("Robe Receipt", ["quest_necrotoken1"]),
             new ArchipelagoItem("Santa Cortada's Skull", ["quest_saint2relic"]),
             new ArchipelagoItem("Saute Knife", ["quest_sauteeknife"]),
