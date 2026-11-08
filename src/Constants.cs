@@ -30,6 +30,14 @@ namespace WOLAP
 
         public const string NexmexCountFlag = "nexmex_books_found";
 
+        public const string elVibDevCountFlag = "el_Vibrato_Devices_found";
+
+        public const string elVibCylinderCountFlag = "el_Vibrato_Cylinders_found";
+
+        public const string CurlyQuestCountFlag = "curly_quest_items_found";
+
+        public const string JellybeanCountFlag = "jellybean_count_found";
+
         public const string StartingItemsEmptyFlag = "archipelago_start_inventory_empty";
         public const string StartingItemsGrantedFlag = "archipelago_start_inventory_granted";
         public const string SentGameCompletionFlag = "archipelago_game_complete";
