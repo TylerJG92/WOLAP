@@ -15,6 +15,8 @@
 * Changed all items for Curly's Meat Quest into a single `Progressive Curly's Meat` item so player gets them in order
 * Changed all Jellybean items (excluding the Honey Jellybean) into a single `Progressive Jellybean` Item so player gets them in order
 * Added the code nessecary for the player to be granted the 3 new currency items `5,000 Meat`, `1,000 Meat` and `100 Meat`
+* Added Shop Warning for when the player is about to sell an item that is used for progression or needed for checks
+* Added feature where items sold to Lloyd at the Missed shop in his bar get forwarded to the `Dirtwater Mercantile`store to keep the missed item shop decluttered. 
 
 ## AP World Changes:
 

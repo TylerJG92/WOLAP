@@ -70,6 +70,8 @@ namespace WOLAP
 
                 //Clear and rebuild the List for missed shop items that were forwarded
                 WolapPlugin.Archipelago.RebuildMissedCheckLocations();
+                //clear and rebuild the list of items to warn if players try to sell them based on yaml settings.
+                WolapPlugin.Archipelago.RebuildSellWarningIds();
             }
             else
             {

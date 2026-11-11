@@ -10,13 +10,15 @@ namespace WOLAP
         public string[] IDs { get; set; }
         public bool IsDLC { get; set; }
         public int[] Quantities { get; set; }
+        public bool SellWarning { get; set; }
 
-        public ArchipelagoItem(string name, string[] ids, int[] quantities = null, bool isDlc = false)
+        public ArchipelagoItem(string name, string[] ids, int[] quantities = null, bool isDlc = false, bool sellWarning = false)
         {
             this.Name = name;
             this.IDs = ids;
             this.Quantities = quantities == null ? [1] : quantities;
             this.IsDLC = isDlc;
+            this.SellWarning = sellWarning;
         }
     }
 }

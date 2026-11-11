@@ -250,6 +250,20 @@ namespace WOLAP
             }
         }
 
+        public void RebuildSellWarningIds()
+        {
+            SellWarningIds.Clear();
+
+            foreach(ArchipelagoItem item in ArchipelagoItemManager.ItemList.Concat(itemManager.NexmexBook.Concat(itemManager.CurlyQuest.Concat(itemManager.ElVibCyl.Concat(itemManager.ElVibDev.Concat(itemManager.JellybeanItems))))))
+            {
+                if (item.SellWarning)
+                {
+                    var idArray = item.IDs;
+                    foreach(string id in idArray){SellWarningIds.Add(id);}
+                }
+            }
+        }
+
         private bool IsInItemGrantableState()
         {
             string name = WestOfLoathing.instance.state_machine.state.name;
@@ -507,6 +521,11 @@ namespace WOLAP
 
         //this is a list that has been created just for the missedchecks to be placed to make the hint handler be able to use it better.
         public static readonly List<ShopCheckLocation> MissedCheckLocations = new List<ShopCheckLocation> 
+        {
+            
+        };
+
+        public static readonly List<string> SellWarningIds = new List<string>
         {
             
         };
