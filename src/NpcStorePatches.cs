@@ -106,6 +106,10 @@ namespace WOLAP
             List<int> itemsToRemove = null;
             if(current.id == "dirtwaterbartender") //booze_dirtwaterbourbon and all archipelago items are the only thing staying in the shop, all others copy and send to
             {                                      //dirtwater mercantile and remove from dirtwaterbartender.
+
+                var flags = MPlayer.instance.data;
+                if(!flags.ContainsKey("itemsoldtolloyd")){flags.Add("itemsoldtolloyd", "1");} //just to give the bartender an extra line of dialog to explain this to the player
+
                 var shopItems = current.items;
 
                 foreach(var itemKeyPair in shopItems)

@@ -16291,6 +16291,24 @@
         ],
         [
           "if",
+          "hasflag(itemsoldtolloyd)==1"
+        ],
+        [
+          "sayoption",
+          "whereitems",
+          "I sold you something not too long ago, where did it go?"
+        ],
+        [
+          "if",
+          "hasflag(itemsoldtolloyd)==2"
+        ],
+        [
+          "sayoption",
+          "whereitems2",
+          "I sold you something not too long ago, where did it go?"
+        ],
+        [
+          "if",
           "hasflag(anymissedcheck) && hasflag(apmissedcheckstoreissetup)==1"
         ],
         [
@@ -16424,6 +16442,40 @@
           "sayoption",
           "done",
           "I guess that makes sense."
+        ]
+      ],
+      "whereitems": [
+        [
+          "leftsay",
+          "$lastoption$"
+        ],
+        [
+          "rightsay",
+          "I thought you didnt want it. I will sell anything you sell me to the Dirtwater Mercantile next door"
+        ],
+        [
+          "addflag",
+          "itemsoldtolloyd,2"
+        ],
+        [
+          "sayoption",
+          "done",
+          "Ah, ok then."
+        ]
+      ],
+      "whereitems2": [
+        [
+          "leftsay",
+          "$lastoption$"
+        ],
+        [
+          "rightsay",
+          "I already told you. I'm not a General Goods store. I sell drinks. I sold what you have sold me to the Dirtwater Mercantile."
+        ],
+        [
+          "sayoption",
+          "done",
+          "Oh right."
         ]
       ],
       "launch": [
