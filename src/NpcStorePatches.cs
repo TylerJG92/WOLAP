@@ -41,7 +41,6 @@ namespace WOLAP
             }
             else
             {
-                
                 bool sellWarning = ArchipelagoClient.SellWarningIds.Contains(item.id);
 		        if (sellWarning)
 		        {
@@ -76,6 +75,61 @@ namespace WOLAP
                     }
 		        }
 		        return true;
+            }
+        }
+
+        private static bool CloseCalled;
+
+        [HarmonyPatch(typeof(NpcStore), "Close")] //needed for normal ui close shop method 
+        [HarmonyPrefix]
+        static void ClosePatch()
+        {
+            CloseCalled = true;
+            DirtwaterBartenderItemTransfer();
+        }
+
+        [HarmonyPatch(typeof(StoreState), "OnPop")] //needed to catch escape to close shops
+        [HarmonyPrefix]
+        static void OnPopPatch()
+        {
+            if (!CloseCalled)
+            {
+                DirtwaterBartenderItemTransfer();
+            }
+            CloseCalled = false;
+        }
+
+        private static void DirtwaterBartenderItemTransfer()
+        {
+            
+            Store current = Store.current;
+            List<int> itemsToRemove = null;
+            if(current.id == "dirtwaterbartender") //booze_dirtwaterbourbon and all archipelago items are the only thing staying in the shop, all others copy and send to
+            {                                      //dirtwater mercantile and remove from dirtwaterbartender.
+                var shopItems = current.items;
+
+                foreach(var itemKeyPair in shopItems)
+                {
+                    MItem item = itemKeyPair.Value;
+                    int key = itemKeyPair.Key;
+                    string id = item.id;
+                    int price = item.buyValue;
+                    int qty = item.quantity;
+
+                    if(item.id == "archipelago_shopitem" || item.id == "booze_dirtwaterbourbon"){continue;}
+
+                    WolapPlugin.Log.LogInfo($"{item} is being forwarded to Dirtwater Mercantile");
+                    Store.AddStockItem("dirtwatergeneral", item, qty, price);
+
+                    if(itemsToRemove == null){itemsToRemove = new List<int>();}
+                    itemsToRemove.Add(key);
+                    
+                    continue;
+                }
+                if(itemsToRemove != null)
+                {
+                    foreach(int itemInt in itemsToRemove){current.RemoveAllOfItem(itemInt);}
+                }
             }
         }
     }
