@@ -59,6 +59,9 @@ namespace WOLAP
             Archipelago.Update();
 
             //if (Controls.actual.GetKeycodeDown(KeyCode.RightBracket)) Log.LogInfo("Current game state: " + WestOfLoathing.instance.state_machine.state.name);
+            if (Controls.actual.GetKeycodeDown(KeyCode.RightBracket)){
+                Deathlink.Test();
+                }
         }
 
         private static void ProcessManualPatches()

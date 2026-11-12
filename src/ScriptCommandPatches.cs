@@ -114,6 +114,9 @@ namespace WOLAP
                     case "sallyshophinting":
                         HandleSallyShopHintingCommand(cmdCopy);
                         break;
+                    case "deathlink":
+                        SendDeathLinkCommand(cmdCopy);
+                        break;
                 }
 
                 __result = true; //Usually true by default, gets set to false by some dialog-closing commands or errors, but most Ops skip an assignment to false at the end of the method that will get caught before this patch
@@ -520,6 +523,11 @@ namespace WOLAP
                     }
                 }
             }
+        }
+
+        private static void SendDeathLinkCommand(MCommand cmd)
+        {
+            
         }
 
         [HarmonyPatch(typeof(MPlayer), "NSkillLevel")]

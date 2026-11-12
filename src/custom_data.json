@@ -68177,6 +68177,25 @@
         ]
       ]
     },
+    "sleef": {
+      "start": [
+        [
+          "adddailyflag",
+          "beatenup"
+        ],
+        [
+          "queue"
+        ],
+        [
+          "runscript",
+          "sleep"
+        ],
+        [
+          "exit",
+          "close:map"
+        ]
+      ]
+    },
     "snakespring_timerift": {
       "grab": [
         [
