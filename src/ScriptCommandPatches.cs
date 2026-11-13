@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
+using Archipelago.MultiClient.Net.BounceFeatures.DeathLink;
 using Archipelago.MultiClient.Net.Models;
 using Archipelago.MultiClient.Net.Enums;
 using Archipelago.MultiClient.Net.Helpers;
@@ -527,11 +528,13 @@ namespace WOLAP
 
         private static void SendDeathLinkCommand(MCommand cmd)
         {
-            if (MPlayer.instance.data.ContainsKey(Constants.DeathlinkEnabled))
+            if (cmd.argCount != 1)
             {
-                //now in the json i dont have to add an if check, just send the custom command and have it check here.
-                
+                cmd.LogError("only expects a check location name, but got " + cmd.argChunk);
+                return;
             }
+            string cause = cmd.StrArg(0);
+            WolapPlugin.Archipelago.HandleSendingDeathlinks(cause);
         }
 
         [HarmonyPatch(typeof(MPlayer), "NSkillLevel")]

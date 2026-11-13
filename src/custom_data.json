@@ -4765,10 +4765,6 @@
       ],
       "done": [
         [
-          "addflag",
-          "deathlinkinternalqueue,0"
-        ],
-        [
           "animatesnap",
           "player,human_getUp"
         ],
@@ -68139,14 +68135,6 @@
         [
           "addstate",
           "sploded,1"
-        ],
-        [
-          "if",
-          "hasflag(deathlinkinternalqueue)==1"
-        ],
-        [
-          "addflag",
-          "deathlinkinternalqueue,0"
         ],
         [
           "removedailyflags"
