@@ -527,7 +527,11 @@ namespace WOLAP
 
         private static void SendDeathLinkCommand(MCommand cmd)
         {
-            
+            if (MPlayer.instance.data.ContainsKey(Constants.DeathlinkEnabled))
+            {
+                //now in the json i dont have to add an if check, just send the custom command and have it check here.
+                
+            }
         }
 
         [HarmonyPatch(typeof(MPlayer), "NSkillLevel")]

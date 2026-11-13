@@ -1,4 +1,5 @@
 ﻿using Archipelago.MultiClient.Net;
+using Archipelago.MultiClient.Net.BounceFeatures.DeathLink;
 using Archipelago.MultiClient.Net.Enums;
 using Archipelago.MultiClient.Net.Helpers;
 using Archipelago.MultiClient.Net.Models;
@@ -28,6 +29,8 @@ namespace WOLAP
         private string password;
         private string slot;
 
+        public DeathLinkService service;
+        private static Queue<DeathLink> incomingDeathLink = new();
         private ConcurrentQueue<ItemInfo> incomingItems;
         private List<string> outgoingLocations;
         private ArchipelagoItemManager itemManager;
@@ -89,6 +92,7 @@ namespace WOLAP
                 {
                     UpdateFlagsFromSlotData();
                     SlotDataFlagsSet = true;
+                    FlagHandlingFromSlotDataUpdate();
                 }
                 
                 //Could handle this whole queue in a separate asynchronous method, but one item per frame should be fine
@@ -96,6 +100,12 @@ namespace WOLAP
                 {
                     incomingItems.TryDequeue(out var item);
                     HandleReceivedItem(item);
+                }
+            }
+            if(!ClockState.IsPaused()){
+                if(incomingDeathLink.Count > 0)
+                {
+                    HandleRecievedDeathlinks();
                 }
             }
             
@@ -130,6 +140,11 @@ namespace WOLAP
 
                 Session.Items.ItemReceived += (receivedItemsHelper) => {
                     incomingItems.Enqueue(receivedItemsHelper.DequeueItem());
+                };
+
+                service = Session.CreateDeathLinkService();
+                service.OnDeathLinkReceived += (dLHelper) => {
+                    incomingDeathLink.Enqueue(dLHelper);
                 };
             }
         }
@@ -270,6 +285,11 @@ namespace WOLAP
             return name != null && itemGrantableStateNames.Contains(name);
         }
 
+        private void FlagHandlingFromSlotDataUpdate()
+        {
+            if(MPlayer.instance.data.ContainsKey(Constants.DeathlinkEnabled)){service.EnableDeathLink(); WolapPlugin.Log.LogInfo("test log for deathlink enabled");}
+        }
+
         private void HandleReceivedItem(ItemInfo item)
         {
             if (item == null) return;
@@ -325,6 +345,21 @@ namespace WOLAP
                 MPlayer.instance.data.Add(Constants.GotCheckFlagPrefix + outgoingLocations[i].Replace(" ", ""), "1");
             }
             Session.Locations.CompleteLocationChecks(ids);
+        }
+
+        private void HandleRecievedDeathlinks()
+        {
+            var flags = MPlayer.instance.data;
+            if (!ClockState.IsPaused())
+            {
+                if (!flags.ContainsKey("deathlinkinternalqueue,1"))
+                {
+                    flags.Add("deathlinkinternalqueue", "1");
+                    incomingDeathLink.Dequeue();
+                    WolapPlugin.Log.LogInfo("Deathlink Recieved, increasing player anger");
+                    new ScriptContext("archipelago_deathlink", "start", MPlayer.instance, Waa.instance.waa, null, true).RunState("start");//this runs the custom_data.json command for the deathlink.
+                }
+            } 
         }
 
         private bool IsGameComplete()

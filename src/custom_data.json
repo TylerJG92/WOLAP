@@ -1,6 +1,227 @@
 {
   "actors": {},
   "buckets": {
+    "archipelago_dl_deathnote": [
+      "You were %archipelago_dl_action_other% by %archipelago_dl_actor% and %archipelago_dl_backtosleep%",
+      "Congratulations! You've been selected to participate in a mandatory near-death experience. %archipelago_dl_backtosleep_capital% Once you wake up, please remember to fill out the survey!",
+      "You were knocked out by something too embarrassing to describe. I, the narrator, refuse to elaborate.",
+      "You %archipelago_dl_action_self% and %archipelago_dl_backtosleep%",
+      "You feel a sudden disturbance in the fabric of reality. You turn to see %archipelago_dl_actor% and are so startled that %archipelago_dl_backtosleep%",
+      "You've been informed that you are dead. Please act accordingly.",
+      "A %archipelago_dl_adj% bureaucrat informs you that your continued existence violates several municipal ordinances. You are promptly declared dead.",
+      "You receive a letter informing you that you've been dead for three days. You find this information deeply concerning and decide to sleep it off.",
+      "The narrator briefly loses track of you. By the time he finds you again, you're unconscious next to %archipelago_dl_actor%. You dont remeber what happened, but you also dont remeber having this extra ring on your finger.",
+      "You are %archipelago_dl_action_other% by %archipelago_dl_actor%. The narrator insists this was an important character-building experience.",
+      "A mysterious voice announces that your subscription to being alive has expired. To renew, please contact %archipelago_dl_actor%.",
+      "You get into a heated argument with %archipelago_dl_actor% over the definition of 'alive'. You lose the argument. And your consciousness.",
+      "A %archipelago_dl_adj% horse wanders into view and hands you a death certificate. It appears to be legally binding.",
+      "You experience a sudden, unexplained case of being dead. The local doctor recommends getting more sleep.",
+      "You are visited by the Grim Reaper. Unfortunately, he has sent %archipelago_dl_actor% to cover his shift."
+    ],
+    "archipelago_dl_actor": [
+      "a cat",
+      "a dog",
+      "a snake",
+      "a bandit",
+      "a cow",
+      "a horse",
+      "a skeleton",
+      "a goblin",
+      "a clown",
+      "a ghost bureaucrat %archipelago_dl_weird%",
+      "a %archipelago_dl_adj% cat",
+      "a %archipelago_dl_adj% dog",
+      "a %archipelago_dl_adj% snake",
+      "a %archipelago_dl_adj% bandit",
+      "a %archipelago_dl_adj% cow",
+      "a %archipelago_dl_adj% horse",
+      "a %archipelago_dl_adj% skeleton",
+      "a %archipelago_dl_adj% goblin",
+      "a %archipelago_dl_adj% clown",
+      "a cat %archipelago_dl_weird%",
+      "a dog %archipelago_dl_weird%",
+      "a snake %archipelago_dl_weird%",
+      "a bandit %archipelago_dl_weird%",
+      "a cow %archipelago_dl_weird%",
+      "a horse %archipelago_dl_weird%",
+      "a skeleton %archipelago_dl_weird%",
+      "a goblin %archipelago_dl_weird%",
+      "a clown %archipelago_dl_weird%",
+      "a %archipelago_dl_adj% cat %archipelago_dl_weird%",
+      "a %archipelago_dl_adj% dog %archipelago_dl_weird%",
+      "a %archipelago_dl_adj% snake %archipelago_dl_weird%",
+      "a %archipelago_dl_adj% bandit %archipelago_dl_weird%",
+      "a %archipelago_dl_adj% cow %archipelago_dl_weird%",
+      "a %archipelago_dl_adj% horse %archipelago_dl_weird%",
+      "a %archipelago_dl_adj% skeleton %archipelago_dl_weird%",
+      "a %archipelago_dl_adj% goblin %archipelago_dl_weird%",
+      "a %archipelago_dl_adj% clown %archipelago_dl_weird%",
+      "yer pardner, @pardnername@",
+      "yer horse, @horsename@",
+      "a %archipelago_dl_adj% tumbleweed",
+      "a %archipelago_dl_adj% cactus ",
+      "a %archipelago_dl_adj% sentient spittoon",
+      "yourself from the future"
+    ],
+    "archipelago_dl_actor2": [
+      "a cat",
+      "a dog",
+      "a snake",
+      "a bandit",
+      "a cow",
+      "a horse",
+      "a skeleton",
+      "a goblin",
+      "a clown",
+      "a ghost bureaucrat with paperwork for you to sign",
+      "a %archipelago_dl_adj% cat",
+      "a %archipelago_dl_adj% dog",
+      "a %archipelago_dl_adj% snake",
+      "a %archipelago_dl_adj% bandit",
+      "a %archipelago_dl_adj% cow",
+      "a %archipelago_dl_adj% horse",
+      "a %archipelago_dl_adj% skeleton",
+      "a %archipelago_dl_adj% goblin",
+      "a %archipelago_dl_adj% clown",
+      "a %archipelago_dl_adj% tumbleweed",
+      "a %archipelago_dl_adj% cactus",
+      "a %archipelago_dl_adj% sentient spittoon"
+    ],
+    "archipelago_dl_adj": [
+      "particularly aggressive",
+      "very disappointed",
+      "suspiciously familiar-looking",
+      "very small",
+      "very angry",
+      "very small and angry",
+      "surprisingly muscular"
+    ],
+    "archipelago_dl_weird": [
+      "wearing a hat",
+      "with a personal vendetta",
+      "wearing nice-looking shoes",
+      "with %archipelago_dl_actor2%",
+      "with a suspiciously large spoon",
+      "wearing comically large glasses",
+      "holding a really small violin",
+      "wielding a toilet plunger",
+      "wearing a spittoon",
+      "with paperwork for you to sign"
+    ],
+    "archipelago_dl_action_other": [
+      "shot",
+      "bitten",
+      "mauled",
+      "kicked",
+      "slapped really hard",
+      "tripped",
+      "bonked",
+      "viciously tickled",
+      "politely murdered",
+      "repeatedly poked",
+      "kicked into next Tuesday",
+      "slapped into another dimension then ripped back into reality",
+      "thoroughly inconvenienced",
+      "beaten with a wet noodle",
+      "trampled",
+      "accidentally vaporized",
+      "hugged a little too hard",
+      "lassoed into oblivion",
+      "smacked with a suspiciously large trout",
+      "challenged to a duel at high noon",
+      "given a stern talking-to"
+    ],
+    "archipelago_dl_action_other2": [
+      "shot",
+      "bitten",
+      "mauled",
+      "kicked",
+      "slapped really hard",
+      "tripped",
+      "bonked",
+      "viciously tickled",
+      "politely murdered",
+      "repeatedly poked",
+      "kicked into next Tuesday",
+      "slapped into another dimension then ripped back into reality",
+      "thoroughly inconvenienced",
+      "beaten with a wet noodle",
+      "trampled",
+      "accidentally vaporized",
+      "hugged a little too hard",
+      "lassoed into oblivion",
+      "smacked with a suspiciously large trout",
+      "challenged to a duel at high noon",
+      "they gave a stern talking-to"
+    ],
+    "archipelago_dl_action_self": [
+      "fell onto %archipelago_dl_self_item%",
+      "stepped on %archipelago_dl_self_item%",
+      "accidentally swallowed %archipelago_dl_self_item%",
+      "forgot how gravity worked",
+      "lost an argument with %archipelago_dl_self_item%",
+      "attempted to square-dance with %archipelago_dl_actor%"
+    ],
+    "archipelago_dl_self_item":[
+      "yer own spurs",
+      "yer hat",
+      "a sword",
+      "%archipelago_dl_self_item2% and %archipelago_dl_self_item2%",
+      "some rope",
+      "dirt",
+      "snake oil"
+    ],
+    "archipelago_dl_self_item2":[
+      "yer own spurs",
+      "yer hat",
+      "a sword",
+      "some rope",
+      "dirt",
+      "snake oil"
+    ],
+    "archipelago_dl_backtosleep": [
+      "you died. Thankfully your kid brother, Rufus, fell on his pocket watch at that exact moment and time reversed itself and you fell asleep instead.",
+      "you fell into a hole. You fell for what felt like 10 years before falling asleep.",
+      "you got really sad, curled up into a ball and fell asleep.",
+      "sadly, you died... But you lived!",
+      "it didn't do much to you except make you really sleepy.",
+      "you were rescued by a passing doctor. He took one look at you, shook his head, and prescribed a nap.",
+      "the Grim Reaper checked his paperwork and realized he had the wrong person. He apologized and knocked you unconscious instead.",
+      "you woke up just long enough to realize you were still alive. Disappointed, you went back to sleep.",
+      "you fell unconscious. The narrator would like to assure you this is significantly better than the alternative.",
+      "your horse dragged you to safety. Well, mostly to safety. The horse isn't very good at dragging.",
+      "you were declared legally dead by a passing lawyer. Fortunately, a second lawyer declared the first lawyer legally incompetent.",
+      "the universe briefly forgot you existed. When it remembered, it put you back together incorrectly and decided a good night's sleep would fix it.",
+      "you experienced what medical professionals call a 'really bad ouchie'. They recommend sleeping it off.",
+      "your soul tried to leave your body, but got caught on your belt buckle. After several awkward minutes, it gave up and went back inside.",
+      "Death itself appeared before you, looked at your character sheet, and said 'Nope. I'm not dealing with that.'",
+      "you were saved by an extremely convenient plot device. The narrator refuses to explain further.",
+      "you heard a voice whisper 'skill issue' before everything went black.",
+      "you were pronounced dead, but managed to argue your way down to merely unconscious.",
+      "you tried to use a healing potion, but accidentally drank a bottle of snake oil instead. You recovered eventually, though nobody is entirely sure why."
+
+    ],
+    "archipelago_dl_backtosleep_capital":[
+      "You died. Thankfully your kid brother, Rufus, fell on his pocket watch at that exact moment and time reversed itself and you fell asleep instead.",
+      "You fell into a hole. You fell for what felt like 10 years before falling asleep.",
+      "You got really sad, curled up into a ball and fell asleep.",
+      "Sadly, you died... But you lived!",
+      "This didn't do much to you except make you really sleepy.",
+      "You were rescued by a passing doctor. He took one look at you, shook his head, and prescribed a nap.",
+      "The Grim Reaper checked his paperwork and realized he had the wrong person. He apologized and knocked you unconscious instead.",
+      "You woke up just long enough to realize you were still alive. Disappointed, you went back to sleep.",
+      "You fell unconscious. The narrator would like to assure you this is significantly better than the alternative.",
+      "Your horse dragged you to safety. Well, mostly to safety. The horse isn't very good at dragging.",
+      "You were declared legally dead by a passing lawyer. Fortunately, a second lawyer declared the first lawyer legally incompetent.",
+      "The universe briefly forgot you existed. When it remembered, it put you back together incorrectly and decided a good night's sleep would fix it.",
+      "You experienced what medical professionals call a 'really bad ouchie'. They recommend sleeping it off.",
+      "Your soul tried to leave your body, but got caught on your belt buckle. After several awkward minutes, it gave up and went back inside.",
+      "Death itself appeared before you, looked at your character sheet, and said 'Nope. I'm not dealing with that.'",
+      "You were saved by an extremely convenient plot device. The narrator refuses to explain further.",
+      "You heard a voice whisper 'skill issue' before everything went black.",
+      "You were pronounced dead, but managed to argue your way down to merely unconscious.",
+      "You tried to use a healing potion, but accidentally drank a bottle of snake oil instead. You recovered eventually, though nobody is entirely sure why."
+    ],
     "map_world": [
       "background: mainmapbg,3,3",
       "travelwaa: travelling",
@@ -4472,6 +4693,84 @@
       "done": [
         [
           "consume"
+        ],
+        [
+          "exit"
+        ]
+      ]
+    },
+    "archipelago_deathlink":{
+      "start": [
+        [
+          "saycenter",
+          "<size=60><b>Deathlink Recieved!</b></size>"
+        ],
+        [
+          "say",
+          "The Wild West warps as some unforseen entity messes with it. This makes you angry."
+        ],
+        [
+          "if",
+          "haseffect(angry)<@toughness@"
+        ],
+        [
+          "goto",
+          "dontexplode"
+        ],
+        [
+          "addeffect",
+          "angry"
+        ],
+        [
+          "say",
+          "%archipelago_dl_deathnote%"
+        ],
+        [
+          "option",
+          "sleef",
+          "Zzzzz"
+        ]
+      ],
+      "dontexplode": [
+        [
+          "addeffect",
+          "angry"
+        ],
+        [
+          "say",
+          "At least you didn's pass out!"
+        ],
+        [
+          "option",
+          "done",
+          "I guess."
+        ]
+      ],
+      "sleef": [
+        [
+          "adddailyflag",
+          "beatenup"
+        ],
+        [
+          "queue"
+        ],
+        [
+          "runscript",
+          "sleep"
+        ],
+        [
+          "exit",
+          "close:map"
+        ]
+      ],
+      "done": [
+        [
+          "addflag",
+          "deathlinkinternalqueue,0"
+        ],
+        [
+          "animatesnap",
+          "player,human_getUp"
         ],
         [
           "exit"
@@ -16451,7 +16750,7 @@
         ],
         [
           "rightsay",
-          "I thought you didnt want it. I sold it to the Dirtwater Mercantile next door."
+          "I thought you didn't want it. I sold it to the Dirtwater Mercantile next door."
         ],
         [
           "addflag",
@@ -32684,7 +32983,7 @@
         ],
         [
           "say",
-          "What? It didnt give back the fluid..?"
+          "What? It didn't give back the fluid..?"
         ],
         [
           "customcommand",
@@ -35906,6 +36205,45 @@
         ]
       ]
     },
+    "npc_sally": {
+      "start": [
+        [
+          "teleportplayer",
+          "390,115"
+        ],
+        [
+          "resetanimation",
+          "player"
+        ],
+        [
+          "resetanimation",
+          "sally"
+        ],
+        [
+          "if",
+          "hasflag(sallytimes)<7 && !hasflag(nosallyhint)"
+        ],
+        [
+          "customcommand",
+          "sallyshophinting, sally"
+        ],
+        [
+          "if",
+          "hasflag(nosallyhint)"
+        ],
+        [
+          "delflag",
+          "nosallyhint"
+        ],
+        [
+          "npcstore",
+          "sally,420,-65"
+        ],
+        [
+          "exit"
+        ]
+      ]
+    },
     "pardner_talk": {
       "sidequest": [
         [
@@ -36499,6 +36837,39 @@
           "sayoption",
           "intro4",
           "'Swipe'?"
+        ]
+      ]
+    },
+    "quest_honeybean": {
+      "invpopup": [
+        [
+          "if",
+          "!hasflag(anteyevirus)"
+        ],
+        [
+          "goto",
+          "anteyenopopup"
+        ],
+        [
+          "consume"
+        ],
+        [
+          "addflag",
+          "mainquest,35"
+        ],
+        [
+          "delflag",
+          "anteyevirus"
+        ],
+        [
+          "say",
+          "You eat the jelly bean, and your vision immediately clears.  Modern medicine is really amazing!"
+        ]
+      ],
+      "anteyenopopup": [
+        [
+          "say",
+          "You'd rather not eat such a beautiful (and expencive) jelly bean. Maybe hold onto it incase you need it for something else later."
         ]
       ]
     },
@@ -67166,78 +67537,6 @@
         ]
       ]
     },
-    "npc_sally": {
-      "start": [
-        [
-          "teleportplayer",
-          "390,115"
-        ],
-        [
-          "resetanimation",
-          "player"
-        ],
-        [
-          "resetanimation",
-          "sally"
-        ],
-        [
-          "if",
-          "hasflag(sallytimes)<7 && !hasflag(nosallyhint)"
-        ],
-        [
-          "customcommand",
-          "sallyshophinting, sally"
-        ],
-        [
-          "if",
-          "hasflag(nosallyhint)"
-        ],
-        [
-          "delflag",
-          "nosallyhint"
-        ],
-        [
-          "npcstore",
-          "sally,420,-65"
-        ],
-        [
-          "exit"
-        ]
-      ]
-    },
-    "quest_honeybean": {
-      "invpopup": [
-        [
-          "if",
-          "!hasflag(anteyevirus)"
-        ],
-        [
-          "goto",
-          "anteyenopopup"
-        ],
-        [
-          "consume"
-        ],
-        [
-          "addflag",
-          "mainquest,35"
-        ],
-        [
-          "delflag",
-          "anteyevirus"
-        ],
-        [
-          "say",
-          "You eat the jelly bean, and your vision immediately clears.  Modern medicine is really amazing!"
-        ]
-      ],
-      "anteyenopopup": [
-        [
-          "say",
-          "You'd rather not eat such a beautiful (and expencive) jelly bean. Maybe hold onto it incase you need it for something else later."
-        ]
-      ]
-    },
     "roybean_honeybean": {
       "start": [
         [
@@ -67807,6 +68106,188 @@
         ]
       ]
     },
+    "sleep": {
+      "start": [
+        [
+          "addstate",
+          "beaten,0"
+        ],
+        [
+          "if",
+          "hasflag(beatenup)"
+        ],
+        [
+          "addstate",
+          "beaten,1"
+        ],
+        [
+          "if",
+          "hasflag(sploded)"
+        ],
+        [
+          "say",
+          "The last thing you remember is pressing that button."
+        ],
+        [
+          "addstate",
+          "sploded,0"
+        ],
+        [
+          "if",
+          "hasflag(sploded)"
+        ],
+        [
+          "addstate",
+          "sploded,1"
+        ],
+        [
+          "if",
+          "hasflag(deathlinkinternalqueue)==1"
+        ],
+        [
+          "addflag",
+          "deathlinkinternalqueue,0"
+        ],
+        [
+          "removedailyflags"
+        ],
+        [
+          "removealleffects"
+        ],
+        [
+          "incflag",
+          "day,1"
+        ],
+        [
+          "addproperty",
+          "regionto,a"
+        ],
+        [
+          "if",
+          "hasgear(hat)&&matchstring(@gear.hat.id@,hat_rufushelmet)&&!hasflag(grandmadreamsequence_complete)"
+        ],
+        [
+          "goto",
+          "grandmadream_redirect"
+        ],
+        [
+          "if",
+          "hasflag(voluntarysleep)==1"
+        ],
+        [
+          "teleportplayer",
+          "350,210"
+        ],
+        [
+          "if",
+          "hasflag(voluntarysleep)==1"
+        ],
+        [
+          "animatesnap",
+          "player,human_getOutOfBed"
+        ],
+        [
+          "if",
+          "hasflag(voluntarysleep)==1"
+        ],
+        [
+          "teleportplayer",
+          "80,70"
+        ],
+        [
+          "if",
+          "hasflag(voluntarysleep)==1"
+        ],
+        [
+          "teleportelement",
+          "pardner,450,110"
+        ],
+        [
+          "if",
+          "hasflag(voluntarysleep)==1"
+        ],
+        [
+          "changewaaproperty",
+          "dark,1"
+        ],
+        [
+          "if",
+          "hasflag(voluntarysleep)==1"
+        ],
+        [
+          "say",
+          "You go to sleep."
+        ],
+        [
+          "if",
+          "hasflag(voluntarysleep)==1"
+        ],
+        [
+          "say",
+          "%dreams_top%"
+        ],
+        [
+          "if",
+          "hasflag(voluntarysleep)==1"
+        ],
+        [
+          "option",
+          "dream",
+          "Well okay then"
+        ],
+        [
+          "if",
+          "hasflag(voluntarysleep)==1"
+        ],
+        [
+          "stop"
+        ],
+        [
+          "if",
+          "!hasflag(room)"
+        ],
+        [
+          "goto",
+          "dirtnap"
+        ],
+        [
+          "if",
+          "$beaten$"
+        ],
+        [
+          "waa",
+          "dirtwater_yourroom,350,210"
+        ],
+        [
+          "if",
+          "$beaten$"
+        ],
+        [
+          "animatesnap",
+          "player,human_getOutOfBed"
+        ],
+        [
+          "if",
+          "$beaten$"
+        ],
+        [
+          "say",
+          "You wake up the next morning in your bed."
+        ],
+        [
+          "if",
+          "$sploded$"
+        ],
+        [
+          "say",
+          "Your clothes are covered in little bits of splattered dough, which is really a shame, because other than that they'd look like they've been freshly steam-pressed!"
+        ],
+        [
+          "goto",
+          "pardnernote"
+        ]
+      ]
+    },
     "snakespring_spring": {
       "win1": [
         [
@@ -68174,25 +68655,6 @@
         [
           "goto",
           "aftersusie"
-        ]
-      ]
-    },
-    "sleef": {
-      "start": [
-        [
-          "adddailyflag",
-          "beatenup"
-        ],
-        [
-          "queue"
-        ],
-        [
-          "runscript",
-          "sleep"
-        ],
-        [
-          "exit",
-          "close:map"
         ]
       ]
     },
