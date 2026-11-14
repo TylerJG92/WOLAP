@@ -533,8 +533,10 @@ namespace WOLAP
                 cmd.LogError("only expects a check location name, but got " + cmd.argChunk);
                 return;
             }
-            string cause = cmd.StrArg(0);
-            WolapPlugin.Archipelago.HandleSendingDeathlinks(cause);
+            if(MPlayer.instance.data.ContainsKey(Constants.DeathlinkEnabled)){
+                string cause = cmd.StrArg(0);
+                WolapPlugin.Archipelago.HandleSendingDeathlinks(cause);
+            }
         }
 
         [HarmonyPatch(typeof(MPlayer), "NSkillLevel")]

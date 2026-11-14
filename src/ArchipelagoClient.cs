@@ -148,8 +148,15 @@ namespace WOLAP
 
                 service = Session.CreateDeathLinkService();
                 service.OnDeathLinkReceived += (dLHelper) => {
-                    WolapPlugin.Log.LogInfo("Death Recieved, queueing");
-                    incomingDeathLink.Enqueue(dLHelper);
+                    WolapPlugin.Log.LogInfo("Death Recieved, checking if our game sent it.");
+                    if(dLHelper.Source == slot)
+                    {
+                        WolapPlugin.Log.LogInfo("Our game sent the deathlink, not queueing");
+                    }
+                    else{
+                        WolapPlugin.Log.LogInfo($"Sent by {dLHelper.Source}, queueing Deathlink");
+                        incomingDeathLink.Enqueue(dLHelper);
+                    }
                 };
             }
         }
@@ -372,8 +379,9 @@ namespace WOLAP
             else {WolapPlugin.Log.LogWarning("Clock Paused or player in combat not sending deathlink");} 
         }
 
-        public void HandleSendingDeathlinks(string cause)
+        public void HandleSendingDeathlinks(string dlCause)
         {
+            string cause = slot + " " + dlCause;
             DeathLink send = new DeathLink(slot, cause);
             service.SendDeathLink(send);
         }
