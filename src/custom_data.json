@@ -222,6 +222,18 @@
       "You were pronounced dead, but managed to argue your way down to merely unconscious.",
       "You tried to use a healing potion, but accidentally drank a bottle of snake oil instead. You recovered eventually, though nobody is entirely sure why."
     ],
+    "options": [
+      "deathlink_enabled,always,Enable DeathLink,(Allows the you to send and recieve DeathLinks to and from the APServer. All combat losses, Give-ups and special KO scenerios cause you to send deathlinks. Recieving causes angry effect to increase. <b>Warning:</b> Turning off Deathlink while there are deaths queued will still cause the deaths to unqueue.)",
+      "auto_level,always,combat,Automatically Spend XP,(Allows the game to level up your skills for you; attempts to create a well-rounded character.)",
+      "showcombatgrid,always,combat,Show Combat Grid,(Turns on ground-level indicator of combatant positioning.)",
+      "nerdmode,always,combat,Nerd Mode,(Displays a log describing what happens in combat; provides a few other pieces of metagame information in various places.)",
+      "bestfontmode,always,Best Font Mode,(Changes the typeface of the game to Arial. Please don't do this.)",
+      "dontsaveinventoryoptions,always,invert,Save Inventory Options,(Remembers your inventory filtering and sorting options instead of defaulting to Everything and New.)",
+      "colorblind,always,Color Blind Mode,(You never know.)",
+      "stupidwalking,Stupid Walking,(Some of them aren't even really walks.)",
+      "sepiatone,Nostalgia Mode,(Remember how great things used to be?)",
+      "horsearmor,Horse Armor,(Protects your horse. Won't actually show up or disappear when toggled until you travel to a new area, because we added this dumb joke at the last minute.)"
+    ],
     "map_world": [
       "background: mainmapbg,3,3",
       "travelwaa: travelling",
@@ -4702,6 +4714,10 @@
     "archipelago_deathlink":{
       "start": [
         [
+          "customcommand",
+          "indeathlink,true"
+        ],
+        [
           "saycenter",
           "<size=60><b>Deathlink Recieved!</b></size>"
         ],
@@ -4767,6 +4783,10 @@
         [
           "animatesnap",
           "player,human_getUp"
+        ],
+        [
+          "customcommand",
+          "indeathlink,false"
         ],
         [
           "exit"
@@ -86999,6 +87019,59 @@
         [
           "goto",
           "pardnernote"
+        ]
+      ],
+      "done": [
+        [
+          "queue"
+        ],
+        [
+          "runscript",
+          "sleepdays"
+        ],
+        [
+          "teleportplayer",
+          "80,70"
+        ],
+        [
+          "teleportelement",
+          "pardner,730,100"
+        ],
+        [
+          "queue"
+        ],
+        [
+          "moveelement",
+          "player,300,70,200"
+        ],
+        [
+          "queue",
+          100.0
+        ],
+        [
+          "nop"
+        ],
+        [
+          "customcommand",
+          "indeathlink,false"
+        ],
+        [
+          "exit",
+          "close:map"
+        ]
+      ],
+      "donedirt": [
+        [
+          "animatesnap",
+          "player,human_getUp"
+        ],
+        [
+          "customcommand",
+          "indeathlink,false"
+        ],
+        [
+          "exit",
+          "close:map"
         ]
       ]
     },

@@ -118,6 +118,9 @@ namespace WOLAP
                     case "deathlink":
                         SendDeathLinkCommand(cmdCopy);
                         break;
+                    case "indeathlink":
+                        IsInDeathLinkCommand(cmdCopy);
+                        break;
                 }
 
                 __result = true; //Usually true by default, gets set to false by some dialog-closing commands or errors, but most Ops skip an assignment to false at the end of the method that will get caught before this patch
@@ -530,12 +533,32 @@ namespace WOLAP
         {
             if (cmd.argCount != 1)
             {
-                cmd.LogError("only expects a check location name, but got " + cmd.argChunk);
+                cmd.LogError("only expects a DeathLink cause, but got " + cmd.argChunk);
                 return;
             }
             if(MPlayer.instance.data.ContainsKey(Constants.DeathlinkEnabled)){
                 string cause = cmd.StrArg(0);
                 WolapPlugin.Archipelago.HandleSendingDeathlinks(cause);
+            }
+        }
+
+        private static void IsInDeathLinkCommand(MCommand cmd)
+        {
+            if (cmd.argCount != 1)
+            {
+                cmd.LogError("only expects an in a DeathLink bool, but got " + cmd.argChunk);
+                return;
+            }
+
+            var dlBool = cmd.StrArg(0);
+            switch (dlBool)
+            {
+                case "true":
+                    WolapPlugin.Archipelago.IsInADeathLink = true;
+                    return;
+                case "false":
+                    WolapPlugin.Archipelago.IsInADeathLink = false;
+                    return;
             }
         }
 

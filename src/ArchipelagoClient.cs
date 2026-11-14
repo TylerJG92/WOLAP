@@ -24,6 +24,9 @@ namespace WOLAP
         public Dictionary<string, object> SlotData { get; private set; }
         public bool IsConnected { get { return Session != null && Session.Socket.Connected; } }
         public bool SlotDataFlagsSet { get; set; }
+        private bool IsDeathLinkServiceCreated { get; set; }
+        private bool IsDeathLinkChanged { get; set; }
+        public bool IsInADeathLink { get; set; }
 
         private string hostname;
         private int port;
@@ -41,7 +44,14 @@ namespace WOLAP
             InventoryState.NAME
         ];
         private List<string> dontSendDeathlinks = [
-            CombatState.NAME
+            CombatState.NAME,
+        ];
+        private static List<string> waaToNotSendDeathLinks = [
+            "cre_yourroom",
+            "cre_broroom",
+            "cre_exterior",
+            "cre_livingroom",
+
         ];
 
         private bool shouldLogDisconnect = false;
@@ -96,7 +106,7 @@ namespace WOLAP
                 {
                     UpdateFlagsFromSlotData();
                     SlotDataFlagsSet = true;
-                    FlagHandlingFromSlotDataUpdate();
+                    //FlagHandlingFromSlotDataUpdate();
                 }
                 
                 //Could handle this whole queue in a separate asynchronous method, but one item per frame should be fine
@@ -112,10 +122,34 @@ namespace WOLAP
                     HandleRecievedDeathlinks();
                 }
             }
-            
+
+            if (MPlayer.instance.GetBool(Constants.DeathlinkEnabled) && IsDeathLinkServiceCreated)//options creator inside the json now sets a bool for this based on what its flag value is, this checks if the flags toggle is "on"
+            {
+                if(DeathLinkCheck(MPlayer.instance.GetBool(Constants.DeathlinkEnabled))){
+                    WolapPlugin.Log.LogInfo("Turning DeathLink on.");
+                    service.EnableDeathLink();
+                }
+            }
+            else
+            {
+                if(DeathLinkCheck(MPlayer.instance.GetBool(Constants.DeathlinkEnabled))){
+                    WolapPlugin.Log.LogInfo("Turning DeathLink off.");
+                    service.DisableDeathLink();
+                }
+            }
+
             if (outgoingLocations.Count > 0) SendOutgoingChecks();
 
             if (IsGameComplete() && !MPlayer.instance.data.ContainsKey(Constants.SentGameCompletionFlag)) SendGameCompletion();
+        }
+        private bool DeathLinkCheck(bool current)
+        {
+            if(current != IsDeathLinkChanged)
+            {
+                IsDeathLinkChanged = current;
+                return true;
+            }
+            return false;
         }
 
         public void CreateSession()
@@ -147,6 +181,7 @@ namespace WOLAP
                 };
 
                 service = Session.CreateDeathLinkService();
+                IsDeathLinkServiceCreated = true;
                 service.OnDeathLinkReceived += (dLHelper) => {
                     WolapPlugin.Log.LogInfo("Death Recieved, checking if our game sent it.");
                     if(dLHelper.Source == slot)
@@ -237,6 +272,7 @@ namespace WOLAP
             }
 
             ClearConnectionData();
+            ClearDeathLinkData();
 
             WolapPlugin.Log.LogInfo("Disconnected from Archipelago server.");
             shouldLogDisconnect = false;
@@ -253,6 +289,13 @@ namespace WOLAP
             shouldLogDisconnect = true;
 
             foreach (ShopCheckLocation check in ShopCheckLocations) check.ApItemInfo = null;
+        }
+
+        private void ClearDeathLinkData()
+        {
+            IsDeathLinkChanged = false;
+            IsDeathLinkServiceCreated = false;
+            IsInADeathLink = false;
         }
 
         public void ResetItemManager()
@@ -300,13 +343,13 @@ namespace WOLAP
         private bool CanDeathlinkBeGiven()
         {
             string name = WestOfLoathing.instance.state_machine.state.name;
-            return name != null && !dontSendDeathlinks.Contains(name) && !ClockState.IsPaused();
+            return name != null && !dontSendDeathlinks.Contains(name) && !ClockState.IsPaused() && !waaToNotSendDeathLinks.Contains(Waa.instance.waaid) && !IsInADeathLink;
         }
 
-        private void FlagHandlingFromSlotDataUpdate()
-        {
-            if(MPlayer.instance.data.ContainsKey(Constants.DeathlinkEnabled)){service.EnableDeathLink();}
-        }
+        //private void FlagHandlingFromSlotDataUpdate()//leaving here for now, might have more features that will use this in the future.
+        //{
+        //   
+        //}
 
         private void HandleReceivedItem(ItemInfo item)
         {
