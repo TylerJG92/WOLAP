@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
+using Archipelago.MultiClient.Net.BounceFeatures.DeathLink;
 using Archipelago.MultiClient.Net.Models;
 using Archipelago.MultiClient.Net.Enums;
 using Archipelago.MultiClient.Net.Helpers;
@@ -113,6 +114,12 @@ namespace WOLAP
                         break;
                     case "sallyshophinting":
                         HandleSallyShopHintingCommand(cmdCopy);
+                        break;
+                    case "deathlink":
+                        SendDeathLinkCommand(cmdCopy);
+                        break;
+                    case "indeathlink":
+                        IsInDeathLinkCommand(cmdCopy);
                         break;
                 }
 
@@ -519,6 +526,39 @@ namespace WOLAP
                             continue;
                     }
                 }
+            }
+        }
+
+        private static void SendDeathLinkCommand(MCommand cmd)
+        {
+            if (cmd.argCount != 1)
+            {
+                cmd.LogError("only expects a DeathLink cause, but got " + cmd.argChunk);
+                return;
+            }
+            if(MPlayer.instance.data.ContainsKey(Constants.DeathlinkEnabled)){
+                string cause = cmd.StrArg(0);
+                WolapPlugin.Archipelago.HandleSendingDeathlinks(cause);
+            }
+        }
+
+        private static void IsInDeathLinkCommand(MCommand cmd)
+        {
+            if (cmd.argCount != 1)
+            {
+                cmd.LogError("only expects an in a DeathLink bool, but got " + cmd.argChunk);
+                return;
+            }
+
+            var dlBool = cmd.StrArg(0);
+            switch (dlBool)
+            {
+                case "true":
+                    WolapPlugin.Archipelago.IsInADeathLink = true;
+                    return;
+                case "false":
+                    WolapPlugin.Archipelago.IsInADeathLink = false;
+                    return;
             }
         }
 
