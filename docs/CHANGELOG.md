@@ -1,4 +1,4 @@
-# Changelog for v0.4.0
+# Changelog for v1.0.0
 
 ## Client Changes:
 
@@ -17,6 +17,11 @@
 * Added the code nessecary for the player to be granted the 3 new currency items `5,000 Meat`, `1,000 Meat` and `100 Meat`
 * Added Shop Warning for when the player is about to sell an item that is used for progression or needed for checks
 * Added feature where items sold to Lloyd at the Missed shop in his bar get forwarded to the `Dirtwater Mercantile`store to keep the missed item shop decluttered. 
+* Added DeathLink features:
+    * Added toggle to options to be able to turn on or off DeathLink from within the game
+    * If DeathLink is turned on, Player passes a Death to the AP Server whenever they lose a combat or choose to give up a combat.
+        * In special events (ie blowing up your dough at Kellog Ranch or Summoning Duke Bovicus in the wrong condition) you will also send a deathlink.
+    * When a DeathLink is recieved from the server, the players Anger will rise by 1 as if they lost a combat. If it gets too high the player will pass out and end back up in front of the Dirtwater Jewel.
 
 ## AP World Changes:
 
@@ -39,3 +44,4 @@
     * `5,000 Meat` is a Deprioritized Progression item, there will be 2 in the pool.
     * `1,000 Meat` is a Useful item, there will always be 3 in the pool
     * `100 Meat` is a filler item, there will always be 5 in the pool but can randomize extras if there is space to do so.
+* Added DeathLink to the yaml options as a toggle, player can also turn it on or off from within the options in game.
