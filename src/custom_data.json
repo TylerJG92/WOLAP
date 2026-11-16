@@ -15170,6 +15170,10 @@
       ],
       "dirtwater": [
         [
+          "customcommand",
+          "misspoint,Danny's Tannery (St. Rage Shed) - Grady's Cowsbane Seeds"
+        ],
+        [
           "addflag",
           "clowns_tanhiding,1"
         ],

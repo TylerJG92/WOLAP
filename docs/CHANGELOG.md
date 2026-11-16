@@ -22,6 +22,7 @@
     * If DeathLink is turned on, Player passes a Death to the AP Server whenever they lose a combat or choose to give up a combat.
         * In special events (ie blowing up your dough at Kellog Ranch or Summoning Duke Bovicus in the wrong condition) you will also send a deathlink.
     * When a DeathLink is recieved from the server, the players Anger will rise by 1 as if they lost a combat. If it gets too high the player will pass out and end back up in front of the Dirtwater Jewel.
+* Added Misspoint for `Danny's Tannery (St. Rage Shed) - Grady's Cowsbane Seeds` if you send Grady to Dirtwater without asking him about Cowsbane.
 
 ## AP World Changes:
 
