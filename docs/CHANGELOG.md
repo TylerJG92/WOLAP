@@ -25,6 +25,8 @@
 * Added Misspoint for `Danny's Tannery (St. Rage Shed) - Grady's Cowsbane Seeds` if you send Grady to Dirtwater without asking him about Cowsbane.
 * Added Check Locations and Misspoints for new check location `El Vibrato Chamber (Curious False Mountain) - TIMESQUEEZE Cowsbane Seeds`
 * Fixed flag routine bug that locked the player out of getting `Jeweler's Cabin - Spectacles` after giving the specticals to the blind soldier in Fort Unnecessary.
+* Added `Stardust` as an item in the item pool to be used for the `Dave B Defeated` check location.
+    * Added a fallback to use if Dave B has not been defeated yet, it will now ask if you really want to use the item.
 
 ## AP World Changes:
 
@@ -52,3 +54,4 @@
     * Added logic rules that allow this check to show up if the player can get to and activate the Time Squeezer before they get all required items to grow them at Lazy-A-Dude ranch
     * Added misspoints and proper logic to bring this into logic if the player is able to grow the item at Lazy-A-Dude ranch instead.
 * Added Logic rule for `Mr. Gun's Manliness Room- Booze Cart` to require the `Shower Curtain` to convince the person to leave the cart and thus allowing the checks to be gotten off the cart.
+* Added `Stardust` to item pool and updated `Dave B Defeated` check to include Stardust or pickaxe as logic requirements to do this check.

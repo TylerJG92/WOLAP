@@ -836,7 +836,8 @@ namespace WOLAP
             new ArchipelagoItem("El Vibrato Rum x3",["booze_elv"], [3]),
             new ArchipelagoItem("5000 Meat",["ap_currency1"]),
             new ArchipelagoItem("1000 Meat", ["ap_currency2"]),
-            new ArchipelagoItem("100 Meat", ["ap_currency3"])
+            new ArchipelagoItem("100 Meat", ["ap_currency3"]),
+            new ArchipelagoItem("Stardust", ["potion_stardust"], sellWarning: true)
         };
     }
 }

@@ -48198,6 +48198,63 @@
         ]
       ]
     },
+    "potion_stardust": {
+      "invpopup": [
+        [
+          "if",
+          "dailyflags.potionsused>=player.spleen"
+        ],
+        [
+          "goto",
+          "fail"
+        ],
+        [
+          "if",
+          "!hasflag(daveyard_beatdave)"
+        ],
+        [
+          "goto",
+          "usefallback"
+        ],
+        [
+          "incdailyflag",
+          "potionsused,1"
+        ],
+        [
+          "goto",
+          "yes"
+        ]
+      ],
+      "usefallback": [
+        [
+          "cls"
+        ],
+        [
+          "saycenter",
+          "Are you sure you want to use this item? You might need it for a ritual later!"
+        ],
+        [
+          "sayoption",
+          "beforeyes",
+          "Yes, I want to use it."
+        ],
+        [
+          "sayoption",
+          "done",
+          "No, I changed my mind."
+        ]
+      ],
+      "beforeyes": [
+        [
+          "incdailyflag",
+          "potionsused,1"
+        ],
+        [
+          "goto",
+          "yes"
+        ]
+      ]
+    },
     "professor_talk": {
       "intro3": [
         [
