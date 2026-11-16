@@ -34378,6 +34378,33 @@
         ]
       ]
     },
+    "house_droppedtoken": {
+      "e": [
+        [
+          "cls"
+        ],
+        [
+          "say",
+          "That wish was an accident anyway, so you feel entirely justified in taking your token back."
+        ],
+        [
+          "say",
+          "Huh. It would seem that the well didn't like you taking your token back and changed it into something else."
+        ],
+        [
+          "customcommand",
+          "checklocation,Gun Manor Hedge Maze - Wishing Well Token"
+        ],
+        [
+          "say",
+          "What is this thing?"
+        ],
+        [
+          "addflag",
+          "house_wishingwell,2"
+        ]
+      ]
+    },
     "house_foyerspiderfight": {
       "lose": [
         [
