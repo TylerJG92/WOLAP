@@ -32863,6 +32863,29 @@
         ]
       ]
     },
+    "house_boilerfaucet": {
+      "tea": [
+        [
+          "cls"
+        ],
+        [
+          "say",
+          "You pour some boiling water into your teapot.  Voila!"
+        ],
+        [
+          "playsound",
+          "Liquid_pour_01"
+        ],
+        [
+          "removeitem",
+          "quest_houseteaset2"
+        ],
+        [
+          "customcommand",
+          "checklocation,Gun Manor Cellar - Boiler Spout"
+        ]
+      ]
+    },
     "house_bowlterfight": {
       "win": [
         [
@@ -39016,6 +39039,33 @@
         [
           "customcommand",
           "checklocation,Gun Manor Nursery - Teddy Bear Guts"
+        ]
+      ]
+    },
+    "house_teabush": {
+      "e": [
+        [
+          "cls"
+        ],
+        [
+          "if",
+          "!hasitem(quest_houseteaset)"
+        ],
+        [
+          "goto",
+          "nope"
+        ],
+        [
+          "say",
+          "You pluck some leaves and drop them in the pot of your tea service."
+        ],
+        [
+          "removeitem",
+          "quest_houseteaset"
+        ],
+        [
+          "customcommand",
+          "checklocation,Gun Manor Hedge Maze - Tea Leaf Bush"
         ]
       ]
     },

@@ -28,6 +28,7 @@
 * Added `Stardust` as an item in the item pool to be used for the `Dave B Defeated` check location.
     * Added a fallback to use if Dave B has not been defeated yet, it will now ask if you really want to use the item.
 * Added support for new `Gun Manor Hedge Maze - Wishing Well Token` check.
+* Added support for new check locations `Gun Manor Hedge Maze - Tea Leaf Bush` and `Gun Manor Cellar - Boiler Spout` to introduce the entire line of Tea Service to the randomize pool.
 
 ## AP World Changes:
 
@@ -57,3 +58,7 @@
 * Added Logic rule for `Mr. Gun's Manliness Room- Booze Cart` to require the `Shower Curtain` to convince the person to leave the cart and thus allowing the checks to be gotten off the cart.
 * Added `Stardust` to item pool and updated `Dave B Defeated` check to include Stardust or pickaxe as logic requirements to do this check.
 * Added `Gun Manor Hedge Maze - Wishing Well Token` as a new check location in the Gun Manor DLC.
+* Added Check Location `Gun Manor Hedge Maze - Tea Leaf Bush`
+    * Added rule logic to require `Tea Service` to be able to get this check
+* Added Check Location `Gun Manor Cellar - Boiler Spout`
+    * Added rule logic to require `Tea Service (With Tea Leaves)` to be able to get this check

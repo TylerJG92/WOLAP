@@ -720,6 +720,8 @@ namespace WOLAP
             new ArchipelagoItem("Tannery Back Door Key", ["quest_tannerybackdoorkey"], sellWarning: true),
             new ArchipelagoItem("Tannery St. Rage Key", ["quest_tanneryshedkey"], sellWarning: true),
             new ArchipelagoItem("Tea Service", ["quest_houseteaset"], isDlc: true, sellWarning: true),
+            new ArchipelagoItem("Tea Service (With Tea Leaves)", ["quest_houseteaset2"], isDlc: true, sellWarning: true),
+            new ArchipelagoItem("Tea Sercive (With Tea)", ["quest_houseteaset3"], isDlc: true, sellWarning: true),
             new ArchipelagoItem("Tiny Stick Of Dynamite", ["quest_housefirecracker"], isDlc: true, sellWarning: true),
             new ArchipelagoItem("Toy Skeletons", ["quest_toyskeletons"], sellWarning: true),
             new ArchipelagoItem("Unstable Stick Of Dynamite", ["quest_olddynamite"], sellWarning: true),
