@@ -16,7 +16,8 @@
       "You get into a heated argument with %archipelago_dl_actor% over the definition of 'alive'. You lose the argument. And your consciousness.",
       "A %archipelago_dl_adj% horse wanders into view and hands you a death certificate. It appears to be legally binding.",
       "You experience a sudden, unexplained case of being dead. The local doctor recommends getting more sleep.",
-      "You are visited by the Grim Reaper. Unfortunately, he has sent %archipelago_dl_actor% to cover his shift."
+      "You are visited by the Grim Reaper. Unfortunately, he has sent %archipelago_dl_actor% to cover his shift.",
+      "The Necromancer revieved you, you dont feel or look any different."
     ],
     "archipelago_dl_actor": [
       "a cat",
@@ -61,7 +62,9 @@
       "a %archipelago_dl_adj% tumbleweed",
       "a %archipelago_dl_adj% cactus ",
       "a %archipelago_dl_adj% sentient spittoon",
-      "yourself from the future"
+      "yourself from the future",
+      "Roberto",
+      "Roberto %archipelago_dl_weird%"
     ],
     "archipelago_dl_actor2": [
       "a cat",
@@ -85,6 +88,7 @@
       "a %archipelago_dl_adj% clown",
       "a %archipelago_dl_adj% tumbleweed",
       "a %archipelago_dl_adj% cactus",
+      "Roberto",
       "a %archipelago_dl_adj% sentient spittoon"
     ],
     "archipelago_dl_adj": [
@@ -198,8 +202,8 @@
       "you were saved by an extremely convenient plot device. The narrator refuses to explain further.",
       "you heard a voice whisper 'skill issue' before everything went black.",
       "you were pronounced dead, but managed to argue your way down to merely unconscious.",
-      "you tried to use a healing potion, but accidentally drank a bottle of snake oil instead. You recovered eventually, though nobody is entirely sure why."
-
+      "you tried to use a healing potion, but accidentally drank a bottle of snake oil instead. You recovered eventually, though nobody is entirely sure why.",
+      "the Necromancer revieved you, you dont feel or look any different."
     ],
     "archipelago_dl_backtosleep_capital":[
       "You died. Thankfully your kid brother, Rufus, fell on his pocket watch at that exact moment and time reversed itself and you fell asleep instead.",
@@ -220,7 +224,8 @@
       "You were saved by an extremely convenient plot device. The narrator refuses to explain further.",
       "You heard a voice whisper 'skill issue' before everything went black.",
       "You were pronounced dead, but managed to argue your way down to merely unconscious.",
-      "You tried to use a healing potion, but accidentally drank a bottle of snake oil instead. You recovered eventually, though nobody is entirely sure why."
+      "You tried to use a healing potion, but accidentally drank a bottle of snake oil instead. You recovered eventually, though nobody is entirely sure why.",
+      "The Necromancer revieved you, you dont feel or look any different."
     ],
     "options": [
       "deathlink_enabled,always,Enable DeathLink,(Allows the you to send and recieve DeathLinks to and from the APServer. All combat losses, Give-ups and special KO scenerios cause you to send deathlinks. Recieving causes angry effect to increase. <b>Warning:</b> Turning off Deathlink while there are deaths queued will still cause the deaths to unqueue.)",
