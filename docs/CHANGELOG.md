@@ -27,8 +27,8 @@
 * Fixed flag routine bug that locked the player out of getting `Jeweler's Cabin - Spectacles` after giving the specticals to the blind soldier in Fort Unnecessary.
 * Added `Stardust` as an item in the item pool to be used for the `Dave B Defeated` check location.
     * Added a fallback to use if Dave B has not been defeated yet, it will now ask if you really want to use the item.
-* Added support for new `Gun Manor Hedge Maze - Wishing Well Token` check.
-* Added support for new check locations `Gun Manor Hedge Maze - Tea Leaf Bush` and `Gun Manor Cellar - Boiler Spout` to introduce the entire line of Tea Service to the randomize pool.
+* Added support for new `Gun Manor Boiler Room - Wishing Well Token` check.
+* Added support for new check locations `Gun Manor Hedge Maze - Tea Leaf Bush` and `Gun Manor Boiler Room - Boiler Spout` to introduce the entire line of Tea Service to the randomize pool.
 
 ## AP World Changes:
 
@@ -57,8 +57,9 @@
     * Added misspoints and proper logic to bring this into logic if the player is able to grow the item at Lazy-A-Dude ranch instead.
 * Added Logic rule for `Mr. Gun's Manliness Room- Booze Cart` to require the `Shower Curtain` to convince the person to leave the cart and thus allowing the checks to be gotten off the cart.
 * Added `Stardust` to item pool and updated `Dave B Defeated` check to include Stardust or pickaxe as logic requirements to do this check.
-* Added `Gun Manor Hedge Maze - Wishing Well Token` as a new check location in the Gun Manor DLC.
+* Added `Gun Manor Boiler Room - Wishing Well Token` as a new check location in the Gun Manor DLC.
 * Added Check Location `Gun Manor Hedge Maze - Tea Leaf Bush`
     * Added rule logic to require `Tea Service` to be able to get this check
-* Added Check Location `Gun Manor Cellar - Boiler Spout`
+* Added Check Location `Gun Manor Boiler Room - Boiler Spout`
     * Added rule logic to require `Tea Service (With Tea Leaves)` to be able to get this check
+* Added new region `Gun Manor Boiler Room` to place checks grouped together into the boiler room.

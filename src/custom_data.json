@@ -32882,7 +32882,7 @@
         ],
         [
           "customcommand",
-          "checklocation,Gun Manor Cellar - Boiler Spout"
+          "checklocation,Gun Manor Boiler Room - Boiler Spout"
         ]
       ]
     },
@@ -34416,7 +34416,7 @@
         ],
         [
           "customcommand",
-          "checklocation,Gun Manor Hedge Maze - Wishing Well Token"
+          "checklocation,Gun Manor Boiler Room - Wishing Well Token"
         ],
         [
           "say",
