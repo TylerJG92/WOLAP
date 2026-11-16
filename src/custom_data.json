@@ -13206,6 +13206,10 @@
           "misspoint,Lazy-A Dude Ranch - Cowsbane Harvest"
         ],
         [
+          "customcommand",
+          "misspoint,El Vibrato Chamber (Curious False Mountain) - TIMESQUEEZE Cowsbane Seeds"
+        ],
+        [
           "goto",
           "options"
         ]
@@ -22983,6 +22987,35 @@
           "option",
           "done",
           "Yeah.  The whole time."
+        ]
+      ]
+    },
+    "elvibrato6_usetimebox": {
+      "quest_cowsbaneseeds": [
+        [
+          "say",
+          "You push the seeds through and a torrent of loose dried cowsbane sprays out the other end."
+        ],
+        [
+          "say",
+          "You grumble and collect it into a bale."
+        ],
+        [
+          "removeitem",
+          "quest_cowsbaneseeds"
+        ],
+        [
+          "customcommand",
+          "checklocation,El Vibrato Chamber (Curious False Mountain) - TIMESQUEEZE Cowsbane Seeds"
+        ],
+        [
+          "customcommand",
+          "misspoint,Lazy-A Dude Ranch - Cowsbane Harvest"
+        ],
+        [
+          "option",
+          "opts",
+          "Dangit"
         ]
       ]
     },
@@ -39898,6 +39931,66 @@
       ]
     },
     "jewelrystore_shop": {
+      "start": [
+        [
+          "addstate",
+          "cost,500"
+        ],
+        [
+          "if",
+          "!hasflag(jewelrystore_intro)"
+        ],
+        [
+          "goto",
+          "intro"
+        ],
+        [
+          "rightportrait",
+          "gobbo"
+        ],
+        [
+          "if",
+          "!hasskill(goblintongue)"
+        ],
+        [
+          "rightsay",
+          "%goblin_paragraph%"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "rightsay",
+          "This one again?"
+        ],
+        [
+          "rightportrait",
+          "clerk"
+        ],
+        [
+          "rightsay",
+          "Welcome back! Have you brought any gemstone that you would like Master Gerald to craft into rings for you?"
+        ],
+        [
+          "if",
+          "hasflag(fort5_glassesquest)>0 && !hasflag(gotglassescheck) && !hasflag(missed_check_forwarded_Jeweler's*Cabin*-*Spectacles)"
+        ],
+        [
+          "goto",
+          "glasses"
+        ],
+        [
+          "sayoption",
+          "optstemp",
+          "Have a look."
+        ],
+        [
+          "sayoption",
+          "done",
+          "Er, no, never mind."
+        ]
+      ],
       "intro2": [
         [
           "leftspeak",
@@ -49270,6 +49363,37 @@
       ]
     },
     "ranch2_hippy2": {
+      "installfence": [
+        [
+          "leftspeak",
+          "$lastoption$"
+        ],
+        [
+          "rightsay",
+          "We'll, like, have the fence set up by tomorrow, right, and then I'll get these cowsbane seeds planted. This stuff grows pretty quick, I should have a crop for you in about three days."
+        ],
+        [
+          "addflag",
+          "ranch2_fenced,@day@"
+        ],
+        [
+          "addflag",
+          "ranch2_fencequest,2"
+        ],
+        [
+          "removeitem",
+          "quest_cowsbaneseeds"
+        ],
+        [
+          "customcommand",
+          "misspoint,El Vibrato Chamber (Curious False Mountain) - TIMESQUEEZE Cowsbane Seeds"
+        ],
+        [
+          "sayoption",
+          "core",
+          "Okay, cool."
+        ]
+      ],
       "yesbane": [
         [
           "rightsay",

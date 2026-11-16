@@ -23,6 +23,8 @@
         * In special events (ie blowing up your dough at Kellog Ranch or Summoning Duke Bovicus in the wrong condition) you will also send a deathlink.
     * When a DeathLink is recieved from the server, the players Anger will rise by 1 as if they lost a combat. If it gets too high the player will pass out and end back up in front of the Dirtwater Jewel.
 * Added Misspoint for `Danny's Tannery (St. Rage Shed) - Grady's Cowsbane Seeds` if you send Grady to Dirtwater without asking him about Cowsbane.
+* Added Check Locations and Misspoints for new check location `El Vibrato Chamber (Curious False Mountain) - TIMESQUEEZE Cowsbane Seeds`
+* Fixed flag routine bug that locked the player out of getting `Jeweler's Cabin - Spectacles` after giving the specticals to the blind soldier in Fort Unnecessary.
 
 ## AP World Changes:
 
@@ -46,3 +48,7 @@
     * `1,000 Meat` is a Useful item, there will always be 3 in the pool
     * `100 Meat` is a filler item, there will always be 5 in the pool but can randomize extras if there is space to do so.
 * Added DeathLink to the yaml options as a toggle, player can also turn it on or off from within the options in game.
+* Added New check location for `El Vibrato Chamber (Curious False Mountain) - TIMESQUEEZE Cowsbane Seeds`
+    * Added logic rules that allow this check to show up if the player can get to and activate the Time Squeezer before they get all required items to grow them at Lazy-A-Dude ranch
+    * Added misspoints and proper logic to bring this into logic if the player is able to grow the item at Lazy-A-Dude ranch instead.
+* Added Logic rule for `Mr. Gun's Manliness Room- Booze Cart` to require the `Shower Curtain` to convince the person to leave the cart and thus allowing the checks to be gotten off the cart.

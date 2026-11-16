@@ -266,15 +266,12 @@ namespace WOLAP
             {
                 case ItemFlags.Advancement:
                     check.Price = progressionPrice;
-                    WolapPlugin.Log.LogInfo("Assigned Progressive Price to item"); //TODO remove test logs.
                     break;
                 case ItemFlags.NeverExclude:
                     check.Price = usefulPrice;
-                    WolapPlugin.Log.LogInfo("Assigned Useful Price to item");//TODO remove test logs.
                     break;
                 default:
                     check.Price = defaultPrice;
-                    WolapPlugin.Log.LogInfo("Assigned Filler/Trap Price to item");//TODO remove test logs.
                     break;
             }
 
