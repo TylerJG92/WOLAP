@@ -50689,8 +50689,28 @@
           "The oven dings and a perfectly-cooked tray of toasty flakes emerges from the slot."
         ],
         [
+          "if",
+          "!hasflag(doughbakedcheckdone)"
+        ],
+        [
           "customcommand",
           "checklocation,Kellogg Ranch (Kitchen) - Dough Baked"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "additem",
+          "food_kelloggflakes"
+        ],
+        [
+          "if",
+          "!hasflag(doughbakedcheckdone)"
+        ],
+        [
+          "addflag",
+          "doughbakedcheckdone"
         ],
         [
           "option",

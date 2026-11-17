@@ -30,6 +30,7 @@
 * Added support for new `Gun Manor Boiler Room - Wishing Well Token` check.
 * Added support for new check locations `Gun Manor Hedge Maze - Tea Leaf Bush` and `Gun Manor Boiler Room - Boiler Spout` to introduce the entire line of Tea Service to the randomize pool.
 * Fixed a bug that skips over `Region D - 3rd encounter` even without pete (skip chance)
+* Added workaround for check `Kellogg Ranch (Kitchen) - Dough Baked`, once complete if the player does the steps again they will get the `Kellogg Flakes` item like they would in vanilla.
 
 ## AP World Changes:
 
