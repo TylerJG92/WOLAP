@@ -50990,6 +50990,14 @@
           "realdone"
         ],
         [
+          "if",
+          "matchstring(@regionto@,d) && hasflag(randomencounters_d)==2"
+        ],
+        [
+          "goto",
+          "apskipforregiond"
+        ],
+        [
           "addstate",
           "skipchance,5"
         ],
@@ -51075,14 +51083,6 @@
         ],
         [
           "if",
-          "matchstring(@regionto@,d) && hasflag(randomencounters_d)==3"
-        ],
-        [
-          "runscript",
-          "randomevent_d"
-        ],
-        [
-          "if",
           "pete && !matchstring(@regionto@,a) && hasflag(randomencounters_@regionto@)>rand(1,2) && !hasflag(re_petelevelup_@regionto@)"
         ],
         [
@@ -51149,6 +51149,28 @@
           "option",
           "done",
           "Something went wrong"
+        ]
+      ],
+      "apskipforregiond":[
+        [
+          "incflag",
+          "randomencounters,1"
+        ],
+        [
+          "incflag",
+          "randomencounters_@regionto@,1"
+        ],
+        [
+          "if",
+          "!hasflag(visited_@regionto@)"
+        ],
+        [
+          "addflag",
+          "visited_@regionto@,1"
+        ],
+        [
+          "runscript",
+          "randomevent_d"
         ]
       ]
     },

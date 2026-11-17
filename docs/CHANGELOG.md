@@ -29,6 +29,7 @@
     * Added a fallback to use if Dave B has not been defeated yet, it will now ask if you really want to use the item.
 * Added support for new `Gun Manor Boiler Room - Wishing Well Token` check.
 * Added support for new check locations `Gun Manor Hedge Maze - Tea Leaf Bush` and `Gun Manor Boiler Room - Boiler Spout` to introduce the entire line of Tea Service to the randomize pool.
+* Fixed a bug that skips over `Region D - 3rd encounter` even without pete (skip chance)
 
 ## AP World Changes:
 
