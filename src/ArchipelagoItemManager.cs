@@ -720,6 +720,8 @@ namespace WOLAP
             new ArchipelagoItem("Tannery Back Door Key", ["quest_tannerybackdoorkey"], sellWarning: true),
             new ArchipelagoItem("Tannery St. Rage Key", ["quest_tanneryshedkey"], sellWarning: true),
             new ArchipelagoItem("Tea Service", ["quest_houseteaset"], isDlc: true, sellWarning: true),
+            new ArchipelagoItem("Tea Service (With Tea Leaves)", ["quest_houseteaset2"], isDlc: true, sellWarning: true),
+            new ArchipelagoItem("Tea Sercive (With Tea)", ["quest_houseteaset3"], isDlc: true, sellWarning: true),
             new ArchipelagoItem("Tiny Stick Of Dynamite", ["quest_housefirecracker"], isDlc: true, sellWarning: true),
             new ArchipelagoItem("Toy Skeletons", ["quest_toyskeletons"], sellWarning: true),
             new ArchipelagoItem("Unstable Stick Of Dynamite", ["quest_olddynamite"], sellWarning: true),
@@ -836,7 +838,8 @@ namespace WOLAP
             new ArchipelagoItem("El Vibrato Rum x3",["booze_elv"], [3]),
             new ArchipelagoItem("5000 Meat",["ap_currency1"]),
             new ArchipelagoItem("1000 Meat", ["ap_currency2"]),
-            new ArchipelagoItem("100 Meat", ["ap_currency3"])
+            new ArchipelagoItem("100 Meat", ["ap_currency3"]),
+            new ArchipelagoItem("Stardust", ["potion_stardust"], sellWarning: true)
         };
     }
 }

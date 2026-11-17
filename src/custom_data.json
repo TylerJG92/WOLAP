@@ -16,7 +16,8 @@
       "You get into a heated argument with %archipelago_dl_actor% over the definition of 'alive'. You lose the argument. And your consciousness.",
       "A %archipelago_dl_adj% horse wanders into view and hands you a death certificate. It appears to be legally binding.",
       "You experience a sudden, unexplained case of being dead. The local doctor recommends getting more sleep.",
-      "You are visited by the Grim Reaper. Unfortunately, he has sent %archipelago_dl_actor% to cover his shift."
+      "You are visited by the Grim Reaper. Unfortunately, he has sent %archipelago_dl_actor% to cover his shift.",
+      "The Necromancer revieved you, you dont feel or look any different."
     ],
     "archipelago_dl_actor": [
       "a cat",
@@ -61,7 +62,9 @@
       "a %archipelago_dl_adj% tumbleweed",
       "a %archipelago_dl_adj% cactus ",
       "a %archipelago_dl_adj% sentient spittoon",
-      "yourself from the future"
+      "yourself from the future",
+      "Roberto",
+      "Roberto %archipelago_dl_weird%"
     ],
     "archipelago_dl_actor2": [
       "a cat",
@@ -85,6 +88,7 @@
       "a %archipelago_dl_adj% clown",
       "a %archipelago_dl_adj% tumbleweed",
       "a %archipelago_dl_adj% cactus",
+      "Roberto",
       "a %archipelago_dl_adj% sentient spittoon"
     ],
     "archipelago_dl_adj": [
@@ -198,8 +202,8 @@
       "you were saved by an extremely convenient plot device. The narrator refuses to explain further.",
       "you heard a voice whisper 'skill issue' before everything went black.",
       "you were pronounced dead, but managed to argue your way down to merely unconscious.",
-      "you tried to use a healing potion, but accidentally drank a bottle of snake oil instead. You recovered eventually, though nobody is entirely sure why."
-
+      "you tried to use a healing potion, but accidentally drank a bottle of snake oil instead. You recovered eventually, though nobody is entirely sure why.",
+      "the Necromancer revieved you, you dont feel or look any different."
     ],
     "archipelago_dl_backtosleep_capital":[
       "You died. Thankfully your kid brother, Rufus, fell on his pocket watch at that exact moment and time reversed itself and you fell asleep instead.",
@@ -220,7 +224,8 @@
       "You were saved by an extremely convenient plot device. The narrator refuses to explain further.",
       "You heard a voice whisper 'skill issue' before everything went black.",
       "You were pronounced dead, but managed to argue your way down to merely unconscious.",
-      "You tried to use a healing potion, but accidentally drank a bottle of snake oil instead. You recovered eventually, though nobody is entirely sure why."
+      "You tried to use a healing potion, but accidentally drank a bottle of snake oil instead. You recovered eventually, though nobody is entirely sure why.",
+      "The Necromancer revieved you, you dont feel or look any different."
     ],
     "options": [
       "deathlink_enabled,always,Enable DeathLink,(Allows the you to send and recieve DeathLinks to and from the APServer. All combat losses, Give-ups and special KO scenerios cause you to send deathlinks. Recieving causes angry effect to increase. <b>Warning:</b> Turning off Deathlink while there are deaths queued will still cause the deaths to unqueue.)",
@@ -13201,6 +13206,10 @@
           "misspoint,Lazy-A Dude Ranch - Cowsbane Harvest"
         ],
         [
+          "customcommand",
+          "misspoint,El Vibrato Chamber (Curious False Mountain) - TIMESQUEEZE Cowsbane Seeds"
+        ],
+        [
           "goto",
           "options"
         ]
@@ -15164,6 +15173,10 @@
         ]
       ],
       "dirtwater": [
+        [
+          "customcommand",
+          "misspoint,Danny's Tannery (St. Rage Shed) - Grady's Cowsbane Seeds"
+        ],
         [
           "addflag",
           "clowns_tanhiding,1"
@@ -22974,6 +22987,35 @@
           "option",
           "done",
           "Yeah.  The whole time."
+        ]
+      ]
+    },
+    "elvibrato6_usetimebox": {
+      "quest_cowsbaneseeds": [
+        [
+          "say",
+          "You push the seeds through and a torrent of loose dried cowsbane sprays out the other end."
+        ],
+        [
+          "say",
+          "You grumble and collect it into a bale."
+        ],
+        [
+          "removeitem",
+          "quest_cowsbaneseeds"
+        ],
+        [
+          "customcommand",
+          "checklocation,El Vibrato Chamber (Curious False Mountain) - TIMESQUEEZE Cowsbane Seeds"
+        ],
+        [
+          "customcommand",
+          "misspoint,Lazy-A Dude Ranch - Cowsbane Harvest"
+        ],
+        [
+          "option",
+          "opts",
+          "Dangit"
         ]
       ]
     },
@@ -32821,6 +32863,29 @@
         ]
       ]
     },
+    "house_boilerfaucet": {
+      "tea": [
+        [
+          "cls"
+        ],
+        [
+          "say",
+          "You pour some boiling water into your teapot.  Voila!"
+        ],
+        [
+          "playsound",
+          "Liquid_pour_01"
+        ],
+        [
+          "removeitem",
+          "quest_houseteaset2"
+        ],
+        [
+          "customcommand",
+          "checklocation,Gun Manor Boiler Room - Boiler Spout"
+        ]
+      ]
+    },
     "house_bowlterfight": {
       "win": [
         [
@@ -34333,6 +34398,33 @@
         [
           "customcommand",
           "checklocation,Gun Manor Children's Quarters - Dollmine"
+        ]
+      ]
+    },
+    "house_droppedtoken": {
+      "e": [
+        [
+          "cls"
+        ],
+        [
+          "say",
+          "That wish was an accident anyway, so you feel entirely justified in taking your token back."
+        ],
+        [
+          "say",
+          "Huh. It would seem that the well didn't like you taking your token back and changed it into something else."
+        ],
+        [
+          "customcommand",
+          "checklocation,Gun Manor Boiler Room - Wishing Well Token"
+        ],
+        [
+          "say",
+          "What is this thing?"
+        ],
+        [
+          "addflag",
+          "house_wishingwell,2"
         ]
       ]
     },
@@ -38950,6 +39042,33 @@
         ]
       ]
     },
+    "house_teabush": {
+      "e": [
+        [
+          "cls"
+        ],
+        [
+          "if",
+          "!hasitem(quest_houseteaset)"
+        ],
+        [
+          "goto",
+          "nope"
+        ],
+        [
+          "say",
+          "You pluck some leaves and drop them in the pot of your tea service."
+        ],
+        [
+          "removeitem",
+          "quest_houseteaset"
+        ],
+        [
+          "customcommand",
+          "checklocation,Gun Manor Hedge Maze - Tea Leaf Bush"
+        ]
+      ]
+    },
     "house_teaservice": {
       "e": [
         [
@@ -39889,6 +40008,66 @@
       ]
     },
     "jewelrystore_shop": {
+      "start": [
+        [
+          "addstate",
+          "cost,500"
+        ],
+        [
+          "if",
+          "!hasflag(jewelrystore_intro)"
+        ],
+        [
+          "goto",
+          "intro"
+        ],
+        [
+          "rightportrait",
+          "gobbo"
+        ],
+        [
+          "if",
+          "!hasskill(goblintongue)"
+        ],
+        [
+          "rightsay",
+          "%goblin_paragraph%"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "rightsay",
+          "This one again?"
+        ],
+        [
+          "rightportrait",
+          "clerk"
+        ],
+        [
+          "rightsay",
+          "Welcome back! Have you brought any gemstone that you would like Master Gerald to craft into rings for you?"
+        ],
+        [
+          "if",
+          "hasflag(fort5_glassesquest)>0 && !hasflag(gotglassescheck) && !hasflag(missed_check_forwarded_Jeweler's*Cabin*-*Spectacles)"
+        ],
+        [
+          "goto",
+          "glasses"
+        ],
+        [
+          "sayoption",
+          "optstemp",
+          "Have a look."
+        ],
+        [
+          "sayoption",
+          "done",
+          "Er, no, never mind."
+        ]
+      ],
       "intro2": [
         [
           "leftspeak",
@@ -48096,6 +48275,63 @@
         ]
       ]
     },
+    "potion_stardust": {
+      "invpopup": [
+        [
+          "if",
+          "dailyflags.potionsused>=player.spleen"
+        ],
+        [
+          "goto",
+          "fail"
+        ],
+        [
+          "if",
+          "!hasflag(daveyard_beatdave)"
+        ],
+        [
+          "goto",
+          "usefallback"
+        ],
+        [
+          "incdailyflag",
+          "potionsused,1"
+        ],
+        [
+          "goto",
+          "yes"
+        ]
+      ],
+      "usefallback": [
+        [
+          "cls"
+        ],
+        [
+          "saycenter",
+          "Are you sure you want to use this item? You might need it for a ritual later!"
+        ],
+        [
+          "sayoption",
+          "beforeyes",
+          "Yes, I want to use it."
+        ],
+        [
+          "sayoption",
+          "done",
+          "No, I changed my mind."
+        ]
+      ],
+      "beforeyes": [
+        [
+          "incdailyflag",
+          "potionsused,1"
+        ],
+        [
+          "goto",
+          "yes"
+        ]
+      ]
+    },
     "professor_talk": {
       "intro3": [
         [
@@ -49261,6 +49497,37 @@
       ]
     },
     "ranch2_hippy2": {
+      "installfence": [
+        [
+          "leftspeak",
+          "$lastoption$"
+        ],
+        [
+          "rightsay",
+          "We'll, like, have the fence set up by tomorrow, right, and then I'll get these cowsbane seeds planted. This stuff grows pretty quick, I should have a crop for you in about three days."
+        ],
+        [
+          "addflag",
+          "ranch2_fenced,@day@"
+        ],
+        [
+          "addflag",
+          "ranch2_fencequest,2"
+        ],
+        [
+          "removeitem",
+          "quest_cowsbaneseeds"
+        ],
+        [
+          "customcommand",
+          "misspoint,El Vibrato Chamber (Curious False Mountain) - TIMESQUEEZE Cowsbane Seeds"
+        ],
+        [
+          "sayoption",
+          "core",
+          "Okay, cool."
+        ]
+      ],
       "yesbane": [
         [
           "rightsay",
