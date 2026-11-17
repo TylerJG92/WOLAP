@@ -17843,7 +17843,7 @@
         ],
         [
           "customcommand",
-          "checklocation,Leatherworkery Crafting - Level 3 (Cowrruption) (Mallet)"
+          "checklocation,Leatherworkery Crafting - Level 3 [Cowrruption] (Mallet)"
         ],
         [
           "addflag",
@@ -73639,7 +73639,7 @@
         ],
         [
           "customcommand",
-          "checklocation,Random Encounter (Region E) - 13th Encounter (Cowrruption)"
+          "checklocation,Random Encounter (Region E) - 13th Encounter [Cowrruption]"
         ],
         [
           "addflag",
