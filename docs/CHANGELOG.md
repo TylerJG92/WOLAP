@@ -63,3 +63,4 @@
 * Added Check Location `Gun Manor Boiler Room - Boiler Spout`
     * Added rule logic to require `Tea Service (With Tea Leaves)` to be able to get this check
 * Added new region `Gun Manor Boiler Room` to place checks grouped together into the boiler room.
+* Fixed a logic bug that can show `Gun Manor Visitor's Center - Photo` too early in logic.
