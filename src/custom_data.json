@@ -15881,6 +15881,14 @@
     "container_loot_army": {
       "start": [
         [
+          "if",
+          "!hasflag(crate_sanity)"
+        ],
+        [
+          "goto",
+          "start_vanilla"
+        ],
+        [
           "clearrandom",
           ""
         ],
@@ -15982,7 +15990,7 @@
         ],
         [
           "customcommand",
-          "checklocation,Progressive Loot - 5th Army Container"
+          "checklocation,Crate Sanity - 5th Army Container"
         ],
         [
           "if",
@@ -15990,7 +15998,7 @@
         ],
         [
           "customcommand",
-          "checklocation,Progressive Loot - 10th Army Container"
+          "checklocation,Crate Sanity - 10th Army Container"
         ],
         [
           "if",
@@ -15998,7 +16006,133 @@
         ],
         [
           "customcommand",
-          "checklocation,Progressive Loot - 15th Army Container"
+          "checklocation,Crate Sanity - 15th Army Container"
+        ],
+        [
+          "runscript",
+          "$returnscript$,$returnstate$"
+        ]
+      ],
+      "start_vanilla": [
+        [
+          "clearrandom",
+          ""
+        ],
+        [
+          "incflag",
+          "containers_army,1"
+        ],
+        [
+          "pushrandom",
+          "booze_armywhiskey"
+        ],
+        [
+          "pushrandom",
+          "combat_armyfirstaid"
+        ],
+        [
+          "pushrandom",
+          "combat_bulletfire"
+        ],
+        [
+          "pushrandom",
+          "combat_bulletpoison"
+        ],
+        [
+          "pushrandom",
+          "combat_bulletsilver"
+        ],
+        [
+          "pushrandom",
+          "food_hardtack"
+        ],
+        [
+          "pushrandom",
+          "combat_smellingsalts"
+        ],
+        [
+          "pushrandom",
+          "combat_canteen"
+        ],
+        [
+          "addstate",
+          "quant,1"
+        ],
+        [
+          "if",
+          "hasflag(containers_army)>=4"
+        ],
+        [
+          "incstate",
+          "quant,rand(1,2)"
+        ],
+        [
+          "if",
+          "hasflag(containers_army)>=8"
+        ],
+        [
+          "incstate",
+          "quant,rand(1,2)"
+        ],
+        [
+          "additem",
+          "poprandom(),$quant$"
+        ],
+        [
+          "addstate",
+          "quant,1"
+        ],
+        [
+          "if",
+          "hasflag(containers_army)>=6"
+        ],
+        [
+          "incstate",
+          "quant,rand(1,2)"
+        ],
+        [
+          "additem",
+          "poprandom(),$quant$"
+        ],
+        [
+          "if",
+          "itemroll(30)"
+        ],
+        [
+          "additem",
+          "poprandom"
+        ],
+        [
+          "if",
+          "hasflag(containers_army)==5 || hasflag(containers_army)==10 || hasflag(containers_army)==15"
+        ],
+        [
+          "say",
+          "Ooh, hey, what's this?"
+        ],
+        [
+          "if",
+          "hasflag(containers_army)==5"
+        ],
+        [
+          "additem",
+          "weapon_armysaber"
+        ],
+        [
+          "if",
+          "hasflag(containers_army)==10"
+        ],
+        [
+          "additem",
+          "ring_army"
+        ],
+        [
+          "if",
+          "hasflag(containers_army)==15"
+        ],
+        [
+          "additem",
+          "lapel_medals"
         ],
         [
           "runscript",
@@ -16195,11 +16329,19 @@
       "progloot": [
         [
           "if",
+          "!hasflag(crate_sanity)"
+        ],
+        [
+          "goto",
+          "progloot_vanilla"
+        ],
+        [
+          "if",
           "hasflag(containers_elvibrato)==5"
         ],
         [
           "customcommand",
-          "checklocation,Progressive Loot - 5th El Vibrato Container"
+          "checklocation,Crate Sanity - 5th El Vibrato Container"
         ],
         [
           "if",
@@ -16207,7 +16349,7 @@
         ],
         [
           "customcommand",
-          "checklocation,Progressive Loot - 7th El Vibrato Container"
+          "checklocation,Crate Sanity - 7th El Vibrato Container"
         ],
         [
           "if",
@@ -16215,7 +16357,7 @@
         ],
         [
           "customcommand",
-          "checklocation,Progressive Loot - 9th El Vibrato Container"
+          "checklocation,Crate Sanity - 9th El Vibrato Container"
         ],
         [
           "if",
@@ -16223,7 +16365,7 @@
         ],
         [
           "customcommand",
-          "checklocation,Progressive Loot - 11th El Vibrato Container"
+          "checklocation,Crate Sanity - 11th El Vibrato Container"
         ],
         [
           "if",
@@ -16231,7 +16373,7 @@
         ],
         [
           "customcommand",
-          "checklocation,Progressive Loot - 13th El Vibrato Container"
+          "checklocation,Crate Sanity - 13th El Vibrato Container"
         ],
         [
           "if",
@@ -16239,7 +16381,77 @@
         ],
         [
           "customcommand",
-          "checklocation,Progressive Loot - 15th El Vibrato Container"
+          "checklocation,Crate Sanity - 15th El Vibrato Container"
+        ],
+        [
+          "runscript",
+          "$returnscript$,$returnstate$"
+        ]
+      ],
+      "progloot_vanilla": [
+        [
+          "if",
+          "hasflag(containers_elvibrato)==5"
+        ],
+        [
+          "additem",
+          "lapel_elv"
+        ],
+        [
+          "if",
+          "hasflag(containers_elvibrato)==7"
+        ],
+        [
+          "additem",
+          "ring_elv"
+        ],
+        [
+          "if",
+          "hasflag(containers_elvibrato)==9"
+        ],
+        [
+          "additem",
+          "pants_elv"
+        ],
+        [
+          "if",
+          "hasflag(containers_elvibrato)==11"
+        ],
+        [
+          "additem",
+          "boots_elv"
+        ],
+        [
+          "if",
+          "hasflag(containers_elvibrato)==13"
+        ],
+        [
+          "additem",
+          "hat_elv"
+        ],
+        [
+          "if",
+          "hasflag(containers_elvibrato)==15 && snakeoiler"
+        ],
+        [
+          "additem",
+          "pistol_elv"
+        ],
+        [
+          "if",
+          "hasflag(containers_elvibrato)==15 && cowpuncher"
+        ],
+        [
+          "additem",
+          "weapon_elv"
+        ],
+        [
+          "if",
+          "hasflag(containers_elvibrato)==15 && beanslinger"
+        ],
+        [
+          "additem",
+          "offhand_elv"
         ],
         [
           "runscript",
@@ -16271,6 +16483,14 @@
     },
     "container_loot_grave": {
       "start": [
+        [
+          "if",
+          "!hasflag(crate_sanity)"
+        ],
+        [
+          "goto",
+          "start_vanilla"
+        ],
         [
           "clearrandom",
           ""
@@ -16397,7 +16617,7 @@
         ],
         [
           "customcommand",
-          "checklocation,Progressive Loot - 3rd Grave Container"
+          "checklocation,Crate Sanity - 3rd Grave Container"
         ],
         [
           "if",
@@ -16413,7 +16633,7 @@
         ],
         [
           "customcommand",
-          "checklocation,Progressive Loot - 6th Grave Container"
+          "checklocation,Crate Sanity - 6th Grave Container"
         ],
         [
           "if",
@@ -16429,7 +16649,7 @@
         ],
         [
           "customcommand",
-          "checklocation,Progressive Loot - 9th Grave Container"
+          "checklocation,Crate Sanity - 9th Grave Container"
         ],
         [
           "if",
@@ -16445,7 +16665,7 @@
         ],
         [
           "customcommand",
-          "checklocation,Progressive Loot - 12th Grave Container"
+          "checklocation,Crate Sanity - 12th Grave Container"
         ],
         [
           "if",
@@ -16461,7 +16681,7 @@
         ],
         [
           "customcommand",
-          "checklocation,Progressive Loot - 15th Grave Container"
+          "checklocation,Crate Sanity - 15th Grave Container"
         ],
         [
           "if",
@@ -16477,7 +16697,7 @@
         ],
         [
           "customcommand",
-          "checklocation,Progressive Loot - 18th Grave Container"
+          "checklocation,Crate Sanity - 18th Grave Container"
         ],
         [
           "if",
@@ -16493,7 +16713,7 @@
         ],
         [
           "customcommand",
-          "checklocation,Progressive Loot - 21st Grave Container"
+          "checklocation,Crate Sanity - 21st Grave Container"
         ],
         [
           "if",
@@ -16509,7 +16729,7 @@
         ],
         [
           "customcommand",
-          "checklocation,Progressive Loot - 24th Grave Container"
+          "checklocation,Crate Sanity - 24th Grave Container"
         ],
         [
           "if",
@@ -16523,10 +16743,232 @@
           "runscript",
           "$returnscript$,$returnstate$"
         ]
+      ],
+      "start_vanilla": [
+        [
+          "clearrandom",
+          ""
+        ],
+        [
+          "incflag",
+          "containers_grave,1"
+        ],
+        [
+          "pushrandom",
+          "bone"
+        ],
+        [
+          "pushrandom",
+          "skullchips"
+        ],
+        [
+          "pushrandom",
+          "looseteeth"
+        ],
+        [
+          "if",
+          "hasflag(containers_grave)>=6"
+        ],
+        [
+          "pushrandom",
+          "sell_goldtooth"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "pushrandom",
+          "sell_graveskull"
+        ],
+        [
+          "pushrandom",
+          "potion_gravedirt"
+        ],
+        [
+          "pushrandom",
+          "sell_oldcoins"
+        ],
+        [
+          "if",
+          "hasflag(containers_grave)>=9"
+        ],
+        [
+          "pushrandom",
+          "booze_grave"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "pushrandom",
+          "booze_grave2"
+        ],
+        [
+          "addstate",
+          "quant,1"
+        ],
+        [
+          "if",
+          "hasflag(containers_grave)>=4"
+        ],
+        [
+          "incstate",
+          "quant,rand(1,2)"
+        ],
+        [
+          "if",
+          "hasflag(containers_grave)>=8"
+        ],
+        [
+          "incstate",
+          "quant,rand(1,2)"
+        ],
+        [
+          "additem",
+          "poprandom(),$quant$"
+        ],
+        [
+          "addstate",
+          "quant,1"
+        ],
+        [
+          "if",
+          "hasflag(containers_grave)>=6"
+        ],
+        [
+          "incstate",
+          "quant,rand(1,2)"
+        ],
+        [
+          "additem",
+          "poprandom(),$quant$"
+        ],
+        [
+          "if",
+          "itemroll(30)"
+        ],
+        [
+          "additem",
+          "poprandom"
+        ],
+        [
+          "clearrandom",
+          ""
+        ],
+        [
+          "if",
+          "hasflag(containers_grave)>6 && !hasflag(sixth_grave_container_replacement)"
+        ],
+        [
+          "say",
+          "You get a faint wiff of something that smells... Really good... After some digging you find what could only be assumed to be a pocket square that once smelled nice, but when you touch it, it disintigrates into dust. Must have been <i>really</i> old. But hey, you manage to find some meat on the ground nearby. Your luck must be turning around!"
+        ],
+        [
+          "if",
+          "hasflag(containers_grave)>6 && !hasflag(sixth_grave_container_replacement)"
+        ],
+        [
+          "addmeat",
+          "40"
+        ],
+        [
+          "if",
+          "hasflag(containers_grave)>6 && !hasflag(sixth_grave_container_replacement)"
+        ],
+        [
+          "addflag",
+          "sixth_grave_container_replacement,1"
+        ],
+        [
+          "if",
+          "!hasitem(ring_grave)"
+        ],
+        [
+          "pushrandom",
+          "ring_grave"
+        ],
+        [
+          "if",
+          "hasflag(containers_grave)>3 && !hasitem(ring_grave2)"
+        ],
+        [
+          "pushrandom",
+          "ring_grave2"
+        ],
+        [
+          "if",
+          "hasflag(containers_grave)>9 && !hasitem(lapel_grave2)"
+        ],
+        [
+          "pushrandom",
+          "lapel_grave2"
+        ],
+        [
+          "if",
+          "hasflag(containers_grave)>12 && !hasitem(lapel_grave3)"
+        ],
+        [
+          "pushrandom",
+          "lapel_grave3"
+        ],
+        [
+          "if",
+          "hasflag(containers_grave)>15 && !hasitem(pants_grave)"
+        ],
+        [
+          "pushrandom",
+          "pants_grave"
+        ],
+        [
+          "if",
+          "hasflag(containers_grave)>18 && !hasitem(lapel_grave4)"
+        ],
+        [
+          "pushrandom",
+          "lapel_grave4"
+        ],
+        [
+          "if",
+          "hasflag(containers_grave)>21 && !hasitem(hat_grave)"
+        ],
+        [
+          "pushrandom",
+          "hat_grave"
+        ],
+        [
+          "if",
+          "hasflag(containers_grave)>24 && !hasitem(lapel_grave5)"
+        ],
+        [
+          "pushrandom",
+          "lapel_grave5"
+        ],
+        [
+          "if",
+          "$sizeofrandom$>0"
+        ],
+        [
+          "additem",
+          "poprandom()"
+        ],
+        [
+          "runscript",
+          "$returnscript$,$returnstate$"
+        ]
       ]
     },
     "container_loot_medical": {
       "start": [
+        [
+          "if",
+          "!hasflag(crate_sanity)"
+        ],
+        [
+          "goto",
+          "start_vanilla"
+        ],
         [
           "incflag",
           "containers_medicine,1"
@@ -16621,7 +17063,7 @@
         ],
         [
           "customcommand",
-          "checklocation,Progressive Loot - 3rd Medical Container"
+          "checklocation,Crate Sanity - 3rd Medical Container"
         ],
         [
           "if",
@@ -16629,7 +17071,7 @@
         ],
         [
           "customcommand",
-          "checklocation,Progressive Loot - 6th Medical Container"
+          "checklocation,Crate Sanity - 6th Medical Container"
         ],
         [
           "if",
@@ -16637,7 +17079,125 @@
         ],
         [
           "customcommand",
-          "checklocation,Progressive Loot - 9th Medical Container"
+          "checklocation,Crate Sanity - 9th Medical Container"
+        ],
+        [
+          "runscript",
+          "$returnscript$,$returnstate$"
+        ]
+      ],
+      "start_vanilla": [
+        [
+          "incflag",
+          "containers_medicine,1"
+        ],
+        [
+          "clearrandom",
+          ""
+        ],
+        [
+          "pushrandom",
+          "potion_nervepills"
+        ],
+        [
+          "pushrandom",
+          "potion_laudanum"
+        ],
+        [
+          "pushrandom",
+          "potion_bloodtonic"
+        ],
+        [
+          "pushrandom",
+          "combat_smellingsalts"
+        ],
+        [
+          "pushrandom",
+          "combat_antidote"
+        ],
+        [
+          "pushrandom",
+          "booze_surgicalgin"
+        ],
+        [
+          "addstate",
+          "quant,1"
+        ],
+        [
+          "if",
+          "hasflag(containers_medicine)>=3"
+        ],
+        [
+          "incstate",
+          "quant,rand(1,2)"
+        ],
+        [
+          "if",
+          "hasflag(containers_medicine)>=7"
+        ],
+        [
+          "incstate",
+          "quant,rand(1,2)"
+        ],
+        [
+          "additem",
+          "poprandom(),$quant$"
+        ],
+        [
+          "addstate",
+          "quant,1"
+        ],
+        [
+          "if",
+          "hasflag(containers_medicine)>=5"
+        ],
+        [
+          "incstate",
+          "quant,rand(1,2)"
+        ],
+        [
+          "additem",
+          "poprandom(),$quant$"
+        ],
+        [
+          "if",
+          "itemroll(30)"
+        ],
+        [
+          "additem",
+          "poprandom"
+        ],
+        [
+          "if",
+          "hasflag(containers_medicine)==3 || hasflag(containers_medicine)==6 || hasflag(containers_medicine)==9"
+        ],
+        [
+          "say",
+          "Ooh, hey, what's this?"
+        ],
+        [
+          "if",
+          "hasflag(containers_medicine)==3"
+        ],
+        [
+          "additem",
+          "boots_medical"
+        ],
+        [
+          "if",
+          "hasflag(containers_medicine)==6"
+        ],
+        [
+          "additem",
+          "pistol_medical"
+        ],
+        [
+          "if",
+          "hasflag(containers_medicine)==9"
+        ],
+        [
+          "additem",
+          "pants_medical"
         ],
         [
           "runscript",
@@ -16648,6 +17208,14 @@
     "container_loot_medical_2": {
       "start": [
         [
+          "if",
+          "!hasflag(crate_sanity)"
+        ],
+        [
+          "goto",
+          "start_vanilla"
+        ],
+        [
           "incflag",
           "containers_medicine,1"
         ],
@@ -16741,7 +17309,7 @@
         ],
         [
           "customcommand",
-          "checklocation,Progressive Loot - 3rd Medical Container"
+          "checklocation,Crate Sanity - 3rd Medical Container"
         ],
         [
           "if",
@@ -16749,7 +17317,7 @@
         ],
         [
           "customcommand",
-          "checklocation,Progressive Loot - 6th Medical Container"
+          "checklocation,Crate Sanity - 6th Medical Container"
         ],
         [
           "if",
@@ -16757,7 +17325,125 @@
         ],
         [
           "customcommand",
-          "checklocation,Progressive Loot - 9th Medical Container"
+          "checklocation,Crate Sanity - 9th Medical Container"
+        ],
+        [
+          "runscript",
+          "$returnscript$,$returnstate$"
+        ]
+      ],
+      "start_vanilla": [
+        [
+          "incflag",
+          "containers_medicine,1"
+        ],
+        [
+          "clearrandom",
+          ""
+        ],
+        [
+          "pushrandom",
+          "potion_nervepills"
+        ],
+        [
+          "pushrandom",
+          "potion_laudanum"
+        ],
+        [
+          "pushrandom",
+          "potion_bloodtonic"
+        ],
+        [
+          "pushrandom",
+          "combat_smellingsalts"
+        ],
+        [
+          "pushrandom",
+          "combat_antidote"
+        ],
+        [
+          "pushrandom",
+          "booze_surgicalgin"
+        ],
+        [
+          "addstate",
+          "quant,1"
+        ],
+        [
+          "if",
+          "hasflag(containers_medicine)>=3"
+        ],
+        [
+          "incstate",
+          "quant,rand(1,2)"
+        ],
+        [
+          "if",
+          "hasflag(containers_medicine)>=7"
+        ],
+        [
+          "incstate",
+          "quant,rand(1,2)"
+        ],
+        [
+          "additem",
+          "poprandom(),$quant$"
+        ],
+        [
+          "addstate",
+          "quant,1"
+        ],
+        [
+          "if",
+          "hasflag(containers_medicine)>=5"
+        ],
+        [
+          "incstate",
+          "quant,rand(1,2)"
+        ],
+        [
+          "additem",
+          "poprandom(),$quant$"
+        ],
+        [
+          "if",
+          "itemroll(30)"
+        ],
+        [
+          "additem",
+          "poprandom"
+        ],
+        [
+          "if",
+          "hasflag(containers_medicine)==3 || hasflag(containers_medicine)==6 || hasflag(containers_medicine)==9"
+        ],
+        [
+          "say",
+          "Ooh, hey, what's this?"
+        ],
+        [
+          "if",
+          "hasflag(containers_medicine)==3"
+        ],
+        [
+          "additem",
+          "boots_medical"
+        ],
+        [
+          "if",
+          "hasflag(containers_medicine)==6"
+        ],
+        [
+          "additem",
+          "pistol_medical"
+        ],
+        [
+          "if",
+          "hasflag(containers_medicine)==9"
+        ],
+        [
+          "additem",
+          "pants_medical"
         ],
         [
           "runscript",
@@ -16767,6 +17453,14 @@
     },
     "container_loot_mine": {
       "start": [
+        [
+          "if",
+          "!hasflag(crate_sanity)"
+        ],
+        [
+          "goto",
+          "start_vanilla"
+        ],
         [
           "clearrandom",
           ""
@@ -16861,7 +17555,7 @@
         ],
         [
           "customcommand",
-          "checklocation,Progressive Loot - 3rd Mining Container"
+          "checklocation,Crate Sanity - 3rd Mining Container"
         ],
         [
           "if",
@@ -16869,7 +17563,7 @@
         ],
         [
           "customcommand",
-          "checklocation,Progressive Loot - 6th Mining Container"
+          "checklocation,Crate Sanity - 6th Mining Container"
         ],
         [
           "if",
@@ -16877,7 +17571,125 @@
         ],
         [
           "customcommand",
-          "checklocation,Progressive Loot - 9th Mining Container"
+          "checklocation,Crate Sanity - 9th Mining Container"
+        ],
+        [
+          "runscript",
+          "$returnscript$,$returnstate$"
+        ]
+      ],
+      "start_vanilla": [
+        [
+          "clearrandom",
+          ""
+        ],
+        [
+          "incflag",
+          "containers_mine,1"
+        ],
+        [
+          "pushrandom",
+          "booze_minerscoffee"
+        ],
+        [
+          "pushrandom",
+          "oilcan"
+        ],
+        [
+          "pushrandom",
+          "combat_match"
+        ],
+        [
+          "pushrandom",
+          "combat_kerosene"
+        ],
+        [
+          "pushrandom",
+          "combat_dynamite"
+        ],
+        [
+          "pushrandom",
+          "combat_smellingsalts"
+        ],
+        [
+          "addstate",
+          "quant,1"
+        ],
+        [
+          "if",
+          "hasflag(containers_mine)>=3"
+        ],
+        [
+          "incstate",
+          "quant,rand(1,2)"
+        ],
+        [
+          "if",
+          "hasflag(containers_mine)>=7"
+        ],
+        [
+          "incstate",
+          "quant,rand(1,2)"
+        ],
+        [
+          "additem",
+          "poprandom(),$quant$"
+        ],
+        [
+          "addstate",
+          "quant,1"
+        ],
+        [
+          "if",
+          "hasflag(containers_mine)>=5"
+        ],
+        [
+          "incstate",
+          "quant,rand(1,2)"
+        ],
+        [
+          "additem",
+          "poprandom(),$quant$"
+        ],
+        [
+          "if",
+          "itemroll(30)"
+        ],
+        [
+          "additem",
+          "poprandom"
+        ],
+        [
+          "if",
+          "hasflag(containers_mine)==3 || hasflag(containers_mine)==6 || hasflag(containers_mine)==9"
+        ],
+        [
+          "say",
+          "Ooh, hey, what's this?"
+        ],
+        [
+          "if",
+          "hasflag(containers_mine)==3"
+        ],
+        [
+          "additem",
+          "ring_mining"
+        ],
+        [
+          "if",
+          "hasflag(containers_mine)==6"
+        ],
+        [
+          "additem",
+          "offhand_mining"
+        ],
+        [
+          "if",
+          "hasflag(containers_mine)==9"
+        ],
+        [
+          "additem",
+          "weapon_mining"
         ],
         [
           "runscript",
@@ -16887,6 +17699,14 @@
     },
     "container_loot_ranch": {
       "start": [
+        [
+          "if",
+          "!hasflag(crate_sanity)"
+        ],
+        [
+          "goto",
+          "start_vanilla"
+        ],
         [
           "incflag",
           "containers_ranch,1"
@@ -16993,7 +17813,7 @@
         ],
         [
           "customcommand",
-          "checklocation,Progressive Loot - 5th Ranch Container"
+          "checklocation,Crate Sanity - 5th Ranch Container"
         ],
         [
           "if",
@@ -17001,7 +17821,7 @@
         ],
         [
           "customcommand",
-          "checklocation,Progressive Loot - 10th Ranch Container"
+          "checklocation,Crate Sanity - 10th Ranch Container"
         ],
         [
           "if",
@@ -17009,7 +17829,137 @@
         ],
         [
           "customcommand",
-          "checklocation,Progressive Loot - 15th Ranch Container"
+          "checklocation,Crate Sanity - 15th Ranch Container"
+        ],
+        [
+          "runscript",
+          "$returnscript$,$returnstate$"
+        ]
+      ],
+      "start_vanilla": [
+        [
+          "incflag",
+          "containers_ranch,1"
+        ],
+        [
+          "clearrandom",
+          ""
+        ],
+        [
+          "pushrandom",
+          "nails"
+        ],
+        [
+          "pushrandom",
+          "combat_canteen"
+        ],
+        [
+          "pushrandom",
+          "rope"
+        ],
+        [
+          "pushrandom",
+          "combat_lasso"
+        ],
+        [
+          "pushrandom",
+          "soap"
+        ],
+        [
+          "pushrandom",
+          "lock"
+        ],
+        [
+          "pushrandom",
+          "potion_rancher"
+        ],
+        [
+          "pushrandom",
+          "potion_rancher2"
+        ],
+        [
+          "pushrandom",
+          "booze_rancher"
+        ],
+        [
+          "addstate",
+          "quant,1"
+        ],
+        [
+          "if",
+          "hasflag(containers_ranch)>=3"
+        ],
+        [
+          "incstate",
+          "quant,rand(1,2)"
+        ],
+        [
+          "if",
+          "hasflag(containers_ranch)>=7"
+        ],
+        [
+          "incstate",
+          "quant,rand(1,2)"
+        ],
+        [
+          "additem",
+          "poprandom(),$quant$"
+        ],
+        [
+          "addstate",
+          "quant,1"
+        ],
+        [
+          "if",
+          "hasflag(containers_ranch)>=5"
+        ],
+        [
+          "incstate",
+          "quant,rand(1,2)"
+        ],
+        [
+          "additem",
+          "poprandom(),$quant$"
+        ],
+        [
+          "if",
+          "itemroll(30)"
+        ],
+        [
+          "additem",
+          "poprandom"
+        ],
+        [
+          "if",
+          "hasflag(containers_ranch)==5 || hasflag(containers_ranch)==10 || hasflag(containers_ranch)==15"
+        ],
+        [
+          "say",
+          "Ooh, hey, what's this?"
+        ],
+        [
+          "if",
+          "hasflag(containers_ranch)==5"
+        ],
+        [
+          "additem",
+          "pistol_ranch"
+        ],
+        [
+          "if",
+          "hasflag(containers_ranch)==10"
+        ],
+        [
+          "additem",
+          "ring_ranch"
+        ],
+        [
+          "if",
+          "hasflag(containers_ranch)==15"
+        ],
+        [
+          "additem",
+          "offhand_ranch"
         ],
         [
           "runscript",
