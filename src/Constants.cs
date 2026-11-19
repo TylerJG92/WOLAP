@@ -50,6 +50,7 @@ namespace WOLAP
         public const string DlcEnabledSlotDataFlag = "dlc_enabled";
         public const string RandomizeGhostCoachFlag = "randomize_ghost_coach";
         public const string RandomizeGoblintongueFlag = "randomize_goblintongue";
+        public const string WanderSanityFlag = "wander_sanity";
         public const string UnbreakableToolsFlag = "unbreakable_tools";
         public const string DeathlinkEnabled = "deathlink_enabled";
 
@@ -58,6 +59,7 @@ namespace WOLAP
             {DlcEnabledSlotDataFlag, "1"},
             {RandomizeGhostCoachFlag, "1"},
             {RandomizeGoblintongueFlag, "1"},
+            {WanderSanityFlag, "1"},
             {UnbreakableToolsFlag, "0"},
             {DeathlinkEnabled, "0"}
         };

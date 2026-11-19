@@ -31,6 +31,8 @@
 * Added support for new check locations `Gun Manor Hedge Maze - Tea Leaf Bush` and `Gun Manor Boiler Room - Boiler Spout` to introduce the entire line of Tea Service to the randomize pool.
 * Fixed a bug that skips over `Region D - 3rd encounter` even without pete (skip chance)
 * Added workaround for check `Kellogg Ranch (Kitchen) - Dough Baked`, once complete if the player does the steps again they will get the `Kellogg Flakes` item like they would in vanilla.
+* Added `Wander Sanity` Support in the code. When toggled off, the code will instead give you its vanilla items in *most* places, with the exception of still randomized tools like the shovel, skill books and the varmit skinning knife.
+* Added support for 2 new items in the item pool `Kellogg Ranch Brochure` and `Goblin Flapjacks x2`
 
 ## AP World Changes:
 
@@ -66,3 +68,6 @@
     * Added rule logic to require `Tea Service (With Tea Leaves)` to be able to get this check
 * Added new region `Gun Manor Boiler Room` to place checks grouped together into the boiler room.
 * Fixed a logic bug that can show `Gun Manor Visitor's Center - Photo` too early in logic.
+* Renamed all checks for `Random Event` into `Wander Sanity`
+* Added `Wander Sanity` as a toggleable option in the yaml. Toggling off will cause the game to no longer generate checks, and instead replace the items there with their vanilla item.
+* Added 2 new items to the item pool `Kellogg Ranch Brochure` and `Goblin Flapjacks x2`, both are considered filler, and the kellogg brochure toggles off with the `Wander Sanity`.
