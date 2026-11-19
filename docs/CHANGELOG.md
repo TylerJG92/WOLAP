@@ -33,6 +33,7 @@
 * Added workaround for check `Kellogg Ranch (Kitchen) - Dough Baked`, once complete if the player does the steps again they will get the `Kellogg Flakes` item like they would in vanilla.
 * Added `Wander Sanity` Support in the code. When toggled off, the code will instead give you its vanilla items in *most* places, with the exception of still randomized tools like the shovel, skill books and the varmit skinning knife.
 * Added support for 2 new items in the item pool `Kellogg Ranch Brochure` and `Goblin Flapjacks x2`
+* Added `Crate Sanity` Support in the code. When toggled off the code will instead give you its vanilla items in *most* places, with the exception of still randomized 1 item `Perfumed Pocket Square` due to it being a `Stench Resistance` item and crate sanity can unlock all its items from the very beginning if the player is *very* determined, so to avoid having Stench Resistance open too early in logic, the item will remain randomized.
 
 ## AP World Changes:
 
@@ -71,3 +72,4 @@
 * Renamed all checks for `Random Event` into `Wander Sanity`
 * Added `Wander Sanity` as a toggleable option in the yaml. Toggling off will cause the game to no longer generate checks, and instead replace the items there with their vanilla item.
 * Added 2 new items to the item pool `Kellogg Ranch Brochure` and `Goblin Flapjacks x2`, both are considered filler, and the kellogg brochure toggles off with the `Wander Sanity`.
+* Added `Crate Sanity`, Replaced `Progressive Loot` as its logic names. This is a toggleable yaml option that will cause the items to either randomize or be placed back in their vanilla location. (see client update for exception)
