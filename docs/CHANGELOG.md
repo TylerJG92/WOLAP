@@ -35,6 +35,7 @@
 * Added support for 2 new items in the item pool `Kellogg Ranch Brochure` and `Goblin Flapjacks x2`
 * Added `Crate Sanity` Support in the code. When toggled off the code will instead give you its vanilla items in *most* places, with the exception of still randomized 1 item `Perfumed Pocket Square` due to it being a `Stench Resistance` item and crate sanity can unlock all its items from the very beginning if the player is *very* determined, so to avoid having Stench Resistance open too early in logic, the item will remain randomized.
 * Added `Haystack Sanity` Support in the code. Only change is when toggled on, haystacks in addition to their needle will also give a check.
+* Added an extra bit of script for the halves of Curly's map, now it forces the player to read the first half so they can get the other half check from Hallow way. The script will also require that both maps be in the inventory to combine regardless of which map half is being used.
 
 ## AP World Changes:
 

@@ -33765,10 +33765,6 @@
           "curly_treasuregot"
         ],
         [
-          "customcommand",
-          "misspoint, Halloway's Hideaway - Half of Curly's Map"
-        ],
-        [
           "removeitem",
           "quest_curlymap"
         ]
