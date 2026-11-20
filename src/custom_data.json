@@ -40623,6 +40623,90 @@
         ]
       ]
     },
+    "item_curlymap1": {
+      "invpopup": [
+        [
+          "if",
+          "hasitem(quest_curlymap2) && hasflag(curly_mapread)"
+        ],
+        [
+          "goto",
+          "combine"
+        ],
+        [
+          "say",
+          "It's half a map, which is about as useful as half a velocipede.  Which is to say not useful at all and you'll probably fall on your face and embarrass yourself if you try to use it."
+        ],
+        [
+          "option",
+          "turnover",
+          "Turn it over"
+        ]
+      ]
+    },
+    "item_curlymap2": {
+      "invpopup": [
+        [
+          "if",
+          "!hasitem(quest_curlymap1)"
+        ],
+        [
+          "goto",
+          "dont_combine"
+        ],
+        [
+          "if",
+          "!hasflag(curly_mapread)"
+        ],
+        [
+          "goto",
+          "please_dont"
+        ],
+        [
+          "removeitem",
+          "quest_curlymap1"
+        ],
+        [
+          "removeitem",
+          "quest_curlymap2"
+        ],
+        [
+          "say",
+          "The two halves of the map fit together like two halves of a glove!"
+        ],
+        [
+          "additem",
+          "quest_curlymap"
+        ],
+        [
+          "option",
+          "done",
+          "Excellent"
+        ]
+      ],
+      "please_dont": [
+        [
+          "say",
+          "You get the nagging feeling that you should look at the other half of the map first."
+        ],
+        [
+          "sayoption",
+          "done",
+          "Ok mom..."
+        ]
+      ],
+      "dont_combine": [
+        [
+          "say",
+          "You dont have both halves of the map yet."
+        ],
+        [
+          "sayoption",
+          "done",
+          "Oh yeah."
+        ]
+      ]
+    },
     "item_dynamite": {
       "invpopup": [
         [
