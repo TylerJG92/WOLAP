@@ -24264,6 +24264,137 @@
         ]
       ]
     },
+    "endcredits_endcredits": {
+      "node6": [
+        [
+          "cls"
+        ],
+        [
+          "saycenter",
+          "<size=60>Beta Testers</size>"
+        ],
+        [
+          "saycolumns",
+          "^\\t\\t\\t\\t\\t\\t\\t\\t\\t\\tJustin Bortnick^^ /Casey Weederman"
+        ],
+        [
+          "saycolumns",
+          "^\\t\\t\\t\\t\\t\\t\\t\\t\\t\\tBen McGraw^^ /Robert Goosman"
+        ],
+        [
+          "saycolumns",
+          "^\\t\\t\\t\\t\\t\\t\\t\\t\\t\\tJosh Lee^^ /Melissa Hagan"
+        ],
+        [
+          "saycolumns",
+          "^\\t\\t\\t\\t\\t\\t\\t\\t\\t\\tAlex Martin^^ /Abigail Corfman"
+        ],
+        [
+          "saycolumns",
+          "^\\t\\t\\t\\t\\t\\t\\t\\t\\t\\tJustin Ignacio^^ /Ashley Soriano"
+        ],
+        [
+          "saycolumns",
+          "^\\t\\t\\t\\t\\t\\t\\t\\t\\t\\tDavid Bass^^ /Em Lazer-Walker"
+        ],
+        [
+          "saycolumns",
+          "^\\t\\t\\t\\t\\t\\t\\t\\t\\t\\tKaren Neville^^ /Sarah Northway"
+        ],
+        [
+          "saycolumns",
+          "^\\t\\t\\t\\t\\t\\t\\t\\t\\t\\tFelix Kramer^^ /Jerry Belich"
+        ],
+        [
+          "saycolumns",
+          "^\\t\\t\\t\\t\\t\\t\\t\\t\\t\\tApril Schultz^^ /Ali Rayl"
+        ],
+        [
+          "if",
+          "hasflag(platformswitch)==1"
+        ],
+        [
+          "anykeyoption",
+          "node7",
+          "[Press any button]"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "anykeyoption",
+          "node7",
+          "[Press any key]"
+        ]
+      ],
+      "node7": [
+        [
+          "cls"
+        ],
+        [
+          "saycenter",
+          "<size=60>West of Loathing Archipelago Mod Developers</size>"
+        ],
+        [
+          "saycolumns",
+          "^\\t\\t\\t\\t\\t\\t\\t\\t\\t\\tXylen^^ /Original Mod Developer"
+        ],
+        [
+          "saycolumns",
+          "^\\t\\t\\t\\t\\t\\t\\t\\t\\t\\tTylerJG92^^ /Current Mod Developer"
+        ],
+        [
+          "if",
+          "hasflag(platformswitch)==1"
+        ],
+        [
+          "anykeyoption",
+          "node8",
+          "[Press any button]"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "anykeyoption",
+          "node8",
+          "[Press any key]"
+        ]
+      ],
+      "node8": [
+        [
+          "cls"
+        ],
+        [
+          "saycenter",
+          "<size=60>Archipelago Mod Beta Testers</size>"
+        ],
+        [
+          "saycolumns",
+          "^\\t\\t\\t\\t\\t\\t\\t\\t\\t\\tDelton^^ /Always willing to test what was asked of him."
+        ],
+        [
+          "if",
+          "hasflag(platformswitch)==1"
+        ],
+        [
+          "anykeyoption",
+          "theend",
+          "[Press any button]"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "anykeyoption",
+          "theend",
+          "[Press any key]"
+        ]
+      ]
+    },
     "food_turnip": {
       "yes": [
         [
