@@ -18972,6 +18972,214 @@
         ]
       ]
     },
+    "cre_haystack": {
+      "search": [
+        [
+          "if",
+          "hasflag(haystack_sanity)"
+        ],
+        [
+          "goto",
+          "hss_search"
+        ],
+        [
+          "cls"
+        ],
+        [
+          "markused"
+        ],
+        [
+          "playsound",
+          "haystack"
+        ],
+        [
+          "say",
+          "Hey, a needle!"
+        ],
+        [
+          "additem",
+          "needle"
+        ],
+        [
+          "exit"
+        ]
+      ],
+      "hss_search": [
+        [
+          "cls"
+        ],
+        [
+          "markused"
+        ],
+        [
+          "playsound",
+          "haystack"
+        ],
+        [
+          "if",
+          "!hasflag(haystacks_searched)"
+        ],
+        [
+          "addflag",
+          "haystacks_searched,1"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "incflag",
+          "haystacks_searched,1"
+        ],
+        [
+          "say",
+          "Hey, a needle!"
+        ],
+        [
+          "additem",
+          "needle"
+        ],
+        [
+          "say",
+          "Oh! There's something else in the haystack."
+        ],
+        [
+          "if",
+          "hasflag(haystacks_searched)==1"
+        ],
+        [
+          "customcommand",
+          "checklocation,Haystack Sanity - 1st Haystack"
+        ],
+        [
+          "if",
+          "hasflag(haystacks_searched)==2"
+        ],
+        [
+          "customcommand",
+          "checklocation,Haystack Sanity - 2nd Haystack"
+        ],
+        [
+          "if",
+          "hasflag(haystacks_searched)==3"
+        ],
+        [
+          "customcommand",
+          "checklocation,Haystack Sanity - 3rd Haystack"
+        ],
+        [
+          "if",
+          "hasflag(haystacks_searched)==4"
+        ],
+        [
+          "customcommand",
+          "checklocation,Haystack Sanity - 4th Haystack"
+        ],
+        [
+          "if",
+          "hasflag(haystacks_searched)==5"
+        ],
+        [
+          "customcommand",
+          "checklocation,Haystack Sanity - 5th Haystack"
+        ],
+        [
+          "if",
+          "hasflag(haystacks_searched)==6"
+        ],
+        [
+          "customcommand",
+          "checklocation,Haystack Sanity - 6th Haystack"
+        ],
+        [
+          "if",
+          "hasflag(haystacks_searched)==7"
+        ],
+        [
+          "customcommand",
+          "checklocation,Haystack Sanity - 7th Haystack"
+        ],
+        [
+          "if",
+          "hasflag(haystacks_searched)==8"
+        ],
+        [
+          "customcommand",
+          "checklocation,Haystack Sanity - 8th Haystack"
+        ],
+        [
+          "if",
+          "hasflag(haystacks_searched)==9"
+        ],
+        [
+          "customcommand",
+          "checklocation,Haystack Sanity - 9th Haystack"
+        ],
+        [
+          "if",
+          "hasflag(haystacks_searched)==10"
+        ],
+        [
+          "customcommand",
+          "checklocation,Haystack Sanity - 10th Haystack"
+        ],
+        [
+          "if",
+          "hasflag(haystacks_searched)==11"
+        ],
+        [
+          "customcommand",
+          "checklocation,Haystack Sanity - 11th Haystack"
+        ],
+        [
+          "if",
+          "hasflag(haystacks_searched)==12"
+        ],
+        [
+          "customcommand",
+          "checklocation,Haystack Sanity - 12th Haystack"
+        ],
+        [
+          "if",
+          "hasflag(haystacks_searched)==13"
+        ],
+        [
+          "customcommand",
+          "checklocation,Haystack Sanity - 13th Haystack"
+        ],
+        [
+          "if",
+          "hasflag(haystacks_searched)==14"
+        ],
+        [
+          "customcommand",
+          "checklocation,Haystack Sanity - 14th Haystack"
+        ],
+        [
+          "if",
+          "hasflag(haystacks_searched)==15"
+        ],
+        [
+          "customcommand",
+          "checklocation,Haystack Sanity - 15th Haystack"
+        ],
+        [
+          "if",
+          "hasflag(haystacks_searched)==16"
+        ],
+        [
+          "customcommand",
+          "checklocation,Haystack Sanity - 16th Haystack"
+        ],
+        [
+          "say",
+          "I wonder what thats used for."
+        ],
+        [
+          "exit"
+        ]
+      ]
+    },
     "cre_initsouvenirshelf": {
       "start": [
         [
@@ -19497,6 +19705,18 @@
         [
           "customcommand",
           "misspoint,Your Family's Farm - Rufus' Toybox"
+        ],
+        [
+          "customcommand",
+          "misspoint,Haystack Sanity - 1st Haystack"
+        ],
+        [
+          "if",
+          "!hasflag(haystacks_searched) && hasflag(haystack_sanity)"
+        ],
+        [
+          "addflag",
+          "haystacks_searched,1"
         ],
         [
           "delflag",
