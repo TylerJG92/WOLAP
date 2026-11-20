@@ -34,6 +34,7 @@
 * Added `Wander Sanity` Support in the code. When toggled off, the code will instead give you its vanilla items in *most* places, with the exception of still randomized tools like the shovel, skill books and the varmit skinning knife.
 * Added support for 2 new items in the item pool `Kellogg Ranch Brochure` and `Goblin Flapjacks x2`
 * Added `Crate Sanity` Support in the code. When toggled off the code will instead give you its vanilla items in *most* places, with the exception of still randomized 1 item `Perfumed Pocket Square` due to it being a `Stench Resistance` item and crate sanity can unlock all its items from the very beginning if the player is *very* determined, so to avoid having Stench Resistance open too early in logic, the item will remain randomized.
+* Added `Haystack Sanity` Support in the code. Only change is when toggled on, haystacks in addition to their needle will also give a check.
 
 ## AP World Changes:
 
@@ -71,5 +72,10 @@
 * Fixed a logic bug that can show `Gun Manor Visitor's Center - Photo` too early in logic.
 * Renamed all checks for `Random Event` into `Wander Sanity`
 * Added `Wander Sanity` as a toggleable option in the yaml. Toggling off will cause the game to no longer generate checks, and instead replace the items there with their vanilla item.
+    * Dissabling will change `Bottle of Ghost Whisky` from a Progressive item to a Useful item as it is no longer required for any checks, but is still required to get the ghost ring which is a really nice and useful item in the game.
 * Added 2 new items to the item pool `Kellogg Ranch Brochure` and `Goblin Flapjacks x2`, both are considered filler, and the kellogg brochure toggles off with the `Wander Sanity`.
 * Added `Crate Sanity`, Replaced `Progressive Loot` as its logic names. This is a toggleable yaml option that will cause the items to either randomize or be placed back in their vanilla location. (see client update for exception)
+* Added 16 new check locations under a toggleable YAML option called `Haystack Sanity`, this only adds more checks to the pool on each haystack that is currently accessable within the game as it is.
+* Restructured the YAML file within options creators to include option groups
+    * Sanity Options added that include `Wander Sanity`, `Crate Sanity` and `Haystack Sanity`, all 3 options are toggled on by default
+    * DLC Options added that now includes `Gun Manor DLC Enabled` and `Randomize Gun Manor Coach`, both are also now disabled by default, so players who dont have the DLC and are trying a blind randomizer with default settings wont accidentally keep these options on.

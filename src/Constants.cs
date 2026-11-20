@@ -52,18 +52,20 @@ namespace WOLAP
         public const string RandomizeGoblintongueFlag = "randomize_goblintongue";
         public const string WanderSanityFlag = "wander_sanity";
         public const string CrateSanityFlag = "crate_sanity";
+        public const string HaystackSanityFlag = "haystack_sanity";
         public const string UnbreakableToolsFlag = "unbreakable_tools";
         public const string DeathlinkEnabled = "deathlink_enabled";
 
         //Flag names and default values -- these defaults are only used if the flags aren't set in the slot data (version mismatch between client mod and apworld)
         public static readonly Dictionary<string, string> SlotDataFlags = new() {
-            {DlcEnabledSlotDataFlag, "1"},
-            {RandomizeGhostCoachFlag, "1"},
             {RandomizeGoblintongueFlag, "1"},
+            {UnbreakableToolsFlag, "0"},
+            {DeathlinkEnabled, "0"},
             {WanderSanityFlag, "1"},
             {CrateSanityFlag, "1"},
-            {UnbreakableToolsFlag, "0"},
-            {DeathlinkEnabled, "0"}
+            {HaystackSanityFlag, "1"},
+            {DlcEnabledSlotDataFlag, "0"},
+            {RandomizeGhostCoachFlag, "0"},
         };
 
         public const string GameObjectKnotsPath = "Rope Border/Knots";
