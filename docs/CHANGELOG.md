@@ -39,6 +39,7 @@
 * Added `Bridge Method` support to now gate the game further so it isnt so fast. The player will be able to choose what bridge they would like to go after and the code now locks the other options not selected.
 * Added `Norton Method` support to now gate the game further so it isnt so fast. The player will be able to choose what Item is associated with their end game for Norton, and all other non selected options will not work to end the game.
 * Added a suprise in the end credits to give recognition to helpers.
+* Added dialog in the `Rail camp (west)` and at `Frisco` with your Pardner to remind you what your options were you chose in the yaml as your method.
 
 ## AP World Changes:
 
