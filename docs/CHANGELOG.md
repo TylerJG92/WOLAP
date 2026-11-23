@@ -36,6 +36,9 @@
 * Added `Crate Sanity` Support in the code. When toggled off the code will instead give you its vanilla items in *most* places, with the exception of still randomized 1 item `Perfumed Pocket Square` due to it being a `Stench Resistance` item and crate sanity can unlock all its items from the very beginning if the player is *very* determined, so to avoid having Stench Resistance open too early in logic, the item will remain randomized.
 * Added `Haystack Sanity` Support in the code. Only change is when toggled on, haystacks in addition to their needle will also give a check.
 * Added an extra bit of script for the halves of Curly's map, now it forces the player to read the first half so they can get the other half check from Hallow way. The script will also require that both maps be in the inventory to combine regardless of which map half is being used.
+* Added `Bridge Method` support to now gate the game further so it isnt so fast. The player will be able to choose what bridge they would like to go after and the code now locks the other options not selected.
+* Added `Norton Method` support to now gate the game further so it isnt so fast. The player will be able to choose what Item is associated with their end game for Norton, and all other non selected options will not work to end the game.
+* Added a suprise in the end credits to give recognition to helpers.
 
 ## AP World Changes:
 
@@ -48,7 +51,7 @@
 * Removed Logic requirement for `Deepest Delve Mine` that requires `Can of Kerosene`
 * Changed `Can of Kerosene` from a progression item to filler
 * Updated `Cheap Cigar` to `Cheap Cigar X3` for extra stench resistance/quest progressions
-* Updated `Lost Dutch Oven Mine`'s Region access for better logic
+* Updated `Lost Dutch Oven Mine`'s Region access for better logic (see below, new choice fixed this even better)
 * Fixed a bug where the helper `can_get_breadwood_lumber` was looking for `Overdue Breadwood Book x5` when it should have been looking for `Breadwood Bread Bowl x5`
 * Updated all mention of `Strange Stone Arrow`, `El Vibrato Transponder` and `El Vibrato Device` with the new `Progressive El Vibrato Device` items
 * Changed all 3 `El Vibrato Cylinder` items into a single `Progressive El Vibrato Cylinder` item for smoother logic.
@@ -80,3 +83,13 @@
 * Restructured the YAML file within options creators to include option groups
     * Sanity Options added that include `Wander Sanity`, `Crate Sanity` and `Haystack Sanity`, all 3 options are toggled on by default
     * DLC Options added that now includes `Gun Manor DLC Enabled` and `Randomize Gun Manor Coach`, both are also now disabled by default, so players who dont have the DLC and are trying a blind randomizer with default settings wont accidentally keep these options on.
+* Fixed a logic bug where `Morton's Quarry (Tiny Diverticulum) - Hex Puzzle` wasnt looking to see if the player could get `Abandoned Mine (Side Tunnel 2) - Drilling Machine`
+* Added Universal Tracker integration! No longer will a Yaml be needed for UT to work with WOLAP. All options will now be sent directly into UT so it can do its generation better.
+* Added `Bridge Method` Yaml option, Now the player may choose in their Yaml what bridge method of the 3 they would like to persue. All other Methods will be locked out after generation.
+    * `Vanilla Completion Required?` Yaml option added to augment the `Bridge Method` option, if enabled the player will be required to go to all locations associated with unlocking that bridge method (i.e. For the El Vibrato Model Bridge, the player must get the item from the randomizer but also be able to get to and has to get to the Curious Copse to do the quest to build the item in the game [get its check])
+    * `(Breadwood Lumber Bridge Vanilla) Increase number of Breadwood quests?` Yaml option augments the Vanilla Completion Required option even further to now also require all 7 Breadwood quests be completed for the lumber bridge to be built instead of the normal 5.
+* Added `Norton Method` Yaml option. Now the player may choose in their Yaml what method(s) to end the game with. Any unselected method will no longer work in the game to complete it.
+    * `Require Vanilla Completions for Norton?` Yaml option was added to Augment the `Norton Method`, if enabled the player not only will be required to get the item needed from the randomizer pool, but also be able to complete the quest that would normally give you said item.
+* Added a region `End Credits` that now will look for if the player can get the required item in the `Norton Method` and get to the location for the quest (if the vanilla completion option is on) before showing "Go-Mode".
+    * Moved the `Temp Victory Item` into the End Credit Region.
+* Removed all the Indirect Conditons in the Rules and instead turned on `explicit_indirect_conditions` so the Server will now update with every check. Small enough world this isnt much of a problem but Was the only way I could find to resolve an issue with updates of `Bridge Method` and `Norton Method` to be able to see anything in logic past `Frisco` as the conditions were not allowing the bool to update logic properly ever.

@@ -55,6 +55,18 @@ namespace WOLAP
         public const string HaystackSanityFlag = "haystack_sanity";
         public const string UnbreakableToolsFlag = "unbreakable_tools";
         public const string DeathlinkEnabled = "deathlink_enabled";
+        public const string BridgeNecroFlag = "necro_bridge_enabled";
+        public const string BridgeElVibFlag = "el_vib_bridge_enabled";
+        public const string BridgeBreadwoodFlag = "breadwood_bridge_enabled";
+        public const string BridgeVanillaFlag = "bridge_quest_enabled";
+        public const string NortonElVibCFlag = "el_crown_enabled";
+        public const string NortonNecroCFlag = "necro_crown_enabled";
+        public const string NortonGoldCFlag = "gold_crown_enabled";
+        public const string NortonTurnipCFlag = "turnip_crown_enabled";
+        public const string NortonHoneyBeanFlag = "honey_jellybean_enabled";
+        public const string NortonVanillaFlag = "norton_quest_enabled";
+        public const string HorseFlag = "horse_selection";
+        public const string AllBreadwoodQuests = "all_breadwood_quests";
 
         //Flag names and default values -- these defaults are only used if the flags aren't set in the slot data (version mismatch between client mod and apworld)
         public static readonly Dictionary<string, string> SlotDataFlags = new() {
@@ -66,6 +78,18 @@ namespace WOLAP
             {HaystackSanityFlag, "1"},
             {DlcEnabledSlotDataFlag, "0"},
             {RandomizeGhostCoachFlag, "0"},
+            {BridgeBreadwoodFlag, "1"},
+            {BridgeElVibFlag, "1"},
+            {BridgeNecroFlag, "1"},
+            {BridgeVanillaFlag, "0"},
+            {NortonElVibCFlag, "1"},
+            {NortonGoldCFlag, "1"},
+            {NortonHoneyBeanFlag, "1"},
+            {NortonNecroCFlag, "1"},
+            {NortonTurnipCFlag, "1"},
+            {NortonVanillaFlag, "0"},
+            {HorseFlag, "1"},
+            {AllBreadwoodQuests, "0"}
         };
 
         public const string GameObjectKnotsPath = "Rope Border/Knots";
