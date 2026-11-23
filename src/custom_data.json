@@ -8465,6 +8465,77 @@
           "afterquest1check"
         ]
       ],
+      "hub": [
+        [
+          "if",
+          "hasflag(breadwood_problemssolved)>6 && hasflag(breadwood_gotlumber)"
+        ],
+        [
+          "goto",
+          "alldone"
+        ],
+        [
+          "if",
+          "hasflag(breadwood_quest1)==1 || hasflag(breadwood_quest2)==1 || hasflag(breadwood_quest3)==1 || hasflag(breadwood_quest4)==1 || hasflag(breadwood_quest5)==1 || hasflag(breadwood_quest6)==1 || hasflag(breadwood_quest7)==1"
+        ],
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "if",
+          "hasflag(breadwood_quest1)==1 || hasflag(breadwood_quest2)==1 || hasflag(breadwood_quest3)==1 || hasflag(breadwood_quest4)==1 || hasflag(breadwood_quest5)==1 || hasflag(breadwood_quest6)==1 || hasflag(breadwood_quest7)==1"
+        ],
+        [
+          "leftspeak",
+          "$lastoption$"
+        ],
+        [
+          "say",
+          "The mayor glances at the list of problems posted on the wall, and paces around nervously."
+        ],
+        [
+          "if",
+          "hasflag(mainquest)<22 && !hasflag(breadwood_gotlumber) && hasflag(breadwood_problemssolved)>4 && !hasflag(bridge_quest_enabled) && !hasflag(all_breadwood_quests)"
+        ],
+        [
+          "option",
+          "getdeal",
+          "Now about that lumber..."
+        ],
+        [
+          "if",
+          "hasflag(mainquest)<22 && !hasflag(breadwood_gotlumber) && hasflag(breadwood_problemssolved)>4 && hasflag(bridge_quest_enabled) && !hasflag(all_breadwood_quests)"
+        ],
+        [
+          "option",
+          "getdeal",
+          "Now about that lumber..."
+        ],
+        [
+          "if",
+          "hasflag(mainquest)<22 && !hasflag(breadwood_gotlumber) && hasflag(breadwood_problemssolved)==7 && hasflag(bridge_quest_enabled) && hasflag(all_breadwood_quests)"
+        ],
+        [
+          "option",
+          "getdeal",
+          "Now about that lumber..."
+        ],
+        [
+          "if",
+          "hasflag(breadwood_quests)<7"
+        ],
+        [
+          "option",
+          "offer",
+          "Offer to help with his problems"
+        ],
+        [
+          "option",
+          "done",
+          "Take your leave"
+        ]
+      ],
       "prob5": [
         [
           "addflag",
@@ -49932,6 +50003,1094 @@
       ]
     },
     "pardner_talk": {
+      "alice_railcamp2": [
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftsay",
+          "Hmm. You'd think they'd've surveyed the route and had a plan for this already."
+        ],
+        [
+          "rightpicture",
+          "portrait_alice"
+        ],
+        [
+          "rightsay",
+          "I get the feeling this operation runs more on enthusiasm than foresight."
+        ],
+        [
+          "sayoption",
+          "done",
+          "Well, if we want to get any further west, I guess we're stuck with them."
+        ],
+        [
+          "goto",
+          "aftercomment_bridge"
+        ]
+      ],
+      "pete_railcamp2": [
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftsay",
+          "Hmm. You'd think they'd've surveyed the route and had a plan for this already."
+        ],
+        [
+          "rightpicture",
+          "portrait_pete"
+        ],
+        [
+          "rightsay",
+          "Might be they planned for a giant ass instead, hee!"
+        ],
+        [
+          "leftsay",
+          "What?"
+        ],
+        [
+          "rightsay",
+          "You know, 'stead of a hole in the ground."
+        ],
+        [
+          "sayoption",
+          "done",
+          "Oh! Ha ha, yeah, gotcha."
+        ],
+        [
+          "goto",
+          "aftercomment_bridge"
+        ]
+      ],
+      "susie_railcamp2": [
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftsay",
+          "Hmm. You'd think they'd've surveyed the route and had a plan for this already."
+        ],
+        [
+          "rightpicture",
+          "portrait_susie"
+        ],
+        [
+          "rightsay",
+          "At least they stopped the train in time."
+        ],
+        [
+          "sayoption",
+          "done",
+          "Yeah, that would've been quite a surprise."
+        ],
+        [
+          "goto",
+          "aftercomment_bridge"
+        ]
+      ],
+      "gary_railcamp2": [
+        [
+          "rightpicture",
+          "portrait_gary"
+        ],
+        [
+          "rightsay",
+          "Oh no! The iron snake is stuck again! What is to happening?"
+        ],
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftsay",
+          "The train, yeah. Apparently there's a big crack in the ground, so we're waiting for someone to build a bridge."
+        ],
+        [
+          "rightsay",
+          "Why?"
+        ],
+        [
+          "leftsay",
+          "So... so the train doesn't fall into the crack."
+        ],
+        [
+          "rightsay",
+          "Oh! You don't wanting that?"
+        ],
+        [
+          "sayoption",
+          "done",
+          "...No."
+        ],
+        [
+          "goto",
+          "aftercomment_bridge"
+        ]
+      ],
+      "alice_frisco": [
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftsay",
+          "We made it! We got all the way West!"
+        ],
+        [
+          "rightpicture",
+          "portrait_alice"
+        ],
+        [
+          "rightsay",
+          "Sure did -- looks like we're in the home stretch now."
+        ],
+        [
+          "leftsay",
+          "Home stretch?"
+        ],
+        [
+          "rightsay",
+          "Heck, there's always one last quest, you know that."
+        ],
+        [
+          "sayoption",
+          "done",
+          "Ah. Right."
+        ],
+        [
+          "goto",
+          "aftercomment_norton"
+        ]
+      ],
+      "gary_frisco": [
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftsay",
+          "We made it! We got all the way West!"
+        ],
+        [
+          "rightpicture",
+          "portrait_gary"
+        ],
+        [
+          "rightsay",
+          "Hooray! Gary is West! Hooray! Not long before popping, now!"
+        ],
+        [
+          "leftsay",
+          "Gee, Gary, I'm gonna miss your weirdly cheerful nonsense."
+        ],
+        [
+          "rightsay",
+          "Not worrying! Gary will wait for popping until you're done with doings! Still helping!"
+        ],
+        [
+          "sayoption",
+          "done",
+          "Aw, thanks."
+        ],
+        [
+          "goto",
+          "aftercomment_norton"
+        ]
+      ],
+      "pete_frisco": [
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftsay",
+          "We made it! We got all the way West!"
+        ],
+        [
+          "rightpicture",
+          "portrait_pete"
+        ],
+        [
+          "rightsay",
+          "Yee-haw!"
+        ],
+        [
+          "leftsay",
+          "I probably still have some quests rattling 'round in the ol' journal, though. You sticking with me, Pete?"
+        ],
+        [
+          "rightsay",
+          "Heck, boss, I'm in for the duration! You ain't gettin' rid a' Ol' Pete that easy! Hee!"
+        ],
+        [
+          "sayoption",
+          "done",
+          "Thanks, Pete. You're one of the good ones."
+        ],
+        [
+          "goto",
+          "aftercomment_norton"
+        ]
+      ],
+      "susie_frisco": [
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftsay",
+          "We made it! We got all the way West!"
+        ],
+        [
+          "rightpicture",
+          "portrait_susie"
+        ],
+        [
+          "rightsay",
+          "We surely did. Thanks for havin' me along, @firstname@. It's been good times, by an' large."
+        ],
+        [
+          "leftsay",
+          "Aw heck. Susie Cochrane, are you fixin' to split on me?"
+        ],
+        [
+          "rightsay",
+          "Hah, naw, I got no particular pressin' business. I'll stick around 'til you've finished... whatever it is you think you're doin'."
+        ],
+        [
+          "sayoption",
+          "done",
+          "High five!"
+        ],
+        [
+          "goto",
+          "aftercomment_norton"
+        ]
+      ],
+      "aftercomment_bridge": [
+        [
+          "addstate",
+          "maplocs,=countflags(map_)"
+        ],
+        [
+          "if",
+          "$maplocs$>36 && $maplocs$<40"
+        ],
+        [
+          "giveachievement",
+          "ach_37maplocs"
+        ],
+        [
+          "if",
+          "nerdmode"
+        ],
+        [
+          "sayoption",
+          "whatnext",
+          "What do you think we should do next? [Main Quest]"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "sayoption",
+          "whatnext",
+          "What do you think we should do next?"
+        ],
+        [
+          "sayoption",
+          "bridgetime",
+          "Any ideas on where to get a bridge? [Chosen Option Reminder]"
+        ],
+        [
+          "if",
+          "nerdmode"
+        ],
+        [
+          "sayoption",
+          "sidequest",
+          "Am I forgetting about anything? [Side Quests]"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "sayoption",
+          "sidequest",
+          "Am I forgetting about anything?"
+        ]
+      ],
+      "aftercomment_norton": [
+        [
+          "addstate",
+          "maplocs,=countflags(map_)"
+        ],
+        [
+          "if",
+          "$maplocs$>36 && $maplocs$<40"
+        ],
+        [
+          "giveachievement",
+          "ach_37maplocs"
+        ],
+        [
+          "if",
+          "nerdmode"
+        ],
+        [
+          "sayoption",
+          "whatnext",
+          "What do you think we should do next? [Main Quest]"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "sayoption",
+          "whatnext",
+          "What do you think we should do next?"
+        ],
+        [
+          "sayoption",
+          "nrotontime",
+          "Any ideas on where to get a bridge? [Chosen Option Reminder]"
+        ],
+        [
+          "if",
+          "nerdmode"
+        ],
+        [
+          "sayoption",
+          "sidequest",
+          "Am I forgetting about anything? [Side Quests]"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "sayoption",
+          "sidequest",
+          "Am I forgetting about anything?"
+        ]
+      ],
+      "bridgetime": [
+        [
+          "if",
+          "hasflag(bridge_quest_enabled)"
+        ],
+        [
+          "goto",
+          "bridgetime_alt"
+        ],
+        [
+          "if",
+          "hasflag(necro_bridge_enabled)"
+        ],
+        [
+          "pushrandom",
+          "necro_bridge_enabled"
+        ],
+        [
+          "if",
+          "hasflag(el_vib_bridge_enabled)"
+        ],
+        [
+          "pushrandom",
+          "el_vib_bridge_enabled"
+        ],
+        [
+          "if",
+          "hasflag(breadwood_bridge_enabled)"
+        ],
+        [
+          "pushrandom",
+          "breadwood_bridge_enabled"
+        ],
+        [
+          "if",
+          "$sizeofrandom$==0"
+        ],
+        [
+          "say",
+          "@pardnername@ looks content with the options they gave you."
+        ],
+        [
+          "if",
+          "$sizeofrandom$==0"
+        ],
+        [
+          "goto",
+          "realend"
+        ],
+        [
+          "goto",
+          "another"
+        ]
+      ],
+      "necro_bridge_enabled": [
+        [
+          "if",
+          "alice && hasflag(necroskills)>3 && hasskill(unlimitedbones)"
+        ],
+        [
+          "say",
+          "Alice's nose scrunches up in disgust at the idea, but then says \"You could build it out of bone...\""
+        ],
+        [
+          "if",
+          "alice"
+        ],
+        [
+          "say",
+          "Alice's nose scrunches up in disgust at the idea as she suggests under her breath something about bones and recieving more necromancy books."
+        ],
+        [
+          "if",
+          "alice"
+        ],
+        [
+          "goto",
+          "end"
+        ],
+        [
+          "if",
+          "hasflag(necroskills)>3 && hasskill(unlimitedbones)"
+        ],
+        [
+          "say",
+          "@pardnername@ says that now that you might have enough skill to make your own bridge."
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "say",
+          "@pardnername@ suggests that you might be able to build a bridge out of bones once you revieve enough necromancy books and bones."
+        ],
+        [
+          "goto",
+          "end"
+        ]
+      ],
+      "el_vib_bridge_enabled": [
+        [
+          "if",
+          "hasitem(elv_bridgebeacon)"
+        ],
+        [
+          "say",
+          "@pardnername@ says that strange table you have might work as a bridge."
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "say",
+          "@pardnername@ suggests that the \"El Vibrato\" stuff may be the key, recieving something like that might help."
+        ],
+        [
+          "goto",
+          "end"
+        ]
+      ],
+      "breadwood_bridge_enabled": [
+        [
+          "if",
+          "hasflag(mainquest)==22"
+        ],
+        [
+          "say",
+          "@pardnername@ says that Breadwood seems to be willing to build the bridge for you."
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "say",
+          "@pardnername@ suggests maybe working with Breadwood for a little while, you might be given enough things to help them and make a deal for the bridge."
+        ],
+        [
+          "goto",
+          "end"
+        ]
+      ],
+      "bridgetime_alt": [
+        [
+          "if",
+          "hasflag(necro_bridge_enabled)"
+        ],
+        [
+          "pushrandom",
+          "necro_bridge_enabledb"
+        ],
+        [
+          "if",
+          "hasflag(el_vib_bridge_enabled)"
+        ],
+        [
+          "pushrandom",
+          "el_vib_bridge_enabledb"
+        ],
+        [
+          "if",
+          "hasflag(breadwood_bridge_enabled) && !hasflag(all_breadwood_quests)"
+        ],
+        [
+          "pushrandom",
+          "breadwood_bridge_enabledb"
+        ],
+        [
+          "if",
+          "hasflag(breadwood_bridge_enabled) && hasflag(all_breadwood_quests)"
+        ],
+        [
+          "pushrandom",
+          "breadwood_bridge_enabledc"
+        ],
+        [
+          "if",
+          "$sizeofrandom$==0"
+        ],
+        [
+          "say",
+          "@pardnername@ looks content with the options they gave you."
+        ],
+        [
+          "if",
+          "$sizeofrandom$==0"
+        ],
+        [
+          "goto",
+          "realend"
+        ],
+        [
+          "goto",
+          "another"
+        ]
+      ],
+      "necro_bridge_enabledb": [
+        [
+          "if",
+          "alice && hasflag(necroskills)>3 && hasskill(unlimitedbones) && hasflag(questforbridgecomplete_book)>3"
+        ],
+        [
+          "say",
+          "Alice's nose scrunches up in disgust at the idea, but then says \"You could build it out of bone...\""
+        ],
+        [
+          "if",
+          "alice"
+        ],
+        [
+          "say",
+          "Alice's nose scrunches up in disgust at the idea as she suggests under her breath something about bones and going to find more necromancy books."
+        ],
+        [
+          "if",
+          "alice"
+        ],
+        [
+          "goto",
+          "end"
+        ],
+        [
+          "if",
+          "hasflag(necroskills)>3 && hasskill(unlimitedbones) && hasflag(questforbridgecomplete_book)>3"
+        ],
+        [
+          "say",
+          "@pardnername@ says that now that you might have enough skill to make your own bridge."
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "say",
+          "@pardnername@ suggests that you might be able to build a bridge out of bones once you find enough necromancy books and bones."
+        ],
+        [
+          "goto",
+          "end"
+        ]
+      ],
+      "el_vib_bridge_enabledb": [
+        [
+          "if",
+          "hasitem(elv_bridgebeacon) && hasflag(questforbridgecomplete_elv)"
+        ],
+        [
+          "say",
+          "@pardnername@ says that strange table you have might work as a bridge."
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "say",
+          "@pardnername@ suggests that the \"El Vibrato\" stuff may be the key, finding something like that might help."
+        ],
+        [
+          "goto",
+          "end"
+        ]
+      ],
+      "breadwood_bridge_enabledb": [
+        [
+          "if",
+          "hasflag(mainquest)==22 && hasflag(questforbridgecomplete_bread)>4 && hasflag(breadwood_problemssolved)>4"
+        ],
+        [
+          "say",
+          "@pardnername@ says that Breadwood seems to be willing to build the bridge for you."
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "say",
+          "@pardnername@ suggests maybe working with Breadwood for a little while, you might find enough things to help them and make a deal for the bridge."
+        ],
+        [
+          "goto",
+          "end"
+        ]
+      ],
+      "breadwood_bridge_enabledc": [
+        [
+          "if",
+          "hasflag(mainquest)==22 && hasflag(questforbridgecomplete_bread)>6 && hasflag(breadwood_problemssolved)>6"
+        ],
+        [
+          "say",
+          "@pardnername@ says that Breadwood seems to be willing to build the bridge for you."
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "say",
+          "@pardnername@ suggests maybe working with Breadwood for a little while, you might find enough things to help them and make a deal for the bridge."
+        ],
+        [
+          "goto",
+          "end"
+        ]
+      ],
+      "nortontime": [
+        [
+          "if",
+          "hasflag(norton_quest_enabled)"
+        ],
+        [
+          "goto",
+          "nortontime_alt"
+        ],
+        [
+          "if",
+          "hasflag(el_crown_enabled)"
+        ],
+        [
+          "pushrandom",
+          "el_crown_enabled"
+        ],
+        [
+          "if",
+          "hasflag(necro_crown_enabled)"
+        ],
+        [
+          "pushrandom",
+          "necro_crown_enabled"
+        ],
+        [
+          "if",
+          "hasflag(gold_crown_enabled)"
+        ],
+        [
+          "pushrandom",
+          "gold_crown_enabled"
+        ],
+        [
+          "if",
+          "hasflag(turnip_crown_enabled)"
+        ],
+        [
+          "pushrandom",
+          "turnip_crown_enabled"
+        ],
+        [
+          "if",
+          "hasflag(honey_jellybean_enabled)"
+        ],
+        [
+          "pushrandom",
+          "honey_jellybean_enabled"
+        ],
+        [
+          "if",
+          "$sizeofrandom$==0"
+        ],
+        [
+          "say",
+          "@pardnername@ looks content with the options they gave you."
+        ],
+        [
+          "if",
+          "$sizeofrandom$==0"
+        ],
+        [
+          "goto",
+          "realend"
+        ],
+        [
+          "goto",
+          "another"
+        ]
+      ],
+      "el_crown_enabled": [
+        [
+          "if",
+          "hasitem(hat_elvcrown)"
+        ],
+        [
+          "say",
+          "@pardnername@ says that weird crown you have might work."
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "say",
+          "@pardnername@ suggests maybe complete other quests and you might recieve a crown soon."
+        ],
+        [
+          "goto",
+          "end"
+        ]
+      ],
+      "necro_crown_enabled": [
+        [
+          "if",
+          "alice && hasitem(hat_necrocrown)"
+        ],
+        [
+          "say",
+          "Alice's eyes flash, she then suggests you give the Necromancer's crown to Norton."
+        ],
+        [
+          "if",
+          "alice"
+        ],
+        [
+          "say",
+          "Alice reminds you about other quests and that you might soon recieve a crown soon."
+        ],
+        [
+          "if",
+          "alice"
+        ],
+        [
+          "goto",
+          "end"
+        ],
+        [
+          "if",
+          "hasitem(hat_necrocrown)"
+        ],
+        [
+          "say",
+          "@pardnername@ says that Creepy crown you have might work."
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "say",
+          "@pardnername@ suggests maybe complete other quests and you might recieve a crown soon."
+        ],
+        [
+          "goto",
+          "end"
+        ]
+      ],
+      "gold_crown_enabled": [
+        [
+          "if",
+          "hasitem(hat_teethcrown)"
+        ],
+        [
+          "say",
+          "@pardnername@ says that crown made of teeth you have might work."
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "say",
+          "@pardnername@ suggests maybe complete other quests and you might recieve a crown soon."
+        ],
+        [
+          "goto",
+          "end"
+        ]
+      ],
+      "turnip_crown_enabled": [
+        [
+          "if",
+          "hasitem(hat_silverturnip)"
+        ],
+        [
+          "say",
+          "@pardnername@ says that silver turnip crown you have might work."
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "say",
+          "@pardnername@ suggests maybe complete other quests and you might recieve a crown soon."
+        ],
+        [
+          "goto",
+          "end"
+        ]
+      ],
+      "honey_jellybean_enabled": [
+        [
+          "if",
+          "hasitem(quest_honeybean)"
+        ],
+        [
+          "say",
+          "@pardnername@ says that they think Norton is a fake and to just remove him from leadership."
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "say",
+          "@pardnername@ suggests maybe complete other quests and you might recieve something to help you soon."
+        ],
+        [
+          "goto",
+          "end"
+        ]
+      ],
+      "nortontime_alt": [
+        [
+          "if",
+          "hasflag(el_crown_enabled)"
+        ],
+        [
+          "pushrandom",
+          "el_crown_enabledb"
+        ],
+        [
+          "if",
+          "hasflag(necro_crown_enabled)"
+        ],
+        [
+          "pushrandom",
+          "necro_crown_enabledb"
+        ],
+        [
+          "if",
+          "hasflag(gold_crown_enabled)"
+        ],
+        [
+          "pushrandom",
+          "gold_crown_enabledb"
+        ],
+        [
+          "if",
+          "hasflag(turnip_crown_enabled)"
+        ],
+        [
+          "pushrandom",
+          "turnip_crown_enabledb"
+        ],
+        [
+          "if",
+          "hasflag(honey_jellybean_enabled)"
+        ],
+        [
+          "pushrandom",
+          "honey_jellybean_enabledb"
+        ],
+        [
+          "if",
+          "$sizeofrandom$==0"
+        ],
+        [
+          "say",
+          "@pardnername@ looks content with the options they gave you."
+        ],
+        [
+          "if",
+          "$sizeofrandom$==0"
+        ],
+        [
+          "goto",
+          "realend"
+        ],
+        [
+          "goto",
+          "another"
+        ]
+      ],
+      "el_crown_enabledb": [
+        [
+          "if",
+          "hasitem(hat_elvcrown) && hasflag(questforbridgecomplete_elv)"
+        ],
+        [
+          "say",
+          "@pardnername@ says that weird crown you have might work."
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "say",
+          "@pardnername@ suggests maybe you could find a crown if you look into that \"El Vibrato\" stuff."
+        ],
+        [
+          "goto",
+          "end"
+        ]
+      ],
+      "necro_crown_enabledb": [
+        [
+          "if",
+          "alice && hasitem(hat_necrocrown) && hasflag(questfornortoncomplete_necro)"
+        ],
+        [
+          "say",
+          "Alice's eyes flash, as she remembers what you both did to that Necromancer."
+        ],
+        [
+          "if",
+          "alice"
+        ],
+        [
+          "say",
+          "Alice reminds you to keep looking for the Necromancer's Tower and you might find a crown there."
+        ],
+        [
+          "if",
+          "alice"
+        ],
+        [
+          "goto",
+          "end"
+        ],
+        [
+          "if",
+          "hasitem(hat_necrocrown)"
+        ],
+        [
+          "say",
+          "@pardnername@ says that Creepy crown you have might work."
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "say",
+          "@pardnername@ suggests maybe to keep looking for that Necromancer's Tower and he might have a crown."
+        ],
+        [
+          "goto",
+          "end"
+        ]
+      ],
+      "gold_crown_enabledb": [
+        [
+          "if",
+          "hasitem(hat_teethcrown) && hasflag(questfornortoncomplete_teeth)"
+        ],
+        [
+          "say",
+          "@pardnername@ says that crown made of teeth you have might work."
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "say",
+          "@pardnername@ suggests maybe talking to one of the crazy people in the Fort of Darkness may result in a crown.. somehow..."
+        ],
+        [
+          "goto",
+          "end"
+        ]
+      ],
+      "turnip_crown_enabledb": [
+        [
+          "if",
+          "hasitem(hat_silverturnip) && hasflag(questfornortoncomplete_turnip)"
+        ],
+        [
+          "say",
+          "@pardnername@ says that silver turnip crown you have might work."
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "say",
+          "@pardnername@ suggests maybe paying a visit to the silver plater might yiled a nice looking crown."
+        ],
+        [
+          "goto",
+          "end"
+        ]
+      ],
+      "honey_jellybean_enabledb": [
+        [
+          "if",
+          "hasitem(quest_honeybean) && hasflag(questfornortoncomplete_bean)"
+        ],
+        [
+          "say",
+          "@pardnername@ says that they think Norton is a fake and to just remove him from leadership."
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "say",
+          "@pardnername@ asks if we can visit Roy's Beans. @pardnername@ says there is a Jellybean there that is over 6000 meat in cost."
+        ],
+        [
+          "goto",
+          "end"
+        ]
+      ],
       "sidequest": [
         [
           "leftportrait",
