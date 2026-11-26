@@ -58,12 +58,24 @@ namespace WOLAP
             new ArchipelagoItem("Lime Lime Jellybeans", ["quest_jellybeans3"], sellWarning: true),
         ];
 
+        private int regionsFound;
+        private string[] regionUnlocks = [
+            "Comfortable Saddle",
+            "Horse's Nose Plugs",
+            "Horse's Anti-Neigh-Cromancy Amulet",
+            "Rubber Horse Shoes",
+            "Horse's Cool Shades",
+            "Horse's Hard Hat",
+            "Horse's Warming Jacket",
+        ];
+
         public ArchipelagoItemManager() {
             nexmexFound = GetSavedNexMexCount();
             elVibDevFound = GetSavedElVibDevCount();
             elVibCylFound = GetSavedElVibCylCount();
             curlyFound = GetSavedCurlyCount();
             jellyFound = GetJellybeanCount();
+            regionsFound = GetRegionsCount();
         }
 
         private int GetSavedNexMexCount()
@@ -136,6 +148,20 @@ namespace WOLAP
             else return 0;
         }
 
+        private int GetRegionsCount()
+        {
+            if (MPlayer.instance.data.TryGetValue(Constants.RegionLockCountFlag, out string value))
+            {
+                if (Int32.TryParse(value, out int val)) return val;
+                else
+                {
+                    WolapPlugin.Log.LogError($"Could not parse the {Constants.RegionLockCountFlag} flag count to an int.");
+                    return 0;
+                }
+            }
+            else return 0;
+        }
+
         public void ResetItemCounts()
         {
             nexmexFound = GetSavedNexMexCount();
@@ -143,6 +169,7 @@ namespace WOLAP
             elVibCylFound = GetSavedElVibCylCount();
             curlyFound = GetSavedCurlyCount();
             jellyFound = GetJellybeanCount();
+            regionsFound = GetRegionsCount();
         }
 
         public bool ProcessItem(string itemName)
@@ -152,7 +179,6 @@ namespace WOLAP
             ArchipelagoItem item = itemList.Find(item => item.Name == itemName);
             if (item == null) return false;
 
-            //TODO: Items that require special attributes/enchantments or other info (e.g. ghostwood visitor's permit/ID)
             switch (itemName)
             {
                 case "Progressive Nex-Mex Skillbook":
@@ -181,10 +207,26 @@ namespace WOLAP
                     jellyFound++;
                     MPlayer.instance.data[Constants.JellybeanCountFlag] = jellyFound.ToString();
                     return jelResult;
+                case "Progressive Region Unlock":
+                    bool regResult = ProcessItem(regionUnlocks[regionsFound]);
+                    regionsFound++;
+                    MPlayer.instance.data[Constants.RegionLockCountFlag] = regionsFound.ToString();
+                    return regResult;
                 case "Ghost Coach To Gun Manor":
                     WolapPlugin.UIManager.RcvItemQueue.Enqueue(new UIManager.ReceivedID(item.IDs[0], 1));
                     WolapPlugin.Log.LogInfo("Enabling Gun Manor coach in Dirtwater.");
                     //Don't actually need to do anything here, can just use the generic received_item_{} flag as a condition for the coach to appear
+                    return true;
+                case "Comfortable Saddle":
+                case "Horse's Nose Plugs":
+                case "Rubber Horse Shoes":
+                case "Horse's Anti-Neigh-Cromancy Amulet":
+                case "Horse's Cool Shades":
+                case "Horse's Hard Hat":
+                case "Horse's Warming Jacket":
+                    MPlayer.instance.data.Add($"{item.IDs}", "1");
+                    WolapPlugin.UIManager.RcvItemQueue.Enqueue(new UIManager.ReceivedID(item.IDs[0], 1));
+                    WolapPlugin.Log.LogInfo($"{item.IDs}.");
                     return true;
                 case "Ghostwood Visitor's ID": //These 2 cases for the Visitor ID and Permit are checking if the player has essentially chosent their name for the ID's when
                                                //leaving the family farm. If they havent done so yet the game still marks the items as recieved from the AP server, but dosent
@@ -841,7 +883,15 @@ namespace WOLAP
             new ArchipelagoItem("5000 Meat",["ap_currency1"]),
             new ArchipelagoItem("1000 Meat", ["ap_currency2"]),
             new ArchipelagoItem("100 Meat", ["ap_currency3"]),
-            new ArchipelagoItem("Stardust", ["potion_stardust"], sellWarning: true)
+            new ArchipelagoItem("Stardust", ["potion_stardust"], sellWarning: true),
+            new ArchipelagoItem("Progressive Region Unlock", []),
+            new ArchipelagoItem("Comfortable Saddle", ["region_b_unlocked"]),
+            new ArchipelagoItem("Horse's Nose Plugs", ["region_c_unlocked"]),
+            new ArchipelagoItem("Rubber Horse Shoes", ["region_d_unlocked"]),
+            new ArchipelagoItem("Horse's Anti-Neigh-Cromancy Amulet", ["region_e_unlocked"]),
+            new ArchipelagoItem("Horse's Cool Shades", ["region_f_unlocked"]),
+            new ArchipelagoItem("Horse's Hard Hat", ["region_g_unlocked"]),
+            new ArchipelagoItem("Horse's Warming Jacket", ["region_h_unlocked"])
         };
     }
 }

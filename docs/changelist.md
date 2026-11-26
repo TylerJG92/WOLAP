@@ -24,6 +24,10 @@ This list is subject to change.
   - The checks that are missed are now sent to the Dirtwater Bartender in **The Jewel Saloon**
 - Emperor Norton can now be skipped over in the event you are not ready to face him or counter the ant-eye virus.
 - Yaml options are now required for what method you would like to do to beat the game (Bridge Method and Norton Method), only the selected options will work for progressing the main quest
+- Region locking is now an option in the Yaml.
+  - None will give normal unlock to regions as it has been.
+  - Progressive will now give you a region by region unlock and you will not be able to access any of the map locations within a given region without its progressive unlock. Regions unlock in this order A (start) + DLC if enabled -> B -> C -> E -> D -> F -> G -> H
+  - Chaotic unlocks regions at random, No longer will you be able to go to a region normally, instead you will need the specific unlock for your horse and as soon as you get it 1 map location will unlock from that region. All normal routes to get to locations are maintained (EI Abandoned Pickle Factory you need to read the wanted poster in the dirtwater jail) with the exception of you will need to go to the unlock point After the region unlocks. Also Frisco is unlockable early but you will still need to complete the main quest to goal the game.
 
 ## Your Family's Farm (Starting Zone)
 - The gifts you receive from your parents are no longer class-dependent or by choice, they're just one check location each

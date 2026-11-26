@@ -38,6 +38,8 @@ namespace WOLAP
 
         public const string JellybeanCountFlag = "jellybean_count_found";
 
+        public const string RegionLockCountFlag = "region_lock_regions_found";
+
         public const string StartingItemsEmptyFlag = "archipelago_start_inventory_empty";
         public const string StartingItemsGrantedFlag = "archipelago_start_inventory_granted";
         public const string SentGameCompletionFlag = "archipelago_game_complete";
@@ -67,6 +69,7 @@ namespace WOLAP
         public const string NortonVanillaFlag = "norton_quest_enabled";
         public const string HorseFlag = "horse_selection";
         public const string AllBreadwoodQuests = "all_breadwood_quests";
+        public const string RegionLock = "region_lock";
 
         //Flag names and default values -- these defaults are only used if the flags aren't set in the slot data (version mismatch between client mod and apworld)
         public static readonly Dictionary<string, string> SlotDataFlags = new() {
@@ -89,7 +92,8 @@ namespace WOLAP
             {NortonTurnipCFlag, "1"},
             {NortonVanillaFlag, "0"},
             {HorseFlag, "1"},
-            {AllBreadwoodQuests, "0"}
+            {AllBreadwoodQuests, "0"},
+            {RegionLock, "0"}
         };
 
         public const string GameObjectKnotsPath = "Rope Border/Knots";
