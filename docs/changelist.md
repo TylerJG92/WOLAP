@@ -23,6 +23,7 @@ This list is subject to change.
 - In the base game there are many, many item drops that can easily be missed and permanently locked out of.  Where possible these have been tweaked to be *less* missable, but it's not reasonable to make it impossible in all cases.  A system has been implemented so that completely missed checks can later be purchased from a shop.
   - The checks that are missed are now sent to the Dirtwater Bartender in **The Jewel Saloon**
 - Emperor Norton can now be skipped over in the event you are not ready to face him or counter the ant-eye virus.
+- Yaml options are now required for what method you would like to do to beat the game (Bridge Method and Norton Method), only the selected options will work for progressing the main quest
 
 ## Your Family's Farm (Starting Zone)
 - The gifts you receive from your parents are no longer class-dependent or by choice, they're just one check location each
@@ -93,8 +94,11 @@ This list is subject to change.
 - Various ways of getting tools such as a pickaxe, shovel, hammer, etc. that weren't randomized/turned into a check location have been removed to force you to receive those tools from the item pool
   - These were mostly shop items, especially cases where some shops would randomly add one of a selection of tools to their inventory on subsequent days/visits
   - Once you receive a breakable tool from the item pool (e.g. a pickaxe or shovel), it will also become available for purchase from Dirtwater Mercantile, so if you don't have Unbreakable Tools enabled you can get another one there if necessary
+- Wasco's Comedy Shop now is discoverable via wandering in Region H for better logic.
+- Lost Dutch Oven Mine is now discoverable via wandering in Region C for better logic.
 
-## Random Encounters
+## Random Encounters (Wander Sanity)
+>NOTE: Wander Sanity changes most of these back to vanilla if turned off.
 - You no longer need to have the Pale Horse to get the progressive encounter for a check replacing a Nex-Mex skillbook (13th encounter)
 - For many random encounters where combat is an option, their unique items (checks) will now also drop from combat if they didn't already
 - Region A:
