@@ -40,6 +40,7 @@
 * Added `Norton Method` support to now gate the game further so it isnt so fast. The player will be able to choose what Item is associated with their end game for Norton, and all other non selected options will not work to end the game.
 * Added a suprise in the end credits to give recognition to helpers.
 * Added dialog in the `Rail camp (west)` and at `Frisco` with your Pardner to remind you what your options were you chose in the yaml as your method.
+* Added 6 check locations for `Dirtwater Band` to recruit each member and to go play the bell in the dirtwater stage once they are all recruited.
 
 ## AP World Changes:
 
@@ -94,3 +95,10 @@
 * Added a region `End Credits` that now will look for if the player can get the required item in the `Norton Method` and get to the location for the quest (if the vanilla completion option is on) before showing "Go-Mode".
     * Moved the `Temp Victory Item` into the End Credit Region.
 * Removed all the Indirect Conditons in the Rules and instead turned on `explicit_indirect_conditions` so the Server will now update with every check. Small enough world this isnt much of a problem but Was the only way I could find to resolve an issue with updates of `Bridge Method` and `Norton Method` to be able to see anything in logic past `Frisco` as the conditions were not allowing the bool to update logic properly ever.
+* Added 6 checks for `Dirtwater Band`
+    * `Dirtwater Band - Recruit Wasco` added
+    * `Dirtwater Band - Recruit Jaw Harp Player` added
+    * `Dirtwater Band - Recruit Washboard Player` added
+    * `Dirtwater Band - Recruit Guitar Man` added
+    * `Dirtwater Band - Recruit Booper` added
+    * `Dirtwater Band - Watch The Aristocrats Play (Ring The Bell)` added

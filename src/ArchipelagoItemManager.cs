@@ -66,8 +66,8 @@ namespace WOLAP
             "Horse's Anti-Neigh-Cromancy Amulet",
             "Rubber Horse Shoes",
             "Horse's Cool Shades",
-            "Horse's Hard Hat",
-            "Horse's Warming Jacket",
+            "Horse's H.O.R.S.E Badge (Horses Organization of Real Safety Enthusiests)",
+            "Horse's Hoarse Throat Spray",
         ];
 
         public ArchipelagoItemManager() {
@@ -223,8 +223,8 @@ namespace WOLAP
                 case "Rubber Horse Shoes":
                 case "Horse's Anti-Neigh-Cromancy Amulet":
                 case "Horse's Cool Shades":
-                case "Horse's Hard Hat":
-                case "Horse's Warming Jacket":
+                case "Horse's H.O.R.S.E Badge (Horses Organization of Real Safety Enthusiests)":
+                case "Horse's Hoarse Throat Spray":
                     MPlayer.instance.data.Add($"{item.IDs[0]}", "1");
                     WolapPlugin.UIManager.RcvItemQueue.Enqueue(new UIManager.ReceivedID(item.IDs[0], 1));
                     WolapPlugin.Log.LogInfo($"{item.IDs[0]}.");
@@ -891,8 +891,8 @@ namespace WOLAP
             new ArchipelagoItem("Rubber Horse Shoes", ["region_d_unlocked"]),
             new ArchipelagoItem("Horse's Anti-Neigh-Cromancy Amulet", ["region_e_unlocked"]),
             new ArchipelagoItem("Horse's Cool Shades", ["region_f_unlocked"]),
-            new ArchipelagoItem("Horse's Hard Hat", ["region_g_unlocked"]),
-            new ArchipelagoItem("Horse's Warming Jacket", ["region_h_unlocked"])
+            new ArchipelagoItem("Horse's H.O.R.S.E Badge (Horses Organization of Real Safety Enthusiests)", ["region_g_unlocked"]),
+            new ArchipelagoItem("Horse's Hoarse Throat Spray", ["region_h_unlocked"])
         };
     }
 }

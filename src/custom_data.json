@@ -1605,7 +1605,7 @@
       "source": "AP item pool, if the region lock is enabled"
     },
     "region_g_unlocked": {
-      "name": "Horse's Hard Hat (Region G Unlocked)",
+      "name": "Horse's H.O.R.S.E Badge (Horses Organization of Real Safety Enthusiests) (Region G Unlocked)",
       "slot": "nothing",
       "category": "miscellaneous",
       "description": "Unlocks a Region when Region Lock is active",
@@ -1615,7 +1615,7 @@
       "source": "AP item pool, if the region lock is enabled"
     },
     "region_h_unlocked": {
-      "name": "Horse's Warming Jacket (Region H Unlocked)",
+      "name": "Horse's Hoarse Throat Spray (Region H Unlocked)",
       "slot": "nothing",
       "category": "miscellaneous",
       "description": "Unlocks a Region when Region Lock is active",
@@ -8448,6 +8448,47 @@
         [
           "goto",
           "read"
+        ]
+      ]
+    },
+    "breadwood_dishguy": {
+      "dw": [
+        [
+          "customcommand",
+          "checklocation,Dirtwater Band - Recruit Washboard Player"
+        ],
+        [
+          "leftsay",
+          "Well, there's plenty of job opportunities opening up in Dirtwater. Why don't you try your luck out there?"
+        ],
+        [
+          "rightsay",
+          "Well, all right! It's worth a shot! Thanks, pal!"
+        ],
+        [
+          "say",
+          "He leaves with a wave, and the bartender replaces the sign on the wall."
+        ],
+        [
+          "addxp",
+          "@xpreward_d@"
+        ],
+        [
+          "addflag",
+          "breadwood_dishguy,4"
+        ],
+        [
+          "incflag",
+          "peoplehelped,1"
+        ],
+        [
+          "addflag",
+          "dirtwater_bandmember1,1"
+        ],
+        [
+          "option",
+          "done",
+          "Good luck!"
         ]
       ]
     },
@@ -22204,6 +22245,39 @@
         ]
       ]
     },
+    "dirtwater_cowbell": {
+      "hit": [
+        [
+          "if",
+          "hasflag(dirtwater_bandmember1) && hasflag(dirtwater_bandmember1) && hasflag(dirtwater_bandmember1) && hasflag(dirtwater_bandmember1) && hasflag(dirtwater_bandmember1) && !hasflag(got_the_whole_band_together_check)"
+        ],
+        [
+          "customcommand",
+          "checklocation,Dirtwater Band - Watch The Aristocrats Play (Ring The Bell)"
+        ],
+        [
+          "if",
+          "hasflag(dirtwater_bandmember1) && hasflag(dirtwater_bandmember1) && hasflag(dirtwater_bandmember1) && hasflag(dirtwater_bandmember1) && hasflag(dirtwater_bandmember1) && !hasflag(got_the_whole_band_together_check)"
+        ],
+        [
+          "addflag",
+          "got_the_whole_band_together_check,1"
+        ],
+        [
+          "addstate",
+          "bell,=rand(1,2)"
+        ],
+        [
+          "playsound",
+          "Dirtwater_Stage_Cowbell_0$bell$"
+        ],
+        [
+          "option",
+          "hit",
+          "Hit it again"
+        ]
+      ]
+    },
     "dirtwater_flowergirl": {
       "popup": [
         [
@@ -23665,6 +23739,35 @@
           "option",
           "done",
           "Nice"
+        ]
+      ]
+    },
+    "elvibrato3_booperterminal": {
+      "correct": [
+        [
+          "customcommand",
+          "checklocation,Dirtwater Band - Recruit Booper"
+        ],
+        [
+          "say",
+          "The terminal beeps, and the boopy floating guy behind you disappears in a puff of glowing squares."
+        ],
+        [
+          "playsounds",
+          "elv_,.35,nok,zak,pa,pause,zak,sta,no,pause,kuz,kro"
+        ],
+        [
+          "addflag",
+          "dirtwater_bandmember3,1"
+        ],
+        [
+          "addflag",
+          "elvibrato3_boopersent"
+        ],
+        [
+          "option",
+          "done",
+          "Gosh! Wonder where he went!"
         ]
       ]
     },
@@ -26841,6 +26944,43 @@
       ],
       "afterloot": []
     },
+    "fort4_guitarman": {
+      "two": [
+        [
+          "customcommand",
+          "checklocation,Dirtwater Band - Recruit Guitar Man"
+        ],
+        [
+          "leftsay",
+          "I have an idea. Instead of pretending to play in a band, why don't you join an actual band and play guitar for real? I know a place that's looking for talent."
+        ],
+        [
+          "rightsay",
+          "Huh... put my guitar skills to actual use? ...That's not a bad idea. Okay, cool!"
+        ],
+        [
+          "leftsay",
+          "It's the Jewel Saloon in Dirtwater. Tell them I sent ya."
+        ],
+        [
+          "rightsay",
+          "Thanks a bunch! I'll head out right now!"
+        ],
+        [
+          "addflag",
+          "fort4_sentguitarguy"
+        ],
+        [
+          "addflag",
+          "dirtwater_bandmember5"
+        ],
+        [
+          "option",
+          "done",
+          "Godspeed, Guitar Man"
+        ]
+      ]
+    },
     "fort4_nastypile": {
       "inve": [
         [
@@ -27322,6 +27462,31 @@
           "option",
           "done",
           "Leave"
+        ]
+      ]
+    },
+    "fort6_chef": {
+      "harper2": [
+        [
+          "customcommand",
+          "checklocation,Dirtwater Band - Recruit Jaw Harp Player"
+        ],
+        [
+          "leftspeak",
+          "$lastoption$"
+        ],
+        [
+          "rightsay",
+          "Sounds good to me! Thanks again!"
+        ],
+        [
+          "say",
+          "She leaves, plunking that twanger the whole way."
+        ],
+        [
+          "option",
+          "done",
+          "Nice."
         ]
       ]
     },
@@ -42048,6 +42213,59 @@
         ]
       ]
     },
+    "item_kelloggbrochure": {
+      "invpopup": [
+        [
+          "if",
+          "hasflag(region_lock) && !hasflag(region_f_unlocked)"
+        ],
+        [
+          "goto",
+          "no"
+        ],
+        [
+          "consume"
+        ],
+        [
+          "if",
+          "hasflag(map_ranch5)"
+        ],
+        [
+          "goto",
+          "alreadygot"
+        ],
+        [
+          "say",
+          "It's a brochure for a weird dude ranch/sanatorium combination in the desert down south."
+        ],
+        [
+          "say",
+          "You mark the location on your map, then put the brochure under a rock for the next person."
+        ],
+        [
+          "mapunlock",
+          "ranch5,Kellogg Ranch"
+        ],
+        [
+          "addstate",
+          "maplocs,=countflags(map_)"
+        ],
+        [
+          "if",
+          "$maplocs$>36 && $maplocs$<40"
+        ],
+        [
+          "giveachievement",
+          "ach_37maplocs"
+        ]
+      ],
+      "no": [
+        [
+          "say",
+          "As you read the brochure, It occurres to you that you are nowhere near where this is. You put the brochure back for later."
+        ]
+      ]
+    },
     "item_militarylockbox": {
       "picklock": [
         [
@@ -42078,6 +42296,48 @@
         ]
       ],
       "afterloot": []
+    },
+    "item_quest_shroommap": {
+      "fortunlock": [
+        [
+          "if",
+          "hasflag(region_lock) && !hasflag(region_f_unlocked)"
+        ],
+        [
+          "goto",
+          "no"
+        ],
+        [
+          "say",
+          "The dotted line originates at a little picture of an army fort.  That's probably worth investigating!"
+        ],
+        [
+          "if",
+          "!hasflag(map_fort6)"
+        ],
+        [
+          "mapunlock",
+          "fort6,Fort of Darkness"
+        ],
+        [
+          "addstate",
+          "maplocs,=countflags(map_)"
+        ],
+        [
+          "if",
+          "$maplocs$>36 && $maplocs$<40"
+        ],
+        [
+          "giveachievement",
+          "ach_37maplocs"
+        ]
+      ],
+      "no": [
+        [
+          "say",
+          "You try to understand the map but you realize you are nowhere near where it is so you put the map away for now."
+        ]
+      ]
     },
     "item_spiderparts_assembly": {
       "start": [
@@ -42280,6 +42540,81 @@
           "option",
           "done",
           "LOL"
+        ]
+      ]
+    },
+    "item_wascoflier": {
+      "invpopup": [
+        [
+          "if",
+          "hasflag(region_lock) && !hasflag(region_h_unlocked)"
+        ],
+        [
+          "goto",
+          "no"
+        ],
+        [
+          "if",
+          "hasflag(map_wascos)"
+        ],
+        [
+          "say",
+          "You read the garbage.  It turns out to be a flier for that comedy... shack... you saw up north of Frisco across the bay. You throw the flier away."
+        ],
+        [
+          "if",
+          "!hasflag(map_wascos)"
+        ],
+        [
+          "say",
+          "You read the garbage.  It turns out to be a flier for a comedy... shack... up north of Frisco."
+        ],
+        [
+          "if",
+          "!hasflag(map_wascos)"
+        ],
+        [
+          "say",
+          "You jot down the location on your map, then throw the flier away."
+        ],
+        [
+          "if",
+          "!hasflag(map_wascos)"
+        ],
+        [
+          "mapunlock",
+          "wascos,Wasco's Comedy Shack"
+        ],
+        [
+          "addstate",
+          "maplocs,=countflags(map_)"
+        ],
+        [
+          "if",
+          "$maplocs$>36 && $maplocs$<40"
+        ],
+        [
+          "giveachievement",
+          "ach_37maplocs"
+        ],
+        [
+          "consume"
+        ]
+      ],
+      "no": [
+        [
+          "say",
+          "You read the garbage.  It turns out to be a flier for a comedy... shack... though you cant seem to make out where it is exactly. Better hold onto it until you know the geography better."
+        ],
+        [
+          "sayoption",
+          "done",
+          "Interesting."
+        ]
+      ],
+      "done": [
+        [
+          "exit"
         ]
       ]
     },
@@ -96321,6 +96656,59 @@
           "option",
           "sleef",
           "Zzzzz"
+        ]
+      ]
+    },
+    "wasco_wasco": {
+      "prog3": [
+        [
+          "customcommand",
+          "checklocation,Dirtwater Band - Recruit Wasco"
+        ],
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftspeak",
+          "$lastoption$"
+        ],
+        [
+          "addflag",
+          "wasco_progress,3"
+        ],
+        [
+          "rightsay",
+          "All right! All right! Fine, I admit it. I can't tell jokes worth a darn. What else am I supposed to do, though?"
+        ],
+        [
+          "leftsay",
+          "You're a pretty decent banjo player. The Jewel in Dirtwater could use a banjo."
+        ],
+        [
+          "rightspeak",
+          "Huh. Okay, yeah, that sounds pretty good."
+        ],
+        [
+          "incflag",
+          "peoplehelped,1"
+        ],
+        [
+          "addflag",
+          "dirtwater_bandmember2"
+        ],
+        [
+          "leftsay",
+          "Can't be much worse."
+        ],
+        [
+          "rightsay",
+          "I'll head on over there shortly. Thanks for the idea."
+        ],
+        [
+          "sayoption",
+          "done",
+          "Sure thing!"
         ]
       ]
     },
