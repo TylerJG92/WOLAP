@@ -4,6 +4,7 @@ using System.Text;
 using UnityEngine.XR;
 using UnityEngine;
 using BepInEx;
+using UnityEngine.UIElements;
 
 namespace WOLAP
 {
@@ -224,9 +225,9 @@ namespace WOLAP
                 case "Horse's Cool Shades":
                 case "Horse's Hard Hat":
                 case "Horse's Warming Jacket":
-                    MPlayer.instance.data.Add($"{item.IDs}", "1");
+                    MPlayer.instance.data.Add($"{item.IDs[0]}", "1");
                     WolapPlugin.UIManager.RcvItemQueue.Enqueue(new UIManager.ReceivedID(item.IDs[0], 1));
-                    WolapPlugin.Log.LogInfo($"{item.IDs}.");
+                    WolapPlugin.Log.LogInfo($"{item.IDs[0]}.");
                     return true;
                 case "Ghostwood Visitor's ID": //These 2 cases for the Visitor ID and Permit are checking if the player has essentially chosent their name for the ID's when
                                                //leaving the family farm. If they havent done so yet the game still marks the items as recieved from the AP server, but dosent

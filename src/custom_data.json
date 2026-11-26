@@ -1555,7 +1555,7 @@
       "source": "ghost town puzzle"
     },
     "region_b_unlocked": {
-      "name": "Region B Unlocked",
+      "name": "Comfortable Saddle (Region B Unlocked)",
       "slot": "nothing",
       "category": "miscellaneous",
       "description": "Unlocks a Region when Region Lock is active",
@@ -1565,7 +1565,7 @@
       "source": "AP item pool, if the region lock is enabled"
     },
     "region_c_unlocked": {
-      "name": "Region C Unlocked",
+      "name": "Horse's Nose Plugs (Region C Unlocked)",
       "slot": "nothing",
       "category": "miscellaneous",
       "description": "Unlocks a Region when Region Lock is active",
@@ -1575,7 +1575,7 @@
       "source": "AP item pool, if the region lock is enabled"
     },
     "region_d_unlocked": {
-      "name": "Region D Unlocked",
+      "name": "Rubber Horse Shoes (Region D Unlocked)",
       "slot": "nothing",
       "category": "miscellaneous",
       "description": "Unlocks a Region when Region Lock is active",
@@ -1585,7 +1585,7 @@
       "source": "AP item pool, if the region lock is enabled"
     },
     "region_e_unlocked": {
-      "name": "Region E Unlocked",
+      "name": "Horse's Anti-Neigh-Cromancy Amulet (Region E Unlocked)",
       "slot": "nothing",
       "category": "miscellaneous",
       "description": "Unlocks a Region when Region Lock is active",
@@ -1595,7 +1595,7 @@
       "source": "AP item pool, if the region lock is enabled"
     },
     "region_f_unlocked": {
-      "name": "Region F Unlocked",
+      "name": "Horse's Cool Shades (Region F Unlocked)",
       "slot": "nothing",
       "category": "miscellaneous",
       "description": "Unlocks a Region when Region Lock is active",
@@ -1605,7 +1605,7 @@
       "source": "AP item pool, if the region lock is enabled"
     },
     "region_g_unlocked": {
-      "name": "Region G Unlocked",
+      "name": "Horse's Hard Hat (Region G Unlocked)",
       "slot": "nothing",
       "category": "miscellaneous",
       "description": "Unlocks a Region when Region Lock is active",
@@ -1615,7 +1615,7 @@
       "source": "AP item pool, if the region lock is enabled"
     },
     "region_h_unlocked": {
-      "name": "Region H Unlocked",
+      "name": "Horse's Warming Jacket (Region H Unlocked)",
       "slot": "nothing",
       "category": "miscellaneous",
       "description": "Unlocks a Region when Region Lock is active",
