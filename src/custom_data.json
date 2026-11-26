@@ -20085,44 +20085,12 @@
           "cre_gotsouvenirs"
         ],
         [
-          "if",
-          "hasflag(dlc_enabled)"
-        ],
-        [
           "customcommand",
           "checklocation,Your Family's Farm - Souvenir Shelf (Item 1)"
         ],
         [
-          "else",
-          ""
-        ],
-        [
-          "if",
-          "hasflag(souvenir_shotglass)"
-        ],
-        [
-          "additem",
-          "gunmanorshotglass"
-        ],
-        [
-          "if",
-          "hasflag(dlc_enabled)"
-        ],
-        [
           "customcommand",
           "checklocation,Your Family's Farm - Souvenir Shelf (Item 2)"
-        ],
-        [
-          "else",
-          ""
-        ],
-        [
-          "if",
-          "hasflag(souvenir_spiderring)"
-        ],
-        [
-          "additem",
-          "ring_spider"
         ]
       ]
     },
@@ -97134,7 +97102,7 @@
           "z": 243.0,
           "height": 0.0,
           "width": 0.0,
-          "condition": "",
+          "condition": "hasdlc(house) && hasflag(dlc_enabled)",
           "script": "cre_souvenirshelf",
           "proximity": 0.0,
           "oncreate": "cre_initsouvenirshelf",
@@ -97523,7 +97491,7 @@
           "z": 45.0,
           "height": 534.0,
           "width": 691.0,
-          "condition": "hasdlc(house) && (!hasflag(dlc_enabled) || !hasflag(randomize_ghost_coach) || received_item_GhostCoachToGunManor)",
+          "condition": "hasdlc(house) && hasflag(dlc_enabled) && (!hasflag(randomize_ghost_coach) || received_item_GhostCoachToGunManor)",
           "script": "",
           "proximity": 0.0,
           "prefab": "floater_template",
@@ -97540,7 +97508,7 @@
           "z": 25.0,
           "height": 20.0,
           "width": 175.0,
-          "condition": "hasdlc(house) && (!hasflag(dlc_enabled) || !hasflag(randomize_ghost_coach) || received_item_GhostCoachToGunManor)",
+          "condition": "hasdlc(house) && hasflag(dlc_enabled) && (!hasflag(randomize_ghost_coach) || received_item_GhostCoachToGunManor)",
           "script": "house_carriageto",
           "proximity": 0.0,
           "shootableheight": 150.0,
