@@ -410,7 +410,6 @@ namespace WOLAP
 
         private void HandleRecievedDeathlinks()
         {
-            var flags = MPlayer.instance.data;
             if (CanDeathlinkBeGiven())
             {
                 WolapPlugin.Log.LogInfo("Player is in recievable state, sending Deathlink");
@@ -419,7 +418,6 @@ namespace WOLAP
                 new ScriptContext("archipelago_deathlink", "start", MPlayer.instance, Waa.instance.waa, null, true).RunState("start");//this runs the custom_data.json command for the deathlink.
                 
             }
-            else {WolapPlugin.Log.LogWarning("Clock Paused or player in combat not sending deathlink");} 
         }
 
         public void HandleSendingDeathlinks(string dlCause)

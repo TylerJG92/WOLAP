@@ -8451,12 +8451,133 @@
         ]
       ]
     },
+    "breadcrumb_cemetery2": {
+      "invpopup": [
+        [
+          "say",
+          "The tag on this skull has a serial number, and says it was borrowed from the Sub-Mission Catacombs on..."
+        ],
+        [
+          "say",
+          "February 19th, 1886.  Jeez, this thing is really late!"
+        ],
+        [
+          "if",
+          "hasflag(map_cemetery2)"
+        ],
+        [
+          "goto",
+          "alreadygot"
+        ],
+        [
+          "if",
+          "hasflag(region_lock) && !hasflag(region_b_unlocked)"
+        ],
+        [
+          "goto",
+          "notyet"
+        ],
+        [
+          "say",
+          "The back of the tag has the catacombs' address on it."
+        ],
+        [
+          "mapunlock",
+          "cemetery2,Old Mission"
+        ],
+        [
+          "addstate",
+          "maplocs,=countflags(map_)"
+        ],
+        [
+          "if",
+          "$maplocs$>36 && $maplocs$<40"
+        ],
+        [
+          "giveachievement",
+          "ach_37maplocs"
+        ],
+        [
+          "goto",
+          "alreadygot"
+        ]
+      ],
+      "notyet": [
+        [
+          "say",
+          "You cant make out where this is on your map, so you put the skull in your bag in hopes that you will one day be able to find who owns it."
+        ],
+        [
+          "goto",
+          "alreadygot"
+        ]
+      ]
+    },
+    "breadcrumb_fort2": {
+      "invpopup": [
+        [
+          "if",
+          "hasflag(region_lock) && !hasflag(region_c_unlocked)"
+        ],
+        [
+          "goto",
+          "notyet"
+        ],
+        [
+          "consume"
+        ],
+        [
+          "say",
+          "This is a set of marching orders directing a rifle division to Fort Alldead, far to the north of Dirtwater."
+        ],
+        [
+          "if",
+          "hasflag(map_fort2)"
+        ],
+        [
+          "goto",
+          "alreadygot"
+        ],
+        [
+          "mapunlock",
+          "fort2,Fort Alldead"
+        ],
+        [
+          "addstate",
+          "maplocs,=countflags(map_)"
+        ],
+        [
+          "if",
+          "$maplocs$>36 && $maplocs$<40"
+        ],
+        [
+          "giveachievement",
+          "ach_37maplocs"
+        ],
+        [
+          "say",
+          "Treacherous territory up there.  A @feller@ oughta be careful."
+        ],
+        [
+          "option",
+          "done",
+          "Will do"
+        ]
+      ],
+      "notyet": [
+        [
+          "say",
+          "You cant seem to make out where this is yet so you stow this item in your backpack for later."
+        ],
+        [
+          "sayoption",
+          "done",
+          "Dang"
+        ]
+      ]
+    },
     "breadwood_dishguy": {
       "dw": [
-        [
-          "customcommand",
-          "checklocation,Dirtwater Band - Recruit Washboard Player"
-        ],
         [
           "leftsay",
           "Well, there's plenty of job opportunities opening up in Dirtwater. Why don't you try your luck out there?"
@@ -8464,6 +8585,14 @@
         [
           "rightsay",
           "Well, all right! It's worth a shot! Thanks, pal!"
+        ],
+        [
+          "rightsay",
+          "Here, take this as well. A thank you for paying my debt."
+        ],
+        [
+          "customcommand",
+          "checklocation,Dirtwater Band - Recruit Washboard Player"
         ],
         [
           "say",
@@ -8647,6 +8776,84 @@
           "Take your leave"
         ]
       ],
+      "pickprob": [
+        [
+          "say",
+          "You glance at the problems board, which offers a selection of current issues, as well as a dire warning."
+        ],
+        [
+          "say",
+          "Which problem do you want to offer to help with?"
+        ],
+        [
+          "if",
+          "!hasflag(breadwood_quest6)"
+        ],
+        [
+          "option",
+          "prob6",
+          "The missing mail"
+        ],
+        [
+          "if",
+          "!hasflag(breadwood_quest3)"
+        ],
+        [
+          "option",
+          "prob3",
+          "The overdue book"
+        ],
+        [
+          "if",
+          "!hasflag(breadwood_quest4)"
+        ],
+        [
+          "option",
+          "prob4",
+          "The logging permit"
+        ],
+        [
+          "if",
+          "!hasflag(breadwood_quest5)"
+        ],
+        [
+          "option",
+          "prob5",
+          "The soup shortage"
+        ],
+        [
+          "if",
+          "!hasflag(breadwood_quest7)"
+        ],
+        [
+          "option",
+          "prob7",
+          "The skeleton raids"
+        ],
+        [
+          "if",
+          "!hasflag(breadwood_quest1)"
+        ],
+        [
+          "option",
+          "prob1",
+          "The stolen yeast"
+        ],
+        [
+          "if",
+          "!hasflag(breadwood_quest2) && (!hasflag(region_lock) || hasflag(region_e_unlocked))"
+        ],
+        [
+          "option",
+          "prob2",
+          "The missing bread"
+        ],
+        [
+          "option",
+          "done",
+          "On second thought, never mind."
+        ]
+      ],
       "prob5": [
         [
           "addflag",
@@ -8674,11 +8881,19 @@
         ],
         [
           "if",
-          "!hasflag(map_mine5)"
+          "!hasflag(map_mine5) && (!hasflag(region_lock) || hasflag(region_e_unlocked))"
         ],
         [
           "mapunlock",
           "mine5,Soupstock Lode"
+        ],
+        [
+          "if",
+          "hasflag(region_lock) && !hasflag(region_e_unlocked)"
+        ],
+        [
+          "addflag",
+          "need_to_get_soupstock,1"
         ],
         [
           "addstate",
@@ -8853,6 +9068,114 @@
       ]
     },
     "breadwood_questyjones": {
+      "start": [
+        [
+          "if",
+          "hasflag(breadwood_jonesquest) && hasflag(region_lock) && hasflag(region_f_unlocked)"
+        ],
+        [
+          "goto",
+          "get_cemetary6_again"
+        ],
+        [
+          "if",
+          "hasflag(breadwood_jonesquest)==3"
+        ],
+        [
+          "goto",
+          "finished"
+        ],
+        [
+          "if",
+          "hasflag(breadwood_jonesquest)"
+        ],
+        [
+          "goto",
+          "checkin"
+        ],
+        [
+          "rightportrait",
+          "questyjones"
+        ],
+        [
+          "rightsay",
+          "Howdy, Stranger. I'm Hobart Buppert."
+        ],
+        [
+          "addflag",
+          "breadwood_hobart,1"
+        ],
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftsay",
+          "You're what? Oh, I mean, hi Hobart, I'm @firstname@ @lastname@."
+        ],
+        [
+          "rightsay",
+          "You seem like the travelin' sort. Mind doin' a fella a favor?"
+        ],
+        [
+          "option",
+          "two",
+          "What's the favor?"
+        ]
+      ],
+      "get_cemetary6_again": [
+        [
+          "rightportrait",
+          "questyjones"
+        ],
+        [
+          "rightsay",
+          "Howdy, how's the picture coming along?"
+        ],
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftsay",
+          "Ah, see I forgot where it is, can you mark it on my map?"
+        ],
+        [
+          "rightsay",
+          "Sure thing."
+        ],
+        [
+          "mapunlock",
+          "cemetery6,Petting Cemetery"
+        ],
+        [
+          "addstate",
+          "maplocs,=countflags(map_)"
+        ],
+        [
+          "if",
+          "$maplocs$>36 && $maplocs$<40"
+        ],
+        [
+          "giveachievement",
+          "ach_37maplocs"
+        ],
+        [
+          "sayoption",
+          "done",
+          "Okay. I'll be back."
+        ],
+        [
+          "sayoption",
+          "done",
+          "Okay. Owl be back."
+        ],
+        [
+          "sayoption",
+          "done",
+          "Owlkay. Owl be back. Owl."
+        ]
+      ],
       "yes": [
         [
           "addflag",
@@ -8872,7 +9195,7 @@
         ],
         [
           "if",
-          "!hasflag(map_cemetery6)"
+          "!hasflag(map_cemetery6) && (!hasflag(region_lock) || hasflag(region_f_unlocked))"
         ],
         [
           "say",
@@ -8880,7 +9203,7 @@
         ],
         [
           "if",
-          "!hasflag(map_cemetery6)"
+          "!hasflag(map_cemetery6) && (!hasflag(region_lock) || hasflag(region_f_unlocked))"
         ],
         [
           "mapunlock",
@@ -11207,6 +11530,33 @@
           "Grab it"
         ]
       ],
+      "inv4": [
+        [
+          "addstate",
+          "flyers,1"
+        ],
+        [
+          "if",
+          "!hasflag(cemetery4_caretakerclue) && (!hasflag(region_lock) || hasflag(region_e_unlocked))"
+        ],
+        [
+          "goto",
+          "findflyer"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "say",
+          "There's nothing else interesting among flyers, just that notice about the \"Military Re-enactment Enthusiasts Society\" meetings at Fort Memoriam, where you think the caretaker might have gone.  Finding him seems like the surest way to clean this boneyard up."
+        ],
+        [
+          "option",
+          "hub",
+          "Back"
+        ]
+      ],
       "grabshovel": [
         [
           "say",
@@ -12976,6 +13326,31 @@
           "Why thank you, that's quite gracious of you."
         ]
       ],
+      "whereintim1": [
+        [
+          "if",
+          "hasskill(intimidatin)>1 && (!hasflag(region_lock) || hasflag(region_c_unlocked))"
+        ],
+        [
+          "sayoption",
+          "whereintim2",
+          "Just tell me already! [Intimidatin' 2]"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "grayoption",
+          "whereintim2",
+          "Just tell me already! [Req. Intimidatin' 2 & Reg. C Access]"
+        ],
+        [
+          "sayoption",
+          "done",
+          "Sheesh, fine. I'll find it myself."
+        ]
+      ],
       "whereintim4": [
         [
           "leftsay",
@@ -13005,6 +13380,31 @@
           "sayoption",
           "done",
           "Why thank you, that's quite gracious of you."
+        ]
+      ],
+      "whereoutfox1": [
+        [
+          "if",
+          "hasskill(outfoxin)>1 && (!hasflag(region_lock) || hasflag(region_c_unlocked))"
+        ],
+        [
+          "sayoption",
+          "whereoutfox2",
+          "Your unwillingness to tell me is strange... [Outfoxin' 2]"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "grayoption",
+          "whereoutfox2",
+          "You know... [Req. Outfoxin' 2 & Reg. C Access]"
+        ],
+        [
+          "sayoption",
+          "done",
+          "Sheesh, fine. I'll find it myself."
         ]
       ],
       "whereoutfox4": [
@@ -13044,6 +13444,31 @@
           "sayoption",
           "done",
           "Why thank you, that's quite gracious of you."
+        ]
+      ],
+      "wherehswog1": [
+        [
+          "if",
+          "hasskill(hornswogglin)>1 && (!hasflag(region_lock) || hasflag(region_c_unlocked))"
+        ],
+        [
+          "sayoption",
+          "wherehswog2",
+          "Oh... I get it. You're embarrassed. [Hornswogglin' 2]"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "grayoption",
+          "wherehswog2",
+          "Oh. You're embarrassed. [Req Hornswogglin' 2 & Reg C Access]"
+        ],
+        [
+          "sayoption",
+          "done",
+          "Sheesh, fine. I'll find it myself."
         ]
       ],
       "wherehswog4": [
@@ -16134,6 +16559,200 @@
       ]
     },
     "clowns_tannery_invis4.1": {
+      "win2": [
+        [
+          "addstate",
+          "winbutton,Hooray!"
+        ],
+        [
+          "addflag",
+          "clowns_tan4clear,1"
+        ],
+        [
+          "say",
+          "Whew. It's a good thing the clowns hate cows more than they hate humans, or that fight could've gone way worse. Fortunately, it seems pretty unlikely that you'll run into any more animated leather-clad cow skeletons on your adventure."
+        ],
+        [
+          "say",
+          "...Right?"
+        ],
+        [
+          "addxp",
+          "@xpreward_c@*9"
+        ],
+        [
+          "if",
+          "!hasflag(map_clowns)"
+        ],
+        [
+          "say",
+          "Anyway, one of the clowns dropped a map of the region. It has the tannery marked on it, with a route leading to it from a place way up north which is marked with... I guess a circus tent? Which would seem weird but, well, clowns."
+        ],
+        [
+          "if",
+          "!hasflag(map_clowns) && (!hasflag(region_lock) || hasflag(region_c_unlocked))"
+        ],
+        [
+          "mapunlock",
+          "clowns,Barnaby Bob's Perfectly Normal Traveling Circus Sideshow"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "say",
+          "The dotted line leads to a torn off portion of the map.. you are unable to get any information from this map."
+        ],
+        [
+          "addstate",
+          "maplocs,=countflags(map_)"
+        ],
+        [
+          "if",
+          "$maplocs$>36 && $maplocs$<40"
+        ],
+        [
+          "giveachievement",
+          "ach_37maplocs"
+        ],
+        [
+          "addstate",
+          "winbutton,Hooray!"
+        ],
+        [
+          "incflag",
+          "ending_fightswon"
+        ],
+        [
+          "if",
+          "hasflag(cowfight)"
+        ],
+        [
+          "incflag",
+          "ending_cowskilled,hasflag(cowfight)"
+        ],
+        [
+          "if",
+          "hasflag(undeadfight)"
+        ],
+        [
+          "incflag",
+          "ending_undeadkilled,hasflag(undeadfight)"
+        ],
+        [
+          "if",
+          "!susie"
+        ],
+        [
+          "goto",
+          "aftersusie"
+        ],
+        [
+          "if",
+          "!hasflag(cowfight)"
+        ],
+        [
+          "goto",
+          "aftersusie"
+        ],
+        [
+          "incflag",
+          "susie_xp,hasflag(cowfight)"
+        ],
+        [
+          "addstate",
+          "rankup,0"
+        ],
+        [
+          "say",
+          "%pardner_susienotch%"
+        ],
+        [
+          "if",
+          "hasflag(susie_xp)>=1 && hasflag(pardnerrank)<2"
+        ],
+        [
+          "addstate",
+          "rankup,1"
+        ],
+        [
+          "if",
+          "hasflag(susie_xp)>=4 && hasflag(pardnerrank)<3"
+        ],
+        [
+          "addstate",
+          "rankup,1"
+        ],
+        [
+          "if",
+          "hasflag(susie_xp)>=8 && hasflag(pardnerrank)<4"
+        ],
+        [
+          "addstate",
+          "rankup,1"
+        ],
+        [
+          "if",
+          "hasflag(susie_xp)>=15 && hasflag(pardnerrank)<5"
+        ],
+        [
+          "addstate",
+          "rankup,1"
+        ],
+        [
+          "if",
+          "hasflag(susie_xp)>=25 && hasflag(pardnerrank)<6"
+        ],
+        [
+          "addstate",
+          "rankup,1"
+        ],
+        [
+          "if",
+          "hasflag(susie_xp)>=40 && hasflag(pardnerrank)<7"
+        ],
+        [
+          "addstate",
+          "rankup,1"
+        ],
+        [
+          "if",
+          "hasflag(susie_xp)>=60 && hasflag(pardnerrank)<8"
+        ],
+        [
+          "addstate",
+          "rankup,1"
+        ],
+        [
+          "if",
+          "$rankup$==0"
+        ],
+        [
+          "goto",
+          "aftersusie"
+        ],
+        [
+          "incflag",
+          "pardnerrank,1"
+        ],
+        [
+          "say",
+          "Cow-hate flashes in her eyes.  Her resolve intensifies."
+        ],
+        [
+          "say",
+          "<b>Susie has become stronger!</b>"
+        ],
+        [
+          "addstate",
+          "winbutton,Way to go!"
+        ],
+        [
+          "goto",
+          "aftersusie"
+        ]
+      ],
       "lose1": [
         [
           "waa",
@@ -16239,6 +16858,63 @@
           "option",
           "sleef",
           "Zzzzz"
+        ]
+      ]
+    },
+    "clowns_tannery_room4win": {
+      "start": [
+        [
+          "addflag",
+          "clowns_tan4clear,1"
+        ],
+        [
+          "say",
+          "Whew. It's a good thing the clowns hate cows more than they hate humans, or that fight could've gone way worse. Fortunately, it seems pretty unlikely that you'll run into any more animated leather-clad cow skeletons on your adventure."
+        ],
+        [
+          "say",
+          "...Right?"
+        ],
+        [
+          "if",
+          "!hasflag(map_clowns)"
+        ],
+        [
+          "say",
+          "Anyway, one of the clowns dropped a map of the region. It has the tannery marked on it, with a route leading to it from a place way up north which is marked with... I guess a circus tent? Which would seem weird but, well, clowns."
+        ],
+        [
+          "if",
+          "!hasflag(map_clowns) && (!hasflag(region_lock) || hasflag(region_c_unlocked))"
+        ],
+        [
+          "mapunlock",
+          "clowns,Barnaby Bob's Perfectly Normal Traveling Circus Sideshow"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "say",
+          "The dotted line leads to a torn off portion of the map.. you are unable to get any information from this map."
+        ],
+        [
+          "addstate",
+          "maplocs,=countflags(map_)"
+        ],
+        [
+          "if",
+          "$maplocs$>36 && $maplocs$<40"
+        ],
+        [
+          "giveachievement",
+          "ach_37maplocs"
+        ],
+        [
+          "option",
+          "done",
+          "Yeah."
         ]
       ]
     },
@@ -20163,6 +20839,10 @@
           "dirtwater,The Town of Dirtwater"
         ],
         [
+          "if",
+          "!hasflag(region_lock)"
+        ],
+        [
           "mapunlock",
           "railcamp,The Manifest Destiny Railroad Company Camp"
         ],
@@ -22252,6 +22932,14 @@
           "hasflag(dirtwater_bandmember1) && hasflag(dirtwater_bandmember1) && hasflag(dirtwater_bandmember1) && hasflag(dirtwater_bandmember1) && hasflag(dirtwater_bandmember1) && !hasflag(got_the_whole_band_together_check)"
         ],
         [
+          "say",
+          "Something falls out of the bell and onto the floor."
+        ],
+        [
+          "if",
+          "hasflag(dirtwater_bandmember1) && hasflag(dirtwater_bandmember1) && hasflag(dirtwater_bandmember1) && hasflag(dirtwater_bandmember1) && hasflag(dirtwater_bandmember1) && !hasflag(got_the_whole_band_together_check)"
+        ],
+        [
           "customcommand",
           "checklocation,Dirtwater Band - Watch The Aristocrats Play (Ring The Bell)"
         ],
@@ -22980,6 +23668,111 @@
           "option",
           "done",
           "Hooray!"
+        ]
+      ]
+    },
+    "dirtwater_wantedposter3_read": {
+      "hmm": [
+        [
+          "say",
+          "The poster shows the location of the suspicious city the gang is hiding out in."
+        ],
+        [
+          "say",
+          "Wanna go check it out?"
+        ],
+        [
+          "if",
+          "!hasflag(region_lock) || hasflag(region_c_unlocked)"
+        ],
+        [
+          "option",
+          "yes",
+          "Sure"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "greyoption",
+          "hahacantgetityet",
+          "Sure [Requires Region C Access]"
+        ],
+        [
+          "option",
+          "done",
+          "Not right now"
+        ]
+      ]
+    },
+    "dirtwater_wantedposter4_read": {
+      "hmm": [
+        [
+          "say",
+          "No good can come of criminals with access to hat-making machinery."
+        ],
+        [
+          "say",
+          "Would you like to go investigate?"
+        ],
+        [
+          "if",
+          "!hasflag(region_lock) || hasflag(region_c_unlocked)"
+        ],
+        [
+          "option",
+          "yes",
+          "Yes indeed"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "greyoption",
+          "hahacantgetityet",
+          "Yes indeed [Requires Region C Access]"
+        ],
+        [
+          "option",
+          "done",
+          "Not right now"
+        ]
+      ]
+    },
+    "dirtwater_wantedposter5_read": {
+      "hmm": [
+        [
+          "say",
+          "Can't let these dastardly criminals escape justice -- it wouldn't be kosher."
+        ],
+        [
+          "say",
+          "Would you like to go investigate?"
+        ],
+        [
+          "if",
+          "!hasflag(region_lock) || hasflag(region_c_unlocked)"
+        ],
+        [
+          "option",
+          "yes",
+          "Yes indeed"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "greyoption",
+          "hahacantgetityet",
+          "Yes indeed [Requires Region C Access]"
+        ],
+        [
+          "option",
+          "done",
+          "Not right now"
         ]
       ]
     },
@@ -23745,12 +24538,16 @@
     "elvibrato3_booperterminal": {
       "correct": [
         [
-          "customcommand",
-          "checklocation,Dirtwater Band - Recruit Booper"
+          "say",
+          "The terminal beeps, and the boopy floating guy behind you disappears in a puff of glowing squares."
         ],
         [
           "say",
-          "The terminal beeps, and the boopy floating guy behind you disappears in a puff of glowing squares."
+          "In the place where the boopy floating guy was sits an item."
+        ],
+        [
+          "customcommand",
+          "checklocation,Dirtwater Band - Recruit Booper"
         ],
         [
           "playsounds",
@@ -26160,6 +26957,32 @@
         ]
       ]
     },
+    "fort1_watchtower": {
+      "start": [
+        [
+          "say",
+          "You climb up into the watchtower and take a look around."
+        ],
+        [
+          "say",
+          "Nice view from up here!"
+        ],
+        [
+          "if",
+          "hasitem(binoculars) && (!hasflag(region_lock) || hasflag(region_b_unlocked))"
+        ],
+        [
+          "option",
+          "binocs",
+          "Use your binoculars"
+        ],
+        [
+          "option",
+          "done",
+          "Climb down"
+        ]
+      ]
+    },
     "fort2_bigpit": {
       "win": [
         [
@@ -26818,6 +27641,9 @@
         ]
       ]
     },
+    "fort2_watchtower": {
+
+    },
     "fort3_footlocker1": {
       "picklock": [
         [
@@ -26947,10 +27773,6 @@
     "fort4_guitarman": {
       "two": [
         [
-          "customcommand",
-          "checklocation,Dirtwater Band - Recruit Guitar Man"
-        ],
-        [
           "leftsay",
           "I have an idea. Instead of pretending to play in a band, why don't you join an actual band and play guitar for real? I know a place that's looking for talent."
         ],
@@ -26965,6 +27787,14 @@
         [
           "rightsay",
           "Thanks a bunch! I'll head out right now!"
+        ],
+        [
+          "rightsay",
+          "Oh yeah, take this as thanks!"
+        ],
+        [
+          "customcommand",
+          "checklocation,Dirtwater Band - Recruit Guitar Man"
         ],
         [
           "addflag",
@@ -27269,6 +28099,49 @@
       ]
     },
     "fort5_privatebowlegs": {
+      "alamo": [
+        [
+          "leftspeak",
+          "$lastoption$"
+        ],
+        [
+          "rightsay",
+          "There's a place up north that rents 'em out. But I can't get out there myself, so I'd need someone to go set up the contract on my behalf and have 'em send me one."
+        ],
+        [
+          "if",
+          "!hasflag(map_fort7) && (!hasflag(region_lock) || hasflag(region_h_unlocked))"
+        ],
+        [
+          "mapunlock",
+          "fort7,Alamo Rent-A-Mule"
+        ],
+        [
+          "if",
+          "hasflag(region_lock) && !hasflag(region_h_unlocked)"
+        ],
+        [
+          "addflag",
+          "need_to_get_alamo,1"
+        ],
+        [
+          "addstate",
+          "maplocs,=countflags(map_)"
+        ],
+        [
+          "if",
+          "$maplocs$>36 && $maplocs$<40"
+        ],
+        [
+          "giveachievement",
+          "ach_37maplocs"
+        ],
+        [
+          "sayoption",
+          "done",
+          "All right, I'll check it out."
+        ]
+      ],
       "contract": [
         [
           "removeitem",
@@ -27303,8 +28176,32 @@
           "misspoint,Alamo Rent-A-Mule - Rented a Mule"
         ],
         [
+          "if",
+          "!hasflag(region_lock) || hasflag(region_h_unlocked)"
+        ],
+        [
           "mapunlock",
           "fort7,Alamo Rent-A-Mule"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "addflag",
+          "need_to_get_alamo,1"
+        ],
+        [
+          "addstate",
+          "maplocs,=countflags(map_)"
+        ],
+        [
+          "if",
+          "$maplocs$>36 && $maplocs$<40"
+        ],
+        [
+          "giveachievement",
+          "ach_37maplocs"
         ],
         [
           "addxp",
@@ -27338,8 +28235,32 @@
           "misspoint,Alamo Rent-A-Mule - Rented a Mule"
         ],
         [
+          "if",
+          "!hasflag(region_lock) || hasflag(region_h_unlocked)"
+        ],
+        [
           "mapunlock",
           "fort7,Alamo Rent-A-Mule"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "addflag",
+          "need_to_get_alamo,1"
+        ],
+        [
+          "addstate",
+          "maplocs,=countflags(map_)"
+        ],
+        [
+          "if",
+          "$maplocs$>36 && $maplocs$<40"
+        ],
+        [
+          "giveachievement",
+          "ach_37maplocs"
         ],
         [
           "sayoption",
@@ -27465,12 +28386,34 @@
         ]
       ]
     },
+    "fort6_cabinet": {
+      "popup": [
+        [
+          "say",
+          "One of the drawers of this cabinet is open a crack."
+        ],
+        [
+          "if",
+          "!hasflag(region_lock) || hasflag(region_d_unlocked)"
+        ],
+        [
+          "option",
+          "e",
+          "Check it out"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "greyoption",
+          "exit",
+          "Best leave it alone for now."
+        ]
+      ]
+    },
     "fort6_chef": {
       "harper2": [
-        [
-          "customcommand",
-          "checklocation,Dirtwater Band - Recruit Jaw Harp Player"
-        ],
         [
           "leftspeak",
           "$lastoption$"
@@ -27482,6 +28425,14 @@
         [
           "say",
           "She leaves, plunking that twanger the whole way."
+        ],
+        [
+          "say",
+          "You notice there is an item sitting on the couch that she left behind."
+        ],
+        [
+          "customcommand",
+          "checklocation,Dirtwater Band - Recruit Jaw Harp Player"
         ],
         [
           "option",
@@ -42297,6 +43248,22 @@
       ],
       "afterloot": []
     },
+    "item_necrojournal": {
+      "start5": [
+        [
+          "if",
+          "hasflag(necroclue1)==2 && hasflag(necroclue2)==2 && hasflag(necroclue3)==2 && hasflag(necroclue4)==2 && !hasflag(map_necrotower) && (!hasflag(region_lock) || hasflag(region_e_unlocked))"
+        ],
+        [
+          "goto",
+          "unlock"
+        ],
+        [
+          "goto",
+          "after5"
+        ]
+      ]
+    },
     "item_quest_shroommap": {
       "fortunlock": [
         [
@@ -50375,7 +51342,232 @@
         ]
       ]
     },
+    "pardner_init": {
+      "idles": [
+        [
+          "if",
+          "!hasflag(pardner_initialmapunlock)"
+        ],
+        [
+          "idle",
+          "@element.id@,attention"
+        ],
+        [
+          "if",
+          "hasflag(randomencounters)>4 && !hasflag(pardner_regionbunlock) && (!hasflag(region_lock) || hasflag(region_b_unlocked))"
+        ],
+        [
+          "idle",
+          "@element.id@,attention"
+        ],
+        [
+          "if",
+          "hasflag(visited_c) && !hasflag(pardner_regioncunlock)"
+        ],
+        [
+          "idle",
+          "@element.id@,attention"
+        ],
+        [
+          "if",
+          "hasflag(visited_d) && !hasflag(pardner_regiondunlock)"
+        ],
+        [
+          "idle",
+          "@element.id@,attention"
+        ],
+        [
+          "if",
+          "hasflag(visited_e) && !hasflag(pardner_regioneunlock)"
+        ],
+        [
+          "idle",
+          "@element.id@,attention"
+        ],
+        [
+          "if",
+          "hasflag(visited_f) && !hasflag(pardner_regionfunlock)"
+        ],
+        [
+          "idle",
+          "@element.id@,attention"
+        ],
+        [
+          "if",
+          "hasflag(visited_g) && !hasflag(pardner_regiongunlock)"
+        ],
+        [
+          "idle",
+          "@element.id@,attention"
+        ],
+        [
+          "if",
+          "hasflag(visited_h) && !hasflag(pardner_regionhunlock)"
+        ],
+        [
+          "idle",
+          "@element.id@,attention"
+        ],
+        [
+          "if",
+          "hasflag(mainquest)==32"
+        ],
+        [
+          "idle",
+          "@element.id@,attention"
+        ],
+        [
+          "if",
+          "matchstring(@location@,shroomcave) && alice && !hasflag(aliceshroombook) && !hasitem(book_mycology) && !hasskill(mycology)"
+        ],
+        [
+          "idle",
+          "@element.id@,attention"
+        ],
+        [
+          "if",
+          "matchstring(@location@,fort2_interior) && alice && !hasflag(fort2_poisonidea)"
+        ],
+        [
+          "idle",
+          "@element.id@,attention"
+        ],
+        [
+          "exit"
+        ]
+      ]
+    },
     "pardner_talk": {
+      "start": [
+        [
+          "if",
+          "alice"
+        ],
+        [
+          "addstate",
+          "pard,alice"
+        ],
+        [
+          "if",
+          "pete"
+        ],
+        [
+          "addstate",
+          "pard,pete"
+        ],
+        [
+          "if",
+          "susie"
+        ],
+        [
+          "addstate",
+          "pard,susie"
+        ],
+        [
+          "if",
+          "gary"
+        ],
+        [
+          "addstate",
+          "pard,gary"
+        ],
+        [
+          "addstate",
+          "loc,@location@"
+        ],
+        [
+          "if",
+          "matchstring(@waa:$loc$.parentwaa@,house)"
+        ],
+        [
+          "goto",
+          "afterunlocks"
+        ],
+        [
+          "if",
+          "hasflag(mainquest)==32"
+        ],
+        [
+          "goto",
+          "anteye"
+        ],
+        [
+          "if",
+          "!hasflag(pardner_initialmapunlock)"
+        ],
+        [
+          "goto",
+          "initialmapunlock"
+        ],
+        [
+          "if",
+          "hasflag(randomencounters)>4 && !hasflag(pardner_regionbunlock) && (!hasflag(region_lock) || hasflag(region_b_unlocked))"
+        ],
+        [
+          "goto",
+          "regionbunlock"
+        ],
+        [
+          "if",
+          "hasflag(visited_c) && !hasflag(pardner_regioncunlock)"
+        ],
+        [
+          "goto",
+          "regioncunlock"
+        ],
+        [
+          "if",
+          "hasflag(visited_d) && !hasflag(pardner_regiondunlock)"
+        ],
+        [
+          "goto",
+          "regiondunlock"
+        ],
+        [
+          "if",
+          "hasflag(visited_e) && !hasflag(pardner_regioneunlock)"
+        ],
+        [
+          "goto",
+          "regioneunlock"
+        ],
+        [
+          "if",
+          "hasflag(visited_f) && !hasflag(pardner_regionfunlock)"
+        ],
+        [
+          "goto",
+          "regionfunlock"
+        ],
+        [
+          "if",
+          "hasflag(visited_g) && !hasflag(pardner_regiongunlock)"
+        ],
+        [
+          "goto",
+          "regiongunlock"
+        ],
+        [
+          "if",
+          "hasflag(visited_h) && !hasflag(pardner_regionhunlock)"
+        ],
+        [
+          "goto",
+          "regionhunlock"
+        ],
+        [
+          "if",
+          "matchstring(@location@,shroomcave) && alice && !hasflag(aliceshroombook) && !hasitem(book_mycology) && !hasskill(mycology)"
+        ],
+        [
+          "goto",
+          "aliceshroombook"
+        ],
+        [
+          "goto",
+          "afterunlocks"
+        ]
+      ],
       "alice_railcamp2": [
         [
           "leftportrait",
@@ -51818,6 +53010,55 @@
         ]
       ]
     },
+    "postalstation_papers2": {
+      "e": [
+        [
+          "cls"
+        ],
+        [
+          "if",
+          "hasflag(map_cemetery3)"
+        ],
+        [
+          "goto",
+          "alreadysaw"
+        ],
+        [
+          "if",
+          "hasflag(region_lock) && !hasflag(region_e_unlocked)"
+        ],
+        [
+          "goto",
+          "notyet"
+        ],
+        [
+          "say",
+          "Oh hmm, there's an article in here about how they had to change the name of a nearby cemetery due to so many skeletons being raised there.  You mark down the cemetery's location on your map."
+        ],
+        [
+          "mapunlock",
+          "cemetery3,Reboot Hill"
+        ],
+        [
+          "addstate",
+          "maplocs,=countflags(map_)"
+        ],
+        [
+          "if",
+          "$maplocs$>36 && $maplocs$<40"
+        ],
+        [
+          "giveachievement",
+          "ach_37maplocs"
+        ]
+      ],
+      "notyet": [
+        [
+          "say",
+          "There isnt anything really interesting in this pile that you can see."
+        ]
+      ]
+    },
     "postalstation_cabinet": {
       "start": [
         [
@@ -51969,6 +53210,14 @@
           "letter"
         ],
         [
+          "if",
+          "hasflag(region_lock) && hasflag(region_e_unlocked) && !hasflag(map_roybean)"
+        ],
+        [
+          "goto",
+          "letter"
+        ],
+        [
           "cls"
         ],
         [
@@ -52002,7 +53251,7 @@
         ],
         [
           "if",
-          "!hasflag(map_roybean)"
+          "!hasflag(map_roybean) && (!hasflag(region_lock) || hasflag(region_f_unlocked))"
         ],
         [
           "say",
@@ -52010,7 +53259,7 @@
         ],
         [
           "if",
-          "!hasflag(map_roybean)"
+          "!hasflag(map_roybean) && (!hasflag(region_lock) || hasflag(region_f_unlocked))"
         ],
         [
           "mapunlock",
@@ -52114,6 +53363,82 @@
           "intro4",
           "'Swipe'?"
         ]
+      ],
+      "buildkeymaker2": [
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftspeak",
+          "$lastoption$"
+        ],
+        [
+          "say",
+          "He ambles over to a strange contraption in the corner of the room and begins to tinker."
+        ],
+        [
+          "rightsay",
+          "Great! Let me just... mm-hmm... yep... okay! This'll do the trick! Let me just get this running, and then you'll be able to grab a keystone from it. It'll take another five scrap for each one you need."
+        ],
+        [
+          "rightsay",
+          "Are you familiar with the Lost Dutch Oven Mine? Grim place, but that's where I found the chassis for that fabricator, wedged behind an unusual pile of rocks. Seems like a good place to start hunting."
+        ],
+        [
+          "if",
+          "!hasflag(map_mine3) && (!hasflag(region_lock) || hasflag(region_c_unlocked))"
+        ],
+        [
+          "mapunlock",
+          "mine3,Lost Dutch Oven Mine"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "rightsay",
+          "I can't remeber where it is approximately on the map at the moment. Im sorry"
+        ],
+        [
+          "addstate",
+          "maplocs,=countflags(map_)"
+        ],
+        [
+          "if",
+          "$maplocs$>36 && $maplocs$<40"
+        ],
+        [
+          "giveachievement",
+          "ach_37maplocs"
+        ],
+        [
+          "incflag",
+          "peoplehelped,1"
+        ],
+        [
+          "addflag",
+          "professor_progress,1"
+        ],
+        [
+          "if",
+          "hasflag(region_lock) && !hasflag(region_c_unlocked)"
+        ],
+        [
+          "sayoption",
+          "done",
+          "Dang."
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "sayoption",
+          "done",
+          "All right, I'm on it."
+        ]
       ]
     },
     "quest_honeybean": {
@@ -52146,6 +53471,192 @@
         [
           "say",
           "You'd rather not eat such a beautiful (and expencive) jelly bean. Maybe hold onto it incase you need it for something else later."
+        ]
+      ]
+    },
+    "railcamp_dynamitejim": {
+      "beatrockdude": [
+        [
+          "rightportrait",
+          "smee"
+        ],
+        [
+          "rightsay",
+          "Well now, that is as fine a day's work as I've ever seen! Much obliged, friend. We'll be getting the rest of this track laid down and head out now. Here, I'll mark our route on your map for you, in case our paths happen to cross again."
+        ],
+        [
+          "if",
+          "!hasflag(region_lock) || hasflag(region_e_unlocked)"
+        ],
+        [
+          "mapunlock",
+          "railcamp2,The Manifest Destiny Railroad Company Camp"
+        ],
+        [
+          "if",
+          "hasflag(region_lock) && !hasflag(region_e_unlocked)"
+        ],
+        [
+          "addflag",
+          "need_to_get_railcamp2,1"
+        ],
+        [
+          "addstate",
+          "maplocs,=countflags(map_)"
+        ],
+        [
+          "if",
+          "$maplocs$>36 && $maplocs$<40"
+        ],
+        [
+          "giveachievement",
+          "ach_37maplocs"
+        ],
+        [
+          "delflag",
+          "map_railcamp"
+        ],
+        [
+          "addflag",
+          "map_railcamp_finished,1"
+        ],
+        [
+          "addflag",
+          "mainquest,20"
+        ],
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftsay",
+          "Thanks, but can't I just ride the train?"
+        ],
+        [
+          "rightsay",
+          "Got a ticket?"
+        ],
+        [
+          "leftsay",
+          "..."
+        ],
+        [
+          "rightsay",
+          "Ha! Just kidding. 'Course you don't, every seat on this train's sold out. Sorry, boss."
+        ],
+        [
+          "option",
+          "doneleave",
+          "Sigh"
+        ]
+      ]
+    },
+    "railcamp_passengerchatter2": {
+      "start": [
+        [
+          "if",
+          "hasflag(region_lock) && !hasflag(mainquest)>=20"
+        ],
+        [
+          "goto",
+          "dont_show"
+        ],
+        [
+          "if",
+          "hasflag(mainquest)==5"
+        ],
+        [
+          "changewaaproperty",
+          "music,music_adventure_but_quieter"
+        ],
+        [
+          "if",
+          "!hasstate(togg)"
+        ],
+        [
+          "addstate",
+          "togg,0"
+        ],
+        [
+          "if",
+          "$togg$>0"
+        ],
+        [
+          "goto",
+          "reply"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "addstate",
+          "togg,1"
+        ],
+        [
+          "addstate",
+          "xroll,=rand(1,4)"
+        ],
+        [
+          "addstate",
+          "xroll,2"
+        ],
+        [
+          "if",
+          "$xroll$==1"
+        ],
+        [
+          "addstate",
+          "xpos,150"
+        ],
+        [
+          "if",
+          "$xroll$==2"
+        ],
+        [
+          "addstate",
+          "xpos,245"
+        ],
+        [
+          "if",
+          "$xroll$==3"
+        ],
+        [
+          "addstate",
+          "xpos,350"
+        ],
+        [
+          "if",
+          "$xroll$==4"
+        ],
+        [
+          "addstate",
+          "xpos,450"
+        ],
+        [
+          "queue",
+          4000.0
+        ],
+        [
+          "speechbubble",
+          "car1,$xpos$,160",
+          "%railcamp_arewethereyet%"
+        ],
+        [
+          "queue",
+          3000.0
+        ],
+        [
+          "runscript",
+          "railcamp_passengerchatter"
+        ],
+        [
+          "exit"
+        ]
+      ],
+      "dont_show": [
+        [
+          "exit"
         ]
       ]
     },
@@ -52436,163 +53947,123 @@
         ]
       ]
     },
-    "railcamp2_usetelescope": {
+    "railcamp2_bridgebill": {
       "start": [
         [
-          "say",
-          "You pay your meat and look through the telescope at the Big Canyon."
-        ],
-        [
-          "addmeat",
-          "-5"
-        ],
-        [
           "if",
-          "hasflag(whichbridge)==1"
+          "hasflag(mainquest)==20"
         ],
         [
           "goto",
-          "woodenbridge"
+          "intro"
         ],
         [
           "if",
-          "hasflag(whichbridge)==2 || hasflag(mainquest)==23"
+          "!hasflag(map_breadwood) && (!hasflag(region_lock) || hasflag(region_d_unlocked))"
         ],
         [
           "goto",
-          "elvbridge"
+          "get_breadwood_again"
         ],
         [
           "if",
-          "hasflag(whichbridge)==3 || hasflag(mainquest)==24"
+          "!hasflag(whichbridge)"
         ],
         [
           "goto",
-          "bonebridge"
-        ],
-        [
-          "if",
-          "hasflag(bridge_quest_enabled)"
-        ],
-        [
-          "goto",
-          "altstart"
-        ],
-        [
-          "say",
-          "It sure is big!  It'll take quite a bridge to get across that thing, that's for sure."
-        ],
-        [
-          "if",
-          "hasflag(mainquest)==22 && hasflag(breadwood_bridge_enabled)"
-        ],
-        [
-          "say",
-          "You could go tell Smee you squared away the lumber shipment from Breadwood."
-        ],
-        [
-          "if",
-          "hasflag(necroskills)>3 && hasskill(unlimitedbones) && hasflag(necro_bridge_enabled)"
-        ],
-        [
-          "say",
-          "You could use your Nex-Mex powers to build a bridge of bones."
-        ],
-        [
-          "if",
-          "hasitem(elv_bridgebeacon) && hasflag(el_vib_bridge_enabled)"
-        ],
-        [
-          "say",
-          "You could activate that El Vibrato bridge model and see if it does anything useful."
-        ],
-        [
-          "if",
-          "hasflag(necroskills)>3 && hasskill(unlimitedbones) && hasflag(necro_bridge_enabled)"
-        ],
-        [
-          "option",
-          "bonedeploy",
-          "Conjure a bone bridge [Necromancy, Bones]"
-        ],
-        [
-          "if",
-          "hasitem(elv_bridgebeacon) && hasflag(el_vib_bridge_enabled)"
-        ],
-        [
-          "option",
-          "elvdeploy",
-          "Activate the model [El Vibrato model bridge]"
-        ],
-        [
-          "option",
-          "done",
-          "Ayup"
+          "bridgecheck"
         ]
       ],
-      "altstart": [
+      "yes": [
         [
-          "say",
-          "It sure is big!  It'll take quite a bridge to get across that thing, that's for sure."
+          "leftspeak",
+          "$lastoption$"
         ],
         [
           "if",
-          "hasflag(mainquest)==22 && hasflag(breadwood_bridge_enabled) && !hasflag(all_breadwood_quests) && hasflag(questforbridgecomplete_bread)>4 && hasflag(breadwood_problemssolved)>4"
-        ],
-        [
-          "say",
-          "You could go tell Smee you squared away the lumber shipment from Breadwood."
-        ],
-        [
-          "if",
-          "hasflag(mainquest)==22 && hasflag(breadwood_bridge_enabled) && hasflag(all_breadwood_quests) && hasflag(questforbridgecomplete_bread)>6 && hasflag(breadwood_problemssolved)>6"
+          "!hasflag(map_breadwood)"
         ],
         [
           "say",
-          "You could go tell Smee you squared away the lumber shipment from Breadwood."
+          "Smee marks the location of the Breadwood camp on your map."
         ],
         [
           "if",
-          "hasflag(necroskills)>3 && hasskill(unlimitedbones) && hasflag(necro_bridge_enabled) && hasflag(questforbridgecomplete_book)>3"
+          "!hasflag(map_breadwood) && (!hasflag(region_lock) || hasflag(region_d_unlocked))"
         ],
         [
-          "say",
-          "You could use your Nex-Mex powers to build a bridge of bones."
+          "mapunlock",
+          "breadwood,Breadwood"
         ],
         [
-          "if",
-          "hasitem(elv_bridgebeacon) && hasflag(el_vib_bridge_enabled) && hasflag(questforbridgecomplete_elv)"
-        ],
-        [
-          "say",
-          "You could activate that El Vibrato bridge model and see if it does anything useful."
+          "addstate",
+          "maplocs,=countflags(map_)"
         ],
         [
           "if",
-          "hasflag(necroskills)>3 && hasskill(unlimitedbones) && hasflag(necro_bridge_enabled) && hasflag(questforbridgecomplete_book)>3"
+          "$maplocs$>36 && $maplocs$<40"
         ],
         [
-          "option",
-          "bonedeploy",
-          "Conjure a bone bridge [Necromancy, Bones]"
+          "giveachievement",
+          "ach_37maplocs"
         ],
         [
-          "if",
-          "hasitem(elv_bridgebeacon) && hasflag(el_vib_bridge_enabled) && hasflag(questforbridgecomplete_elv)"
+          "rightsay",
+          "'Course, anything you can find to build a bridge out of is fine by me, but that seems like the simplest option."
         ],
         [
-          "option",
-          "elvdeploy",
-          "Activate the model [El Vibrato model bridge]"
-        ],
-        [
-          "option",
+          "sayoption",
           "done",
-          "Ayup"
+          "I'll see what I can do."
         ]
-      ]
-    },
-    "railcamp2_bridgebill": {
+      ],
+      "get_breadwood_again": [
+        [
+          "rightportrait",
+          "smee"
+        ],
+        [
+          "rightsay",
+          "Howdy, boss."
+        ],
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftsay",
+          "Howdy Smee, can you remind me where Breadwood is again?"
+        ],
+        [
+          "rightsay",
+          "Oh sure! Its right here."
+        ],
+        [
+          "say",
+          "Smee marks it on your map this time."
+        ],
+        [
+          "mapunlock",
+          "breadwood,Breadwood"
+        ],
+        [
+          "addstate",
+          "maplocs,=countflags(map_)"
+        ],
+        [
+          "if",
+          "$maplocs$>36 && $maplocs$<40"
+        ],
+        [
+          "giveachievement",
+          "ach_37maplocs"
+        ],
+        [
+          "sayoption",
+          "done",
+          "Thanks Smee."
+        ]
+      ],
       "moveon": [
         [
           "leftportrait",
@@ -52611,8 +54082,20 @@
           "Now we just have to lay tracks the rest of the way into Frisco and our work is done -- both mine and yours. See you there, Boss!"
         ],
         [
+          "if",
+          "!hasflag(region_lock) || hasflag(region_g_unlocked)"
+        ],
+        [
           "mapunlock",
           "frisco,Frisco"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "addflag",
+          "need_to_get_frisco,1"
         ],
         [
           "addstate",
@@ -52858,8 +54341,20 @@
           "Smee marks the location of the Breadwood camp on your map."
         ],
         [
+          "if",
+          "!hasflag(region_lock) || hasflag(region_d_unlocked)"
+        ],
+        [
           "mapunlock",
           "breadwood,Breadwood"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "addflag",
+          "need_late_breadwood,1"
         ],
         [
           "addstate",
@@ -52877,6 +54372,277 @@
           "sayoption",
           "doneforever",
           "Great, thanks! Seeya later!"
+        ]
+      ]
+    },
+    "railcamp2_jellybeanguy2": {
+      "start": [
+        [
+          "if",
+          "hasflag(railcamp2_jellybeans) && hasflag(map_roybean)"
+        ],
+        [
+          "goto",
+          "beenhere"
+        ],
+        [
+          "addflag",
+          "railcamp2_jellybeans"
+        ],
+        [
+          "leftportrait",
+          "player"
+        ],
+        [
+          "leftspeak",
+          "What'cha got there? Jellybeans?"
+        ],
+        [
+          "rightportrait",
+          "lazyworker2"
+        ],
+        [
+          "rightsay",
+          "Ayep."
+        ],
+        [
+          "leftsay",
+          "Can I have one?"
+        ],
+        [
+          "rightsay",
+          "Nope."
+        ],
+        [
+          "sayoption",
+          "node2",
+          "Please?"
+        ],
+        [
+          "if",
+          "!hasflag(region_lock) || hasflag(region_f_unlocked))"
+        ],
+        [
+          "sayoption",
+          "where",
+          "Where'd you get them?"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "grayoption",
+          "hahacantgetityet",
+          "Where'd you get them? [Access to Region F required]"
+        ]
+      ],
+      "node2": [
+        [
+          "leftspeak",
+          "$lastoption$"
+        ],
+        [
+          "rightspeak",
+          "No. Get'cher own."
+        ],
+        [
+          "sayoption",
+          "done",
+          "Well, I never."
+        ],
+        [
+          "if",
+          "!hasflag(region_lock) || hasflag(region_f_unlocked))"
+        ],
+        [
+          "sayoption",
+          "where",
+          "Where'd you get them?"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "grayoption",
+          "hahacantgetityet",
+          "Where'd you get them? [Access to Region F required]"
+        ]
+      ]
+    },
+    "railcamp2_usetelescope": {
+      "start": [
+        [
+          "say",
+          "You pay your meat and look through the telescope at the Big Canyon."
+        ],
+        [
+          "addmeat",
+          "-5"
+        ],
+        [
+          "if",
+          "hasflag(region_lock) && hasflag(mainquest)>20"
+        ],
+        [
+          "goto",
+          "just_viewing_before"
+        ],
+        [
+          "if",
+          "hasflag(whichbridge)==1"
+        ],
+        [
+          "goto",
+          "woodenbridge"
+        ],
+        [
+          "if",
+          "hasflag(whichbridge)==2 || hasflag(mainquest)==23"
+        ],
+        [
+          "goto",
+          "elvbridge"
+        ],
+        [
+          "if",
+          "hasflag(whichbridge)==3 || hasflag(mainquest)==24"
+        ],
+        [
+          "goto",
+          "bonebridge"
+        ],
+        [
+          "if",
+          "hasflag(bridge_quest_enabled)"
+        ],
+        [
+          "goto",
+          "altstart"
+        ],
+        [
+          "say",
+          "It sure is big!  It'll take quite a bridge to get across that thing, that's for sure."
+        ],
+        [
+          "if",
+          "hasflag(mainquest)==22 && hasflag(breadwood_bridge_enabled)"
+        ],
+        [
+          "say",
+          "You could go tell Smee you squared away the lumber shipment from Breadwood."
+        ],
+        [
+          "if",
+          "hasflag(necroskills)>3 && hasskill(unlimitedbones) && hasflag(necro_bridge_enabled)"
+        ],
+        [
+          "say",
+          "You could use your Nex-Mex powers to build a bridge of bones."
+        ],
+        [
+          "if",
+          "hasitem(elv_bridgebeacon) && hasflag(el_vib_bridge_enabled)"
+        ],
+        [
+          "say",
+          "You could activate that El Vibrato bridge model and see if it does anything useful."
+        ],
+        [
+          "if",
+          "hasflag(necroskills)>3 && hasskill(unlimitedbones) && hasflag(necro_bridge_enabled)"
+        ],
+        [
+          "option",
+          "bonedeploy",
+          "Conjure a bone bridge [Necromancy, Bones]"
+        ],
+        [
+          "if",
+          "hasitem(elv_bridgebeacon) && hasflag(el_vib_bridge_enabled)"
+        ],
+        [
+          "option",
+          "elvdeploy",
+          "Activate the model [El Vibrato model bridge]"
+        ],
+        [
+          "option",
+          "done",
+          "Ayup"
+        ]
+      ],
+      "just_viewing_before": [
+        [
+          "say",
+          "It sure is big!  It'll take quite a bridge to get across that thing, that's for sure."
+        ],
+        [
+          "option",
+          "done",
+          "Ayup"
+        ]
+      ],
+      "altstart": [
+        [
+          "say",
+          "It sure is big!  It'll take quite a bridge to get across that thing, that's for sure."
+        ],
+        [
+          "if",
+          "hasflag(mainquest)==22 && hasflag(breadwood_bridge_enabled) && !hasflag(all_breadwood_quests) && hasflag(questforbridgecomplete_bread)>4 && hasflag(breadwood_problemssolved)>4"
+        ],
+        [
+          "say",
+          "You could go tell Smee you squared away the lumber shipment from Breadwood."
+        ],
+        [
+          "if",
+          "hasflag(mainquest)==22 && hasflag(breadwood_bridge_enabled) && hasflag(all_breadwood_quests) && hasflag(questforbridgecomplete_bread)>6 && hasflag(breadwood_problemssolved)>6"
+        ],
+        [
+          "say",
+          "You could go tell Smee you squared away the lumber shipment from Breadwood."
+        ],
+        [
+          "if",
+          "hasflag(necroskills)>3 && hasskill(unlimitedbones) && hasflag(necro_bridge_enabled) && hasflag(questforbridgecomplete_book)>3"
+        ],
+        [
+          "say",
+          "You could use your Nex-Mex powers to build a bridge of bones."
+        ],
+        [
+          "if",
+          "hasitem(elv_bridgebeacon) && hasflag(el_vib_bridge_enabled) && hasflag(questforbridgecomplete_elv)"
+        ],
+        [
+          "say",
+          "You could activate that El Vibrato bridge model and see if it does anything useful."
+        ],
+        [
+          "if",
+          "hasflag(necroskills)>3 && hasskill(unlimitedbones) && hasflag(necro_bridge_enabled) && hasflag(questforbridgecomplete_book)>3"
+        ],
+        [
+          "option",
+          "bonedeploy",
+          "Conjure a bone bridge [Necromancy, Bones]"
+        ],
+        [
+          "if",
+          "hasitem(elv_bridgebeacon) && hasflag(el_vib_bridge_enabled) && hasflag(questforbridgecomplete_elv)"
+        ],
+        [
+          "option",
+          "elvdeploy",
+          "Activate the model [El Vibrato model bridge]"
+        ],
+        [
+          "option",
+          "done",
+          "Ayup"
         ]
       ]
     },
@@ -55310,6 +57076,36 @@
       ]
     },
     "randomevent_a": {
+      "start": [
+        [
+          "if",
+          "hasitem(elv_introitem) && !hasflag(map_professor) && (!hasflag(region_lock) || hasflag(region_b_unlocked))"
+        ],
+        [
+          "goto",
+          "findperfessor"
+        ],
+        [
+          "clearrandom",
+          ""
+        ],
+        [
+          "if",
+          "!palehorse"
+        ],
+        [
+          "goto",
+          "afterpalehorse"
+        ],
+        [
+          "pushrandom",
+          "cultistsa"
+        ],
+        [
+          "goto",
+          "afterpalehorse"
+        ]
+      ],
       "afterpalehorse": [
         [
           "if",
@@ -55807,6 +57603,62 @@
           "option",
           "done",
           "Okay, I'll tell Zack"
+        ]
+      ]
+    },
+    "randomevent_b": {
+      "start": [
+        [
+          "if",
+          "hasitem(elv_introitem) && !hasflag(map_professor) && (!hasflag(region_lock) || hasflag(region_b_unlocked))"
+        ],
+        [
+          "goto",
+          "findperfessor"
+        ],
+        [
+          "clearrandom",
+          ""
+        ],
+        [
+          "if",
+          "!palehorse"
+        ],
+        [
+          "goto",
+          "afterpalehorse"
+        ],
+        [
+          "goto",
+          "afterpalehorse"
+        ]
+      ]
+    },
+    "randomevent_c": {
+      "start": [
+        [
+          "if",
+          "hasitem(elv_introitem) && !hasflag(map_professor) && (!hasflag(region_lock) || hasflag(region_b_unlocked))"
+        ],
+        [
+          "goto",
+          "findperfessor"
+        ],
+        [
+          "clearrandom",
+          ""
+        ],
+        [
+          "if",
+          "!palehorse"
+        ],
+        [
+          "goto",
+          "afterpalehorse"
+        ],
+        [
+          "goto",
+          "afterpalehorse"
         ]
       ]
     },
@@ -94858,6 +96710,49 @@
         ]
       ]
     },
+    "silversmith_shelf": {
+      "start": [
+        [
+          "say",
+          "The bookshelf contains like 90 copies of Johnny Tremain."
+        ],
+        [
+          "if",
+          "hasflag(map_silverplater)"
+        ],
+        [
+          "goto",
+          "predone"
+        ],
+        [
+          "say",
+          "There's something weird about it, though.  It's... too neatly organized.  Like maybe the guy was hiding something."
+        ],
+        [
+          "if",
+          "moxie>=10 && (!hasflag(region_lock) || hasflag(region_c_unlocked))"
+        ],
+        [
+          "option",
+          "search",
+          "Search for secrets [10 Moxie]"
+        ],
+        [
+          "else",
+          ""
+        ],
+        [
+          "grayoption",
+          "squirch",
+          "Search for secrets [Req. 10 Moxie & Reg. C Access]"
+        ],
+        [
+          "option",
+          "done",
+          "Leave it alone"
+        ]
+      ]
+    },
     "silversmith_spittoon": {
       "nine": [
         [
@@ -96662,10 +98557,6 @@
     "wasco_wasco": {
       "prog3": [
         [
-          "customcommand",
-          "checklocation,Dirtwater Band - Recruit Wasco"
-        ],
-        [
           "leftportrait",
           "player"
         ],
@@ -96704,6 +98595,14 @@
         [
           "rightsay",
           "I'll head on over there shortly. Thanks for the idea."
+        ],
+        [
+          "rightsay",
+          "Oh, take this. Something to say thank you for stearing me on a different path."
+        ],
+        [
+          "customcommand",
+          "checklocation,Dirtwater Band - Recruit Wasco"
         ],
         [
           "sayoption",
@@ -97716,7 +99615,7 @@
           "z": 34.0,
           "height": 0.0,
           "width": 0.0,
-          "condition": "hasflag(randomencounters)>2 && hasflag (day)>1 && hasflag(dirtwater_legquest)<2",
+          "condition": "hasflag(randomencounters)>2 && hasflag (day)>1 && hasflag(dirtwater_legquest)<2 && (!hasflag(region_lock) || hasflag(region_c_unlocked))",
           "script": "dirtwater_brokenlegguy",
           "proximity": 0.0,
           "flip": 1.0,
@@ -99028,6 +100927,530 @@
         }
       },
       "parentwaa": "elvibrato1"
+    },
+    "frisco": {
+      "name": "Frisco",
+      "width": "3.000",
+      "ground": null,
+      "sky": "lazyclouds",
+      "startxy": "2720,30",
+      "parallax1": "bg_pines4,bg_pines3,bg_pines2,bg_pines1",
+      "parallax2": "bg_flat1,bg_flat1,bg_flat1,bg_mountain4,bg_flat1,bg_monument,bg_flat1,bg_mountain1,bg_mountain3,bg_mountain2,bg_flat1,bg_flat1,bg_flat1,bg_flat1,bg_mountain4",
+      "horizon": "horizonline1",
+      "groundtexture": "floor_dirt1",
+      "music": "music_moseyin",
+      "ambientsound1": "desert_ambience_loop",
+      "ambientvolume1": ".23",
+      "": "Setting Norton up with a crown changes the kind of city Frisco ends up being",
+      "basewaa": "frisco",
+      "elements": {
+        "bardoor": {
+          "asset": "none",
+          "usedasset": null,
+          "x": 491.0,
+          "z": 237.0,
+          "height": 10.0,
+          "width": 100.0,
+          "condition": "",
+          "script": "autoscript__frisco__bardoor__exec",
+          "proximity": 0.0
+        },
+        "blocker1": {
+          "asset": "none",
+          "usedasset": null,
+          "x": 102.0,
+          "z": 238.0,
+          "height": 10.0,
+          "width": 40.0,
+          "condition": "",
+          "script": "",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "blocker2": {
+          "asset": "none",
+          "usedasset": null,
+          "x": 375.0,
+          "z": 238.0,
+          "height": 10.0,
+          "width": 60.0,
+          "condition": "",
+          "script": "",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "blocker3": {
+          "asset": "none",
+          "usedasset": null,
+          "x": 770.0,
+          "z": 240.0,
+          "height": 10.0,
+          "width": 80.0,
+          "condition": "",
+          "script": "",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "blocker4": {
+          "asset": "none",
+          "usedasset": null,
+          "x": 1151.0,
+          "z": 237.0,
+          "height": 10.0,
+          "width": 40.0,
+          "condition": "",
+          "script": "",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "car1_post": {
+          "asset": "passengercar",
+          "usedasset": null,
+          "x": 2040.0,
+          "z": 199.0,
+          "height": 920.0,
+          "width": 1903.0,
+          "condition": "hasflag(mainquest)>=36",
+          "script": "",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "car1_pre": {
+          "asset": "passengercar",
+          "usedasset": null,
+          "x": 2940.0,
+          "z": 199.0,
+          "height": 920.0,
+          "width": 1903.0,
+          "condition": "hasflag(mainquest)==30",
+          "script": "",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "car2_post": {
+          "asset": "passengercar",
+          "usedasset": null,
+          "x": 2646.0,
+          "z": 200.0,
+          "height": 920.0,
+          "width": 1903.0,
+          "condition": "hasflag(mainquest)>=36",
+          "script": "",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "clooncys": {
+          "asset": "frisco_clooncys",
+          "usedasset": null,
+          "x": 406.0,
+          "z": 238.0,
+          "height": 876.0,
+          "width": 1226.0,
+          "condition": "",
+          "script": "",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "horse": {
+          "asset": "horse",
+          "usedasset": null,
+          "x": 2673.0,
+          "z": 109.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "",
+          "script": "horse",
+          "proximity": 0.0,
+          "flip": 1.0
+        },
+        "house1": {
+          "asset": "frisco_house1",
+          "usedasset": null,
+          "x": 124.0,
+          "z": 238.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "",
+          "script": "",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "house2": {
+          "asset": "frisco_house2",
+          "usedasset": null,
+          "x": -162.0,
+          "z": 238.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "",
+          "script": "",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "leftcollider": {
+          "asset": "none",
+          "usedasset": null,
+          "x": -10.0,
+          "z": 131.0,
+          "height": 30.0,
+          "width": 30.0,
+          "condition": "",
+          "script": "autoscript__frisco__leftcollider__popup",
+          "proximity": 0.0,
+          "extendforward": 1.0,
+          "extendback": 1.0
+        },
+        "limitsign": {
+          "asset": "sign_friscolimit",
+          "usedasset": null,
+          "x": 2146.0,
+          "z": 247.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "hasflag(mainquest)<36",
+          "script": "",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "locomotive_post": {
+          "asset": "locomotive",
+          "usedasset": null,
+          "x": 1400.0,
+          "z": 200.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "hasflag(mainquest)>=36",
+          "script": "railcamp_locomotive",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "locomotive_pre": {
+          "asset": "locomotive",
+          "usedasset": null,
+          "x": 2300.0,
+          "z": 200.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "hasflag(mainquest)==30",
+          "script": "railcamp_locomotive",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "movietheater": {
+          "asset": "frisco_theater",
+          "usedasset": null,
+          "x": 810.0,
+          "z": 237.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "hasflag(mainquest)<36",
+          "script": "",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "movietheaterdoor": {
+          "asset": "none",
+          "usedasset": null,
+          "x": 897.0,
+          "z": 237.0,
+          "height": 10.0,
+          "width": 200.0,
+          "condition": "",
+          "script": "frisco_theaterdoor",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "movietheater_done": {
+          "asset": "frisco_theater2",
+          "usedasset": null,
+          "x": 810.0,
+          "z": 237.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "hasflag(mainquest)>=36",
+          "script": "",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "norton": {
+          "asset": "person",
+          "usedasset": null,
+          "x": 2035.0,
+          "z": 78.0,
+          "height": 291.0,
+          "width": 116.0,
+          "condition": "hasflag(mainquest)==30",
+          "script": "frisco_norton",
+          "proximity": 0.0,
+          "prefab": "human_template",
+          "head": "head_norton,47,41"
+        },
+        "pardner": {
+          "asset": "person",
+          "usedasset": null,
+          "x": 2560.0,
+          "z": 113.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "",
+          "script": "pardner",
+          "proximity": 0.0
+        },
+        "ped1": {
+          "asset": "person",
+          "usedasset": null,
+          "x": 10.0,
+          "z": 32.0,
+          "height": 291.0,
+          "width": 116.0,
+          "condition": "hasflag(mainquest)>=36",
+          "script": "frisco_ped1",
+          "proximity": 0.0,
+          "prefab": "human_template",
+          "head": "head_dude_basic",
+          "hat": "hat_derby3,62,31",
+          "oncreate": "frisco_friscopedestrian"
+        },
+        "ped2": {
+          "asset": "person",
+          "usedasset": null,
+          "x": 11.0,
+          "z": 78.0,
+          "height": 291.0,
+          "width": 116.0,
+          "condition": "hasflag(mainquest)>=36",
+          "script": "frisco_ped2",
+          "proximity": 0.0,
+          "prefab": "human_template",
+          "head": "head_lady_blackhair",
+          "hat": "hat_floral,77,79",
+          "fronthair": "hair_blackright,25,5",
+          "backhair": "hair_blackleft,25,5",
+          "oncreate": "frisco_friscopedestrian"
+        },
+        "ped3": {
+          "asset": "person",
+          "usedasset": null,
+          "x": 8.0,
+          "z": 112.0,
+          "height": 291.0,
+          "width": 116.0,
+          "condition": "hasflag(mainquest)>=36",
+          "script": "frisco_ped3",
+          "proximity": 0.0,
+          "prefab": "human_template",
+          "head": "head_lady_happy",
+          "backhair1": "hair_basicleft,22,2",
+          "fronthair1": "hair_basicright,7,2",
+          "oncreate": "frisco_friscopedestrian"
+        },
+        "ped4": {
+          "asset": "person",
+          "usedasset": null,
+          "x": 6.0,
+          "z": 153.0,
+          "height": 291.0,
+          "width": 116.0,
+          "condition": "hasflag(mainquest)>=36",
+          "script": "frisco_ped4",
+          "proximity": 0.0,
+          "prefab": "human_template",
+          "head": "head_clerk2_ghost,62,70",
+          "oncreate": "frisco_friscopedestrian"
+        },
+        "smee": {
+          "asset": "person",
+          "usedasset": null,
+          "x": 2473.0,
+          "z": 48.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "!hasflag(region_lock) || hasflag(mainquest)>=30",
+          "script": "frisco_smee",
+          "proximity": 0.0,
+          "flip": 1.0,
+          "prefab": "human_template",
+          "head": "head_smee",
+          "hat": "hat_derby2,56,28",
+          "backhand": "held_pencil,5,40",
+          "fronthand": "held_clipboard,5,60",
+          "idle": "human_clipboard_rest"
+        },
+        "tracks1": {
+          "asset": "tracks1",
+          "usedasset": null,
+          "x": 1398.0,
+          "z": 180.0,
+          "height": 162.0,
+          "width": 1255.0,
+          "condition": "hasflag(mainquest)>=36",
+          "script": "",
+          "proximity": 0.0,
+          "floordecal": 1.0
+        },
+        "tracks2": {
+          "asset": "tracks1",
+          "usedasset": null,
+          "x": 1811.0,
+          "z": 180.0,
+          "height": 162.0,
+          "width": 1255.0,
+          "condition": "hasflag(mainquest)>35",
+          "script": "",
+          "proximity": 0.0,
+          "floordecal": 1.0
+        },
+        "tracks3": {
+          "asset": "tracks1",
+          "usedasset": null,
+          "x": 2227.0,
+          "z": 180.0,
+          "height": 162.0,
+          "width": 1255.0,
+          "condition": "!hasflag(region_lock) || hasflag(mainquest)>=30",
+          "script": "",
+          "proximity": 0.0,
+          "floordecal": 1.0
+        },
+        "tracks4": {
+          "asset": "tracks1",
+          "usedasset": null,
+          "x": 2642.0,
+          "z": 180.0,
+          "height": 162.0,
+          "width": 1255.0,
+          "condition": "!hasflag(region_lock) || hasflag(mainquest)>=30",
+          "script": "",
+          "proximity": 0.0,
+          "floordecal": 1.0
+        },
+        "tracks5": {
+          "asset": "tracks1",
+          "usedasset": null,
+          "x": 3055.0,
+          "z": 180.0,
+          "height": 162.0,
+          "width": 1255.0,
+          "condition": "!hasflag(region_lock) || hasflag(mainquest)>=30",
+          "script": "",
+          "proximity": 0.0,
+          "floordecal": 1.0
+        },
+        "trainstation": {
+          "asset": "frisco_trainstation",
+          "usedasset": null,
+          "x": 1171.0,
+          "z": 235.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "",
+          "script": "frisco_trainstation",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "traintracks": {
+          "asset": "traintracks",
+          "usedasset": null,
+          "x": 2886.0,
+          "z": 76.0,
+          "height": 178.0,
+          "width": 830.0,
+          "condition": "hasflag(mainquest)>=31 && !hasflag(mainquest_crown)",
+          "script": "frisco_traintracks",
+          "proximity": 0.0,
+          "floordecal": 1.0
+        },
+        "wascoflyer": {
+          "asset": "flyer",
+          "usedasset": null,
+          "x": 316.0,
+          "z": 98.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "",
+          "script": "frisco_flyer",
+          "proximity": 0.0,
+          "floordecal": 1.0
+        },
+        "wheelshadow1_post": {
+          "asset": "passengercar_wheelshadow",
+          "usedasset": null,
+          "x": 2133.0,
+          "z": 250.0,
+          "height": 240.0,
+          "width": 490.0,
+          "condition": "hasflag(mainquest)>=36",
+          "script": "",
+          "proximity": 0.0
+        },
+        "wheelshadow1_pre": {
+          "asset": "passengercar_wheelshadow",
+          "usedasset": null,
+          "x": 3031.0,
+          "z": 250.0,
+          "height": 240.0,
+          "width": 490.0,
+          "condition": "hasflag(mainquest)==30",
+          "script": "",
+          "proximity": 0.0
+        },
+        "wheelshadow2_post": {
+          "asset": "passengercar_wheelshadow",
+          "usedasset": null,
+          "x": 2483.0,
+          "z": 250.0,
+          "height": 240.0,
+          "width": 490.0,
+          "condition": "hasflag(mainquest)>=36",
+          "script": "",
+          "proximity": 0.0
+        },
+        "wheelshadow3_post": {
+          "asset": "passengercar_wheelshadow",
+          "usedasset": null,
+          "x": 2737.0,
+          "z": 250.0,
+          "height": 240.0,
+          "width": 490.0,
+          "condition": "hasflag(mainquest)>=36",
+          "script": "",
+          "proximity": 0.0
+        },
+        "wheelshadow4_post": {
+          "asset": "passengercar_wheelshadow",
+          "usedasset": null,
+          "x": 3088.0,
+          "z": 250.0,
+          "height": 240.0,
+          "width": 490.0,
+          "condition": "hasflag(mainquest)>=36",
+          "script": "",
+          "proximity": 0.0
+        },
+        "wheelshadow_loc_post": {
+          "asset": "locomotive_wheelshadow",
+          "usedasset": null,
+          "x": 1510.0,
+          "z": 250.0,
+          "height": 373.0,
+          "width": 1567.0,
+          "condition": "hasflag(mainquest)>=36",
+          "script": "",
+          "proximity": 0.0
+        },
+        "wheelshadow_loc_pre": {
+          "asset": "locomotive_wheelshadow",
+          "usedasset": null,
+          "x": 2407.0,
+          "z": 250.0,
+          "height": 373.0,
+          "width": 1567.0,
+          "condition": "hasflag(mainquest)==30",
+          "script": "",
+          "proximity": 0.0
+        }
+      },
+      "parentwaa": "frisco"
     },
     "house_airbnb4": {
       "name": "Gun Manor Guest Room #4",
@@ -103335,6 +105758,406 @@
         }
       },
       "parentwaa": "ranch6"
+    },
+    "railcamp2": {
+      "name": "The Manifest Destiny Railroad Company Camp (Canyonside)",
+      "width": "2.500",
+      "ground": null,
+      "sky": "",
+      "startxy": "2222,50",
+      "parallax1": "bg_pines4,bg_pines3,bg_pines2,bg_pines1",
+      "parallax2": "bg_mountain4,bg_flat1,bg_monument,bg_flat1,bg_mountain1,bg_mountain3,bg_mountain2,bg_flat1,bg_flat1,bg_flat1,bg_flat1,bg_mountain4,bg_flat1,bg_flat1,bg_flat1",
+      "horizon": "horizonline1",
+      "groundtexture": "floor_dirt1",
+      "music": "music_moseyin",
+      "ambientsound1": "desert_ambience_loop",
+      "ambientvolume1": ".23",
+      "onenter": "railcamp_passengerchatter2",
+      "basewaa": "railcamp2",
+      "elements": {
+        "agave1": {
+          "asset": "choadcactus1",
+          "usedasset": null,
+          "x": 1484.0,
+          "z": 31.0,
+          "height": 297.0,
+          "width": 129.0,
+          "condition": "",
+          "script": "cactusprick",
+          "proximity": 0.0
+        },
+        "agave2": {
+          "asset": "choadcactus2",
+          "usedasset": null,
+          "x": 1867.0,
+          "z": 108.0,
+          "height": 314.0,
+          "width": 153.0,
+          "condition": "",
+          "script": "cactusprick",
+          "proximity": 0.0,
+          "flip": 1.0
+        },
+        "cactus1": {
+          "asset": "choadcactus1",
+          "usedasset": null,
+          "x": 51.0,
+          "z": 23.0,
+          "height": 297.0,
+          "width": 129.0,
+          "condition": "",
+          "script": "cactusprick",
+          "proximity": 0.0,
+          "flip": 1.0
+        },
+        "cactus3": {
+          "asset": "choadcactus3",
+          "usedasset": null,
+          "x": 2109.0,
+          "z": 23.0,
+          "height": 316.0,
+          "width": 156.0,
+          "condition": "",
+          "script": "cactusprick",
+          "proximity": 0.0,
+          "flip": 1.0
+        },
+        "cactus4": {
+          "asset": "choadcactus4",
+          "usedasset": null,
+          "x": 688.0,
+          "z": 249.0,
+          "height": 346.0,
+          "width": 213.0,
+          "condition": "",
+          "script": "cactusprick",
+          "proximity": 0.0,
+          "flip": 1.0,
+          "floatheight": 1.0
+        },
+        "car1": {
+          "asset": "passengercar",
+          "usedasset": null,
+          "x": 1444.0,
+          "z": 199.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "!hasflag(region_lock) || hasflag(mainquest)>=20",
+          "script": "",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "car2": {
+          "asset": "passengercar",
+          "usedasset": null,
+          "x": 2051.0,
+          "z": 200.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "!hasflag(region_lock) || hasflag(mainquest)>=20",
+          "script": "",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "horse": {
+          "asset": "horse",
+          "usedasset": null,
+          "x": 2417.0,
+          "z": 17.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "",
+          "script": "horse",
+          "proximity": 0.0,
+          "flip": 1.0
+        },
+        "lazyworker1": {
+          "asset": "person",
+          "usedasset": null,
+          "x": 662.0,
+          "z": 27.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "!hasflag(region_lock) || hasflag(mainquest)>=20",
+          "script": "autoscript__railcamp2__lazyworker1__popup",
+          "proximity": 0.0,
+          "prefab": "human_template",
+          "head": "head_lady_whistling",
+          "hat": "hat_dirty1,90,35",
+          "backhair": "hair_blackleft,22,2",
+          "fronthair": "hair_blackright,7,2",
+          "emitter": "music_whistler,head",
+          "idle": "boring",
+          "ambientsound": "music_main_theme_whistle_solo,200",
+          "ambientvolume": "1.5"
+        },
+        "lazyworker2": {
+          "asset": "person",
+          "usedasset": null,
+          "x": 867.0,
+          "z": 71.0,
+          "height": 291.0,
+          "width": 116.0,
+          "condition": "!hasflag(region_lock) || hasflag(mainquest)>=20",
+          "script": "railcamp2_jellybeanguy",
+          "proximity": 0.0,
+          "prefab": "human_template",
+          "head": "head_dude_happy",
+          "hat": "hat_cowboy1_dirty",
+          "idle": "jellybeans",
+          "fronthand": "held_jellybeans,11,68"
+        },
+        "lazyworker3": {
+          "asset": "person",
+          "usedasset": null,
+          "x": 1093.0,
+          "z": 12.0,
+          "height": 291.0,
+          "width": 116.0,
+          "condition": "!hasflag(region_lock) || hasflag(mainquest)>=20",
+          "script": "autoscript__railcamp2__lazyworker3__popup",
+          "proximity": 0.0,
+          "prefab": "human_template",
+          "headother": "head_dude_asleep",
+          "hat": "hat_black3",
+          "idle": "sleep_01",
+          "emitter": "sleep_zzz, 21, 24, -1",
+          "ambientsound": "snoreloop1, 180",
+          "ambientvolume": ".4"
+        },
+        "leftcollider": {
+          "asset": "none",
+          "usedasset": null,
+          "x": 0.0,
+          "z": 156.0,
+          "height": 100.0,
+          "width": 300.0,
+          "condition": "hasflag(mainquest)<23",
+          "script": "autoscript__railcamp2__leftcollider__popup",
+          "proximity": 0.0,
+          "extendback": 1.0,
+          "noclip": 1.0
+        },
+        "locomotive": {
+          "asset": "locomotive",
+          "usedasset": null,
+          "x": 804.0,
+          "z": 200.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "!hasflag(region_lock) || hasflag(mainquest)>=20",
+          "script": "railcamp_locomotive",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "pardner": {
+          "asset": "person",
+          "usedasset": null,
+          "x": 2333.0,
+          "z": 81.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "",
+          "script": "pardner",
+          "proximity": 0.0,
+          "flip": 1.0
+        },
+        "rocks1": {
+          "asset": "rocks3",
+          "usedasset": null,
+          "x": 146.0,
+          "z": 126.0,
+          "height": 105.0,
+          "width": 214.0,
+          "condition": "",
+          "script": "",
+          "proximity": 0.0
+        },
+        "smee": {
+          "asset": "person",
+          "usedasset": null,
+          "x": 477.0,
+          "z": 198.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "!hasflag(region_lock) || hasflag(mainquest)>=20",
+          "script": "railcamp2_bridgebill",
+          "proximity": 0.0,
+          "flip": 1.0,
+          "prefab": "human_template",
+          "head": "head_smee",
+          "hat": "hat_derby2,56,28",
+          "backhand": "held_pencil,5,40",
+          "fronthand": "held_clipboard,5,60",
+          "idle": "human_clipboard_rest"
+        },
+        "telescope": {
+          "asset": "paytelescope",
+          "usedasset": null,
+          "x": 335.0,
+          "z": 250.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "",
+          "script": "railcamp2_telescope",
+          "proximity": 0.0
+        },
+        "tracks1": {
+          "asset": "tracks1",
+          "usedasset": null,
+          "x": 571.0,
+          "z": 180.0,
+          "height": 162.0,
+          "width": 1255.0,
+          "condition": "!hasflag(region_lock) || hasflag(mainquest)>=20",
+          "script": "",
+          "proximity": 0.0,
+          "floordecal": 1.0
+        },
+        "tracks2": {
+          "asset": "tracks1",
+          "usedasset": null,
+          "x": 986.0,
+          "z": 180.0,
+          "height": 162.0,
+          "width": 1255.0,
+          "condition": "!hasflag(region_lock) || hasflag(mainquest)>=20",
+          "script": "",
+          "proximity": 0.0,
+          "floordecal": 1.0
+        },
+        "tracks3": {
+          "asset": "tracks1",
+          "usedasset": null,
+          "x": 1402.0,
+          "z": 180.0,
+          "height": 162.0,
+          "width": 1255.0,
+          "condition": "!hasflag(region_lock) || hasflag(mainquest)>=20",
+          "script": "",
+          "proximity": 0.0,
+          "floordecal": 1.0
+        },
+        "tracks4": {
+          "asset": "tracks1",
+          "usedasset": null,
+          "x": 1818.0,
+          "z": 180.0,
+          "height": 162.0,
+          "width": 1255.0,
+          "condition": "!hasflag(region_lock) || hasflag(mainquest)>=20",
+          "script": "",
+          "proximity": 0.0,
+          "floordecal": 1.0
+        },
+        "tracks5": {
+          "asset": "tracks1",
+          "usedasset": null,
+          "x": 2234.0,
+          "z": 180.0,
+          "height": 162.0,
+          "width": 1255.0,
+          "condition": "!hasflag(region_lock) || hasflag(mainquest)>=20",
+          "script": "",
+          "proximity": 0.0,
+          "floordecal": 1.0
+        },
+        "tracks6": {
+          "asset": "tracks1",
+          "usedasset": null,
+          "x": 2643.0,
+          "z": 180.0,
+          "height": 162.0,
+          "width": 1255.0,
+          "condition": "!hasflag(region_lock) || hasflag(mainquest)>=20",
+          "script": "",
+          "proximity": 0.0,
+          "floordecal": 1.0
+        },
+        "weed1": {
+          "asset": "weed2",
+          "usedasset": null,
+          "x": 396.0,
+          "z": 24.0,
+          "height": 222.0,
+          "width": 196.0,
+          "condition": "",
+          "script": "",
+          "proximity": 0.0
+        },
+        "weed2": {
+          "asset": "weed11",
+          "usedasset": null,
+          "x": 1032.0,
+          "z": 116.0,
+          "height": 147.0,
+          "width": 79.0,
+          "condition": "",
+          "script": "",
+          "proximity": 0.0
+        },
+        "wheelshadow1": {
+          "asset": "passengercar_wheelshadow",
+          "usedasset": null,
+          "x": 1537.0,
+          "z": 250.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "!hasflag(region_lock) || hasflag(mainquest)>=20",
+          "script": "",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "wheelshadow2": {
+          "asset": "passengercar_wheelshadow",
+          "usedasset": null,
+          "x": 1885.0,
+          "z": 250.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "!hasflag(region_lock) || hasflag(mainquest)>=20",
+          "script": "",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "wheelshadow3": {
+          "asset": "passengercar_wheelshadow",
+          "usedasset": null,
+          "x": 2143.0,
+          "z": 250.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "!hasflag(region_lock) || hasflag(mainquest)>=20",
+          "script": "",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "wheelshadow4": {
+          "asset": "passengercar_wheelshadow",
+          "usedasset": null,
+          "x": 2492.0,
+          "z": 250.0,
+          "height": 0.0,
+          "width": 0.0,
+          "condition": "!hasflag(region_lock) || hasflag(mainquest)>=20",
+          "script": "",
+          "proximity": 0.0,
+          "extendback": 1.0
+        },
+        "wheelshadow_loc": {
+          "asset": "locomotive_wheelshadow",
+          "usedasset": null,
+          "x": 913.0,
+          "z": 250.0,
+          "height": 373.0,
+          "width": 1567.0,
+          "condition": "!hasflag(region_lock) || hasflag(mainquest)>=20",
+          "script": "",
+          "proximity": 0.0,
+          "extendback": 1.0
+        }
+      },
+      "parentwaa": "railcamp2"
     },
 "roybean_interior": {
       "name": "Roy Bean's (Inside)",

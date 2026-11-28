@@ -5,6 +5,7 @@ using UnityEngine.XR;
 using UnityEngine;
 using BepInEx;
 using UnityEngine.UIElements;
+using System.Linq;
 
 namespace WOLAP
 {
@@ -16,6 +17,17 @@ namespace WOLAP
         public ArchipelagoItem[] ElVibCyl { get {return elVibratoCylinders; } }
         public ArchipelagoItem[] CurlyQuest { get {return curlyQuestItems; } }
         public ArchipelagoItem[] JellybeanItems { get {return jellybeanItems; } }
+
+        private Dictionary<string, string> regionLockMapUnlocks = new()
+        {
+          {"region_b_unlocked", "railcamp,Railroad Camp"},
+          {"region_c_unlocked", "fort2,Fort Alldead"},
+          {"region_d_unlocked", "breadwood,Breadwood"},
+          {"region_e_unlocked", "railcamp2,Railroad Camp"},
+          {"region_f_unlocked", "roybean,Roy Bean's House"},
+          {"region_g_unlocked", "frisco,Frisco"},
+          {"region_h_unlocked", "fort7,Alamo Rent-A-Mule"}
+        };
 
         private int nexmexFound;
         private ArchipelagoItem[] nexmexBooks = [
@@ -228,6 +240,39 @@ namespace WOLAP
                     MPlayer.instance.data.Add($"{item.IDs[0]}", "1");
                     WolapPlugin.UIManager.RcvItemQueue.Enqueue(new UIManager.ReceivedID(item.IDs[0], 1));
                     WolapPlugin.Log.LogInfo($"{item.IDs[0]}.");
+
+                    MPlayer.instance.data.TryGetValue(Constants.RegionLock, out string flagVal);
+                    string arg = regionLockMapUnlocks[item.IDs[0]];
+                    if (MPlayer.instance.data.ContainsKey("need_to_get_soupstock") && itemName == "Horse's Anti-Neigh-Cromancy Amulet")
+                    {
+                        MCommand cmd = new MCommand(MCommand.Op.MAPUNLOCK, ["mine5,Soupstock Lode"]);
+                        MScript script = new MScript("script_mapunlock", new Dictionary<string, string>());
+                        MScript.State state = script.NewState("state_mapunlock");
+                        state.AddCommand(cmd);
+                        state.Execute();
+                    }
+                    if ((itemName == "Comfortable Saddle") | 
+                    (MPlayer.instance.data.ContainsKey("need_to_get_railcamp2") && itemName == "Horse's Anti-Neigh-Cromancy Amulet") | 
+                    (MPlayer.instance.data.ContainsKey("need_late_breadwood") && itemName == "Rubber Horse Shoes") | 
+                    (MPlayer.instance.data.ContainsKey("need_to_get_frisco") && itemName == "Horse's H.O.R.S.E Badge (Horses Organization of Real Safety Enthusiests)") |
+                    (MPlayer.instance.data.ContainsKey("need_to_get_alamo") && itemName == "Horse's Hoarse Throat Spray"))
+                    {
+                        MCommand cmd = new MCommand(MCommand.Op.MAPUNLOCK, [arg]);
+                        MScript script = new MScript("script_mapunlock", new Dictionary<string, string>());
+                        MScript.State state = script.NewState("state_mapunlock");
+                        state.AddCommand(cmd);
+                        state.Execute();
+                    }
+                    else {
+                        if (flagVal == "2")
+                        {
+                            MCommand cmd = new MCommand(MCommand.Op.MAPUNLOCK, [arg]);
+                            MScript script = new MScript("script_mapunlock", new Dictionary<string, string>());
+                            MScript.State state = script.NewState("state_mapunlock");
+                            state.AddCommand(cmd);
+                            state.Execute();
+                        }
+                    }
                     return true;
                 case "Ghostwood Visitor's ID": //These 2 cases for the Visitor ID and Permit are checking if the player has essentially chosent their name for the ID's when
                                                //leaving the family farm. If they havent done so yet the game still marks the items as recieved from the AP server, but dosent
